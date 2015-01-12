@@ -1,0 +1,357 @@
+214-12-01 10:41
+1: 数据统计。
+	1：按照店铺进行统计。
+	2：每天0点进行更新。
+	3：统计数据中增加IP字段。
+	4: ip2long() 函数。
+	5: 需要其他的表来辅助实现。这些吧表怎么构建。
+	6: 对这几张表的思考。这几个数据都是怎么阳使用的。如何应用这些数据。首先，店铺的数量不会太大，至少在一段时间内
+		不会增长太多，所以表的规模不用太担心。首先，表中的数据是和日期成正比的。每天都会有一份新的数据产生。考虑到
+		查询和,要考虑建索引。这样可以提高查询效率。
+	7: 在实际应用场景中，这几张表会怎样增长，数据会怎样变化。
+	8: 能否实现上面这些需求。扩展性如何。
+select mfrom,  count(*) as count from t_pandora_statistics where maction = 50000 and mfrom in (50001,50002,50003) group by mfrom;
+
+2014-12-03 11:38
+1: 修改商家端注册流程，商家必须上传头像,上传的头像。一个头像id.
+html 中table 中的 border属性的设置。如果设置不正确，可能没有边框。下面是正确的设置。
+并且 td 的属性会 覆盖 table 的属性。
+
+2014-12-07 17:05
+做子查询的时候，必需要给结果集起别名，否则会有语法错误。
+mongo 如果要查询的数据是分为几层的话，应该用这总方式查询。用这种方式来写查询条件。 user.user_id 
+
+sql 中将联表出现的 null 替换成 0， 可以用这个方法。
+if(tb2.shop_click is null, 0,tb2.shop_click) 
+
+
+如果 group by 来去重要比 distinct 效率要高很多。
+子查询要控制
+group by 多个字段。
+
+2014-12-09 15:08
+
+对 sql 的学习更多了，可以写出更长的 sql 了。
+可以 set 变量。sql 中的变量是这样set 的。
+set @start = curdate();
+可以再一个 set 中定义好几个变量，可以用逗号分开。
+另外，yii 中执行的sql 也可以包括好几个句子，但是他们的 读写必须是一直的，就是说，要么是执行 queryall ， 要么是执行 execute。
+当然query 是从库， execute 是主库，表示写数据。
+
+mysql 中和时间相关的函数用着还是很方便的。date_sub(); date_add(); interval 1 day; 
+另外那些mysql 的工具也是很好用的，不用一直对着 cmd ，有时候还是没有必要的，毕竟不够方便。要结合起来才可以。
+
+
+另外，存储过程是不是也应该掌握一下。
+mysql 定义变量是不一样的。和其他语言的不太一样，这个需要注意一下。
+
+Yii
+的 那个 button 是可以优化的，可以加上 htmlOptions,可以规定宽度，这个标签很是有用。
+用法就和下面这个一样。
+http://www.hankcs.com/appos/yii-kong-zhi-dan-yuan-ge-di-kuan-du.html
+我希望能掌握一种记东西的比较好的工具，现在直接写html 比较费劲，可以考虑一下用markdown。
+
+或者直接写 blog 也是可以的。但是我不太喜欢上网页编辑的这个步骤。
+
+mysql 可以多表连接查询，也可以 left join 和 right join 。但是要注意表的规模。如果表的规模太大，那么联表的效率就iu不敢恭维了。
+
+所以说队数据的管理还是很重要的。要保证表不会太大。如果有其中一个表太大了，那么联表的结果都是非常可怕的。
+如果表中的数据太多的话，那么就要想办法处理这些数据，不要让数据太大。
+
+2014-12-10 20:37
+
+需要新加2个接口。
+
+shop/get_goods_from_weidian;
+得到微店商品列表
+shop/transfer_weidian_goods;
+将选中的商品从微店同步到higo。
+
+
+
+2014-12-12 14:11
+
+1 举报机制还没有测试。
+2 举报对应的后台需要完善
+3 对应的推送还需要完善。 群聊的推送。（周一考虑）
+4 一键搬家的接口(回调，账户的保护)
+
+	
+2014-12-12 14:38
+------------------
+聊天类。
+收到 IM push。 进入聊天列表。（商家版，用户版。） mtype = 1 value = 0;
+群聊推送  mtype = 2   value = shop_id  点击消息进入群聊进入消息列  
+
+==================
+订单相关 PUSH。
+
+生成新订单。    订单管理页。（商家版） mtype = 5  value = 0
+售罄 PUSH。    进入下架商品列表。（商家版） mtype = 6  value = 0
+卖家已发货。    进入订单列表。（用户端） mtype = 7 value = 0
+买家已付款。         订单列表 （商家版） mtype = 8  value = 0
+买家确认收货。     订单列表 （商家版）  mtype = 9 value = 0
+自动确认到货         告诉用户。(商家版)    mtype=10 value = 0;(默认 action)
+
+商家版  推送 告诉商家发货。 mtype=11 value = 0 点击进入订单列表
+==================
+
+活动的推送
+==================
+Android 和 IOS 用户版。 通过 运营后台发送push消息。
+活动推送。             进入首页。 mtype = 12  value = event_id
+(会自动判断是不是秒杀活动) 如果是秒杀互动，mtype = 13
+
+==================
+后台审核通过。      
+==================
+店铺通过审核。 进入添加商品页。  mtype = 15 value = 0
+店铺审核未通过。            mtype = 16  value = 0
+商品审核未通过。            mtype = 17  value = 0  
+商品被后台下架。            mtype = 18  value = goods_id 点击跳转到商品详情页 商家端
+==================
+单品分享
+mtype = 20
+==================
+活动分享 URL。
+mtype = 12 value = event_id
+==================
+分享秒杀活动
+mtype = 13  value = event_id;
+
+
+消息举报
+mtype = 30  value=0 消息举报被禁言的推送  行为暂时没有规定
+
+微点搬家回调
+微店搬家登录成功  mtype = 40 value = 0  行为待确定
+微店搬家完成      mtype = 41 value = 0  行为待确定
+==================
+--------------------------------
+php url
+$url = 'testurl';
+$html = file_get_contents($url);
+$content = json_decode($html);
+var_dump($content);
+http_build_query();
+
+
+
+2014-12-15 10:33
+
+如果举报同一个人，那么这个人的禁言时间会被刷新成目前的时间。
+
+perl 形式的正则。
+preg_match($mode,  $str, $matches);
+preg_replace();
+
+现在API的工作基本上差不多了，我需要着手 群聊消息推送的内容。
+
+群聊需要将新消息推送给群里的每一个人。并且在推送之前，都需要看一下这个人是不是设置成免打扰模式的。
+如果是免打扰模式的，那么不给这个人推送消息。
+基本上和群相关的所有数据都是在MONgo 里面的。我需要给python 安装mongo组件，并且学习python的mongo组建。
+学习队mongo的操作。每一段时间执行一次，将所有的新消息，推送给群里的所有人。
+
+是不是部分是不是离线。
+
+应该是只会推送给离线的朋友们，在线的是要跳过的。
+mongo , redis, mysql ;
+I need you. 
+
+import pprint
+
+pprint.pprint(yourarray);
+
+easy_install pymongo
+easy_install redis
+
+python mongo 构造查询条件的时候需要这样子。构造字典 需要这样。
+
+condition={}
+condition['seq'] = {}
+condition['seq']['$gt'] = 10
+condition['createAt'] = {}
+condition['createAt']['$gt'] = '1418634210';
+
+不能直接这样子。
+condtion = {'seq':{'$gt':'123123'},'createAt'{'$gt':'21'}}
+
+
+
+
+队面向对象也有了新的认识，还是应该多谢点程序，就算是最简单的 dbo block，尽量写好一点，尽量可以分享出去，能
+够给别人带来方便。
+
+所以写的时候要规范一点，虽然我对python了解也比较少，正式因为这个，在学习写得过程中才会有进步。
+
+算是对 mongo 比较熟悉了，但是我不想把学习的过程详细的写出来。
+如果我回了，我就懒得去动手谢了，我遇到的问题队我来说已经不是问题了。所以我没有必要写了。
+但是这样队别人能带来什么帮助，不是说相和别人共享知识吗，这就是这种共享态度吗？
+
+ret = table.find();
+返回的结果是可以 count 的。ret.count() 可以查看条数。
+
+python mongo 学习了不少。
+可以用 eval 求值来解决 库和表的选择问题。
+但是里面的成员变量要写成 public 的。
+python 的public 和 private 是不一样的，要认真思考一下他们的区别。
+
+还没有搞完，明天继续。
+
+2014-12-16 12:31
+写伪代码还是很清楚的，有时间可以多写一点，我真是本末倒置。
+
+redis 的connectionPool() 是什么意思，这个是怎么使用的。
+有什么好处。
+
+2014-12-17 11:20
+alter table t_pandora_statistics add key uuid_index (uuid);
+
+ajax 我根本就不会，jquery 的ajax，还需要联系下。
+
+2015-01-04 14:08
+
+the error may be in a field that is not displayed?
+try this after $model->save()
+print_r($model->getErrors());
+$model->getErrors(); 可以看出上一个错误是什么。
+or
+in the config/main.php
+enable logs for error and trace
+and see the file runtime/application.log
+
+今天遇到的问题，通过的时候save 老是不能成功，我只看到了save 的return status is false。
+但是我并不知道是什么错误，后面找到了上面的解决方案。看到了原来一个字段是空的，而在model里面
+这个字段是 required 的。所以就保存失败了。
+
+不过正因为这个问题，我队 Yii 的了解也多了一些，还需要继续学习。
+
+刚才遇到的问题是 
+CGridView 的问题。想要实现 columns 里面的 指定列的自定义，就是不同类型给不同的颜色。但是也找了
+好久。
+想的是给一个 html 元素。但是刚开始是不会显示的，除非你加上这个选项。 'type'=>'raw';
+
+这个方法并没有解决问题，但是也是有价值的。
+'htmlOptions'=>array('style'=>'Convert::shop_change_status_color($data->status)')
+
+array(
+	'name'=>'status',
+	'value'=>'Convert::shop_change_status($data->status)',
+	'htmlOptions'=>array('style'=>'Convert::shop_change_status_color($data->status)')
+	//'value'=>'Convert::shop_change_status($data->status)'
+),
+http://stackoverflow.com/questions/8140613/yii-zii-widgets-grid-cgridview-with-type-html-render-failed
+
+关于 Yii 应该多了解一下。要学着自己定义。在框架的基础商进行自定义。
+
+2015-01-05 10:59
+
+mysql 数据查询。
+
+
+
+2015-01-05 15:06
+新加表项。
+create table t_pandora_home_banner(
+	banner_id int(11) unsigned auto_increment primary key,
+	banner_status tinyint(4) not null default 1,
+	banner_start timestamp not null default '0000-00-00 00:00:00',
+	banner_end timestamp not null default '0000-00-00 00:00:00'
+)engine = InnoDB, charset = utf8 ,auto_increment = 1, comment '首页banner 主表';
+
+
+
+create table t_pandora_home_banner_item(
+	banner_id int(11) unsigned not null default 0 primary key,
+	position tinyint unsigned not null default 1 comment '排序字段,控制位置',
+	mtype tinyint(4) unsigned not null default 1 comment '1群  2 专题 3 单品',
+	mvalue bigint(20) unsigned not null default 0 comment '对应的类型的 值 群的shop_id event_id 单品 id',
+	banner_item_status tinyint(4) not null default 1,
+	banner_pic bigint(20) unsigned not null default 0
+)engine = InnoDB, charset = utf8, comment '首页banner明细';
+
+
+
+Yii app's application.log is in protected/runtime/application.log; not in main dir's runtime/
+
+给的数据大致是这样，根据里面的type ， 去 分发到不同的接口。
+mtype == 1 
+	call  group_chat/get_detail  shop_id = mvalue;
+mtype == 2
+	call  event/get_event_items  event_id = mvalue;
+mtype == 3
+	call  goods/get_detail 		 goods_id = mvalue;
+
+2015-01-06 14:30
+
+
+unicodedecodeerror: 'ascii' codec can't decode byte 0xef in position 0: ordinal not in range(128)
+import sys
+sys.reload()
+sys.setdefaultencoding("utf-8")
+这个可以解决问题。
+
+step 1
+	finished you code.
+step 2
+	刷数据，所有 token status = 1 的account_id 添加 redis 缓存。
+
+2015-01-09 18:28
+div 也有 align 属性，center 就可以。 表示里面的内容在 div 的中间。
+
+"<div align='center'> <a href='index.php?r=homeBanner/admin'> <h3> 返回 </h3> </a></div>"
+
+2015-01-12 10:50
+jquery radio 选中事件。
+jquery onclick 事件， onchange 事件。我们根据radio 的 name 来选择选中的radio。
+jquery 代码如下
+
+<script>
+function addSelected(){
+	var a = <?php echo $id; ?>;
+	// id = 0 表示创建，跳转到 创建的 url
+	if(a==0){
+		$("#form2").attr("action","<?php echo Yii::app()->createUrl('homeBanner/Create');?>");	
+	}else if(a>0) {
+		$("#form2").attr("action","<?php echo Yii::app()->createUrl("homeBanner/Update&id=".$id);?>");
+	}
+	id=$("input[name='mvalue']:checked").val();
+	mval = "#event_id"+id;
+	ans = $(mval).attr("value");
+	$("#event_type_unique").attr("value",ans);
+	// 如果不是 跳转到 update 的url
+	form2.submit();
+}
+
+还需要总结。
+
+
+
+form 表单相关的内容。 post 和 get 两种模式。
+table 里面的内容可以是 hidden 的。他可以不显示出来。
+如果需要想页面传值，那么需要用 input 标签。 input 的 type 可以如下text  radio  checked='checked'
+checkbox value='1' checkbox 比较简单，如果选中的话，他的值就是对应的 value 的值。这个值是会被提交的。
+所有的 input 控件提交都是通过 name 来指定属性的。在 php 文件中，可以通过$_REQUEST['your_name'] 来获得
+对应的属性的值。
+<select> <option> </option> <option> </option> </select>
+
+jquery $("#"); # 表示通过 id 来选择。. 表示通过class 来选择。还有就是上面的选择方式，是通过伪标签来选择。
+input[]  [] 里面是这个控件的name属性。冒号后面是 checked 属性的值。.val() 是这个属性的值。这样可以获得值，
+当然，里面可以给这个元素设定属性值。
+
+$().attr(); 这个 attr 也是很好用的，和 val() 方法的用法类似，可以拿到属性的值，也可以设置属性的值。
+并且 attr 可以是自己定义的属性。 例如 <input type='text' id='only' ccc='hello' > </input> $("#only").attr('ccc');
+可以拿到 自定义属性 ccc 的值。
+$().text() 有时候这个属性也可以去到自己想要的值。
+
+&nbsp 代表一个空格。
+
+javascript() 的function 。
+
+function() {
+
+}
+radio, checkbox , button, 他们都有对应的时间，可以在里面添加对应的 函数。可以带参数的。
+
+
+
