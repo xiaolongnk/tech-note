@@ -50,8 +50,20 @@ Yii
 用法就和下面这个一样。
 http://www.hankcs.com/appos/yii-kong-zhi-dan-yuan-ge-di-kuan-du.html
 我希望能掌握一种记东西的比较好的工具，现在直接写html 比较费劲，可以考虑一下用markdown。
-
 或者直接写 blog 也是可以的。但是我不太喜欢上网页编辑的这个步骤。
+
+Yii::app()->createUrl();
+$this->render();
+$this->renderPartial();
+$cmd = Yii::app()->db->createCommand();
+$cmd->text = $sql;
+$cmd->queryAll();
+
+Yii 的 view 和 action 之间的配合。有时候为了重用一个view，我需要隐藏很多的 input。
+
+input type 可以是 textarea
+
+
 
 mysql 可以多表连接查询，也可以 left join 和 right join 。但是要注意表的规模。如果表的规模太大，那么联表的效率就iu不敢恭维了。
 
@@ -333,8 +345,7 @@ table 里面的内容可以是 hidden 的。他可以不显示出来。
 checkbox value='1' checkbox 比较简单，如果选中的话，他的值就是对应的 value 的值。这个值是会被提交的。
 所有的 input 控件提交都是通过 name 来指定属性的。在 php 文件中，可以通过$_REQUEST['your_name'] 来获得
 对应的属性的值。
-<select> <option> </option> <option> </option> </select>
-
+<select> <option selected='selected'> </option> <option> </option> </select> 
 jquery $("#"); # 表示通过 id 来选择。. 表示通过class 来选择。还有就是上面的选择方式，是通过伪标签来选择。
 input[]  [] 里面是这个控件的name属性。冒号后面是 checked 属性的值。.val() 是这个属性的值。这样可以获得值，
 当然，里面可以给这个元素设定属性值。
@@ -351,7 +362,121 @@ javascript() 的function 。
 function() {
 
 }
+
 radio, checkbox , button, 他们都有对应的时间，可以在里面添加对应的 函数。可以带参数的。
+checkbox 也可以写成数组。 
+name='chk[]'  $_REQUEST ['chk'] 取值的方式是这样的。
+
+mysql 
+
+update , select , 都可以联表操作。 当然，联表的时候都需要指定表的别名。
+可以 从一张表选择内容，然后将选择的结果插入指定的表中。
+insert into youtable select * from table1 where condition; 当然，表的结构应该要一样才可以。
+事物的支持。现在需要事务的支持。
+要防止 sql 注入，所以写 sql 的时候要注意，尽量按照规范的写法,实现功能的时候，就要考虑,进行防范。
+
+
+2015-01-13 10:07
+
+function genJsCode($classid)
+{
+	$ret = sprintf('<script> 
+			var tag%sid = 1;
+			function xxx%s()
+			{ 
+				if(tag%sid&1) {
+					$(".xxx%s").attr("checked","checked");
+					$("#ssss%s").attr("value","反选");
+				}
+				else {
+					$(".xxx%s").attr("checked","");
+					$("#ssss%s").attr("value","全选");
+				}
+				tag%sid++;
+			}
+			</script>',$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid);
+	return $ret;
+}
+
+在一个页面
+
+2015-01-13 17:01
+import sys
+import os
+import re
 
 
 
+def work():
+	md = '/Users/a2014/Downloads'
+	ret = os.listdir(md)
+	for i in ret:
+		if i.find('Game') !=-1:
+			print i,re.findall("S0[14]E[0-9]+",i), re.findall("(\.mkv|\.mp4)$",i)
+if __name__=='__main__':
+	work()
+
+2015-01-14 12:50
+
+所有的缓存都要加上。并且要重新设置一下过期时间，加上过期时间是很有必要的。
+
+2015-01-15 12:44
+
+活动，商品数据统计，sql。
+
+活动 ID， 活动类型， 活动点击量, 按照时间来统计 按照时间区间进行统计。
+拿出活动的统计次数
+select mvalue as event_id, count( distinct uuid ) as click_num from t_pandora_statistics where maction='20000' and
+	ctime  > '2015-01-1' group by mvalue;
+
+活动详情。
+	活动中出现的商品，的点击次数，
+
+
+给定一个 event_id 就可以得到这个 活动中的所有的商品的点击数量。
+这个用来现实 活动详情的显示。
+select mvalue as goods_id, parent_id as event_id , count(*) as click_number from t_pandora_statistics 
+	where maction='10000' and mfrom in (10004) and ctime > '2015-01-10' group by mvalue;
+
+
+商品纬度的统计
+
+
+所有的尖货
+select * from t_pandora_statistics where maction = '10000' and mfrom =10002 and ctime > '2015-01-10';
+
+select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where 
+	maction = '10000' and mfrom =10002 and ctime > '2015-01-12' group by mvalue  order by click_number desc limit 10 ;
+
+所有的精选商品
+
+select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where 
+	maction = '10000' and mfrom =10001 and ctime > '2015-01-12' group by mvalue  order by click_number desc limit 10 ;
+
+
+
+感觉PHP中日期计算方法太复杂了，应该找个简单点的方法。或者再封装一个方法。
+
+
+2015-01-16 17:51
+MYsql
+a 表 字段 c1 和 b 表 c2 , 都有一个字段，这两个字段的类型不同的时候，是没有办法相等的。
+按照MYsql 的相等判断是不相等的。所以要谨慎，
+可以用 left join 和 right join 来校验这个错误。
+
+
+checked这个属性不是我理解的那样，好像只要有checked 这个属性就可以起作用了。我应该做一个精确的测试才行。
+而不是这样猜测。我的推送的代码还需要我进行测试，而不是像现在这样子。我应该为我的项目代码编写测试用例，
+而不是等待QA测试。我们的开发应该有一个统一的网站，而不是像现在这样子，以QQ为主的信息传递。
+
+我有点担心我的 推送程序发起的 redis 连接 和 mongo 的连接太多了。程序本省的性能，有没有内存泄露，能不能正常工作。
+要想办法测试自己的程序。而不是全部依赖QA。
+
+
+
+其实有好多做法都是没有必要的。比如里面的那个phpserialize 我觉着是没有必要的，完全可以通过jsondumps 来搞定。
+应该多用PHP的方法来搞定。
+
+刚才谢了几个 单元测试，找出了两个错误，这些问题只能通过单元测试来解决，没有单元测是的话，在整个流程中
+来找出这些问题太费劲了。所以这些地方一定要写单元测试。
+这个在整个项目中是很有必要的。
