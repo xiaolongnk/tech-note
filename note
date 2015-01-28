@@ -480,3 +480,80 @@ checked这个属性不是我理解的那样，好像只要有checked 这个属�
 刚才谢了几个 单元测试，找出了两个错误，这些问题只能通过单元测试来解决，没有单元测是的话，在整个流程中
 来找出这些问题太费劲了。所以这些地方一定要写单元测试。
 这个在整个项目中是很有必要的。
+
+这里是有问题的。
+
+至少这两个方法是有问题的。
+
+/*
+ * @author: xiaolongou
+ * 新版要加上秒杀活动类型。
+ * 获得活动的范围。 (offset, offset+size ]
+ * 里面的排序是没有必要的。
+ * 如果 ad_position 又重复的话，就用最新的活动(最新修改的)替换以前的。1个位置只现实一个活动
+ */
+public static function getCurrentPageEvents ( $offset, $size ,$is_new )
+{
+	...
+}
+
+/*
+ * @author: xiaolongou
+ * 按照升序排列，只有在 商品不足的时候会调用。
+ */ 
+public static function getEventsList($offset, $limit , $is_new)
+{
+	...
+}
+
+2015-01-20 10:14
+
+程序上线的时候，应该把和配置相关的文件删除掉，这样上线后不用重新配置。
+Traceback (most recent call last):                                                           
+  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 258, in _bootstrap 
+    self.run()                                                                               
+  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 114, in run        
+    self._target(*self._args, **self._kwargs)                                                
+  File "hgDistributeStart.py", line 16, in worker                                            
+    tmp.run()                                                                                
+  File "/opt/web/lehe.com/hgpusher/hgDistribute.py", line 38, in run                         
+    ret = m_msg.pre_message(message)                                                         
+  File "/opt/web/lehe.com/hgpusher/distribute.py", line 72, in pre_message                   
+    self.for_chat(message)                                                                   
+  File "/opt/web/lehe.com/hgpusher/distribute.py", line 157, in for_chat                     
+    nick_name = m.getfromNickname(from_account_id)                                           
+AttributeError: Users instance has no attribute 'getfromNicknam
+
+php 回掉函数的使用。
+这是最基本的回掉方法。
+call_user_func_array('your function',array());
+array() is your params.
+
+php 时间函数。
+<?php
+//$start = date_create(date("Y-m-d"));
+//echo date_format($start,'Y-m-d H:i:s')."\n";
+//$interval_d = date_interval_create_from_date_string("1 days");
+//date_sub($start, $interval_d);
+//echo date_format($start,'Y-m-d H:i:s')."\n";
+error_reporting(7);
+ini_set('display_errors', 1);
+ini_set('date.timezone','Asia/Shanghai');
+
+$start_str = '2015-01-01 23:00:00';
+$end_str = '2015-01-30 23:00:00';
+
+for($i = 0; ; $i++){
+	$start = date_create($start_str);
+	$interval_d = date_interval_create_from_date_string("{$i} days");
+	$ans =date_add($start,$interval_d);
+	$s = date_format($ans,'Y-m-d H:i:s');
+	echo $s."\n";
+	if($s >= $end_str){
+		echo 'brk'."\n";
+		break;
+	}
+	//echo date_frormat($ans,'Y-m-d H:i:s')."\n";
+}
+?>
+
