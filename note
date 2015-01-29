@@ -557,3 +557,14 @@ for($i = 0; ; $i++){
 }
 ?>
 
+2015-01-28 17:38
+mysql 的联表查询的原理我还不是很清楚，只是知道了联表查询并不一定就等于O(n*m) 的复杂度。
+和联表的条件是密切相关的。所以，需要多理解，多实践下。
+
+ngix还是没有了解，应该也了解一下。
+
+emulator: ERROR: Unable to load VM from snapshot. The snapshot has been saved for a different hardware configuration.
+模拟器：错误：无法从虚拟机上加载快照，快照已被保存为一个不同的硬件配置。（存档错误无法读取)
+解决办法：
+Android Virtual Device Manager -> delete AVD -> new AVD
+重新创建个AVD，解决。
