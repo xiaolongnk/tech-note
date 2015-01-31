@@ -568,3 +568,48 @@ emulator: ERROR: Unable to load VM from snapshot. The snapshot has been saved fo
 解决办法：
 Android Virtual Device Manager -> delete AVD -> new AVD
 重新创建个AVD，解决。
+
+2015-01-31 13:05
+
+Nginx 反响代理，是一个不错的反向代理服务器。
+
+我在学习 nginx 的源码，我下载到了源代码，我在学习比较高级的shell脚本。我可以写一篇比较高级的shell教程。
+提高自己的技术能里，我需要一段蛰伏期。总之，是互联网方面相关的知识，都要尽可能的学习。
+
+LC_ALL=c 这到底是什么意思？
+LC_ALL=C 是为了去除所有本地化的设置，让命令能正确执行。
+C 是 POSIX的别名。是系统默认的语言环境。LOCALE中有一组变量。LANG ，也是很常见的。ALL。
+LC_TIME, LC_MONETARY, LC_MESSAGE,  
+C是
+
+我对shell 很感兴趣，总是找机会学习能接触到的shell。
+配置文件，configure 文件，中的每一行都要追究为什么。
+
+自己安装的时候，那面会装的比较乱。安装 的 configure 文件是需要不少配置参数的。如果都是用默认参数的话，
+那么应该注意下对应的文件都放在什么地方了。
+
+我自己的配置算是不太标准，在linux上，应该把一些重要的配置程序都放在制定的目录下，不要按照系统默认的那种
+方式放置。我觉着这一点可以借鉴windows 的做法。比如你安装了nginx，那么吧所有的nginx文件都放在一个目录下，
+包括自己的 log 什么的，这样管理起来方便一点，虽然linux完全允许你自己定义你的每一个文件，但是在以后的管理
+中，我应该不会再向以前那样了吧，我会吧重要的软件都自己编译安装，然后放在制定的闻之，而不是像现在这样。我
+所追求的不再是方便，而是简介与高效。
+
+nginx
+检测配置文件的正确性，不要加载一个又明显错误的配置文件
+nginx -t -c /usr/nginx/conf/nginx.conf 或者向下面这样也可以 nginx -t 
+启动  停止  或者重启 nginx 。
+nginx  -s reload
+
+如何调试shell。
+bash -x your.sh 就可以看你的shell的执行过程了。
+或者在shell的开始部分增加一行，set -x。
+
+这个是 nginx 的documention。很不错的文档，应该好好学习一下。
+http://nginx.org/en/docs/beginners_guide.html
+
+有关sphinx的知识，我之前了解过一点，但是我并没有完全搞明白，应该找时间研究一下，这些东西都会有用的。
+这段时间我可能会闲一点，但是我不应该让这样的安排阻止我进步的
+firefox plugin 更新的时候，需要复制连个文件，要知道这个东西存放在什么地方。
+/usr/lib/mozilla/plugins
+
+像这种so文件一般都是在lib 目录里面的，这是一个常识，下次直接去对应的地方找，就可以了。
