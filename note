@@ -622,6 +622,85 @@ http://www.sijiaomao.com/exam.html
 学习得深入一些，这样总是好的。
 
 
-nginx
+NGINX
 http://nginx.org/en/docs/beginners_guide.html
 
+我可以将一些重要的html内容保存下来，这样可以离线阅读，对于没有网的我来说，这是很好的一个方法。
+但是，目前我只能做到离线当前的页面，但是我想实现的功能是多层抓取，比如设计层级是3，那么将这个页面
+里所有的链接也抓下来，然后对链接下来的html进行同样的分析，这样总共三层，我需要这样的抓取效果。
+刚才搜索了一下，没有找到合适的方法，应该是需要自己动手的功能。
+
+
+目前真得很需要钱。希望4月份我的薪水可以让自己满意。如果我不能满意，我真得可能要选择其他的地方。
+我也没有办法。现在情况对我来说不是很有利，现在处境比较艰难。我应该保持谨慎，以前那种大大咧咧的
+性格应该收敛一下，不能继续那样子下去，2014犯了太多错误，那些愚蠢的错误，给我带来了巨大的损失。
+2015，我希望我不再重犯2014的那些错误，我希望我可以更快速的成长。我要用成长的速度弥补我犯的过错
+2015，我需要改变，我需要更加努力，更加谨慎。
+2015, 我应该加强英文的学习，阅读更多的文档，思考更多的问题。
+
+刚才在学习配置nginx 的时候遇到问题了，我是按照上面的文档来配置的，但是出问题了。我应该去error.log
+里面找问题，这一天提示很是重要，应该注意提高下自己这方面的能力。
+
+我需要更全面的能里，所以我需要不断的学习。
+原来nginx 和 apache 是需要同时实用的。解析php的时候，直接转交给apache就可以了。这就是代理功能的体现
+了。
+
+Instead of crearting a new process for each request, FastCGI uses persistent processes to handle
+a series of requests. These processes are owned by the FastCGI server, not the web server.
+To service an incoming request, the web server sends enviroment information and the page request itself
+to a FastCGI process over a socket (in the case of local FastCGI processes on the web server) or TCP
+connection (for remote FastCGI processes in a server farm). Responses are returned from the process to
+the web server over the same connection, and the web server subsequently delivers that response to the 
+end-user. The connection may be closed at the end of a response, but both the web server and the FastCGI 
+service processes persist.  Each individual FastCGI process can handle many requests over its lifetime, 
+thereby avoiding the overhead of per-request process 
+creation and termination. Processing of multiple requests simultaneously can be achieved in serveral ways:
+by using a single connection with internal multiplexing (i.e. multiple requests over a single connection);
+by using multiple connections; or by a combination of these techniques. Multiple FastCGI servers can be
+configured, increasing stability and scalability.
+Web site administrators and programmers can find that the separation of web applications from the web 
+server in FastCGI has many advantages over embedded interpreters(mod_perl, mod_php, etc). This separation
+allows server and application processes to be restarted independently - an important consideration for busy 
+web sites. It also enables the implementation of per-application / hosting service security policies, which
+is an important requirement for ISPs and web hosting companies. Different types of incoming requests
+can be distributed to specific FastCGI servers which have been equipped to handle those particular
+types of requests efficiently.
+CGI: For many years, the only way to achieve that tgoal was the CGI script: an application using the
+Common Gateway Interface to receive and process HTTP requests from the web server. CGI scripts were
+typically written in Perl or -- less often -- in C and implemented things like page counters or
+guest books.
+Soon , the Internet community realize that CGI had drawbacks: Writing a CGI is somewhat
+uncomfortable if all you want is to process a few strings and display the results. So some clever
+people came up with entirely different solutions like SHTML, ASP, and PHP -- to name a few. The
+difference between CGI and say PHP is that CGI is an interface between the web server and the
+application. ALL CGI does is to specify how an external application can receive HTTP requests from
+the web server; CGI does in no way tell the developer what that application should look like or what
+that application should do with the HTTP request.
+Thus , it is hardly amazing that PHP and its alike became very popular.
+
+We already mentioned the CGI interface, which defines a way for web servers to delegate HTTP
+requests to external applications. This is exactly what web-based-application writes need: a way to
+connect their application to the web. The Common Gateway Interface is very well-suited for that
+purpose. Actually, though, there is an even better interface readily available: the FastCGI
+interface.
+The FastCGI interface, as specified in [FastCGISpec], is a packet-oriented communications protocol.
+Even though the underlying transport mechanism is connection-oriented, the FastCGI protocol is
+not.(YUes, there is a very goods reason for this. Just read on.)Each message consists of a header
+and a body. The header contains --among others --the following fields:
+The architecture described in this paper uses the C++ programming language. Of course, it is
+possible to implement FastCGI applications in any programming language that supports interprocess
+communication, be it Perl, TCL, or even shell scruipts. We nonetheless chose C++, because we feel
+that "real" programming languages are more appropriate for the implementation of complex
+applications. Writing web-based applications in C or C++ gives the developer more control over the
+maching. Especially under the UNIX operating system, numerous mechanisms are available only to
+software writers who use C.
+Another advantage is that writting web-based applications in C or C++ gives y ou access to billions
+of lines of code freely available on the Internet, no mwatter whether it is an arbitrary-precision
+math library, a library for the creatation and manipulition of images, or a set of routines
+implementing strong cryptography. It's all there - just use it!
+
+
+
+
+不错，今天收获不小。对nginx 和 fastcgi 有了不少的了解。遇到了一些问题，明天有时间继续搞，最近
+应该闲一段时间，要抓紧时间学习新知识。我要把这块搞得深入一点。加油。
