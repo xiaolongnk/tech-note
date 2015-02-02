@@ -568,3 +568,5 @@ emulator: ERROR: Unable to load VM from snapshot. The snapshot has been saved fo
 解决办法：
 Android Virtual Device Manager -> delete AVD -> new AVD
 重新创建个AVD，解决。
+
+
