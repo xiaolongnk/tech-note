@@ -704,3 +704,80 @@ implementing strong cryptography. It's all there - just use it!
 
 不错，今天收获不小。对nginx 和 fastcgi 有了不少的了解。遇到了一些问题，明天有时间继续搞，最近
 应该闲一段时间，要抓紧时间学习新知识。我要把这块搞得深入一点。加油。
+
+如果有很多个input的话，那么尽量让他们的长度保持一致，这样可以是页面表现的比较整齐。如果你是个前段白痴的话，
+这也是一个不错的选择。
+时间可以让页面变得交互性很好。刚才的错误是很奇怪的，只因为写错了位置。
+一个按钮是不是可以点击的，这些常用的时间应该很熟悉才行，要重视程序的交互功能。
+
+
+刚才在文档里发现了好多东西，原来还是要自己编译才是最好的。才能够了解更多的特性。
+./configure --help
+其实已经包含了很多信息，只是你还不了解。
+要编译安装，这个是很重要的一步。
+
+
+php 中开启gd，
+在编译php的时候，./configure --prefix=/opt/server/php-version/ --enable-gd
+这样就 ok 了。
+
+png.h   libpng-dev   you need to install this dev to finished your compilination.
+
+编译php常见的20个错误。
+http://crybit.com/20-common-php-compilation-errors-and-fix-unix/
+	
+编译apache2， configure 的时候提示 APR not found
+
+I solved this problem by this command.
+
+	sudo apt-get build-dep apache2
+	I can userstant from the command, In ubuntu , we can install the build-dependencies
+	that needed for software we want to compile, this is a goods tools for the build.
+	thanks for ubuntu , thanks for linux.
+
+这里有不少帮助。
+http://devincharge.com/compiling-apache-2-4-ubuntu-12-04/
+sudo apt-get build-dep apache2; 这个命令是做什么的。但是帮助很大。thhanks for ubuntu.
+
+/etc/enviroment 这个文件并不是你看上去的那样简单。
+sudo vim /etc/sudoers
+apachectl restart  	// 第一个是可以执行的。
+sudo apachectl restart   // 这个是不可以执行的。
+这是为什么。
+第一个是普通用户的 $PATH  第二个是 sudoers 的 $PATH 在严格意义上，这两个变量的值并不是一样的。
+并且更多的时候，我们需要将特定的程序的控制权交给 sudoers 而不是我们的普通用户。所以设置 /etc/enviroment
+是没有意义的。
+我们看这个文件。
+sudo vim /etc/sudoers
+里面也有一个环境变量。我们可以设置这个变量。
+用这个命令
+
+sudo evn 里面列出的就是我们的  sudoer 的 $PATH 的内容。显然和我们的预期是不一样的。
+
+in ubuntu, you can switch to root like this. 
+sudo -i
+sudo su -
+
+	
+Thus whatever is set in the /etc/environment for the path is overridden by sudo.
+http://askubuntu.com/questions/128413/setting-the-path-so-it-applies-to-all-users-including-root-sudo
+
+VIRTUALBOX SHARE FOLDER
+
+I can wirte down my note in English only, and I can read it. Ok, solved this problem.
+Setting share Folder in you virtualbox, share your mac folders in your Ubuntu in virtualbox.
+
+First: mount  
+	you can see this info.
+	virtual on /media/sf_virtual type vboxsf (gid=999,rw)
+Second:
+sudo mount -t vboxsf virtual /mnt/virtual/   ;; content after -t , vboxsf is a file type.
+	// virtual is your virtual folder in your main os, and /mnt/virtual is your mount point.
+
+you can find more with this command.
+
+man sudoers
+sudo visudo
+just edit this line, and your problem solved.
+
+
