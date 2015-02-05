@@ -1,0 +1,42 @@
+I know it is hardful, but I want this way. I need to know them well.
+This process is too long, but I have no choice.
+remember to do `sudo make clean`
+if you chaged your ./configure --with-mysql --with-gd, otherwise your compile
+process will fail, know about this.
+compile process is slow.
+
+For most problems, there are detailed information in official documentation.
+
+I know something, 
+compile php with  --with-mysql, it will generate mysql-module for you.
+with apache/apsx , it will load php in apache. and update the httpd.conf file
+for you, and there have a http.conf.bak file left for you. yes, that's all 
+happened for you.
+
+Ok, I need to build mongo and redis for me.
+
+build mongo.
+http://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
+I used this command: 
+%  sudo apt-get build-dep mongodb  %
+%  scrons all % this command will build all mongo tools.
+%  scrons install --prefix=/opt/server/mongodb/  % to install mongodb in your path.
+
+build redis.
+this is easy, just make and make install
+% 
+
+the problem is , after the compilination, where is the mongo conf files.
+this is not a problem, just create need path, if you want. db/, conf/, log/, that's all
+then copy  this mongodb.conf from here.
+
+and the same to redis.
+
+对 redis 和 mongodb，编译完成只会给安装 bin 目录，里面是对应的工具。但是我们还需要一些其他的
+目录还有对应的配置文件。这个目录和配置文件是可以自己创建的。所以只要变已完成，基本就算安装
+完成了，在启动的，加载。
+Just start your server, and load your config file, then your server should be work.
+compile all your server software is not an easy thing.
+
+Now, for my server, I need redis-php and mongo-php, with these two mod, I can build my own system.
+
