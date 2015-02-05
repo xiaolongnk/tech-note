@@ -704,3 +704,24 @@ implementing strong cryptography. It's all there - just use it!
 
 不错，今天收获不小。对nginx 和 fastcgi 有了不少的了解。遇到了一些问题，明天有时间继续搞，最近
 应该闲一段时间，要抓紧时间学习新知识。我要把这块搞得深入一点。加油。
+
+2015-02-02 21:31
+为什么我还是更喜欢Linux。
+现在商家聊天的时候，用户通过意见商品联系商家的时候，推送过来的小时是一个接json串，这是有问题的。
+明天反应一下这个问题，应该是遗留问题，但是需要解决，明天需要加上后台的定时任务。
+
+crontab 的一些常识。
+
+分 时 日 月 星期  执行命令。
+* 表示任意的变量
+
+00 23 * * * run-your script  每天23:00 执行你的脚本。其实我需要做的就是一行命令。
+crontab l 列出当前的任务。
+
+10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart  这个任务表示每周6和周日的1:10重启服务器。
+			注意逗号，表示多个的意思。再看下面一个。
+
+* */1 * * * /usr/local/etc/rc.d/lighttpd restart  注意这个符号/ 表示每个一个小时重启一下服务器。
+
+在linux 下，你当前用户的crontab文件存放在 /var/spool/cron/ 目录下，这个文件以你的用户身份 命名。
+比如 root， fox 之类的。
