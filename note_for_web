@@ -3,4 +3,10 @@
 margin: 的4个参数。up ,right, down , left;
 如果只有一个参数，那么表示4个都是n px。可以是1-4个参数。
 
+my understanding for web server is gaining, but it's not enough,I need to know more to host my craeer.
+sudo service gdm restart|stop|start
+if you gdm freezen, you can use this command to avoid restart your computer from poweroff.
+First you should in character mode.
+
+After all these years, I find official documentation is most powerful, thanks for all.
 
