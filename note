@@ -704,3 +704,36 @@ implementing strong cryptography. It's all there - just use it!
 
 不错，今天收获不小。对nginx 和 fastcgi 有了不少的了解。遇到了一些问题，明天有时间继续搞，最近
 应该闲一段时间，要抓紧时间学习新知识。我要把这块搞得深入一点。加油。
+
+I solved problem for c++
+
+for example your .h file is named head.h and content like this.
+#ifndef _HEAD_H_
+#define _HEAD_H_
+
+this is your class definition area.
+
+#endif
+
+
+in your project, there are source file import it.
+for example.
+
+#include <iostream>
+
+#include "head.h"
+#include "head.h"
+
+if you include "head.h" twice, you find you can compile your file as well.
+but if your head.h is writte without #ifndef, #define #endif, then you must
+will get an error to stop your working.
+
+also, here the use of,
+
+#ifdef
+
+#else
+
+#endif
+
+this condition definition can save your release code size :).
