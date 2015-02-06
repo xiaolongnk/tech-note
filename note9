@@ -40,3 +40,18 @@ compile all your server software is not an easy thing.
 
 Now, for my server, I need redis-php and mongo-php, with these two mod, I can build my own system.
 
+python
+sudo apt-get install pip
+sudo pip install redis  pymongo  mysql-python
+redis   pymongo  mysql-python
+
+for python docs, you need to consult the pydocs for more.
+https://pypi.python.org/pypi/redis/
+
+That's all for my server.
+
+git status
+
+I find some subfiles can not be hidden.Because the subdir is a git repo.
+just remove .git/ files, recommit it, and it will be ok.
+

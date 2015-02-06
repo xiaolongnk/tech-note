@@ -776,7 +776,7 @@ sudo vim /etc/sudoers
 
 sudo evn 里面列出的就是我们的  sudoer 的 $PATH 的内容。显然和我们的预期是不一样的。
 
-in ubuntu, you can switch to root like this. 
+In ubuntu, you can switch to root like this. 
 sudo -i
 sudo su -
 
