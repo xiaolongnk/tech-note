@@ -61,3 +61,16 @@ now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a li
 light desktop.
 I prefer linux, but not mac.
 
+2015-02-09 20:01
+mysql show warnings;
+可以显示上一次查询的warnings。
+
+select * from t_pandora_statistics where mvalue = 161189566907393966;
+我知道了这个问题出现的根源了。因为 mvalue 是varchar(32)的类型，我在查询的时候，用的变量是一个longint的类型，这个时候就汇报这个 warning。
+
+Warning | 1292 | Truncated incorrect DOUBLE value: '12998e8c703749642' 
+报告的地方有很多，我只是选择了其中的一个。解决办法是将sql写成这样。
+select * from t_pandora_statistics where mvalue = '161189566907393966';
+这样就不会报这个错误了。
+
+
