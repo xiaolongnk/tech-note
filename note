@@ -802,3 +802,6 @@ man sudoers
 sudo visudo
 just edit this line, and your problem solved.
 
+19,21,23,25
+
+
