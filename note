@@ -802,3 +802,65 @@ man sudoers
 sudo visudo
 just edit this line, and your problem solved.
 
+I solved problem for c++
+
+for example your .h file is named head.h and content like this.
+#ifndef _HEAD_H_
+#define _HEAD_H_
+
+this is your class definition area.
+
+#endif
+
+
+in your project, there are source file import it.
+for example.
+
+#include <iostream>
+
+#include "head.h"
+#include "head.h"
+
+if you include "head.h" twice, you find you can compile your file as well.
+but if your head.h is writte without #ifndef, #define #endif, then you must
+will get an error to stop your working.
+
+also, here the use of,
+
+#ifdef
+
+#else
+
+#endif
+
+this condition definition can save your release code size :).
+
+2015-02-08 23:21
+FOR C++;
+what is different between static type and dynamic type.
+static type: know when program is in compile process. 
+dynamic type: know only in the run process.  For pointer type.
+
+
+2015-02-10 23:23
+关于html，前端的这些东西，今天学习到了好多，这要是jquery的this，和parent
+还有find方法的实用，好多需求都变的很简单了，jquery确实很强大，我应该多研究
+下。在yii中也是可以结合起来的，并不会受到太大的限制。
+
+
+2015-02-15 00:35
+这两天又学习了新的jquery知识，对jquery又了新的认识。我对游戏的认识还是不到位。
+我的理解还是不够。如果玩，就要认真玩，一次时间不要太长，应该保证游戏的质量。要
+认真对待每一次练习。
+
+
+2015-02-15 08:18
+jquery note.
+ajax 是一个异步过程，页面中的一部分代码发出一个网络请求，在里面设置一个回调函数，
+如果网络请求得到返回，那么执行回调函数。在回调函数中的上下文和时间触发的上下文会
+有所不同，在jquery中的应用需求大多数时候是这样的。比如我点击了一个按钮，这个按钮
+是一个 tr 中的 td 中的内容，我可以通过这个点击时间确定当前行的任何属性，或者确定
+当前也面中的任何一个属性，只要这个页面的布局是又某种可控的过滤的话。需要实用到this
+关键字。还有就是 find() 方法。比如
+this.parent().find('tr:eq(3)'); 注意里面的3是从1开始的。或者是从0开始的，我也记不太
+清楚了，到时候应该再验证一下。
