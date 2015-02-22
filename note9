@@ -114,3 +114,8 @@ window.location.reload() 和 直接的 redirect 是不一样的。刚才才发�
 
 
 name  email  code
+
+2015-02-22 21:26
+export VISUAL=vim
+export EDITOR="$VISUAL"
+git config --global core.editor "vim"
