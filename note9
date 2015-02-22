@@ -73,3 +73,44 @@ for some file you can not change file owner of it, because it just belong root.
 for some you can, but why. where is the secret.
 
 read more shell, you can get improvement.
+
+2015-02-06 13:26
+now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a light distribution.
+light desktop.
+I prefer linux, but not mac.
+
+2015-02-09 20:01
+mysql show warnings;
+可以显示上一次查询的warnings。
+
+select * from t_pandora_statistics where mvalue = 161189566907393966;
+我知道了这个问题出现的根源了。因为 mvalue 是varchar(32)的类型，我在查询的时候，用的变量是一个longint的类型，这个时候就汇报这个 warning。
+
+Warning | 1292 | Truncated incorrect DOUBLE value: '12998e8c703749642' 
+报告的地方有很多，我只是选择了其中的一个。解决办法是将sql写成这样。
+select * from t_pandora_statistics where mvalue = '161189566907393966';
+这样就不会报这个错误了。
+
+刚才比较了一下两种写法的效率，我发现不设置返回类型的做法确实在效率上会低很多，所以在写程序
+的时候一定要注意一点，不要随便就select * 了，这样是很愚蠢的做法。应该需要什么拿什么，而不是
+不管有没有必要，就 select *.性能商的差别可以达到1倍。
+
+html also has a this keyword, which you should know it more. its usefull.
+
+
+select a.shop_id as shop_id, b.group_id as group_id  from t_pandora_dimension_shop a, t_pandora_account_group b where a.dimension_id = 15 and a.status = 1 and b.shop_id = a.shop_id and b.group_status = 1 order by a.position desc, b.members_count desc
+
+window.location.reload() 和 直接的 redirect 是不一样的。刚才才发现这一点。好多都是没有必要的,比如我的 ajax格式。。
+
+原来有更可行的方案，以前那种方式实在是太落后了，只需要用好jquery就很不错了。
+
+特殊商家：
+1：商家的特殊状态					-7
+1：可以创建商品 -- 商品的特殊状态   -7
+
+商家自己可以查看自己的商品
+用户端看不到，特殊的群圈可以看到这些商品。
+加群操作。
+
+
+name  email  code
