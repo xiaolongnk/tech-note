@@ -55,3 +55,21 @@ git status
 I find some subfiles can not be hidden.Because the subdir is a git repo.
 just remove .git/ files, recommit it, and it will be ok.
 
+2015-02-06 16:01
+
+c/c++ solve this porblem.
+uint32_t, size_t,if your eclipse warning this, use this header file to solve this
+problem.
+
+when I want to build php, I find this problem.
+you have no configure. You need ./buildconf first.
+when I do this, I get this message, you have no autoconf, you need this first.
+sudo apt-get install autoconf
+
+after ./buildconf  now you can do ./configure
+
+ls -l
+for some file you can not change file owner of it, because it just belong root.
+for some you can, but why. where is the secret.
+
+read more shell, you can get improvement.
