@@ -864,3 +864,51 @@ ajax 是一个异步过程，页面中的一部分代码发出一个网络请求
 关键字。还有就是 find() 方法。比如
 this.parent().find('tr:eq(3)'); 注意里面的3是从1开始的。或者是从0开始的，我也记不太
 清楚了，到时候应该再验证一下。
+
+function openRej()
+{
+	// 通过jquery找到当前链接同行的其他内容，这里拿到了ID。
+	id = $(this).parent().parent('tr').find('td:eq(0)').html();
+    $("#TB_overlayBG").css({
+        display:"block",height:$(document).height()
+    });
+    $(".box").css({
+            left:($("body").width()-$(".box").width())/2-20+"px",
+            top:($(window).height()-$(".box").height())/2+$(window).scrollTop()+"px",
+            display:"block"
+    });
+    current_id = id;
+}
+
+
+// 点击某个时间出发这个函数 来对页面进行局部更
+function doReject(){
+	var obj = $(".box input:checked");
+	var rej_reason = '';
+	var other = $("#otherbox #other_reject_reason").val();
+	rej_reason +="`"+other;
+	if(rej_reason == "`"){
+		window.alert('亲，至少要填写一个原因哦！');
+		return ;
+	}
+	url = "/hgadmin/index.php?r=buyerRecruitment/Reject&id="+current_id+"&reject_reason="+rej_reason;
+	$.getJSON(url,function(data){
+		// data 是从请求获得的数据。
+        if(data.msg == true){
+			// update data in current line.
+			color = get_color(data.status);
+			$("#rej_reason"+current_id).text(data.rea);
+			status_text = gen_status_text(data.status);
+			// 更新页面中对应的内容。
+			$("#status"+current_id).text(status_text);
+			$("#status"+current_id).css('color',color);
+			// 执行其他的操作
+			closeCeng();
+		}else {
+			alert('更新失败');
+		}
+	});	
+}
+
+
+我想实现的那个功能应该 还是用 ajax 来解决的。把页面重新组织一下就可以了。

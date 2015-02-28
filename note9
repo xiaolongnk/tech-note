@@ -58,8 +58,7 @@ just remove .git/ files, recommit it, and it will be ok.
 
 2015-02-06 13:26
 now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a light distribution.
-light desktop.
-I prefer linux, but not mac.
+light desktop.  I prefer linux, not mac.
 
 2015-02-09 20:01
 mysql show warnings;
@@ -79,22 +78,14 @@ select * from t_pandora_statistics where mvalue = '161189566907393966';
 
 html also has a this keyword, which you should know it more. its usefull.
 
-
-select a.shop_id as shop_id, b.group_id as group_id  from t_pandora_dimension_shop a, t_pandora_account_group b where a.dimension_id = 15 and a.status = 1 and b.shop_id = a.shop_id and b.group_status = 1 order by a.position desc, b.members_count desc
-
 window.location.reload() 和 直接的 redirect 是不一样的。刚才才发现这一点。好多都是没有必要的,比如我的 ajax格式。。
 
 原来有更可行的方案，以前那种方式实在是太落后了，只需要用好jquery就很不错了。
 
-特殊商家：
-1：商家的特殊状态					-7
-1：可以创建商品 -- 商品的特殊状态   -7
 
-商家自己可以查看自己的商品
-用户端看不到，特殊的群圈可以看到这些商品。
-加群操作。
+有很多地方，其实我可以做的更好，但是我没有做好。需要我努力的地方还有很多，但是我有时候还是很闲。我可以更认真，更
+专注，但是我没有。
 
-
-name  email  code
+2015-02-22 19:28
 
 
