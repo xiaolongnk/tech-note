@@ -1,0 +1,8 @@
+Fix Bug for loris.
+1: Press Button up,down,right at one time, not supported.
+2: nextObject view is change slowly.Don't know why.
+3: program crashed if you logged in ranklist.
+4: fix view of main activity.you should fill something in boundary.
+5: the app crash if you move left or right too much before it moves 
+   down for a new come object.
+6: set a longer time for  left and right button's TouchListener;
