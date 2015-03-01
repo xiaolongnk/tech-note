@@ -61,3 +61,25 @@ now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a li
 light desktop.
 I prefer linux, but not mac.
 
+2015-03-01 19:41
+
+今天办网了，感觉方便了很多，比在公司好多了。
+学习了一下 bootstrap 和 node 的东西。
+这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
+很不错的。但是没有走到最后，谁都不敢保证。
+
+遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
+我从官网下载 tar.gz 之后，安装还是没有解决问题。
+貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
+sudo apt-get install flashplugin-downloader
+貌似真得好了。
+今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
+这中突然流行起来的东西不应该盲目追随。
+学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
+
+编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
+然后安装了npm，基本是ok的。
+但是不明白 bootstrap 和 node 是怎么结合起来实用的。
+
+或者用好node也是很不错的，再看一下node，究竟有什么用处。
+以上这些就是今天的所有作为。
