@@ -801,6 +801,15 @@ you can find more with this command.
 man sudoers
 sudo visudo
 just edit this line, and your problem solved.
+bash if grammer.
+
+it is just and.
+if test "$dev" = "0" -a "$devok" = "0" ; then
+	echo "your comment"
+	echo "your comment"
+exit 1
+fi
+
 
 I solved problem for c++
 
