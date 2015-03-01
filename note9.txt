@@ -132,3 +132,14 @@ sudo apt-get install flashplugin-downloader
 
 或者用好node也是很不错的，再看一下node，究竟有什么用处。
 以上这些就是今天的所有作为。
+
+刚才看了一下less的用法。
+sudo npm install less -g
+简单的说，less是一个用于css 函数式的变成语言，lessc是一个这门语言的编译器。
+安装之后就可以在命令航中使用了。
+lessc style.less
+
+只了解了最基本的，希望能又更进一步的研究。
+
+
+
