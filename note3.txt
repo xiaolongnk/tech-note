@@ -1,0 +1,162 @@
+2014--1--1
+以后就在这里写我的技术博客吧，等技术成熟了，再将它搬
+到网上去。貌似还是喜欢 Konsole 多一点。现在才真正感到了钱的作用
+，钱不仅可以给我带来成就感，还可以督促我努力学习。自己挣钱的时
+候才能真正理解真钱的艰辛。现在的工资太少，因为我会得太少，如果
+我的技术再强一点，我就可以挣到更多的钱。所以，好好学习，认真思
+考。
+
+源码下载命令：sudo apt-get source leafpad这个命令可以下载
+Leafpad 的源码。你说这个命令强大不。哈哈，果然是Unix系统的天下
+啊，这一点是windows无法无论如何也没法比的啊。gdb 调试指定参数
+set args < in这样就可以将in的数据导入到程序中了，记得以前这个问
+题困扰了我很久，今天终于解决了。详细的调试方法可以参考这里
+http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2288004.html
+
+2014--1--2
+感冒了，还没有好。但是快好了，等会就上班去。应该就是
+简单的感冒，不是肺炎。不知为什么，一直有种要被解雇的感觉。别人
+发工资了，我还没有。也不知道什么时候会给我。这几天请假，让我更
+虚了。似乎这工资拿得很不应该。唉，扯远了，这里是写技术的地方，
+别乱发感慨。好吧，过会去上班。
+
+2014--1--4
+动态规划
+http://hawstein.com/posts/dp-novice-to-advanced.html把《编程珠
+机》读薄
+http://hawstein.com/posts/make-thiner-programming-pearls.html
+
+it seems that my fan work too fast, I want to slow it down.  it
+seems that my settings worked, but too noisy.  echo level 2 >
+/proc/acpi/ibm/fan
+
+
+2014--1--10 
+ubuntu upstart service setting.
+http://digital-madness.in/blog/2013/ubuntu-12-04-upstart-at-boot-services/
+
+2014--1--11 
+Java Spring myBatis combination Today is a find
+day.  I can study many good technology that can help me make
+more money.
+
+modify the dependence.xml. maven project.  search.maven.org
+mybatis spring.  combine spring and mybatis.  mybatis-spring
+mysql-connector-java Junit to test your mybatis and sprint.
+Good video.我要写我的JAVA  项目。
+
+jar -cvfm your.jar Manifest.txt youClassAndSourceFile* context
+of your Manifest.txt is:
+
+Main-class: yourMainPublicClass; in other words, the entry
+point of you program.
+
+2014--1--12 
+Shell Command: echo -e "\E[1;31m Hello ! \E[0m"
+
+Ok, I find a new problem. In Ubuntu, Your locale is in this
+file.  /etc/default/local what the items in this file means,
+	refer this site.  http://www.linuxfly.org/post/424/ If you
+	just want to midify your locale setting temporarily. You
+	can do like this.  echo $LC_MONETARY LC_MONETARy =
+	en_US.UTF-8
+
+
+Ok, here are some problems about lex and yacc.  I have
+interesting about these Good tools.  undefined reference to
+`yywrap' Add this line to avoid this problem.
+
+%option noyywrap
+or link with -lfl to use the default yywrap() function in the
+library fl My example all in cacu path.
+
+For More about Lex and Yacc ,You can refer this site.
+http://dinosaur.compilertools.net/flex/index.html
+
+For More about AWK  You can refer this site.
+http://www.grymoire.com/unix/Awk.html#toc-uh-20
+
+2013-1-15
+setting up my own lamp system.
+apache2 php5 phpmyadmin and some other software.
+This site helped a lot.
+https://help.ubuntu.com/community/ApacheMySQLPHP
+
+For me , most important part is configure these softwares.
+Adjust the default webpage from '/var/www' to '/home/fox/php'
+This is in /etc/apache2/sites-available/default file, just
+modify this file.
+I also installed a tomcat7 for me, and I install all docs and
+examples for me, as well as a mamaner. It works well now.
+
+you configure should be like this.
+		<role rolename="tomcat"/>
+		<role rolename="manager-gui"/>
+		<role rolename="admin-gui"/>
+		<user username="fox" password="yourpasswd" roles="tomcat,manager-gui,admin-gui"/>
+save it and then restart your tomcat7. then you can access your manager and admin pages.
+But now I don't know how to build a tomcat web app. This is what I should do
+next.
+
+
+I should know more about the service command.
+How to add your script as a service.
+
+2014-1-1
+I find a very good tools, Tmux.
+Great tools.
+Code more, understand more. more problems, more codes.
+
+2014-1-21
+Here is tmux-powerline. Great.
+http://blog.xeonxu.info/blog/2012/11/04/shi-yong-tmuxgai-jin-zhong-duan-ti-yan/
+https://github.com/erikw/tmux-powerline
+Oh, it a hard work to make your tmux-powerline work for your demand.
+Learned some shell skills.Anyhow, Good work.
+
+
+2014-1-22
+How do I gaunart my services in ubuntu.
+update-rc.d service options
+
+I meet this problem, this site help me a lot to solve this problem.
+http://askubuntu.com/questions/228888/installing-tomcat-7-using-apt-get-fails
+sudo apt-get --purge remove ` dpkg -l | grep -i tomcat | awk '{print $2}'`
+
+If you want to use your tomcat7-admin. you have to config your user.xml
+
+I was stucked with tomcat7-admin problem. I don't know how to access to it.
+I was succeded last time, but I note nothing. So I have to search again.
+Bad habit. Shit. My blog is so useless.
+
+This is a blog that tells you about update-rc.d command, useful.
+http://wangyan.org/blog/ubuntu-update-rc-d.html
+
+awk is useful, shell is powerful, you should know more about shell.
+You will do things efficiently.
+
+2014-1-25
+ok, today I learned about xargs command. this solve the problem like this.
+rm -rf `ls`
+now you can do like this;
+ls | xargs rm -rf
+
+This is a site you can learn more about your skills.
+http://www.tutorialspoint.com/
+
+Now I want to add a script as a daemon in my computer.
+You should follow these steps.
+1: add a script for your program ,and place it in your /etc/init.d/ dir.
+2: use update-rc.d yourscriptname defaults to run it in different levels.
+3: That's all.
+
+The UML diagram Tutor:
+http://www.tutorialspoint.com/uml/
+
+Why, why, why.
+
+2014-1-26
+http://su1216.iteye.com/blog/1635039
+good site to learn.
+od and xxd can be used to see executable file.
+strace is a useful tools.
