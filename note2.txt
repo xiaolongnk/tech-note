@@ -1,0 +1,81 @@
+http://www.cnblogs.com/rootq/articles/1487201.html
+这个是 fdisk 的是用，现在没有给我的系统盘分区，这样不太好。
+找时间好好研究一下这个。
+
+2013--12--8
+想到了这个问题，就是 指针数组和数组指针的问题。这或许就是我华为
+面试跪掉的80%的原因了。哈哈，没什么，不过这东西我真得没有掌握清
+楚呢，作为一个搞linux 的，连这点素养都没有，那怎么行呢。
+相关的资料我已经找到了，就是先面这个。找时间好好理解就可以了。
+我为什么不把我每天学习到的东西写成 html 呢，这样多好啊。不然我
+的 html 的基本只是不是白学了吗。
+http://see.xidian.edu.cn/cpp/html/476.html
+
+发现 /var/cache/apt/archiver/里面有你安装过的安装包。万一那天软
+件删除错了，可以从这里安装。今天系统就是这样救回来的。完了之后，
+需要 
+sudo apt-get -f install
+总是提示出错。我倒/var/cache/apt/archievs/目录下用这个命令重新
+装了一下 corosync 这个东西。然后就好了。非常感谢。
+dpkg -i --force-overwrite your.deb
+
+2013--12--20
+还是在这里写比较习惯，很快就12点了，我要早一点睡觉。感觉晚上回
+来干不了什么事。这段时间利用的不够好啊，以后要好好计划一下，不
+能再这样了，现在时间紧张，我要赶快学新东西，多学点技能，不然后
+面工作又没有办法找。
+
+2013--12--25
+dhcp 上不了网。
+http://www.cppblog.com/alantop/archive/2013/05/03/199933.html
+http://blog.csdn.net/pkueecser/article/details/7165865
+上网问题的最终解决是通过 DSL 拨号上网解决的。大家都是通过这种
+方式上的，并且网络似乎就是计划通过这种方式提供服务的,不是网络
+的问题，是我的问题。本来想装 win8 呢，现在又不想了。
+
+2013--12--28
+http://lxr.oss.org.cn/
+可以通过这个网址查看 linux 内核的源代码。
+哈哈，确实不错，内核代码看上去给人的感觉就不一样，要好好学习下。
+看到了这个函数，snprintf 不知道怎么用，之前似乎碰到过，但是完全
+不了解。看看.
+http://www.cnblogs.com/armlinux/archive/2010/05/25/2397004.html
+又不小心看到了 restrict 关键字。这个之前完全不知道。
+
+www.yaronspace.cn/blog/?s=kvm
+
+2013--12--30
+不少感慨啊，自己太弱了，没有找到好的工作，算了，忘记这些，好好
+学习，我还是有希望的。今天公司少了很多人，很多都生病了，貌似是
+肺炎，我也有症状，但是我不想去医院，费钱也是一方面的原因吧。还
+有就是，我查了一下这病和感冒差不多，可以自己好的。所以就不去了
+吗。。。
+现在只有2000元了，现在才知道赚钱有多难，找一家好公司有多么难得。
+好好思考，好好学习。。。。。
+好了，就写这些吧，我要去看看程序了。
+
+看了看 python tk, 找了不少资料，我想做一点好玩的东西，类似老虎
+机或者一个抽奖的转盘的东西，我要实现这个功能。想在 tk 中实现，
+但是感觉 python tk 不是很好学，还是用 java 实现吧。这几天有时
+看看 java gui 和 线程相关的部分，要实现这两个功能。
+
+2013--12--31
+这个命令太厉害了。
+sudo chmod +s /usr/sbin/hddtemp
+这样就可以让 hddtemp 在没有 sudo 权限的情况下运行了。
+
+2014--1--11
+http://www.ceclinux.org/mkdFiles/2013%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93.mkd
+看到了一个比较好的blog.
+
+2013--1--12
+I finised my java program last night, feel good about it.
+It's a nice example for Gui,Thread and Socket. It's a good
+class, good teacher.
+I should program more for the feeling of programming.
+I want to have a good understand to java. Java is a good language.
+
+2013--1--21
+I should learn more about python. programming more with python.
+
+
