@@ -105,6 +105,32 @@ window.location.reload() 和 直接的 redirect 是不一样的。刚才才发�
 专注，但是我没有。
 
 2015-02-22 19:28
-
-
 name  email  code
+
+python 安装。
+首先安装python2.7. 下载python2.7 
+
+
+
+./configure
+make 
+make install
+可能会出现这个问题，
+
+http://www.jb51.net/article/57544.htm
+
+然后安装pip
+wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+tar -vxf setuptools-1.4.2.tar.gz
+cd setuptools-1.4.2
+python2.7 setup.py install
+easy_install-2.7 pip
+
+
+yum install zlib
+yum install zlib-devel
+
+安装之后需要重新编译 python2.7 
+http://blog.csdn.net/zhuying_linux/article/details/8167430
+
+问题在哪里，需要安装 pip2.7 .
