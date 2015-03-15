@@ -921,3 +921,5 @@ function doReject(){
 
 
 我想实现的那个功能应该 还是用 ajax 来解决的。把页面重新组织一下就可以了。
+将本地创建的分支，push 到 remote 去.实际上，git push ，git 会提示你这么做的。
+git push --set-upstream origin dev
