@@ -182,4 +182,46 @@ YII 何时优化？
 |    谷歌  |  <http://www.sogou.com/feedback/urlfeedback.php>          |
 | 谷歌  |    <http://www.google.com/intl/zh-CN/add_url.html>  |
 
+2015-03-16 18:16
+功能的设计很重要，好得设计应该是灵活的，应该可以应对绝大部分的需求变更。
+不要认为功能小，不要去认为的估计，要做长远的设计。
+
+
+2015-03-17 16:47
+
+Yii 用array 来作为 cgridview 的数据源。
+http://stackoverflow.com/questions/9538777/using-an-array-as-the-data-source-for-cgridview
+应该深入学习，学习自由定制显示。
+YII 中假如全选框，提供全选功能。
+
+CActiveDataProvider
+it must be used in the following way;
+
+$dataProvider=new CActiveDataProvider('Post', array(
+    'criteria'=>array(
+        'condition'=>'status=1',
+        'order'=>'create_time DESC',
+        'with'=>array('author'),
+    ),
+    'countCriteria'=>array(
+        'condition'=>'status=1',
+        // 'order' and 'with' clauses have no meaning for the count query
+    ),
+    'pagination'=>array(
+        'pageSize'=>20,
+    ),
+));
+// $dataProvider->getData() will return a list of Post objects
+
+
+https://github.com/phpredis/phpredis
+https://github.com/mongodb/mongo-php-driver
+/usr/lib64/php/modules/
+
+注意基础工具的开发。
+
+mongodb connection pool .要认真研究一下
+缓存可以很有用，应该好好研究一下， nginx可以做静态页面的缓存。可以从log分析访问流量。
+
+python 中有很多异常，应该怎么处理.
 
