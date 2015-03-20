@@ -225,3 +225,6 @@ mongodb connection pool .要认真研究一下
 
 python 中有很多异常，应该怎么处理.
 
+Linux find command notice for  this format.
+find . -type f -name '*.pyc' -exec rm {} \;
+find . -type f -mtime 
