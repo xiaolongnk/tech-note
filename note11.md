@@ -42,6 +42,11 @@ create table t_sweet_image
 	mtime timestamp default 0
 )engine = InnoDB charset = utf8 comment '图片表';
 
+insert into t_sweet_account(account_id, passwd, nickname, portrait_id, status, ctime, mtime) values(
+3,'asdflerwer','xiaoya',23,1,now(),now()
+),(),();
+insert into t_sweet_book(book_id, book_faces, book_from, book_path, book_name, book_desc, status, ctime , mtime ) values();
+
 create table t_sweet_book
 (
 	book_id bigint(20) not null default 0 primary key,
@@ -75,6 +80,9 @@ create table t_sweet_user_read_info
 	ctime timestamp default CURRENT_TIMESTAMP,
 	mtime timestamp default 0
 )engine = InnoDB charset = utf8 auto_increment=1 comment '用户阅读记录';
+
+
+
 
 ```
 
