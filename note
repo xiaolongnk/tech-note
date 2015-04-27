@@ -924,5 +924,3 @@ function doReject(){
 git push --set-upstream origin dev
 
 发现了一个新插件，但是不知道怎么使用。
-
-好像知道了，但是还是有些区别的吗，使用
