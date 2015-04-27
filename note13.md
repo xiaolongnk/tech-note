@@ -1,5 +1,6 @@
-```php
 
+
+```php
 <?php
    session_start();
    header("Content-type:image/png");
@@ -29,5 +30,38 @@
    ImagePng($new_number);
    ImageDestroy($new_number);
 ?>
-
 ```
+
+```shell
+iplist="10.7.0.23 120.7.12.43 10.7.23.55 10.7.44.59"
+path="/home/work/higo/"
+for ip in $iplist;do
+    echo $ip
+    rsync -avz --exclude='*.log' $path $ip::higo/
+done
+echo "===done==="
+
+
+pid file = /var/run/rsyncd.pid
+port = 873
+address = 10.7.0.21
+uid = root
+gid = root
+use chroot = yes
+read only = yes
+hosts allow=10.7.0.0/24
+max connections = 5
+motd file = /etc/rsyncd/rsyncd.motd
+log file = /var/log/rsync.log
+transfer logging = yes
+timeout = 300
+
+[higo]
+path = /opt/upload/pic/higo
+auth users = root
+list=yes
+ignore errors
+secrets file = /etc/rsyncd/rsyncd.secrets
+comment = linuxsir home  data
+```
+
