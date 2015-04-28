@@ -77,9 +77,6 @@ sudo ntpdate 202.120.2.101
 sudo ntpdate 210.72.145.44
 这是两个时间服务器，可以调整自己的时间。
 
-dent]
-default-character-set=utf8
-
 2015-03-22 22:28
 
 下面是我的 centos 上的mysql 的配置文件，我添加的内容是 

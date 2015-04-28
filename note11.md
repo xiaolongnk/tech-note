@@ -172,11 +172,8 @@ public static function getWeekNewPeople($group_id,$start_time)
 不能为
 
 目前需要从哪里提高。
-
 SQL 的总结什么时候出来。
-
 PHP 的总结什么时候出来。
-
 SPHINX 什么时候搞出来。
 
 BOOTSTRAP ？CI？
