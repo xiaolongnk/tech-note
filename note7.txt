@@ -1,0 +1,766 @@
+2014-09-26 22:27
+开始新的篇章，上一个日志已经够长了。今天应该开一个新的，我的note系列，最多500行。
+我应该想办法将我的旧日志合并过来，现在管理的不是很好。我的 python 不够精通，现在
+需要我写一个比较像样的工程，感觉比较费劲，还需要练习。
+首先我要做的工作是信鸽推送，主要是推送离线消息。包括应用的消息和离线聊天记录，并且
+要用到redis和mysql。现在我已经有一个成熟的模板，但是我希望我可以写出自己的东西，或
+者我对系统中的每一个部分都可以自己完成。我的最终目的是构建系统，而不是只把别人的系统
+拿过来用。
+
+其实我觉着，我们小组内部，也应该加强交流，又好多地方是可以分享的，从我自己的学习经历
+来看，有好多地方都是由浅入深，但是我感觉现在我对系统的理解是没有问题的，现在我对这一
+套系统已经比较了解，比较熟悉了。
+
+其实写程序的核心在是什么，本质上还是要记住一些东西，比如说今天用到的这些东西，我现在
+并不能完全记起来，但是机上就算我完全记住也没什么必要，我没有这么多的精力，我只需要记住
+大致框架就可以了，细节的东西不用太在意，我需要记住核心框架而过不是繁琐的细节。这一点很
+重要。
+当然，这些细节的东西也是重要的，我最好可以记住这些东西，但是在我学习的过程中，在学习的
+开始阶段，我应该将侧重点放在轮廓上，而不是细节上，然后，顺着这些轮廓，我可以重温这些细
+节，熟练这些细节，把它们纳入轮廓，融为一个完整的体系，这样我的知识树就会逐渐丰满。这就
+是我的学习的过程。
+以后我的周末应该都会在公司度过，当然我会拿出一部分时间用来休息，我不会把自己累坏的，没
+有身体，一切都等于0.如果我感觉很累，我是不会去工作的，不管有多忙，我也会停下来休息。
+
+2014-09-27 10:48
+typedef 的语法我也需要重新学习一下，我了解到的并不是全部的用法，我只熟悉最简单最基本的
+用法，我需要了解高级的用法。刚才又学习了一下函数指针，基本忘掉了，但还好还记得一些。可
+以勉强写出一点。
+
+lex and flex, yywrap not defined。可以这样来解决这个问题。
+
+在文件的开加上这个，
+
+%option noyywrap;
+现在想用 lex 和 yacc 做一个简单的计算器。
+
+遇见过两个问题，一个是lex 的yywrap的问题，我加上了那个，%option noyywrap 之后就没有问题了。
+貌似另外一个解决方案是在用 flex 编译链接的过程中加上这个， -lfl
+同样的，在处理 yacc 的 .y 文件的过程中我也遇到了 yyerror not defined 的问题，解决方案
+是 在链接的过程中加上这个链接选项， -ly
+在我的 两个makefile中都有具体的解释，对这些东西还是不太熟悉，如果熟悉了这些，我的编译器也
+就差不多了吧。先熟悉熟悉这些工具，今天找了些资料，认真学习一下，为我的编译器扫清障碍。我可
+是专业的。
+
+今天你应该早点休息，明天又要上班了，明天任务比较重，要将那部分后台程序完成。不然托太久了也
+不太好。
+
+2014-10-06 22:31
+今日从上海归来，休息，晚饭，理发。
+金秋时分的天气已颇有几份凉气。
+近一周来，少有编码，已然生疏。
+算了，还是大白话来得方便，半白话还差些，无奈我读书太少。
+
+说下我近来的总结吧。
+
+读完了 《明朝那些事》 很不错的书。有不少想法，好多事情，不是你想的那样，道理还有很多，并且
+不是明白道理就可以做事做成的。要做成一件事情，需要注意的地方很多很多，只要有一点失误，就会
+付诸东流。
+
+总结：
+
+前一短时间，在工作方面，我基本掌握了项目的流程，写得也比较顺手，现在，项目进入中期，项目组
+人员配备也逐渐齐备，我可能会又比较多的空闲时间，这段时间我的编码机会可能会有所减少。对我来
+说，这正是一个自己学习，自己研究代码的机会，我不能满足与简单的应用，我要做一个可以构建框架
+的coder。这才是我最基本的要求，所以，学习框架不仅仅是要学习应用，应该多学习框架里面的东西。
+最后的任务是IM，这个还没有怎么测试，下周就是正事测试了，上周留下的工作也基本忘记了，需要再
+想一下，搞清楚还需要做什么工作，这样可以快一点投入到工作中，尽快搞定这个模块的服务器部分。
+
+1 完善信鸽信息，比如 token 什么的。当然，如果又需要的话，需要建一个新的表，从这个表中查询
+需要的数据,当然这些工作应该是在hgpusher中完成的。
+2 写一个负责推送的类，cache 中 favorite 中的那个class可以改个名，因为需要包含更多的功能。
+3 然后就是再根据信鸽文档写对顶一下推送的格式，我对推送的设置还不够了解，需要重新认识一下。
+需要设置几种新的格式，然后观察一下是什么效果。
+
+2014-10-07 13:53
+现在对 logging 的这个模块比较熟悉了，我觉着上一个项目中，这个模块的封装不是很好，所以我应该
+会重写这个模块。代码应该比较容易维护才行，上个版本的代码就写得太乱，不容易维护，所以需要重新
+写一个版本。
+感觉我现在办事情好窝囊。今天的事情好失败啊。我应该出去走走，憋在屋里真是一个不能再失败的决定。
+并且吧手机号注销真不是一个明智的决定，买了一个重用的旧号也好失败啊，是别人用过的号。并且还明显
+的被别人坑了。现在找过去也没用。我可以重新买一个号码，但是我的60块钱就这样被别人坑走了，真是显
+得太傻比了。一天不出去，就蒙在屋子里，脑袋死气沉沉的，什么都干部处来，这就是为什么上班感觉状态
+好的原因，不管怎么样，应该先出去活动一下。没有电话的日子，但是现在也感觉清静了很多。
+
+这些都不重要，重要的是利用好自己的时间，给自己升值，这些都是小事。找一个正规的营业厅就好了。
+钱没什么，下次注意。这些事情都做得太失败了。需要记录下来，不能一直是这个样子。今天比较恶心的
+事情出了这个，就是没有出去锻炼，上午一直呆在屋子里，太没有价值了，太失败了。我应该尝试早睡早起
+这样我可以出去走走，对自己的身体是有好处的。从现在开始，就要培养自己的生活习惯，应该11点睡觉，
+然后7点起床，出去散步，或者小跑步。自己花钱应该按照计划，而不是随便就花，我现在的现金太多了，
+所以感觉很随意的就花钱了，这是不对的，以后现金不能太多，不能多余500。记住你的时间，你没有太多
+时间，晚上11点你要准备睡觉，早上7点你要起来，出去散步，然后早饭，然后读书，然后去公司上班。
+好多时间都没有必要用全拼。学习着简写。
+
+还要认真看书，前面的php只是最基本的，我需要系统学习，不然后面我的工作没法继续进行。
+刚才看了看书，感觉看到了好多东西，所以，对现阶段的我来说，读书是很重要的，读专业书也是
+很重要的，现在没办法进行ios开发，或者android开发，我只能利用周末时间在公司完成。我的php
+现在是一个系统学习的阶段，需要认真做好这个阶段的工作。读书，读mysql的东西，我需要在这一
+方面变成专家。并且我要在操作系统这方面变成专家。
+
+对于android这方面，我也需要认真学习一下.
+
+2014-10-08 23:12
+随便写一点日记吧。
+今天的工作还算可以。但是没有完成任务，我对系统还是不够熟悉，所以么有写完，但是现在对系统更
+理解了，明天应该差不多。最主要的是我可能不知道我需要做成什么样子。我对notification和message
+的格式并不是很熟悉，我不知道二有什么明显的区别，对我来说，现在他们是一样的。这显然不符合要求。
+我可以请教一下金哥。
+现在迫切需要的就是一个聊天，聊天这个部分的处理需要的信息较多。
+另外一个现在还没有什么需求。所以，明天主要做好聊天的这个。主要是两个id。放在 custom 中。以dict
+的形式出现就可以了。明天具体核对一下这个 dict 里面存放什么东西就可以了。另外一个可以另行考虑。
+
+2014-10-12 22:34
+今天去公司上班了。写了一点东西。
+leetcode.上面的题我也要认真坐下。还有就是 crackcode interview。这个也很重要。面试或者学习都很有
+必要。
+看别人都去google了，我也可以的，要好好学习这些内容，现在资料有的是。
+其实工作中用到算法的机会是比较少的，所以你想完全凭工作中的积累就达到对算法较好的理解程度，这是不够
+的，所以需要专门训练下，工作的久了，你会很自然的变成一个码农，而不是一个工程师，你要想当一个真正
+的工程师，需要专门训练下算法。
+
+c++ string 中究竟包括了那些方法，这些需要认真学习下，不能老师含混不清。
+string::npos = max_int; 是一个很大的数，如果 s.find(s1) 返回这个结果，说明s1不再s中。就是未找到的意思。
+其实这个方法也是很好写的。用库里的方法也是可以的。
+
+2014-10-19 22:47
+有点不知道现在该干什么了。今天没有干什么事。到公司没有做什么，就是写了一点点代码。然后就是看电影了。
+和心儿。哈哈感觉还是很喜欢的。就是比较遗憾，今天没有一起吃饭。不过应该可以又机会一次吃饭，然后聊聊天。
+还有就是锦亭煮挂面了，哈哈，就是煮的太多了，下次可以把握一下用量，这样就可以这样还可以，就是声音有点大。
+不过也算是好一点吧，我的键盘不应该送掉的，这导致我现在还想买一个键盘呢。没有关系。慢慢来。
+
+不过今天休息得不错，今天晚上应该也早一点睡觉。保证休息，然后才能保证一个礼拜的工作。保证身体健康。我可
+不想感冒什么的。养生还是需要注意的，至于某人的观点我可不敢苟同。
+
+我是不是应该买一个显示器呀，反正现在是我一个人，我又比较多的独立时间，虽然屋子没有网，但是又一个显示
+器我感觉也是很有必要的，这样我可以更好的工作。我需要继续学习，不然我是不会升值的，只有自己提高自己的价值，
+你不会凭空升值，并且我还想做自己的事情，没有积累怎么可以成事呢。
+
+我应该坚持学习，而不是像现在这样，我应该继续积累变成知识，精通自己所掌握的知识。不然，我不可能成功，我应该
+多交朋友，这样又助于我的成长。我可以每天都回来吃饭，尽管我做得很不好，但是起码我是放心的，我会认真给自己做吃的。
+从现在开始，我都是8点下班，然后回来做吃的，8点10从公司出门，这样我可以回来给自己做吃的。
+回来的时候可以给自己买一些水果。
+
+写了一点发现并不是那么容易的，其实又好多事情，看上去很简单，但是等自己亲自做的时候，其实并不是那么回事的。
+所以还是五十一点，程序还是需要多动手的，不然自己就慢慢的废掉了。务实一点，多动动手，就好了。
+
+看看书还是很有收获的，我需要赚更多的钱，不然就辜负了这一生。生命可贵，浪费不起呀。
+
+2014-10-26 20:18
+这周还是可以的，今天睡了很多觉。看来打电话这些事情也要列在计划单上了，不是我也是很难办成的。真不知道是怎么了。
+下个周末可以出去玩玩，可以在附近走走，总之周末老是呆在房子是不好的。主要是休息，然后就是出去走走。上上网什么的。
+不知道现在是不是需要找女朋友。找了又能怎样，先一个人呆着吧。
+刚才去上了一会网。环境还不错，就是略贵啊。现在真是穷疯了啊。
+
+周末可以学习一点编程的东西，这些是我的老本。同时我应该总结一下自己的一周。
+
+这周貌似是很忙的。这周犯了一个刻骨铭心的错误。同时也又不少感触。
+
+lamp 环境配置的时候，对软件的版本的要求是比较严格的，这个实用用linux 的包管理器就比较偷懒了，所以最好是自己去
+官网下载源码包，然后自己编译。包括 apache，php，python，mysql。上线的那天我上，由于 php 不支持一个扩展。导致
+我们上线托了好几个小时，当时是重新编译 php 了。还需要下载对应的 扩展。 mongodb， redis 的，这些都是必需的。以
+后在实用的时候也需要注意一下，看看版本是不是正确的。
+
+php 的trim 函数被我搞错了，产生的bug让我高了一个下午，都没有搞定。
+
+mysql 的应用我还不是很熟练。
+一般的企业级应用，mysql 都是有主库和从库之分的，主库用来 insert 和 update 使用。而从库都是用来做query的。同理，
+对 redis 和 mongo 的使用都是一样的道理。mysql 的主库和从库的配置，这个应该掌握。这样的设置可以减轻 mysql 的工
+压力。今晚的饭做得还是不错的。
+在技术方面，掌握了yii。学习了一下 css 之类的.
+
+我应该继续学习前端的东西，jquery 之类的，以后要搞网站的话，这些是离不开的。
+
+对于框架的学习不应该是这么浅薄的，我应该学习更深入的学习，而不是浅尝辄止。
+所以不管怎么样，你应该将所有的文件都包含进来，这样才可以实用对应的方法。如果都不包含进来，那么肯定是没有办法工
+作的。
+现在虽然简单，但这就是一个框架的模型。这就是一个最简单的框架。首先你需要 load 所有的文件。
+如果一直都是这样子，那么确实没有什么干下去的价值。
+
+
+回想一下那天晚上的情景。我需要匹配的是某种模式，但是感觉那种模式比较特殊，一下子写不出正则，所以就人肉筛选了。
+还好过滤了一下，不然真是搞成喳喳了。
+
+grep 正则。
+
+grep -n "'"     这个可以搜索出 单引号 ' 这个并不是正则中的特殊字符。
+grep -n "'.*'"  这个可以搜索出所有的被单引号括起来的字符串。 这应该是个很常用的匹配模式。
+                这个里面比较特殊的是 .* 了。在正则中。*的含义和 bash 中的*的含义是不太相同的。
+                这里面 * 表示是出现一次或多次。
+                而在这里面 . 表示是任何字符。
+
+
+. * ` 是特殊字符。这些需要被转义下。
+
+所以，一般的模式，如果实用来搜索的，用 grep 就都可以解决了。没有必要写脚本，尤其是 python 脚本，开发效率太
+low 了。
+
+grep -E -n "{}"     这个是支持扩展正则的,这个括号实用来限定次数的。并且这个时候没有必要对 { 进行转义。
+grep -n  "the\{2}"  这个时候必需对{}进行转义,{} 是shell中的特殊字符。
+
+匹配不包含某个单词的所有的内容。
+
+grep -E -n "\bgrep\b" 职匹配 grep 。
+\w 代表单词。
+\b 表示单词的边界。
+
+这个匹配了所有包含的日期。这个是很有用的，可以看出我又那些日子的日记。
+grep -E -n -v "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}" note7.txt
+
+并且刚才发现了 不匹配某个内容的方法。就是 先匹配这个模式，然后用 -v 参数就可以了。
+grep -v 
+
+2014-11-02 00:32
+shell 还是要多写一些的，不然我是不可能精通的，就像我的 java 和php 一样。如果没有足够的练习，我是不可能
+又什么成绩的。练习量，工作时间是不可替代的，你必需足够认真才行。我绝这周末上班没有什么效率。还不如在家
+呆着。好吧，今天写了一点shell。
+shell 中的函数的参数是这样调用的。
+shell 中的命令行参数可以这样拿到。 $0 $1, ... $# 表示参数的个数。 $@表示所有的命令行参数。
+对于一个数组，可以用 for 的方式遍历处理里面所有的变量。
+另外就是shell中的赋值和和比较比较特殊。什么时候需要space，什么时候不需要，这个要记清楚呀。
+还有就是shell中的case 和 esac 比较奇怪。但是有什么办法呢。
+if then elif then fi
+这之间可以又;但是千万不要放错地方呀。放错了就语法错误了欧。
+总之，感觉shell还是很好的，并不见得比python的差。我看了一些系统的shell脚本，里面有一些我不太清楚
+是什么意思。但是没有关系，我相信随着学习的深入我会理解这些东西的。没事的时候可以多看看，现在差得
+还有点多呀。精通shell也是很好的呀，这是学习计算机的一个很好的途径呀。
+
+ssh localhost 失败了，报的错误信息是connection refused. 这个是什么原因呢。
+ps aux | grep ssh;
+发现只有一个 ssh-agent 。这就是原因，你要链接自己，那么本地必需有一个sshd进程。如果没有这个，你
+怎么可能脸上呢，都没有人来处理你的请求，你怎么能近来呢。怎么办呢？
+sshd 呀。发现没有自己想要的输出，得到地 却是 
+apt-get install open-ssh
+就是这个，没有安装。
+如果安装了，还有问题，那么就是防火墙的问题了。看看这个端口是不是开的，如果没有开，那么应该把它放开。
+如果放开了，那么还应该想一下这样做的安全性，如果不够安全，那么可以让它安全一点。ssh 是不可以随便
+连的啊。
+
+awk 呀， awk ，什么时候我才能掌握你的所有的用法。
+sed 呀， sed ，什么时候我才能掌握你的所有的用法。
+
+
+
+awk , awk -F: '{print $1;}' please don't use ", you should use '";
+I can use awk split function now. So Cool.
+
+能不能让grep只输出匹配到的内容。如果可以就太方便了。我应该查一下看又没有这个功能。
+
+awk 中这两个变量表示正则匹配的开始和结束。这样就可以取出匹配的内容了。
+RSTART 
+RLENGTH
+记得java中也又同样的功能。
+
+vim 的方式也是很不错的。
+!g/regex/delete 这样会将没用的东西删除掉
+2014-11-09 00:17
+
+先做好自己。这是最基本的。没有这个，其他的一切都是徒劳。
+
+
+
+
+
+1.1
+Implement an algorithm to determine if a string has all unique characters What if you can not use additional data structures?
+
+1.2
+Write code to reverse a C-Style String. (C-String means that "abcd" is represented as five characters, including ther null character.)
+
+1.3
+Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer. 
+NOTE: One or tow additional variables are fine.
+An extra copy of the array is not.
+FOLLOWQ UP
+
+Write the test cases for this method.
+
+1.4
+Write a method to decide if two strings are anagrams or not.
+
+1.5
+Write a method to replace all spaces in a string with '%20'.
+
+1.6
+Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write an method to rotate the image by
+90 degrees. Can you do this in place?
+
+
+1.7
+Write an algorithm such that if an element in an M*N matrix is 0, its entrie row and column is set to 0;
+
+1.8
+Assume you have a method is Substring which checks if one word is a substring of another. Given two strings
+s1 and s2, write code to check if s2 is a rotation of s1 using only one call to is Substring (i.e."waterbottle" 
+is a rotation of "erbottlewat").
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.1 Write code to remove duplicates from an unsorted linked list.
+FOLLOW UP
+How would yo solve this problem if a temporary buffer is not allowd?
+
+2.2
+Implement an alogrithm to find the nth to last element of a singly linked list.
+
+
+2.3
+
+Implement an algorithm to delete a node in the middle of a single linked list, given only access to that node.
+EXAMPLE
+Input: the node 'c' from the linked list a->b->c->d->e
+Result: nothing is returned, but the new linked list looks like a->b->d->e
+
+2.4
+
+You have two numbers represened by a linked list, where each node contains a single digit.
+The  digits are stored in reverse order, such taht the 1's digit is at the head of the list. Write a function that
+adds the two numbers and returns the sum as a linked list.
+Example
+Input: (3 -> 1 -> 5) + ( 5 -> 9 -> 2)
+Output: 8 -> 0 -> 8
+
+
+2.5
+Given a cir4cular linked list, implement an algorithm which returns node at the beginning of the loop.
+DEFINITION
+Circular linked list: A (corrupt) linked in which a node's next pointer points to an earlier node, so as to make a
+loop in the linked list.
+EXAMPLE
+Input: A -> B -> C -> D -> E -> C [ the same C as earlier ]
+Output: C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.1
+Describe how you could use a single array to implement three stacks.
+
+3.2
+How would you design a statck which, in addition to push and pop, also has a function min which returns the 
+minimum element? Push, Pop and min should all operate in O(1) time.
+
+3.3
+Imagine a (literal) statck of plates. If the stack gets too high, it might topple. Therefore , in real life,
+we would likely start a new statck when the previous statck exceeds some threshold. Implement a data structure
+SetOfStacks that mimics this. SetOfStacks should  be composed of several stacks,and should create a new statck 
+one the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should behave identically to a 
+single stack( that is, pop() should return the same values as it would if there were just a single statck.)
+
+FOLLOW UP
+Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
+
+3.4
+In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different sizes which can slide onto
+any tower. The puzzle starts with disks sorted in ascending order of size from top of bottom (e.g., each disk sits 
+on top of an even larger one). You have the following constraints:
+(A) Only one disk can be moved at a time.
+(B) A disk is slid off the top of one rod onto the next rod.
+(C) A disk can only be placed on top of a larger disk.
+
+Write a program to move the disks from the first rod to the last using Stacks.
+
+3.5
+Implement a MyQueue class which implements a queue using two statcks.
+
+3.6
+Write a program to sort a stack in ascending order. You should not make any assumptions about how
+the stacks is implemented. The following are the only functions that should be used to write this program;
+push | pop | peek | isEmpty
+
+
+
+
+
+
+4.1
+Implement a function to check if a tree is balanced. For the purposes of this question,
+a balanced tree is defined to be a tree such that no two leaf nodes differ in distance
+from the root by more than one.
+这个问题已经解决。可以又两种方法。可以用递归实现，也可以不用递归实现。主要是根据平衡树的定义。
+
+
+
+4.2
+Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
+这是一个简单的深度优先搜索。应该是最简单的搜索问题了。
+
+
+4.3
+Given a sorted (increasing order) array, write an alogrithm to create a binary tree with minimal height.
+这个需要自己实现一下，我没有解决过这个问题。
+
+
+4.4
+Given a binary search tree design an algorithm which creates a linked list of all the nodes at each depth(i.e if you 
+        have a tree with depth D, you will have D linked list)
+这个是不是就是 层序 遍历一棵二叉树呢？
+
+4.5
+Wirte an algorithm to find the next node (i.e. in-order successor) of a given node in a binary search tree where
+each node has a link to its parent.
+这个不太明白是什么个意思。还需要再理解理解。
+
+4.6
+Design an algorithmn and write code to find the first common ancestor of two nodes
+in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is 
+not necessarily a binary search tree.
+
+4.7
+You have two very large binary trees: T1, with millons of nodes, and T2, with hundereds of nodes.
+Create an alogrithm to decide if T2 is a subtree of T1;
+这个思路还是比较清楚的。挨着比较就可以了。可以设计出那几个关键的函数就可以了。
+
+
+4.8
+You are given a binary tree in which each node cotains a value. Design an algorithm to print
+all paths which sum up to that value. Note that it can be any path in the tree. it oes not have
+to start at the root.
+
+CONCEPTS AND ALGORITHMS
+
+5.1
+You are given two 32-bit numbers, N and M, and two bit position, i and j. Write a method
+to set all bits between i and j in N equal to M (e.g, M becomes a substring of N located
+        at j).
+EXAMPLE:
+Input : N = 10000000000, M = 10101, i = 2, j = 6
+Output: N = 100001010100
+
+5.2
+Given a (decimal - e.g. 3.72) number that is passed in as a string, print the binary
+representation. If the number can not be represented accurately in binary, print "ERROR"
+
+5.3
+Given an integer, print the next smallest and next largest number that have the same
+bumber of 1 bits in their binary representation.
+
+5.4
+Explain what the following code does:((n & (n-1))==0).
+
+5.5
+Write a function to determine the number of bits required to convert integer A to integer
+B.
+Input: 31, 14
+Output: 25.5
+
+5.6
+Write a program to swap odd and even bits in an integer with as few instructions as
+possible (e.g., bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, etc).
+
+5.7
+An array A[1...n] contains all the integers from 0 tio n except for one number which is
+missing. In this problem, we can not access an entire integer in A with a single
+operation. The elements of A are represented in binary, and the only operation we can use
+to access them is "fetch the jth bit of A[i]", which takes constant time, Write code to
+find the missing integer. Can you do it in O(n) time?
+
+
+Object Oriented Design
+
+How to Approach
+Object oriented design questions are very important, as they demonstrate the quality of a
+candidate's code. A poor performance on this type of question raises serious red flags.
+
+Handling Ambiguity in an Interview.
+
+2014-11-16 15:30
+
+Python sort:
+
+list.sort();
+sorted(); 有两个排序方法，又3个默认参数。其中有一个是自定义的排序函数，还有一个是key。
+第三个是 reversed = True 这三个参数都好理解。其中 sorted 方法是返回一个新的list，而
+list.sort() 会在原来的list上排序，不会返回新的list。
+
+今天的需求是用list中的字符串的长度来排序，我愿以为要写自定义的排序函数cmp呢，结果试了
+几次都不行，后面用了key的那个方法，写了个得到key的方法，这才解决了问题。看来我对cmp那个
+参数的理解还是不到位呀。我对这个方法的测试，一次都没有成功。
+
+还有需要注意的一点就是 python 的os.path方法里面的一些方法。
+os.path.isfile() os.path.isdir(); os.path.exists(); 这些方法可以通过 python 的help函数来
+查看，虽然不是太详细，但是对于一般的实用也足够了。
+
+
+file.readlines(size)
+这个方法里面的size是什么意思。根据我的观察并不是 行数，而是 bytes.
+我应该自己测试下。
+
+看了一些c语言的题。感觉不是很难，但是对我的变成能力是很有帮助的。我应该找时间多看看。
+
+
+2014-11-22 00:00
+Many candidates spend all their time prepping for technical questions and overlook the behavioral questions.
+Guess what? Your interviewer is judging those too!
+
+
+
+because it's been many years since they work with certain data structures.
+while not all problems can be solved with hashtable, but a shocking number of interview problems
+can be.
+Before your interview ,make sure practice both using and implementing hash table.
+
+终于学习到了 PHP 的正则表达是。原来是这个意思。对（）的含义终于可以把握一点了。语言是相同的。所以
+其实和 awk 的有一点像。
+
+我应该系统的研究一下PHP，而不是像现在这个样子。明天应该到公司去学习，而不是像今天这样乱转。我要系统的
+学习知识，要给自己提需求，不然我会一直是这样子。我应该不断的进步才可以。
+
+我想用PHP 制作表格之类的。制作条形图 或者 具有统计功能的表。这个功能是我需要的。
+
+用 PHP 制作图形验证码。PHP 也可以进行图片操作。
+生成缩略图。这些都是我没有关心过的内容。但是都是很重要的东西。
+xmpp 聊天。xinge推送。群聊。
+
+print_r(); 可以打印数组。研究一下我们的那个 ImageGetDetail 方法。这里面应该比较多。我应该尝试GD库。
+php 加上水印。其实也是很好看的。有空我一定要试一下。我要试着做网站。做一个比较好的网站。我自己的网站
+要尝试着建立起来，有时间就要搞我自己的网站。在下一次找工作之前，我的网站一定要比较完善。
+
+php 到处 excel。
+
+2014-12-07 16:15
+
+php gd 库的实用，其实安装很简单，当然我更希望我是从源码安装的，但是如果你安装php的时候还不知道gd。
+那么安装一个没有gd扩展的php的可能也是很大的，但是没有关系，安装gd很简单的。
+sudo apt-get install php5-gd
+然后重启你的 apache 就可以了。
+下面是一个简单的画图程序。
+
+//建立一幅100*30的图像  
+$image = imagecreatetruecolor(200,100);  
+
+//设置背景颜色  
+$bgcolor = imagecolorallocate($image,0,0,0);  
+
+//设置字体颜色  
+$textcolor = imagecolorallocate($image,255,255,255);  
+
+//把字符串写在图像左上角  
+imagestring($image,20,15,10,"Hello world!",$textcolor);  
+
+//输出图像  
+header("Content-type: image/jpeg");  
+imagejpeg($image);  
+
+能不能显示出图片的关键就是最后的这两行，一定不要漏掉了。应该加上的。
+
+2014-12-13 11:04
+昨天去面试了，感觉还是不太行。基本上是面挂了，但是还是有所收获。
+我按时到了公司，可能迟到了几分钟，主要是在找楼的时候耽误了几分钟。我竟然跑到沃尔玛的仓库里去了。
+到公司大概是7点左右，前台那里正好又送饭的师傅。刚好是他们的晚饭时间。应该是HR，问我吃饭了没有，
+我一下子没反应过来，就直接说没有，然后听见说要给我盛一份饭。我也没说什么，就这样过去了。前台带我
+到了一个小的会议室，让我在哪里等面试官。
+等了大概2分钟，面试官来了，并且饭也送来了。我练练表示感谢，这还是我第一次在别的公司吃饭呢，心里比较
+开心。然后就是和面试官一起吃饭，边吃边聊了一会。基本上还是比较轻松的。快吃完的时候，他有事出去了一会
+大概是20min。我吃晚饭，在哪里做了一会。看了看窗外的夜景，还算是比较新鲜。毕竟这块看腻了也就那样。
+
+他回来以后，拿来了自己的电脑，是一个ThinkX220i。刚开始我还有点纳闷，怎么不是mac，还有一点鄙视的情绪。
+竟然用windows。但很快我发现，人家用的不是windows，而是gnome桌面，我问了一下，说是ubuntu。
+
+然后，他打开zend，给我写了一写简单的表达式，让我判断结果是true还是false。都是比较基础的，有好多都是我
+闷的，好多情况我都没有考虑过，这一段面试比较粗糙。完了之后就是聊PHP框架。显然我的掌握还是比较初级的阶
+段，我没能摆脱新手的幼稚，回答有点过于简略，以至于面试官都有点不耐烦了，我的面试很快就结束了。
+当然，期间还插入了一些其他的话题，比如说我为什么会被约过来面试，竟然是公司的老板和我是校友。 
+
+这就是大致的面试过程，虽然不太理想，但是显然面试官比我强了太多，在他面前，我算不上优秀，这也让我明白
+了我还有很长的路要走，要谦虚，要努力。
+
+2014-12-13 15:22
+java 的环境变量我从来都没有管过。貌似还是应该搞一下的。我的 linux 现在都不能满足我的正常开发了。感觉好
+弱。
+在文件的末尾加上如下内容，保存并关闭文件
+
+# for java
+export JAVA_HOME=/opt/jdk
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=$PATH:${JAVA_HOME}/bin:${JRE_HOME}/bin
+
+如果又多个jdk 的话，可以
+sudo update-alternatives --install /usr/bin/java java /opt/web/lehe.com/yourjava
+sudo update-alternatives --install /usr/bin/javac javac /opt/web/lehe.com/yourjavac
+切换默认程序的工作，虽然我很久之前就搞过了，但是一直都不怎么太理解，所以现在还是不太会。
+有空要认真研究一下，这些都是需要用时间来研究的。不然差距还是太大。
+http://www.linuxidc.com/Linux/2014-07/104087.htm
+
+不知道我的 eclipse 能不能好。我换了 sun 的 java。
+
+2014-12-14 10:26
+coding是不需要网络
+I can finished B-tree programming, my btree work lasts too long. I need to finished it.
+I have time and I have energy and I have enough metarial to finish it. It's just lazy to 
+prevent myself from finishing it. So just do it. You need more time to improve yourself.
+Both in English and coding abiliby.
+
+Simplest B-tree is 2,3,4 Btree, which has 3 data most and 4 child node most.
+
+
+c++ rand();
+#include <cstdlib>
+
+srand((unsigned)time(NULL)); have nothing to do with current time;
+
+
+map<int, string> table;
+map<int, string>::iterator it; this is map iterator; you can travel your table with this pointer like this;
+you can fill the content wit a char s[]; a string is ok;
+it = table.begin();
+while(it!=table.end())
+{
+    ++it;
+    cout<<it->first<<"  =>  "<<it->second<<endl;
+}
+
+I want to finish my Btree. I have to finished it.
+
+2014-12-15 08:57
+I need start up early, I can do more thing in the morning; I can read and I can speaking English, Also I can 
+do some programm. I should sleep early, because this do good for my healty. I can have a better health;
+Try some change that may make you better.
+Description in book is very good, I shold read them more, I can get more from book;
+
+Today, I learned many with mongo and python, it's a very goods chance for me to improve my python and mongo
+knowledge. Thanks for this job. thanks for this opportinunity.
+
+
+2014-12-17 10:18
+git merge.
+git solve conflicts.
+git reset --hrad  version.
+
+
+zend 的闪退的原因找到了，就是这个 gtk 的问题。换成 gnome 的就可以了。在kde上也是可以运行的。
+其实不是什么大问题。
+所以，用linux 开发是可以的，就是决绝了这个问题就可以了。
+http://kb.zend.com/zend-studio-crashes-with-segmentation-fault-in-kde-4-11/#.VJEVAl2uvH4
+
+现在唯一的问题就是我导入近来的工程，不能被识别。包不能解析。
+
+
+这个问题也解决了，就是在导入其他工程的时候，应该先创建一个工程，然后import其他的东西。
+直接导入整个 filesystem 而不是 existing projects
+
+现在并没有出现问题，目前为止，一切都是好的。感谢。
+http://jingyan.baidu.com/article/90808022ded4bffd91c80fd6.html
+
+我把我的工程导入近来，发现eclipse不能很好的解析，出现的一个问题就是，php不能够解析路径。
+我怀疑是php 版本的问题，发现eclipse中用的php interpreter 的版本还是 5.3 ，但是我想设置
+成 5.5 都不能选，怀疑是 这个eclipse 的插件有问题，这是我1年前下载的版本。
+然后去下载了个新的，果然可以，问题解决，zend 也不用我去破解了，既没道德又每耗费时间
+的事情还是可以skip的。
+
+哈哈，其实最主要的就是 kde 中 的 gtk 的选择的问题。gtk 应该选择 gnome 的那个默认的才行。
+上面已有描述。
+
+对每一个篇文章，应该都有一个简要的 summary。
+
+你可以保留原来的oxgen，只给 eclipse gnome 的这个gtk。按照下面这样做。
+env GTK2_RC_FILES="/usr/share/themes/Adwaita/gtk-2.0/gtkrc" /home/user/Zend/ZendStudio/ZendStudio
+env GTK2_RC_FILES="" /home/user/Zend/ZendStudio/ZendStudio 
+two new tools.
+apt-file
+http://www.cnblogs.com/ahuo/archive/2012/07/25/2608172.html
+apt-show-versions
+
+2015-01-25 04:29
+昨晚喝了不少酒，并且都喝醉了。下次还是收敛一点，太过了不好。
+感觉自己的状态不是太好，应该调整下。认识如何走向灭亡的，度<明朝那些事>的时候，看到一些人因为
+自满一类的感觉走向失败，很是不理解，觉着不应该，现在看来，还是很可怕的，在你明白的时候，已经
+来不及了，所以一定要保持警惕的态度。不要膨胀过度。
+
+我要继续学着写代码，我的blog应该继续更新下去，我要想办法写更好的文章，而不是一直像现在这个样子。
+Python 的异常，我也不是怎么熟悉。有时间应该多了解下这些系统函数是怎么实现的。这是一个不错的学习
+方式。可以学习的源代码又很多，应该多学习。不要自满。
+
+
+不知道我一天都在想写什么,为什么这么乱。
+PHP 的 static 应该是不一样的。
+PHP 的字符串可以这么用，我也是长见识了。
+echo "hello{$world";}
+
+下面是一些常用的方法，是我从框架中看到的。
+parse_url();
+strtok();
+array_flip();
+preg_match();
+array_map();
+urldecode();
+strtolower();
+json_encode();
+serialize();
+print_r();
+getmypid();得到PHP进程的PID。
+
+不知道PHP的函数都实现在什么地方，为什么我看到的都是函数申明。看不到函数的具体实现。
+public static function objectToArray($obj)
+{
+    if (is_object($obj)) {
+        $obj = get_object_vars($obj);
+    }
+    if (is_array($obj)) {
+        return array_map(array ('self', __FUNCTION__), $obj);
+    }
+    return $obj;
+}
+
+$cmd = "/sbin/ifconfig|grep 'inet addr'|awk '{print $2}'|awk -F':' '{print $2}'|awk '$1 !~ /127.0.0.1/{print}'|tail -n 1";
+$handle = popen($cmd, 'r');
+$ip = trim(fread($handle, 1024));
+pclose($handle);
+
+这个popen好像是在 python 的文档中发现的，p 一定是 pipe 的意思。
+
+try {
+    $code = $connection->incr(self::KEY_TICKETER);
+    return $code . intval($serverId);
+} catch (\Exception $ex) {
+    unset($config[$serverId]);
+    $connection = $serverId = null;
+}
+
