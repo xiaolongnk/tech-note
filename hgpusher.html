@@ -1,0 +1,501 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>HIGO 消息推送</title>
+
+</head>
+<body>
+<h1>HIGO 消息推送</h1>
+
+<blockquote><p>简介 系统通过 python 构建，python2.7 , 用到的python 扩展 包括 redis , pymongo, MySQLdb, mlogging , xinge sdk 运行系统为 cenos 6.5. 推送包括内容包括 系统消息推送，群聊推送，私聊推送。</p></blockquote>
+
+<h2>1. 系统push</h2>
+
+<p> 推送类型如下</p>
+
+<blockquote><table>
+<thead>
+<tr>
+<th>类型 </th>
+<th> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PUSH_TYPE_CHAT = 1  </td>
+<td>  1v1 聊天 XMPP</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_NEW_ORDER = 5  </td>
+<td>  新订单</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_GOODS_SOLDOUT = 6  </td>
+<td> 售罄</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_GOODS_SENT = 7  </td>
+<td> 商品已发货</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_BUYER_PAID = 8  </td>
+<td> 买家付款</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_BUYER_CONFIRM = 9  </td>
+<td> 买家确认收货</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_SYS_CONFIRM = 10  </td>
+<td> 还有2天系统就要确认收货了，告知用户</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_SHOP_SENDGOODS = 11 </td>
+<td> 买家付款24小时内，没有发货，提醒商家给买家发货</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_SHOP_OK = 15   </td>
+<td>  店铺 审核通过</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_SHOP_REJ = 16  </td>
+<td>  店铺 审核未通过</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_GOODS_OFFSALE = 17  </td>
+<td> 被后台下架</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_BUYER_PERMIT = 18  </td>
+<td>  买手认证通过</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_BUYER_DENY = 19    </td>
+<td>  买手认证拒绝</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_GOODS_DETAIL = 20   </td>
+<td> 单品分享的类型</td>
+</tr>
+<tr>
+<td>PUSH_TYPE_REPORTED = 30  </td>
+<td> 用户被举报推送</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<p>推送模式为 <code>消息体 =&gt; redis_queue =&gt;  xinge_distribute  =&gt; xinge_sending  =&gt; xinge</code>
+主要文件</p>
+
+<table>
+<thead>
+<tr>
+<th>启动脚本 </th>
+<th> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hgDistributeStart </td>
+<td> 启动 HGDistribion 中的run方法,</td>
+</tr>
+<tr>
+<td>hgDistribution.py </td>
+<td> 系统消息 主循环</td>
+</tr>
+<tr>
+<td>distribute.py </td>
+<td> 系统消息的预处理 逻辑模块 从 <code>hg_message_queue</code> 中拿数据，进行预处理，处理完成之后，放入 <code>hg_xinge_queue</code></td>
+</tr>
+<tr>
+<td>hgXingeStart </td>
+<td> 启动 XingeSending 中的run方法，</td>
+</tr>
+<tr>
+<td>hgXingeSending </td>
+<td> 从<code>hg_xinge_queue</code>中那数据，调用 HgXinge 进行处理，推送值xinge平台。</td>
+</tr>
+<tr>
+<td>hgXinge </td>
+<td> 将消息提发送给 xinge ，推送处理 结束</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>2. 群聊push</h2>
+
+<p>每隔10s从mongo 的 chats 表读取最新的聊天消息，对每一条消息，推送给不在线的群主。整个主流程如下：</p>
+
+<pre><code>def doWork(self):
+    newchats = self.getNewChats()
+    for i in newchats:
+        if self.message_ok(i)
+            self.semd_message_to_group_owner(i)
+</code></pre>
+
+<p>如果有上次取消息的时间，返回上次取消息的时间，如果没有，返回库里消息的最大时间戳。</p>
+
+<pre><code>def getTime(self):
+    ret = self.redis_conn.get(self.redis_key_time_stamp);
+    cur_max_time = self.get_max_time()
+    self.redis_conn.set(self.redis_key_time_stamp,cur_max_time)
+    if ret :
+        return ret
+    else :
+        return cur_max_time
+</code></pre>
+
+<p>系统启动时，会拿到 chats 表中最大的时间戳，记录在redis中，作为初始时间。从 mongo 中根据时间戳那时间，时间戳是上次拿数据时记录的时间。</p>
+
+<pre><code>def getNewChats(self):
+    mongo_table = 'chats'
+    condition = {}
+    condition['createAt'] = {}
+    #获取上次的时间戳
+    cur_push_time = self.getTime()
+    condition['createAt']['$gt'] = str(cur_push_time)
+    #设定时间
+    retcond = {'_id':1,'seq':1,'group_id':1,'createAt':1,'type.':1,'data':1,'user.user_id':1}
+    self.mongo_conn.setTable(mongo_table)
+    ret = self.mongo_conn.query_all(condition,retcond)
+    ans = []
+    for i in ret:
+        ans.append(i)
+    return ans
+</code></pre>
+
+<p>判断条件的方法如下, 如果用户退出登录，用户在线，用户的消息接受模式为 消息免打扰。就不发送推送。</p>
+
+<pre><code>'''
+True  接受推送
+False 不接受推送
+'''
+def accept_push(self, to_id):
+    login_status = self.user.get_login_status(to_id)
+    if login_status is None or int(login_status) != 1:
+        return False
+    # 如果在线，不推送消息
+    online_status = self.user.getOnlineStatus(to_id)
+    if online_status:
+        return False
+    account_info = self.user.get_account_info(to_id)
+    if account_info == None:
+        return False
+    push_status = account_info['push_status']
+    if push_status == None or int(push_status) != 1:
+        return False
+
+    return True
+</code></pre>
+
+<p>系统设置了 queue_max 个队列来进行消息的处理。</p>
+
+<p>拿到需要推送的消息之后，每个消息的处理流程如下。</p>
+
+<p>为了避免队列的读取资源竞争，程序中设置了 <code>queue_max</code> 个队列来接受消息，将扫描到的消息遍历分布在 <code>queue_max</code> 个队列中，
+在消息处理端，分别处理 <code>redis_key_global + key+_num</code> 队列中的消息，每个处理进程负责一个队列。 <code>higo_group_chat_message</code>
+例如 一次遇到5 条消息，那么他们分布在 <code>higo_group_chat_message1 ... higo_group_chat_message5</code>中,每个队列中有一条消息。
+处理过程如下：</p>
+
+<pre><code>def send_group_chat_message(self, user_id, group_id, message, group_name):
+    mess_body = self.get_message_body(user_id, group_id, message, group_name)    
+    redis_key = self.redis_key_global + str(self.key_num);
+    ret = self.redis_conn.rpush(redis_key, phpserialize.dumps(mess_body))
+    if self.key_num == queue_max:
+        self.key_num = 1
+    else:
+        self.key_num += 1 
+    return ret
+</code></pre>
+
+<p><code>GroupHGDistribution</code>  从 <code>higo_group_chat_message$num{ $num &gt;=1 &amp;&amp; $num &lt;= queue_max}</code>中pop出一条消息, 对这个消息进行处理，包括找到消息接收人的 <code>xinge_token</code> 封装出对应的消息体，最后将这个消息放到另一个队列<code>higo_group_xinge_queue</code>
+    调用<code>group_distribute.GroupDistribute</code></p>
+
+<p><code>GroupXingeSending</code> 从 <code>higo_group_xinge_queue$num{$num &gt;=1 &amp;&amp; $num &lt;= queue_max}</code>中pop出一条消息, 调用 <code>HgXinge</code> 将完整的消息根据 via (android, iphone), app（higo, higirl）调用对应的配置，推送给信鸽.
+    其中 <code>GroupHGDistribution</code> 和 <code>GroupXingeSending</code> 有相同个数的实例，每个work进程处理一个消息队列中的消息。</p>
+
+<pre><code>def run(self):
+    cache = lehe_redis(self.app, self.g_params)
+    redis_key = self.g_params[self.conf]['hg_group_xg']+str(self.key_num)
+    while True:
+        message = cache.lpop(redis_key)
+        if message == False or message == None:
+            time.sleep(5)
+            continue
+        message = phpserialize.loads(message)
+        ret = self.m_xinge.hg_send_message(message)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>主要文件 </th>
+<th> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupChatStart.py </td>
+<td> 启动 扫描消息进程</td>
+</tr>
+<tr>
+<td>group_pusher.py </td>
+<td> 启动<code>group_pusher</code>中的run方法，从 chats 中拿到需要推送的新消息，放入 <code>higo_group_chat_message</code> 中</td>
+</tr>
+<tr>
+<td>group_hgDistributeStart.py </td>
+<td> 启动 GroupHGDistributionstribution 的 run 方法，处理 <code>higo_group_chat_message</code></td>
+</tr>
+<tr>
+<td>group_hgDistribe.py </td>
+<td> 处理群聊消息 的住循环模块</td>
+</tr>
+<tr>
+<td>group_distribute.py </td>
+<td> 消息预处理逻辑模块，从<code>higo_group_chat_message</code>队列中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到<code>higo_group_xinge_queue</code>中</td>
+</tr>
+<tr>
+<td>group_hgXingeStart.py  </td>
+<td> 启动 <code>GroupXingeSending</code>的run 方法， 处理<code>higo_group_xinge_queue</code> 中的消息。</td>
+</tr>
+<tr>
+<td>group_xingeSending </td>
+<td> 发送群聊消息的住循环</td>
+</tr>
+<tr>
+<td>hgXinge </td>
+<td> 将消息发送给信鸽，推送结束</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>3. 私聊push</h2>
+
+<p>私聊推送和群聊推送基本原理基本相同。改变了基本的配置。</p>
+
+<table>
+<thead>
+<tr>
+<th>主要文件  </th>
+<th> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>privateChatStart.py </td>
+<td> 启动 扫描消息进程</td>
+</tr>
+<tr>
+<td>private_pusher.py </td>
+<td> 从私聊表中获取需要推送的消息，push 到 私聊队列 <code>higo_private_chat_message</code></td>
+</tr>
+<tr>
+<td>private_hgDistributeStart.py </td>
+<td> 私聊消息预处理模块的启动脚本</td>
+</tr>
+<tr>
+<td>private_hgDistribute.py </td>
+<td> 私聊消息预处理模块的主循环模块</td>
+</tr>
+<tr>
+<td>private_distribute.py </td>
+<td> 从<code>higo_private_chat_message</code>中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到 <code>higo_private_xinge_queue</code>中</td>
+</tr>
+<tr>
+<td>private_hgXingeStart </td>
+<td> 启动进程 从<code>higo_private_xinge_queue</code>中拿到消息，推送至 xinge 平台</td>
+</tr>
+<tr>
+<td>private_hgXingeSending </td>
+<td> 私聊消息发送主循环</td>
+</tr>
+<tr>
+<td>hgXinge </td>
+<td> 将消息发送给信鸽，推送结束</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>4 相关配置</h1>
+
+<p>重要的配置是下面几项，上线前请确认下面的配置和客户端是一致的。</p>
+
+<pre><code>;应用配置参数
+android_higo_appid = 2100047733
+android_higo_skey =   ee059d135ccb97688d67c725c71adb2a
+
+;android 商家端 push key
+android_higirl_appid = 2100064514
+android_higirl_skey = 2a8e2cbca09591f3e64909d97ac588ad
+
+;;线上环境
+ios_higo_appid = 2200047738
+ios_higo_skey = 1e646be1b36b11a88ab0400fd8bda77b
+;;
+ios_higirl_appid = 2200047734
+ios_higirl_skey = 94a2cee5ddc68832f972846717123568
+
+;;内网测试用例 
+local_ios_higirl_appid = 2200052868 
+local_ios_higirl_skey = 331d11bf4732c4edf34c5bb524b1105f 
+;;
+local_ios_higo_appid = 2200052867
+local_ios_higo_skey = f7706ac90eb5e9dbbd3c7f5447e4011c
+</code></pre>
+</body>
+</html>
