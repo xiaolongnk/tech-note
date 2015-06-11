@@ -4,7 +4,9 @@ margin: 的4个参数。up ,right, down , left;
 如果只有一个参数，那么表示4个都是n px。可以是1-4个参数。
 
 my understanding for web server is gaining, but it's not enough,I need to know more to host my craeer.
+
 sudo service gdm restart|stop|start
+
 if you gdm freezen, you can use this command to avoid restart your computer from poweroff.
 First you should in character mode.
 
@@ -20,7 +22,8 @@ account: myemail.  passwd: strongest.
 
 PHP 编译安装
 首先是编译PHP的参数。
-```
+
+```shell
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' 
     '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear'
     '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg'
@@ -36,11 +39,13 @@ PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library)
 '/home/service/php/lib/php/extensions/no-debug-zts-20131226/pdo_mysql.so' in Unknown on line 0
 
 pkhp.ini 里面的配置应该是这样的。
-```
+
+```shell
 extension="home/service/php/lib/php/extensions/xxx/imagick.so"
-extension="home/service/php/lib/php/extensions/xxx/gmagick.so"
+Iextension="home/service/php/lib/php/extensions/xxx/gmagick.so"
 ```
 首先要安装 gmagick。 在安装 gmagik 的过程中，要注意这个选项。在configure的过程中。需要这样。
+
 ```shell
 CFLAGS="-O3 -fPIC" ./configure
 make && make install
@@ -51,13 +56,15 @@ make && make install
 `gmagic` 和 `imagic` 都下载了最新版本。
 
 编译过程,进入主目录,大部分的编译过程都下面这样。
-```
+
+```shell
 /home/service/php/bin/phpize
 ./configure --with-php-config=/home/service/php/bin/phpize
 make
 make install
 ```
 之后扩展都会被安装到项目的主目录下。`/home/service/php/lib/php/extensions/no-debug-zts-20131226/`
+
 ```shell
 sudo wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
 sudo wget http://pecl.php.net/get/imagick-3.1.2.tgz
@@ -67,6 +74,7 @@ sudo wget http://pecl.php.net/get/mongo-1.6.6.tgz
 CFLAGS="-O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-config
 ```
 装完了之后注意写好你的配置文件。在主目录下的etc下面。加载对应的扩展就可以了,可以这样测试。
+
 ```
 /home/service/php/bin/php -m | grep gd
 /home/service/php/bin/php -m | grep redis 
