@@ -165,6 +165,10 @@ lessc style.less
 2015-02-22 19:28
 name  email  code
 
+2015-02-22 21:26
+export VISUAL=vim
+export EDITOR="$VISUAL"
+git config --global core.editor "vim"
 python 安装。
 首先安装python2.7. 下载python2.7 
 
