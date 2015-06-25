@@ -134,3 +134,24 @@ echo $a;
 2015-06-09 14:28
 
 在小功能上，也可以不断优化，可以不断提高，不要放过细节。
+
+http://blog.sina.com.cn/s/blog_49c6c9b701014p9a.html
+php 报错的log，在听云商看到的错误。其实就是变量没有定义。
+
+2015-06-25 15:02
+PHP redis hset 的使用。在做缓存的时候 ，有这样一些应用场景，需要对列表进行缓存，如果使用传统的key来保存，那么会
+使得维护成本比较高。比如一个列表的存储如下，list01,list02,list03 那么在需要清除缓存的时候就需要清除list为前缀的
+的所有list，这样清除比较困难。在redis中要尽量避免使用keys list* 这样的操作。在key 较多的情况下，这样性能很差，
+并且有可能拖垮redis。这时候可以使用redis 的hset。 可以如下设置。
+```
+hset list list01 list01_value
+hset list list02 list02_value
+hset list list03 list03_value
+
+del list
+```
+这样在删除的时候会很方便。维护成本会降低很多，所以在对list做redis缓存的时候，最好使用redis的这个数据结构。
+需要注意的是redis 的 hash 的ttl，可以调用expire这个方法来设置 hash 的生存周期。并且一个hash就是一个整体，
+每一次设置都会设置这个生存周期。这个时候可能出现的问题是一个hash的缓存时间不可控，取决于最后一次更新的时间。
+
+
