@@ -46,5 +46,7 @@ $('#mmm_event_end').datetimepicker({format: 'Y-m-d h:m'});
 
 ```php
 PHP截取数组，实现一个翻页的功能。
-
+PHP 的语法的一些问题，一些看似危险的写法并不会导致错误，对于你，这些应该熟知于心。
 ```
+
+

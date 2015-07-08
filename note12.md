@@ -4,6 +4,7 @@
 ```sql
 如果更新 key 冲突，那么按照指定的规则来更新数据，有时候这样可以方便不少
 insert into myblog (id,title,ctime) values(123,'hello',now())on duplicate key update title=values(title),ctime=values(ctime);
+问题是，只能在主键重复的时候做应该做得事情。
 
 将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
