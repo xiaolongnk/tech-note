@@ -28,3 +28,5 @@ grep -h -o your command.
 
 utf8mb4 兼容 utf8 如果数据库报这个错误，应该尝试将字段改成utf8mb4.
 General error: 1366 Incorrect string value: '\xF0\x9F\x8F\xBC' for column 'nick_name' at row 1
+
+
