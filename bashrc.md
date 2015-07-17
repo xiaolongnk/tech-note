@@ -15,10 +15,6 @@ export PYCURL_SSL_LIBRARY=nss
 export SVN_EDITOR=vim
 export EDITOR=vim
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -78,8 +74,9 @@ strace $(pidof "${1}" | sed 's/\([0-9]*\)/-p \1/g')
 }
 
 # 加入 git  自动补齐
-if [[ -f "$HOME/work-profile/git-completion.bash" ]]; then
-    source $HOME/work-profile/git-completion.bash
+git_completion="$HOME/.vim/.git_completion.bash"
+if [[ -f $git_completion ]]; then
+    source $git_completion
 fi
 #PS1="[\[\033[01;32m\]\u\[\033[00m\]\[\033[31;40m\]@\[\033[00m\]\[\033[36;40m\]\h\[\033[00m\]]yellow\$git_branch$white\$ $normal"
 PS1="[\[\033[01;32m\]\u\[\033[00m\]\[\033[31;40m\]@\[\033[00m\]\[\033[36;40m\]fox\[\033[00m\]:\[\033[35;40m\]\w\[\033[00m\]]$yellow\$git_branch$white\$ $normal"
