@@ -1,328 +1,100 @@
-cd ..
-ls
-cd php/
-ls
-./bin/php
-./bin/php -i
-cd ..
-ls
-cd source/
-ls
-cd php-5.6.4
-ls
-./configure'  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring
-./configure '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/l
-'./configure'  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring
-' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/l
-ibmcrypt/
-\
         ;
 '
+' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/l
+'./configure'  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring
+./bin/php -i
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'
-sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'
-./configure --help
-ls
-cd ext/
-ls
-cd
-vim .bashrc
-cd /home/service/
-ls
-cd source/
-cd ex
-cd ext
-ls
-cd php-5.6.4
-ls
-cd ext
-ls
-ls mysql
-/home/service/php/bin/phpize
-ls
-cd mysql
-ls
-/home/service/php/bin/phpize
-sudo /home/service/php/bin/phpize
-make
-sudo make
-cd ..
-ls
-cd mysqli/
-ls
-sudo /home/service/php/bin/phpize
-sudo make
-sudo ./configure
-sudo make
-./configure --help
-ls
-cd ..
-ls
-cd pdo_mysql/
-ls
-sudo /home/service/php/bin/phpize
-./configure --prefix=/home/service/php/
-sudo ./configure --prefix=/home/service/php/
-sudo make
-sudo yum install mysql-devel
-sudo make clean
-sudo /home/service/php/bin/phpize
-sudo ./configure --prefix=/home/service/php/
-sudo make
-ls
-sudo make clean
-ls
-sudo yum install auto_conf
-sudo yum install autoconf
-ls
-cd ..
-ls
-cd mysql
-ls
-sudo ./phpize
-ls
-sudo /home/service/php/bin/phpize
-ls
-sudo ./configure --prefix=/home/service/php
-sudo make
-sudo make clean
-sudo make
-ls
-sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/php_config
-sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/
-sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/
-sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/php-config
-sudo make
-ls
-cd ..
-ls
-cd ..
-ls
-make
-./configure --help
-ls
-cd ..
-ls
-cd ..
-ls
-cd php/
-ls
-./bin/php -i
-ls
-cd ..
-cd bi
-cd php/
-ls
-cd php/
-ls
-cd ..
-ls
-cd lib/
-ls
-cd php/
-ls
-cd extensions/
-ls
-cd no-debug-zts-20131226/
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd service/
-ls
-cd source/
-ls
-cd php-5.6.4
-ls
-./configure --help
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'  --with-pdo-mysql --with-mysql
-sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'  --with-pdo-mysql --with-mysql
-ls
-sudo make clean
-sudo make
-sudo make install
-ls
-cd ..
-ls
-cd ..
-ls
-cd php/
-ls
-tree
-yum install tree
-sudo yum install tree -y
-ls
-bin/php -i | grep mysql
-ls
-cd lib/
-ls
-cd php/
-ls
-cd extensions/
-ls
-cd no-debug-zts-20131226/
-ls
-rm -rf *
-sudo rm gmagick.so
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-bin/php -i | grep mysql
-ls
-vim etc/php.ini
-sudo vim etc/php.ini
-ls
+./configure '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/l
+./configure --prefix=/home/service/php/
+./configure'  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring
+/home/service/php/bin/phpize
+/home/service/php/bin/phpize
+CFLAGS="-O3 -fPIC"
+CFLAGS="-O3 -fPIC" ./configure
+\
 bin/php -i
 bin/php -i | grep mysql
-cd ..
-ls
-cd gmagick/
-ls
-cd bin/
-ls
-cd ..
-ls
-cd lib/
-ls
-cd ..
-ls
-cd ..
-ls
-cd source/
-ls
-wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
-sudo wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
-ls
-sudo tar -zxvf GraphicsMagick-1.3.21.tar.gz
-ls
+bin/php -i | grep mysql
+bin/php -i | grep mysql
+cd
+cd /home/service/
 cd GraphicsMagick-1.3.21
-ls
-./configure --help
-cd ..
-ls
-cd ..
-ls
-cd php/
-ls
-cd bin/
-ls
-cd ..
-ls
-cd ..
-ls
-cd source/
-ls
-sudo wget http://pecl.php.net/get/gmagick-1.1.7RC2.tgz
-sudo wget http://pecl.php.net/get/redis-2.2.7.tgz
-sduo wget http://pecl.php.net/get/mongodb-0.3.1.tgz
-sudo wget http://pecl.php.net/get/mongodb-0.3.1.tgz
-ls
-rm -rf GraphicsMagick-1.3.21
-sudo rm -rf GraphicsMagick-1.3.21
-ls
-sudo tar -zxvf redis-2.2.7.tgz
-cd resi
-cd redis-2.2.7
-ls
-sudo /home/service/php/bin/phpize
-vim README.markdown
-sudo ./configure --help
-sudo ./configure --prefix=/home/service/php/
-sudo make install
-sudo make
-sudo make install
-sudo cp modules/redis.so  /home/service/php/lib/php/extensions/no-debug-zts-20131226/
-cd ..
-ls
-sudo tar -zxvf mongodb-0.3.1.tgz
+cd GraphicsMagick-1.3.21
+cd extensions/
+cd extensions/
+cd gmagick-1.1.7RC2
+cd gmagick-1.1.7RC2
+cd gmagick-1.1.7RC2
+cd gmagick/
 cd mongodb-0.3.1
-ls
-sudo /home/service/php/bin/phpize
-sudo ./configure
-sudo make
-sudo yum -y install libjpeg
-sudo yum -y install libjpeg-devel
-sudo make
-ls
-sudo ./configure
+cd mongodb-0.3.1
+cd mysql
+cd mysql
+cd mysqli/
+cd no-debug-zts-20131226/
+cd no-debug-zts-20131226/
+cd pdo_mysql/
+cd php-5.6.4
+cd php-5.6.4
+cd redis-2.2.7
+cd redis-2.2.7
+cd resi
+cd service/
+cd source/
+cd source/
+cd source/
+cd source/
+cd tar -zxvf GraphicsMagick-1.3.21.tar.gz
+ibmcrypt/
+make
+rm -rf *
+rm -rf GraphicsMagick-1.3.21
+sduo make install
+sduo wget http://pecl.php.net/get/mongodb-0.3.1.tgz
+sudo
+sudo  tar -zxvf GraphicsMagick-1.3.21.tar.gz
+sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'
+sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'  --with-pdo-mysql --with-mysql
+sudo ./configure --help
+sudo ./configure --help
+sudo ./configure --prefix=/home/service/php
+sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/
+sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/
+sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/php-config
+sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/php_config
+sudo ./configure --prefix=/usr/local/gmagick CPPFLAGS='-I/usr/local/libpng/include -I/usr/local/jpeg/include' LDFLAGS='-L/usr/local/libpng/lib -L/usr/local/jpeg/lib' --enable-shared
 sudo ./configure --with-php-config=/home/service/php/bin/php-config
 sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-cd ..
-ls
-cd redis-2.2.7
-ls
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo make clean
-sudo make
-sudo make install
-cd ..
-cd mongodb-0.3.1
-ls
-sudo /home/service/php/bin/phpize
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
+sudo ./phpize
+sudo CFLAGS="-O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
+sudo cp modules/redis.so  /home/service/php/lib/php/extensions/no-debug-zts-20131226/
 sudo ln -s /usr/lib64/libjpeg.so /usr/lib/libjpeg.so
 sudo ln -s /usr/lib64/libpng.so /usr/lib/libpng.so
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo yum install cyrus-sasl-devel
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo make
-sudo make install
-sudo tar -zxvf gmagick-1.1.7RC2.tgz
-cd gmagick-1.1.7RC2
-ls
-sudo /home/service/php/bin/phpize
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo yum install GraphicsMagick
-ls
-cd ..
-ls
-cd tar -zxvf GraphicsMagick-1.3.21.tar.gz
-sudo  tar -zxvf GraphicsMagick-1.3.21.tar.gz
-su
-sudo
+sudo rm -rf GraphicsMagick-1.3.21
+sudo rm gmagick.so
 sudo su
-ls
-cd gmagick-1.1.7RC2
-ls
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sduo make install
-sudo make install
-sudo make
-sudo make clean
-sudo make
-cd ..
-ls
-cd GraphicsMagick-1.3.21
-ls
-sudo ./configure --help
-sudo ./configure --prefix=/usr/local/gmagick CPPFLAGS='-I/usr/local/libpng/include -I/usr/local/jpeg6/include' LDFLAGS='-L/usr/local/libpng/lib -L/usr/local/jpeg6/lib' --enable-shared
-sudo ./configure --prefix=/usr/local/gmagick CPPFLAGS='-I/usr/local/libpng/include -I/usr/local/jpeg/include' LDFLAGS='-L/usr/local/libpng/lib -L/usr/local/jpeg/lib' --enable-shared
-sudo make
-sudo make install
-cd ..
-ls
-cd gmagick-1.1.7RC2
-sudo ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo make
-sudo make clean
-sudo make
-CFLAGS="-O3 -fPIC" ./configure
-CFLAGS="-O3 -fPIC"
-sudo CFLAGS="-O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-config --prefix=/home/service/php/bin/php
-sudo make
-sudo make clean
+sudo tar -zxvf GraphicsMagick-1.3.21.tar.gz
+sudo tar -zxvf gmagick-1.1.7RC2.tgz
+sudo tar -zxvf mongodb-0.3.1.tgz
+sudo tar -zxvf redis-2.2.7.tgz
+sudo vim etc/php.ini
+sudo wget http://pecl.php.net/get/gmagick-1.1.7RC2.tgz
+sudo wget http://pecl.php.net/get/mongodb-0.3.1.tgz
+sudo wget http://pecl.php.net/get/redis-2.2.7.tgz
+sudo wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
+sudo yum -y install libjpeg
+sudo yum -y install libjpeg-devel
+sudo yum install GraphicsMagick
+sudo yum install auto_conf
+sudo yum install autoconf
+sudo yum install cyrus-sasl-devel
+sudo yum install mysql-devel
+sudo yum install tree -y
+tree
+vim .bashrc
+vim README.markdown
+vim etc/php.ini
+wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
+yum install tree
