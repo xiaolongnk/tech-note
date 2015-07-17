@@ -1,5 +1,6 @@
 这两个jquery表达式就是所有功能的精髓。我已经掌握了这里的核心，给我jquery，我可以随意游走，随意更改。
-jquery 中常用的标签还有 text(),value() 函数, attr() 函数也很有用。
+jquery 中常用的标签还有 text(),value() 函数, attr() 函数也很有用。还有 prop 和 on live 等方法。
+后面我遇到了更麻烦的问题，都被我一一拿下了.
 常用的还有$(this).data(), $(this).attr()。
 
 ```javascript
@@ -91,10 +92,10 @@ create table t_sweet_user_read_info
 ```php
 array_slice();
 array_splice();
-```
 
 这两个函数是不同的。 array\_splice\(\)不用返回结果，直接对参数进行处理。
 array\_slice\(\) 的结果是返回的结果。
+```
 
 ```sql
 alter table t_pandora_account_group add column week_gmv double(11,3) not null default  0.0 comment '最近一周的gmv';
