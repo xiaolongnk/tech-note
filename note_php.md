@@ -48,8 +48,8 @@ $('#mmm_event_end').datetimepicker({format: 'Y-m-d h:m'});
 PHP截取数组，实现一个翻页的功能。
 
 Yii 里面有重复保存的现象。
-我做了一个功能，我选择了修改某个项目，然后保存，之后会创建一个新的，不知道这个是什么意思。这个问题我之前遇到过，是因为两个
-action 调用了同一个form的action，应该更具当前情况更改form，这样才行。
+我做了一个功能，我选择了修改某个项目，然后保存，之后会创建一个新的，不知道这个是什么意思。这个问题我之前遇到过，
+是因为两个 action 调用了同一个form的action，应该更具当前情况更改form，这样才行。
 
 $cmd = Yii::app()->db->createCommand($sql);
 this is enough.
@@ -208,7 +208,6 @@ git reflog 可以到任何一个版本。 git reset --hard version_nu.
 
 find ./* -name '*.pyc' -exec rm {};
 
-
 2015-07-10 18:53
 
 ```
@@ -219,4 +218,27 @@ eval $cmd
 sh exec $cmd
 `echo $cmd`
 
+date '+%Y-%m-%d'
+httpd -S
+
+ps -ef | grep httpd
+
+shell 脚本中的 空变量。可能是你的程序抱错，所以写判断的时候需要考虑变量为空的情况。
+如果出现这样的情况，报的错误可能是这个。
+"[: =: unary operator expected"
+
+if [ $pusher_env'X' = 'prodX' ]
+then
+    workdir='/home/work/hgpusher/'
+elif [ $pusher_env'X' = 'devX' ]
+then
+    workdir='/root/dir_higo/hgpusher/'
+elif [ $pusher_env'X' = 'localX' ]
+then
+    workdir='/code/hgpusher/'
+else
+    echo '请先设置系统环境变量 pusher_env '
+    exit -1
+fi
+echo "运行配置是"$pusher_env
 ````
