@@ -53,8 +53,8 @@ PHP 的语法的一些问题，一些看似危险的写法并不会导致错误�
 =======
 
 Yii 里面有重复保存的现象。
-我做了一个功能，我选择了修改某个项目，然后保存，之后会创建一个新的，不知道这个是什么意思。这个问题我之前遇到过，是因为两个
-action 调用了同一个form的action，应该更具当前情况更改form，这样才行。
+我做了一个功能，我选择了修改某个项目，然后保存，之后会创建一个新的，不知道这个是什么意思。这个问题我之前遇到过，
+是因为两个 action 调用了同一个form的action，应该更具当前情况更改form，这样才行。
 
 $cmd = Yii::app()->db->createCommand($sql);
 this is enough.
@@ -171,3 +171,79 @@ todo list:
 [test goods_discover](http://v.online.killtime.cn/goods/goods_discover?app=higo&backup=0&client_id=1&cver=3.1.1&p=1&qudaoid=10000&size=30&uuid=77c04e600d9d9558cd9ce5805c7cf8e4&ver=0.8&via=iphone)
 [goods_show](http://v.online.killtime.cn/goods/goods_show?app=higirl&client_id=1&type=3&cver=3.1&mobile=18515615556&password=F200152W&qudaoid=10000&uuid=cdc4f9a8696d8e9bfab8077fab221871&ver=0.7&via=iphone)
 
+
+2015-06-29 17:01
+work list.
+1. 研究一下xinge_push 的sdk.研究批量推送的功能。写一个 demo 出来。done
+2. 尝试给列表的API 做程序级别的缓存。 
+
+2015-06-30 11:40
+
+1. 研究下那个需求的实现，现在有好多都需要加push，真是感觉没必要。需要设计出这个功能。
+2. 研究一下促销的接口的实现。这个基本是一个促销一个接口，真不知道什么时候能停下来。
+3. 大促相关的接口的开发。共同商定开发细节。
+4. bugfix for category_goods/get_detail . wait to confirm. 似乎 bug 了很久。
+5. push 提醒功能的开发。(可以做在运营后台，用新的xinge api，用 cron 的形式来实现。redis mongo)
+
+多表关联的话，一定要想好要让那个表做主表，效果会大大不同。
+
+2015-07-01 11:16
+1. 下周的大促页面API。这部分配套的 运营后台怎么做。 done.
+2. review 一下代码。done
+
+
+2015-07-03 14:33
+1. 有几个问题需要注意下。
+   就是列表的不稳定排序，比如做分页的时候，很可能引起不同页的数据重复的现象。这个时候要想办法让这个列表
+   的排序变稳定，就可以了。done .
+2. 大促的单独库存。
+3. 检查一下秒杀商品的所有的价格，确保明天没有问题。 done.
+
+2015-07-06 14:09
+
+1. 活动期间的 库存 和 销量独立。 
+2. 每一个提报商品如果有多个sku，需要选择价格最低的sku，如果这个sku库存为0的话，应该过滤掉。使用 presale_repertory 来过滤吗？
+3. 真正不太好做的是一个提报商品多个 sku 的情况。这个时候需要做分组。当一个售罄，需要显示下一个商品。他们的库存和销量都是分开的，这些该如何处理。
+4. 
+
+2015-07-07 14:15
+git reflog 可以到任何一个版本。 git reset --hard version_nu.
+用了git，你的代码不可能丢失。
+合错代码也没有关系。可以恢复的。you can do anything you want.
+
+find ./* -name '*.pyc' -exec rm {};
+
+2015-07-10 18:53
+
+```
+shell 执行字符串命令。可以这样。
+eval $cmd
+试了一下，只有上面这种方法是ok的，其他的都不太行。
+类似的问，其他语言中也有很多。python中也有不少。
+sh exec $cmd
+`echo $cmd`
+
+date '+%Y-%m-%d'
+httpd -S
+
+ps -ef | grep httpd
+
+shell 脚本中的 空变量。可能是你的程序抱错，所以写判断的时候需要考虑变量为空的情况。
+如果出现这样的情况，报的错误可能是这个。
+"[: =: unary operator expected"
+
+if [ $pusher_env'X' = 'prodX' ]
+then
+    workdir='/home/work/hgpusher/'
+elif [ $pusher_env'X' = 'devX' ]
+then
+    workdir='/root/dir_higo/hgpusher/'
+elif [ $pusher_env'X' = 'localX' ]
+then
+    workdir='/code/hgpusher/'
+else
+    echo '请先设置系统环境变量 pusher_env '
+    exit -1
+fi
+echo "运行配置是"$pusher_env
+````
