@@ -242,3 +242,10 @@ else
 fi
 echo "运行配置是"$pusher_env
 ````
+
+is null  和 is not null 的用法。
+mysql null 是不能参与比较的，要注意这种情况。
+select * from hellotest where xx is null;
+
+
+
