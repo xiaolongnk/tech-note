@@ -1,3 +1,8 @@
+http://edu.51cto.com/lesson/id-15574.html
+http://www.jikexueyuan.com/course/224.html
+ios 开发的2个视频
+
+
 2015-04-13 11:43
 
 1.  review 自己的代码, 包括 API 和后台，仅限自己的。
