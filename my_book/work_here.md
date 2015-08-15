@@ -50,4 +50,10 @@ push 出现了问题，过了很久才发现。感觉情况很严重，感觉还
 时间不早了，应该早点休息。应该安排好自己的休息时间，一直这么疲劳不太好，时间要合理安排。多读书，多做
 有意义的事情。
 
+2015-07-23 01:11
+查bug 的链接.
+http://higo.meilishuo.com/hgadmin/index.php?r=GoodsCheck/test&goods_id=173907958545066984
+
+Yii 执行 命令行脚本，带参数的话，要使用这个命令把参数的值带进去。
+php /code/hgadmin/protected/yiic GoodsCheck GoodsCheck --event_id=123
 
