@@ -87,3 +87,5 @@ CFLAGS="-O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-confi
 最后重启 apache 应该就可以了。
 遇到了不少问题，主要都是编译 gmagick 扩展过程中遇到的最关键的应该是那个CFLAGS参数。在configure之前加上就可以了。
 还有就是配置中imagick要在gmagick之前。
+
+http://www.2cto.com/os/201406/306493.html

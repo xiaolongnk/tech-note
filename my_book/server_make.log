@@ -1,8 +1,5 @@
-        ;
-'
 ' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/l
 './configure'  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring
-./bin/php -i
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'
 ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'  --with-pdo-mysql --with-mysql
@@ -13,52 +10,12 @@
 /home/service/php/bin/phpize
 CFLAGS="-O3 -fPIC"
 CFLAGS="-O3 -fPIC" ./configure
-\
-bin/php -i
-bin/php -i | grep mysql
-bin/php -i | grep mysql
-bin/php -i | grep mysql
-cd
-cd /home/service/
-cd GraphicsMagick-1.3.21
-cd GraphicsMagick-1.3.21
-cd extensions/
-cd extensions/
-cd gmagick-1.1.7RC2
-cd gmagick-1.1.7RC2
-cd gmagick-1.1.7RC2
-cd gmagick/
-cd mongodb-0.3.1
-cd mongodb-0.3.1
-cd mysql
-cd mysql
-cd mysqli/
-cd no-debug-zts-20131226/
-cd no-debug-zts-20131226/
-cd pdo_mysql/
-cd php-5.6.4
-cd php-5.6.4
-cd redis-2.2.7
-cd redis-2.2.7
-cd resi
-cd service/
-cd source/
-cd source/
-cd source/
-cd source/
-cd tar -zxvf GraphicsMagick-1.3.21.tar.gz
 ibmcrypt/
-make
-rm -rf *
-rm -rf GraphicsMagick-1.3.21
 sduo make install
 sduo wget http://pecl.php.net/get/mongodb-0.3.1.tgz
-sudo
 sudo  tar -zxvf GraphicsMagick-1.3.21.tar.gz
 sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'
 sudo ./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear' '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg' '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/'  --with-pdo-mysql --with-mysql
-sudo ./configure --help
-sudo ./configure --help
 sudo ./configure --prefix=/home/service/php
 sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/
 sudo ./configure --prefix=/home/service/php --with-php-config=/home/service/php/bin/
@@ -74,7 +31,6 @@ sudo ln -s /usr/lib64/libjpeg.so /usr/lib/libjpeg.so
 sudo ln -s /usr/lib64/libpng.so /usr/lib/libpng.so
 sudo rm -rf GraphicsMagick-1.3.21
 sudo rm gmagick.so
-sudo su
 sudo tar -zxvf GraphicsMagick-1.3.21.tar.gz
 sudo tar -zxvf gmagick-1.1.7RC2.tgz
 sudo tar -zxvf mongodb-0.3.1.tgz
@@ -92,9 +48,6 @@ sudo yum install autoconf
 sudo yum install cyrus-sasl-devel
 sudo yum install mysql-devel
 sudo yum install tree -y
-tree
-vim .bashrc
-vim README.markdown
 vim etc/php.ini
 wget http://sourceforge.net/projects/graphicsmagick/files/latest/download?source=files
 yum install tree
