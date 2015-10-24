@@ -262,3 +262,9 @@ $sudo ln -fs /bin/bash /bin/sh
 但这样将丧失脚本的通用性，使其在不具备所指定脚本的系统下不能被执行。 
 ============================================================================
 
+linux chromium  flash-plugin
+
+sudo apt-get install pepperflashplugin-nonfree
+sudo update-pepperflashplugin-nonfree --install
+链接在这里
+http://www.linuxidc.com/Linux/2014-06/102593.htm
