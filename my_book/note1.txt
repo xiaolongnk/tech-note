@@ -268,3 +268,4 @@ sudo apt-get install pepperflashplugin-nonfree
 sudo update-pepperflashplugin-nonfree --install
 链接在这里
 http://www.linuxidc.com/Linux/2014-06/102593.htm
+有了这个，linux 就好用多了，再也不用用 air 看视频了。
