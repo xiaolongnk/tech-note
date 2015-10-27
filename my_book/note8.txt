@@ -169,10 +169,12 @@ eval() 好不好，不是expr的好不好。
 工程方面，重视代码重构。
 注重团队协作。
 
+2015-10-25 10:36
+ubuntu promotions. fonts muti desktops.
 
+sudo apt-get install ubuntu-restricted-extras
 
-
-
+use lnmp . php.ini php nginx redis extension.
 
 
 
