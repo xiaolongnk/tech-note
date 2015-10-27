@@ -89,3 +89,25 @@ CFLAGS="-O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-confi
 还有就是配置中imagick要在gmagick之前。
 
 http://www.2cto.com/os/201406/306493.html
+
+2015-10-25 05:34
+
+this command can find which process take 80 port.
+netstat is usefull, but the args is the key point.
+netstat -tunlp |grep 90
+
+2015-10-27 17:12
+
+编译PHP的参数.
+./configure --prefix=/opt/server/php --with-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-discard-path --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl=/usr/ --with-curlwrappers --enable-mbregex --enable-fpm --enable-force-cgi-redirect --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-zlib --enable-pdo --with-pdo-mysql --with-mysql
+
+解决完configure 中遇到的问题基本就ok了，安装应该全面，不然后面安装其他应用还会遇到问题。
+
+剩下的就是 nginx 配置自己代码的问题。现在环境都好了。昨晚和今早都跳了很多坑，应该找时间记录一下。
+nginx 中加环境变量.
+fastcgi\_params define_params hhh
+pandora API 需要重定向才能工作
+运营后台不需要，只要PHP是对的，就可以工作.
+
+
+
