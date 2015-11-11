@@ -15,8 +15,8 @@
 
 1. 运营后台board取消群信息冗余表。 done
 2. 跑男签到项目排期。 done
-3. 商家端发版接口。
-4. goods_show 接口优化，加缓存。
+3. 商家端发版接口。  (转交朱雷)
+4. goods_show 接口优化，加缓存。 done
 5. 单品详情接口优化。
 6. 流控接口。
 
@@ -33,20 +33,32 @@
 
 2015-10-29 11:36
 
+###重要流量接口优化
+1. goods/goods_show对内部组件进行缓存优化，在高流量的情况下，可以有效缓解服务压力。
+    -  home_banner 增加缓存。1min
+    -  recommend_category 增加缓存  1min.
+	    fashion_most 增加缓存.  1 min.
+    	worlds_goods
+    	season_sales
+    	worlds_brand
+        events_total 缓存
+        board 信息缓存 1h
+2. search/searchByBrand
+	增加缓存，搜索结果缓存1分钟
+3. shop/BullsCircleDetailNew
+	增加缓存，缓存时间。
+4. goods/get_detail 优化
 
-1. 优化接口。
-   goods/goods_show
-    优化点 
-    1. home_banner 增加缓存。1min
-    2. recommend_category 增加缓存  1min.
-    fashion_most 增加缓存.  1 min.
-    worlds_goods
-    season_sales
-    events_total 缓存
-   goods/get_detail
 
-   higo.api/search/searchGoodsByBrand?cver=4.5&ver=0.8&brand_id=
-    1. 增加缓存,1min.
+###图片
 
-2. 运营后台图片优化。运营后台图片上传迁移主站。上线完成。
+![Alt](http://d02.res.meilishuo.net/pic/_o/34/a4/22ac6ec43eb5c0b01574cd92d471_750_550.cg.jpg)
+
+
+
+
+
+
+
+
 

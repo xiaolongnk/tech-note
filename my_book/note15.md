@@ -33,4 +33,14 @@ General error: 1366 Incorrect string value: '\xF0\x9F\x8F\xBC' for column 'nick_
 把一个远程分支拿下来。
 git checkout -b test origin/test
 
+relay
+ssh-agent
+to start your ssh-agent, you need to eval this command.
+eval `ssh-agent -s`
+
+zend-studio install pydev.
+this site is too old.
+http://www.pydev.org/updates/
+use this instead
+https://dl.bintray.com/fabioz/pydev/latest/
 
