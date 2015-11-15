@@ -57,3 +57,9 @@ http://higo.meilishuo.com/hgadmin/index.php?r=GoodsCheck/test&goods_id=173907958
 Yii 执行 命令行脚本，带参数的话，要使用这个命令把参数的值带进去。
 php /code/hgadmin/protected/yiic GoodsCheck GoodsCheck --event_id=123
 
+
+2015-11-15 01:40
+技术强项
+1. 有较强的学习能力，乐于学习新知识。
+2. 对数据结构和算法有较深刻的认识，有较强的编码能里。
+3. 注重代码整洁，注重代码性能。
