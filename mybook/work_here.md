@@ -88,4 +88,19 @@ shell promopt color, 40m is a backgroud color. learn from your bashrc.
 并没有给他们带来实质性的帮助,我只是凭借着自己的努力来硬撑着.但是前面我并没有太多的时间来建设我的团队,现
 在好像要有时间了,我却想离开这里了.也许这是我私心太重.
 
+shell if 字符串判断相等和不相等.刚才查了一下,发现还是不太熟悉哈.
+下面是一个简单的例子 .
+read 是shell中读入变量的关键字,就不多说了,很easy的.这个是为了在执行操作之前提示用户.后面添加的'XZ'就是为了
+防止这个变量为空的时候,判断错误的情况,撞过这个坑的应该都会这样写吧.
+
+```shell
+read xx
+
+if [ $xx'XZ' != 'YXZ' ]
+then
+    echo "false"
+    exit 1
+fi
+```
+
 
