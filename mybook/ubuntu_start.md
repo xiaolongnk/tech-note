@@ -176,3 +176,29 @@ fastcgi_param  REDIRECT_STATUS    200;
 ```
 其中大部分都是默认的，就是原来就有， RUNTIME_ENVIROMENT 是我自己加进去的，这只是一个例子，我们可以加入进去任何自己想要的变量。
 这样，基本就配置完了我们的 lnmp 环境，基本就可以访问使用了。
+
+###  2015-11-23 20:42
+
+>
+ubuntu unity
+其实窗口标题的CSS选择器是UnityDecoation.top，对于Ambiance主题是在/usr/share/themes/Ambiance/gtk-3.0/apps/unity.css文件里。
+如果想不影响其他的样式，就只修改这个文件。
+将 UnityDecoration.top 的 background-image 设置由：
+from (shade (@dark_bg_color, 1.5)),
+     to (shade (@dark_bg_color, 1.04)));
+修改为：
+from (shade (alpha (@dark_bg_color, 0.4), 1.5)),
+     to (shade (alpha (@dark_bg_color, 0.4), 1.04)));
+将UnityDecoration.top:backdrop 的 background-image 设置由：
+from (shade (#474642, 0.92)),
+     to (@dark_bg_color));
+修改为：
+from (shade (alpha (#474642, 0.4), 0.92)),
+     to (alpha (@dark_bg_color, 0.4)));
+
+
+附上Numix Daily主题安装方法：
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get update
+sudo apt-get install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-shine numix-icon-theme-utouch
+然后运行gnome-tweak-tool设置GTK+主题和icons主题
