@@ -202,3 +202,7 @@ sudo add-apt-repository ppa:numix/ppa
 sudo apt-get update
 sudo apt-get install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-shine numix-icon-theme-utouch
 然后运行gnome-tweak-tool设置GTK+主题和icons主题
+
+###  2015-11-26 18:10
+
+
