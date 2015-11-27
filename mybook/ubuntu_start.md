@@ -205,4 +205,13 @@ sudo apt-get install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-sh
 
 ###  2015-11-26 18:10
 
+ubuntu markdown editor.
+sudo add-apt-repository ppa:voldyman/markmywords
+sudo apt-get update
+sudo apt-get install mark-my-words
+
+
+### this is another markdown editor.
+http://remarkableapp.github.io/linux/download.html
+
 
