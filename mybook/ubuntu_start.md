@@ -184,8 +184,7 @@ ubuntu unity
 其实窗口标题的CSS选择器是UnityDecoation.top，对于Ambiance主题是在/usr/share/themes/Ambiance/gtk-3.0/apps/unity.css文件里。
 如果想不影响其他的样式，就只修改这个文件。
 将 UnityDecoration.top 的 background-image 设置由：
-from (shade (@dark_bg_color, 1.5)),
-     to (shade (@dark_bg_color, 1.04)));
+k
 修改为：
 from (shade (alpha (@dark_bg_color, 0.4), 1.5)),
      to (shade (alpha (@dark_bg_color, 0.4), 1.04)));
@@ -213,5 +212,8 @@ sudo apt-get install mark-my-words
 
 ### this is another markdown editor.
 http://remarkableapp.github.io/linux/download.html
+
+vim slowstart.
+vim --startuptime vim.log -c q
 
 
