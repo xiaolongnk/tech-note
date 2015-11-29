@@ -8,6 +8,7 @@ vim 几个常用的插件。
 |nerdtree | 一个文件管理器 |
 | gittur | git集成插件 |
 |bundle  | 插件管理|
+|vim-markdown | as it's name |
 
 
 还有一些语法检查的插件，都很赞的。

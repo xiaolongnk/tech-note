@@ -19,10 +19,15 @@ END 是最后面结束执行的.
 sed
 sed 用得最多的就是替换了。很多时候，grep旧足够了。
 
+sed -i "This command to use replace the input file"
+just a simple example.
+sed -i 's/--/-/'
+
 
 grep
-就是一个简化了的 sed 。
 
 find
 
 这四兄弟，简直就是 linux 的 什么一样。
+
+
