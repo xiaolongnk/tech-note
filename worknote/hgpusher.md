@@ -1,6 +1,7 @@
 #HIGO 消息推送
 
-简介 系统通过 python 构建，python2.7 , 用到的python 扩展 包括 redis , pymongo, MySQLdb, mlogging , xinge sdk 运行系统为 cenos 6.5. 推送包括内容包括 系统消息推送，群聊推送，私聊推送。
+>
+>简介 系统通过 python 构建，python2.7 , 用到的python 扩展 包括 redis, MySQLdb, mlogging , xinge sdk 运行系统为 cenos 6.5. 推送包括内容包括 系统消息推送，群聊推送，私聊推送。
 
 ##1. 系统push
 	
@@ -8,7 +9,6 @@
 
 类型 | 说明
 ----|----------------------------
-PUSH\_TYPE\_CHAT = 1  |  1v1 聊天 XMPP
 PUSH\_TYPE\_NEW\_ORDER = 5  |  新订单
 PUSH\_TYPE\_GOODS\_SOLDOUT = 6  | 售罄
 PUSH\_TYPE\_GOODS\_SENT = 7  | 商品已发货
@@ -39,7 +39,7 @@ hgXingeSending | 从`hg_xinge_queue `中那数据，调用 HgXinge 进行处理�
 hgXinge | 将消息提发送给 xinge ，推送处理 结束
 
 ##2. 群聊push
-每隔10s从mongo 的 chats 表读取最新的聊天消息，对每一条消息，推送给不在线的群主。整个主流程如下：
+每隔10s从 调用主站借口,获取需要推送的消息的列表,对每一条消息，推送给不在线的群主。整个主流程如下：
 
 ```python
 def doWork(self):
@@ -47,39 +47,6 @@ def doWork(self):
     for i in newchats:
     	if self.message_ok(i)
     		self.semd_message_to_group_owner(i)
-```
-
-如果有上次取消息的时间，返回上次取消息的时间，如果没有，返回库里消息的最大时间戳。
-
-```python
-def getTime(self):
-    ret = self.redis_conn.get(self.redis_key_time_stamp);
-    cur_max_time = self.get_max_time()
-    self.redis_conn.set(self.redis_key_time_stamp,cur_max_time)
-    if ret :
-        return ret
-    else :
-        return cur_max_time
-```
-
-系统启动时，会拿到 chats 表中最大的时间戳，记录在redis中，作为初始时间。从 mongo 中根据时间戳那时间，时间戳是上次拿数据时记录的时间。
-
-```python
-def getNewChats(self):
-    mongo_table = 'chats'
-    condition = {}
-    condition['createAt'] = {}
-    #获取上次的时间戳
-    cur_push_time = self.getTime()
-    condition['createAt']['$gt'] = str(cur_push_time)
-    #设定时间
-    retcond = {'_id':1,'seq':1,'group_id':1,'createAt':1,'type.':1,'data':1,'user.user_id':1}
-    self.mongo_conn.setTable(mongo_table)
-    ret = self.mongo_conn.query_all(condition,retcond)
-    ans = []
-    for i in ret:
-        ans.append(i)
-    return ans
 ```
 
 判断条件的方法如下, 如果用户退出登录，用户在线，用户的消息接受模式为 消息免打扰。就不发送推送。
@@ -146,29 +113,29 @@ def run(self):
 主要文件 | 说明
 --------|--------------
 groupChatStart.py | 启动 扫描消息进程
-group_pusher.py | 启动`group_pusher`中的run方法，从 chats 中拿到需要推送的新消息，放入 `higo_group_chat_message` 中
-group_hgDistributeStart.py | 启动 GroupHGDistributionstribution 的 run 方法，处理 `higo_group_chat_message` 
-group_hgDistribe.py | 处理群聊消息 的住循环模块 
-group_distribute.py | 消息预处理逻辑模块，从`higo_group_chat_message`队列中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到`higo_group_xinge_queue`中
-group_hgXingeStart.py  | 启动 `GroupXingeSending`的run 方法， 处理`higo_group_xinge_queue` 中的消息。
-group_xingeSending | 发送群聊消息的住循环
+`group_pusher.py` | 启动`group_pusher`中的run方法，从 chats 中拿到需要推送的新消息，放入 `higo_group_chat_message`中
+`group_hgDistributeStart.py` | 启动 GroupHGDistributionstribution 的 run 方法，处理 `higo_group_chat_message` 
+`group_hgDistribe.py` | 处理群聊消息 的住循环模块 
+`group_distribute.py` | 消息预处理逻辑模块，从`higo_group_chat_message`队列中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到`higo_group_xinge_queue`中
+`group_hgXingeStart.py`  | 启动 `GroupXingeSending`的run 方法， 处理`higo_group_xinge_queue` 中的消息。
+`group_xingeSending` | 发送群聊消息的住循环
 hgXinge | 将消息发送给信鸽，推送结束
 
-##3. 私聊push  
+### 3. 私聊push  
 私聊推送和群聊推送基本原理基本相同。改变了基本的配置。
 
 主要文件  | 说明
 --------|------------
-privateChatStart.py | 启动 扫描消息进程
-private_pusher.py | 从私聊表中获取需要推送的消息，push 到 私聊队列 `higo_private_chat_message`
-private_hgDistributeStart.py | 私聊消息预处理模块的启动脚本
-private_hgDistribute.py | 私聊消息预处理模块的主循环模块
-private_distribute.py | 从`higo_private_chat_message`中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到 `higo_private_xinge_queue`中
-private_hgXingeStart | 启动进程 从`higo_private_xinge_queue`中拿到消息，推送至 xinge 平台
-private_hgXingeSending | 私聊消息发送主循环
+`privateChatStart.py` | 启动 扫描消息进程
+`private_pusher.py` | 从私聊表中获取需要推送的消息，push 到 私聊队列 `higo_private_chat_message`
+`private_hgDistributeStart.py` | 私聊消息预处理模块的启动脚本
+`private_hgDistribute.py` | 私聊消息预处理模块的主循环模块
+`private_distribute.py` | 从`higo_private_chat_message`中拿到消息，按照预处理逻辑进行处理，并将处理后的消息发送到 `higo_private_xinge_queue`中
+`private_hgXingeStart` | 启动进程 从`higo_private_xinge_queue`中拿到消息，推送至 xinge 平台
+`private_hgXingeSending` | 私聊消息发送主循环
 hgXinge | 将消息发送给信鸽，推送结束
 
-#4 相关配置
+### 4 相关配置
 
 重要的配置是下面几项，上线前请确认下面的配置和客户端是一致的。
 
@@ -197,7 +164,7 @@ local_ios_higo_skey = f7706ac90eb5e9dbbd3c7f5447e4011c
 
 ```
 
-#5 系统启动脚本
+### 5 系统启动脚本
 
 ```shell
 #!/bin/bash
@@ -248,5 +215,5 @@ fi
 
 #6 优化空间
 
-1. 群聊推送，考虑到发送给所有成员，消息太多，延迟太长，目前只发送给群主。后期可以研究下超时原因，分析出瓶颈，进行全员push。
+1. 目前只发送给群主。
 2. 每天定时重启 系统。08:00 start， 23：00 stop.
