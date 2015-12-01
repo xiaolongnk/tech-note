@@ -24,10 +24,10 @@ PHP 编译安装
 首先是编译PHP的参数。
 
 ```shell
-./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc' 
+./configure  '--prefix=/home/service/php/' '--with-config-file-path=/home/service/php/etc'
     '--with-apxs2=/home/service/apache2/bin/apxs' '--with-zlib' '--with-curl' '--with-gd' '--without-pear'
     '--enable-mbstring' '--with-gettext' '--with-freetype-dir=/usr/' '--with-jpeg-dir=/usr/local/jpeg'
-    '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/' 
+    '--with-png-dir=/usr/local/libpng' '--enable-sockets' '--enable-shmop' '--with-libxml-dir=/usr/local/libxml2/'
     '--with-openssl' '--with-mcrypt=/usr/local/libmcrypt/ --with-mysql --with-pdo-mysql
 ```
 其中 mysq.so pdo_mysql.so 就不用再加载了。如果写上，会提示这个错误。因为这些模块在编译PHP的时候已经开启了，
@@ -35,7 +35,7 @@ PHP 编译安装
 没有那个参数，那么需要再编译mysql 和 pdo--mysql 扩展，然后安装，方法和其他模块的安装是一样的，在PHP源码的 ext
 目录下可以找到,安装方式下面有详细描述。
 >
-PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 
+PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library)
 '/home/service/php/lib/php/extensions/no--debug-zts-20131226/pdo_mysql.so' in Unknown on line 0
 
 pkhp.ini 里面的配置应该是这样的。
@@ -77,7 +77,7 @@ CFLAGS="--O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-conf
 
 ```
 /home/service/php/bin/php --m | grep gd
-/home/service/php/bin/php --m | grep redis 
+/home/service/php/bin/php --m | grep redis
 /home/service/php/bin/php --m | grep mongo
 /home/service/php/bin/php --m | grep gmagick
 /home/service/php/bin/php --m | grep imagick
