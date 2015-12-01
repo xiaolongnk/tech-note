@@ -216,4 +216,6 @@ http://remarkableapp.github.io/linux/download.html
 vim slowstart.
 vim --startuptime vim.log -c q
 
-
+vim delete duplicate lines.
+sort
+g/^\(.\+\)$\n\1/d

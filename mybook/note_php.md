@@ -19,10 +19,10 @@ html 中table 中的 border属性的设置。如果设置不正确，可能没�
 
 2014-12-07 17:05
 做子查询的时候，必需要给结果集起别名，否则会有语法错误。
-mongo 如果要查询的数据是分为几层的话，应该用这总方式查询。用这种方式来写查询条件。 user.user_id 
+mongo 如果要查询的数据是分为几层的话，应该用这总方式查询。用这种方式来写查询条件。 user.user_id
 
 sql 中将联表出现的 null 替换成 0， 可以用这个方法。
-if(tb2.shop_click is null, 0,tb2.shop_click) 
+if(tb2.shop_click is null, 0,tb2.shop_click)
 
 
 如果 group by 来去重要比 distinct 效率要高很多。
@@ -38,7 +38,7 @@ set @start = curdate();
 另外，yii 中执行的sql 也可以包括好几个句子，但是他们的 读写必须是一直的，就是说，要么是执行 queryall ， 要么是执行 execute。
 当然query 是从库， execute 是主库，表示写数据。
 
-mysql 中和时间相关的函数用着还是很方便的。date_sub(); date_add(); interval 1 day; 
+mysql 中和时间相关的函数用着还是很方便的。date_sub(); date_add(); interval 1 day;
 另外那些mysql 的工具也是很好用的，不用一直对着 cmd ，有时候还是没有必要的，毕竟不够方便。要结合起来才可以。
 
 
@@ -156,7 +156,7 @@ preg_replace();
 
 应该是只会推送给离线的朋友们，在线的是要跳过的。
 mongo , redis, mysql ;
-I need you. 
+I need you.
 
 import pprint
 
@@ -226,7 +226,7 @@ and see the file runtime/application.log
 
 不过正因为这个问题，我队 Yii 的了解也多了一些，还需要继续学习。
 
-刚才遇到的问题是 
+刚才遇到的问题是
 CGridView 的问题。想要实现 columns 里面的 指定列的自定义，就是不同类型给不同的颜色。但是也找了
 好久。
 想的是给一个 html 元素。但是刚开始是不会显示的，除非你加上这个选项。 'type'=>'raw';
@@ -275,7 +275,7 @@ create table t_pandora_home_banner_item(
 Yii app's application.log is in protected/runtime/application.log; not in main dir's runtime/
 
 给的数据大致是这样，根据里面的type ， 去 分发到不同的接口。
-mtype == 1 
+mtype == 1
 	call  group_chat/get_detail  shop_id = mvalue;
 mtype == 2
 	call  event/get_event_items  event_id = mvalue;
@@ -311,7 +311,7 @@ function addSelected(){
 	var a = <?php echo $id; ?>;
 	// id = 0 表示创建，跳转到 创建的 url
 	if(a==0){
-		$("#form2").attr("action","<?php echo Yii::app()->createUrl('homeBanner/Create');?>");	
+		$("#form2").attr("action","<?php echo Yii::app()->createUrl('homeBanner/Create');?>");
 	}else if(a>0) {
 		$("#form2").attr("action","<?php echo Yii::app()->createUrl("homeBanner/Update&id=".$id);?>");
 	}
@@ -333,7 +333,7 @@ table 里面的内容可以是 hidden 的。他可以不显示出来。
 checkbox value='1' checkbox 比较简单，如果选中的话，他的值就是对应的 value 的值。这个值是会被提交的。
 所有的 input 控件提交都是通过 name 来指定属性的。在 php 文件中，可以通过$_REQUEST['your_name'] 来获得
 对应的属性的值。
-<select> <option selected='selected'> </option> <option> </option> </select> 
+<select> <option selected='selected'> </option> <option> </option> </select>
 jquery $("#"); # 表示通过 id 来选择。. 表示通过class 来选择。还有就是上面的选择方式，是通过伪标签来选择。
 input[]  [] 里面是这个控件的name属性。冒号后面是 checked 属性的值。.val() 是这个属性的值。这样可以获得值，
 当然，里面可以给这个元素设定属性值。
@@ -352,10 +352,10 @@ function() {
 }
 
 radio, checkbox , button, 他们都有对应的时间，可以在里面添加对应的 函数。可以带参数的。
-checkbox 也可以写成数组。 
+checkbox 也可以写成数组。
 name='chk[]'  $_REQUEST ['chk'] 取值的方式是这样的。
 
-mysql 
+mysql
 
 update , select , 都可以联表操作。 当然，联表的时候都需要指定表的别名。
 可以 从一张表选择内容，然后将选择的结果插入指定的表中。
@@ -368,10 +368,10 @@ insert into youtable select * from table1 where condition; 当然，表的结构
 
 function genJsCode($classid)
 {
-	$ret = sprintf('<script> 
+	$ret = sprintf('<script>
 			var tag%sid = 1;
 			function xxx%s()
-			{ 
+			{
 				if(tag%sid&1) {
 					$(".xxx%s").attr("checked","checked");
 					$("#ssss%s").attr("value","反选");
@@ -423,7 +423,7 @@ select mvalue as event_id, count( distinct uuid ) as click_num from t_pandora_st
 
 给定一个 event_id 就可以得到这个 活动中的所有的商品的点击数量。
 这个用来现实 活动详情的显示。
-select mvalue as goods_id, parent_id as event_id , count(*) as click_number from t_pandora_statistics 
+select mvalue as goods_id, parent_id as event_id , count(*) as click_number from t_pandora_statistics
 	where maction='10000' and mfrom in (10004) and ctime > '2015-01-10' group by mvalue;
 
 
@@ -433,12 +433,12 @@ select mvalue as goods_id, parent_id as event_id , count(*) as click_number from
 所有的尖货
 select * from t_pandora_statistics where maction = '10000' and mfrom =10002 and ctime > '2015-01-10';
 
-select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where 
+select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where
 	maction = '10000' and mfrom =10002 and ctime > '2015-01-12' group by mvalue  order by click_number desc limit 10 ;
 
 所有的精选商品
 
-select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where 
+select mvalue as goods_id, count(*) as click_number   from t_pandora_statistics where
 	maction = '10000' and mfrom =10001 and ctime > '2015-01-12' group by mvalue  order by click_number desc limit 10 ;
 
 
@@ -488,7 +488,7 @@ public static function getCurrentPageEvents ( $offset, $size ,$is_new )
 /*
  * @author: xiaolongou
  * 按照升序排列，只有在 商品不足的时候会调用。
- */ 
+ */
 public static function getEventsList($offset, $limit , $is_new)
 {
 	...
@@ -498,7 +498,7 @@ public static function getEventsList($offset, $limit , $is_new)
 
 程序上线的时候，应该把和配置相关的文件删除掉，这样上线后不用重新配置。
 Traceback (most recent call last):                                                           
-  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 258, in _bootstrap 
+  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 258, in _bootstrap
     self.run()                                                                               
   File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 114, in run        
     self._target(*self._args, **self._kwargs)                                                
@@ -584,7 +584,7 @@ C是
 
 nginx
 检测配置文件的正确性，不要加载一个又明显错误的配置文件
-nginx -t -c /usr/nginx/conf/nginx.conf 或者向下面这样也可以 nginx -t 
+nginx -t -c /usr/nginx/conf/nginx.conf 或者向下面这样也可以 nginx -t
 启动  停止  或者重启 nginx 。
 nginx  -s reload
 
@@ -638,17 +638,17 @@ a series of requests. These processes are owned by the FastCGI server, not the w
 To service an incoming request, the web server sends enviroment information and the page request itself
 to a FastCGI process over a socket (in the case of local FastCGI processes on the web server) or TCP
 connection (for remote FastCGI processes in a server farm). Responses are returned from the process to
-the web server over the same connection, and the web server subsequently delivers that response to the 
-end-user. The connection may be closed at the end of a response, but both the web server and the FastCGI 
-service processes persist.  Each individual FastCGI process can handle many requests over its lifetime, 
-thereby avoiding the overhead of per-request process 
+the web server over the same connection, and the web server subsequently delivers that response to the
+end-user. The connection may be closed at the end of a response, but both the web server and the FastCGI
+service processes persist.  Each individual FastCGI process can handle many requests over its lifetime,
+thereby avoiding the overhead of per-request process
 creation and termination. Processing of multiple requests simultaneously can be achieved in serveral ways:
 by using a single connection with internal multiplexing (i.e. multiple requests over a single connection);
 by using multiple connections; or by a combination of these techniques. Multiple FastCGI servers can be
 configured, increasing stability and scalability.
-Web site administrators and programmers can find that the separation of web applications from the web 
+Web site administrators and programmers can find that the separation of web applications from the web
 server in FastCGI has many advantages over embedded interpreters(mod_perl, mod_php, etc). This separation
-allows server and application processes to be restarted independently - an important consideration for busy 
+allows server and application processes to be restarted independently - an important consideration for busy
 web sites. It also enables the implementation of per-application / hosting service security policies, which
 is an important requirement for ISPs and web hosting companies. Different types of incoming requests
 can be distributed to specific FastCGI servers which have been equipped to handle those particular
@@ -735,7 +735,7 @@ png.h   libpng-dev   you need to install this dev to finished your compilination
 
 编译php常见的20个错误。
 http://crybit.com/20-common-php-compilation-errors-and-fix-unix/
-	
+
 编译apache2， configure 的时候提示 APR not found
 
 I solved this problem by this command.
@@ -764,11 +764,11 @@ sudo vim /etc/sudoers
 
 sudo evn 里面列出的就是我们的  sudoer 的 $PATH 的内容。显然和我们的预期是不一样的。
 
-In ubuntu, you can switch to root like this. 
+In ubuntu, you can switch to root like this.
 sudo -i
 sudo su -
 
-	
+
 Thus whatever is set in the /etc/environment for the path is overridden by sudo.
 http://askubuntu.com/questions/128413/setting-the-path-so-it-applies-to-all-users-including-root-sudo
 
@@ -835,7 +835,7 @@ this condition definition can save your release code size :).
 2015-02-08 23:21
 FOR C++;
 what is different between static type and dynamic type.
-static type: know when program is in compile process. 
+static type: know when program is in compile process.
 dynamic type: know only in the run process.  For pointer type.
 
 
@@ -903,7 +903,7 @@ function doReject(){
 		}else {
 			alert('更新失败');
 		}
-	});	
+	});
 }
 
 
@@ -919,9 +919,9 @@ This is a great work.
 http://www.php-internals.com/
 
 
-pecl is 
-PECL is a repository for PHP Extensions, providing a directory of all known extensions 
-and hosting facilities for downloading and development of PHP extensions. 
+pecl is
+PECL is a repository for PHP Extensions, providing a directory of all known extensions
+and hosting facilities for downloading and development of PHP extensions.
 PECL is very important.
 
 ord 函数是做什么的。应该研究一下。
@@ -1090,7 +1090,7 @@ todo list:
 2015-06-29 17:01
 work list.
 1. 研究一下xinge_push 的sdk.研究批量推送的功能。写一个 demo 出来。done
-2. 尝试给列表的API 做程序级别的缓存。 
+2. 尝试给列表的API 做程序级别的缓存。
 
 2015-06-30 11:40
 
@@ -1116,10 +1116,10 @@ work list.
 
 2015-07-06 14:09
 
-1. 活动期间的 库存 和 销量独立。 
+1. 活动期间的 库存 和 销量独立。
 2. 每一个提报商品如果有多个sku，需要选择价格最低的sku，如果这个sku库存为0的话，应该过滤掉。使用 presale_repertory 来过滤吗？
 3. 真正不太好做的是一个提报商品多个 sku 的情况。这个时候需要做分组。当一个售罄，需要显示下一个商品。他们的库存和销量都是分开的，这些该如何处理。
-4. 
+4.
 
 2015-07-07 14:15
 git reflog 可以到任何一个版本。 git reset --hard version_nu.
@@ -1166,6 +1166,3 @@ echo "运行配置是"$pusher_env
 is null  和 is not null 的用法。
 mysql null 是不能参与比较的，要注意这种情况。
 select * from hellotest where xx is null;
-
-
-
