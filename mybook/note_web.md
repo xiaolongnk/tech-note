@@ -140,3 +140,25 @@ pandora API 需要重定向才能工作
     --add-module=/root/src/lua-nginx-module-0.9.18rc1 \
     --add-module=/root/src/redis2-nginx-module-0.12
 ```
+### 2015-12-03 19:52
+```
+create table t_pandora_goods_record(
+    id bigint(20) not null auto_increment primary key,
+    account_id bigint(20) not null default 0 comment '用户ID',
+    goods_ids text not null default '' comment '浏览过的商品id,用逗号分隔,最多300个',
+    mtime timestamp not null defult '' comment '修改时间'
+)engine = InnoDB, charset =utf8, auto_increment = 1;
+```
+2. 实现思路
+    1. 利用redis pub/sub 功能.在商品详情接口中添加publish操作.
+    2. 启动subscribe任务,监听channle.在subscribe的callback中执行数据维护操作.
+    3. 数据维护操作如下:
+        `goods_ids` 最大长度是300个`goods_id`,先拿到用户id对应的`goods_ids`,在程序中
+        判断`goods_ids`中`goods_id`的长度,如果长度大于300,讲最后面的pop,push最新的
+        `goods_id`到数组的最前面,然后讲这个`goods_id`写入数据表.
+    4. 清楚浏览足迹,将这个用户的数据置空.
+    5. 可能出现的问题,单进程的subscribe进程处理能力有限,是否可靠.如果不可靠,就要用redis
+        消息队列来实现,因为这里数据是敏感的,不能丢失.
+        从目前来看,redis queue 更为可靠,难点在于用php实现守护进程.
+
+
