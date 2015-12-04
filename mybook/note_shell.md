@@ -67,4 +67,5 @@ fgrep grep -F 只支持简单的全部匹配,部支持正则匹配.
 
 nohup command > out.txt 2>&1 & 这样是将所有的输出,包括错误都重定向到out.txt中.
 
-
+grep 输出匹配内容的上下两行内容,输出上下文,记得这个参数.
+grep -C 2 'linux'
