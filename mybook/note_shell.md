@@ -49,3 +49,22 @@ find
 git remote add code "url"
 git push code master
 
+grep get yourip.
+
+ifconfig | grep -E -o "inet addr:([0-9]{1,3}.){3}([0-9]{1,3})" |  grep -E  -o "([0-9]{1,3}.){3}([0-9]{1,3})"
+ip a| grep -E -o "inet addr:([0-9]{1,3}.){3}([0-9]{1,3})" |  grep -E  -o "([0-9]{1,3}.){3}([0-9]{1,3})"
+
+linux 下 ifconfig | grep 'inet ' | awk '{split($2, ip_cntr, ":"); print ip_cntr[2];}'
+
+tmux.conf
+想在tmux.conf中添加一些shell脚本,可以获取到我自己的IP地址.
+这样我在连接代理的时候,就不用是自己查了.我把自己的tmux的status line 搞成了1s刷新一次.用了这个命令.
+
+set status-interval 1
+
+egrep grep -E
+fgrep grep -F 只支持简单的全部匹配,部支持正则匹配.
+
+nohup command > out.txt 2>&1 & 这样是将所有的输出,包括错误都重定向到out.txt中.
+
+
