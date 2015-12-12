@@ -488,3 +488,244 @@ php 的线程之类的是怎么样的，有没有 sleep 之类的函数。python
 添加一些逻辑，当然，我必需学会这些逻辑是怎么完成的，我只需要在上层进行修改就可以了，基本上大多数程序都
 是可以复用的，就算这个程序我没办法实用，我也要能够自己写出一套来。这是对我的最基本的要求。
 
+
+
+Pydev 的配置.
+http://www.cnblogs.com/Realh/archive/2010/10/10/1847251.html
+
+最终还是要装一个虚拟机的，没有虚拟机还是很不方便的。
+基本上都是看 arch wiki 安装的。把该装的都装上，按照上面的步骤，应
+该没有什么问题。
+这个是 二叉树的 遍历,非递归的实现.有空好好看下.
+http://www.cnblogs.com/dolphin0520/archive/2011/08/25/2153720.html
+
+AC 自动机的一个练习题.
+http://blog.sina.com.cn/s/blog_6fbae11201011atv.html
+一些字符欻的问题,还是最好用下 AC 自动机,有空要好好研究一下 AC自动机.
+状态, 状态转移.
+AC 自动机
+http://www.notonlysuccess.com/index.php/aho-corasick-automaton/
+
+2013-10-19 20:13:08
+对于面试,我真得再不想说什么了,在没有比这更糟糕的了,再也不去了.
+
+2013-10-21 11:35:36
+mysql 学习
+foregin key
+当初学习的时候不想这些问题,现在才开始想,真是愚昧至极了.
+当出学习的时候,就没有好好理解,现在才发现自己什么都没有学会,难怪面试的时候
+会表现那么差.所以以后在学习的时候要注意这一点.要用相同的时间学好才算本事,多用
+时间只能说明你脑残.
+
+mysql 中是没有 top 关键字的，要想实现类似的功能，我们可以使用 limit 关键字。
+举例如下:
+	select * from basic group by id limit 1,3;
+这里的 1 表示从第 2 条开始，3表示找3条记录返回。
+
+我需要找到一个比较全面的联系题，然后好好练习一下。
+最基本的就不说了，主要是几个关键字的使用，如下：
+in
+not in
+exists 和 not exists 关键字。
+还有就是多表查询，
+综合使用这些个查询条件，可以实现更多的查询需求。
+
+可以用 alter table tablename add primary key(col); 这样可以给一个新建好的表添加一个主键。
+
+同样的，可以用 curdate() 和 curtime() 来找到当前的 日期 和 时间!
+
+mysql 复制旧表数据到新表的方法。详细的见下面的描述.
+create table newtable select * from oldtable;
+
+CREATE TABLE 新表
+SELECT * FROM 旧表
+
+3.复制旧表的数据到新表(假设两个表结构一样)
+
+INSERT INTO 新表
+SELECT * FROM 旧表
+
+4.复制旧表的数据到新表(假设两个表结构不一样)
+
+INSERT INTO 新表(字段1,字段2,…….)
+SELECT 字段1,字段2,…… FROM 旧表
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+刚才想了一下 having 的用法,我自己不是很清楚,
+having 后面可以跟 聚合 函数.他们都具有过滤功能.
+
+mysql 创建主键的方法和 ms sql 有所不同,所以不能用原来的那个方式来创建. 按照老师课件上的方法
+是行不通的. 
+在 mysql 中为一个数据库添加 外键约束的方法如下:
+	alter table yourtable add constraint yourtable_anothertable_fk Foreign Key (goodsid) References another_table(goodsid);	
+
+可以用 show engines; 来查看 mysql 的数据库引擎. 好像默认的是 MyISAM,但是我的 现在是 InnoDB. 可以支持事务,外键
+
+mysql 的 null 值比较 需要用到 isnull 函数,而不能直接和 var=null ,这样写是错误的.
+
+mysql 基本操作
+
+delete from xlo where account=""  这样可以删除掉没用的行.
+当然还有 alter 语句,alter 语句可以修改很多东西.
+
+Php 连接数据库. 其实这些代码都可以从 w3cschools 中得到.
+
+又一个关于 mysql 的问题,如果我设计了一个 autoIncrement 的变量,那么这个变量真得会自增吗?
+比如说原来又3个变量,他们的编号分别是1,2,3,当我删掉1号数据之后,那么剩下的2个数据的id 会
+自动变成1,2 吗?如果可以的话,那么设计一个自增的变量做为主键确实是很又必要了.
+
+我其是已经掌握了吧工作做好的技能了,现在已经不需要什么新东西了,现在就需要我下功夫来把事情
+做好了. web 方面,我想前端学好也是很不错的,我可以考虑lamp.这个我应该是比较容易掌握的.
+
+2013-10-23 18:11:32
+
+我可以在工作中忘记烦恼,所以要努力工作.
+感觉这写东西好难,自己学不会.
+人也真是,就那自己来说,你往回看看,你那么多的时间都用在游戏上面了,然后现在因为你不够优秀
+而找不到好的工作,所以你现在的惨淡是因为你过去不够努力.如果你想改变,那么你必须要改变你
+不努力的习惯.
+要有变化的眼光,要能看到未来,如果你做不到这一点,你只能一直吃亏,一直做一个弱者.
+
+
+2013-10-25 23:19:43
+今天的 AC 任务没有完成,今天主要参加了两家笔试.
+在笔试的过程中发现 SQL 的一些用法,晚上回来复习了一下,似乎看到了一点企业中需要的东西.
+其实就是 MYSQL 和 PHP , java 这三项技术,掌握好,应该没有太大问题.
+所以,后面这些天如果有时间,就学习这 3 方面的东西.
+
+
+2013-10-27 09:39:55
+我对基本算法的掌握还不是很好,我刚才看了一下我的CPP,还是有点少,尤其是基本算法那一部分,大部分
+都不是我自己实现的,我需要完全用我的分格实现,这才算是我的.所以,不要有什么抱怨,好好联系吧.
+明天要去面试,要好好准备下 二叉数方面的知识.
+
+2013-10-27 17:33:07
+
+如何让 vim 支持 php 缩进,真是一个让我很头疼的问题,今天终于成功解决了.
+http://vim.wikia.com/wiki/Better_indent_support_for_php_with_html
+通过个中渠道找到了这个链接,加个脚本进去就 OK 了.
+
+foreach 用来循环遍历数组;
+
+2013-11-03 00:13:17
+
+Now i am using arch linux again; it's a hard time for me to install it.
+a document is necessary for these two days;
+
+here are two usefull commands;
+If you want to write your yoursystem.iso in your usb in linux , do the follow;
+
+dd bs=4M if=yoursystem.iso of=/dev/sdx && sync
+
+sdx is sdc or others , don't use sd1 or sd2, enven there is a sd1 or sd2;
+
+after this, do the command below;
+dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
+
+if your want to mount your hard disk or your use in read and write mode;
+you need to install two extra softwares;
+first is fuser and next is ntfs-3g;
+
+these two software can fulfill your needs if you know them well;
+
+first kill all process that use your hard disk;
+
+lsblk is a useful command, that your can see your disk's structure;
+fuser -k /dev/sdb1
+umount path;
+you cant get path in lsblk command;
+
+then mount your disk with ntfs-3g; just like this;
+
+mount -t ntfs-3g /dev/sdb1 /mnt/yourpath
+or your can  use ntfs-3g directly;
+ntfs-3g /dev/sdb1 /mountlocal
+
+这个链接帮助我安装上了 grub 在我的linux上。
+http://blog.chinaunix.net/uid-21873901-id-1813548.html
+我不明白其中的原理，在英文环境下设置中文输入发似乎有点强人所难。把环境改成中文的好像会方便一点。
+good easy, for reading!
+http://blog.chinaunix.net/uid-28769209-id-3964021.html
+
+
+vbird's book
+http://vbird.dic.ksu.edu.tw/linux_basic/fedora_4/0160startlinux-fc4.php#start_kde
+
+2013-11-08 23:33:10
+
+something about c++ rand
+
+what you should know is header name of this function;
+it's stdlib library;
+and another important sentence is;
+srand((usigned)time(NULL));
+
+2013-11-09 10:42:28
+
+inline ;
+if you have class function's realisation implemented in class;
+then compile can convert this function into inline type auto;
+a inline method like a define'd method,will be processed in the
+pre-compile process; more efficient than function's;
+
+it is widely use to replace method marcos;
+
+在类外定义的成员函数之前加上 inline
+我们一般将 inline 函数的定义写在 头文件中.
+
+http://www.cnblogs.com/pkuoliver/archive/2010/10/06/1844725.html
+
+2013-11-12 23:25:09
+find /html -name *.html
+find /home/fox/webserver/ -name *.html
+find all html file in /html directory;
+
+grep -r -n "yourstring" webserver
+-r can make a rescurve search;
+add common for many line, this site is useful; thanks.
+http://hi.baidu.com/hongszh/item/b932a50cb4b616cf915718ee
+
+2013-11-30 11:53:16
+查看 系统 信息的一些 命令。
+http://bbs.chinaunix.net/thread-1956959-1-1.html
+
+2013-12-01 11:20:50
+快速幂算法
+http://blog.csdn.net/hkdgjqr/article/details/5381292
+
+我想在我的Ubuntu 上安装 Eclipse for android; google 到这个东西，
+貌似很有用。
+http://askubuntu.com/questions/107192/how-can-i-install-eclipse-with-the-adt-android-development-tool-on-ubuntu-11-1
+
+2013--12--8
+
+Ubuntu的shell之bash和dash
+Ubuntu的 shell 默认安装的是 dash，而不是 bash。
+运行以下命令查看 sh 的详细信息，确认 shell 对应的程序是哪个：
+$ls -al /bin/sh
+
+dash 比 bash 更轻，更快。但 bash 却更常用。
+如果一些命令、脚本等总不能正常执行，有可能是 dash 的原因。
+比如编译 Android 源代码的时候，如果使用 dash，则有可能编译出错，或者编译的系统不能启动。
+
+通过以下方式可以使 shell 切换回 bash：
+$sudo dpkg-reconfigure dash
+然后选择 no 或者 否 ，并确认。
+这样做将重新配置 dash，并使其不作为默认的 shell 工具。
+
+也可以直接修改 /bin/sh 链接文件，将其指定到 /bin/bash：
+$sudo ln -fs /bin/bash /bin/sh
+
+还有一种解决方法是，在脚本文件中直接指定使用的 shell，而不是指定 sh：
+例如使用 #!/bin/bash 或者 #!/bin/dash 而不是#!/bin/sh。
+但这样将丧失脚本的通用性，使其在不具备所指定脚本的系统下不能被执行。 
+============================================================================
+
+linux chromium  flash-plugin
+
+sudo apt-get install pepperflashplugin-nonfree
+sudo update-pepperflashplugin-nonfree --install
+链接在这里
+http://www.linuxidc.com/Linux/2014-06/102593.htm
+有了这个，linux 就好用多了，再也不用用 air 看视频了。
