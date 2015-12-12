@@ -81,3 +81,18 @@ git remote rm old_pandora
 git 将某个分支强制覆盖。比如我想用newpush  的代码完全覆盖 master 的代码。
 可以这样做。
 git push origin newpush:master -f
+
+shell_function;
+
+函数的返回值,函数的参数.
+<http://www.jb51.net/article/33895.htm>
+这里看到了一些参考,主要是这两个参数, $@ 和 $* 是一样的,可以将函数的参数当做一个字符串.
+如果你仍然利用$1,$#,$0这些而参数,那么你可能得不到你想要的结果.
+并且,我在shell下添加了一些常用的颜色的变量,只要. ~/.colorful 就可以使用这些变量了.
+可以进行一些彩色的输出,是得程序更加明确.
+其他的就是对shell更加熟悉了,大小的比较,相等的比较.还有if else elif 这样的语句,也好多了.
+我的那个启动脚本更加明确了.
+同时,我还发现了,vim中也可以做一些在insert mode下的快捷键绑定,这样可以方便很多.
+Goods job.
+
+
