@@ -111,7 +111,7 @@ pandora API 需要重定向才能工作
 
 
 ## 编译参数
-```
+```shell
 ./configure \
     --prefix=/home/service/nginx \
     --with-http_ssl_module \
@@ -171,6 +171,4 @@ set_time_limit(0); 设置程序的执行时间,如果是0说明永久执行下�
 进程组, 每个进程都属于一个进程组,这个号码等于该进程组组长的pid.
 
 守护进程编程要点.
-
-
 
