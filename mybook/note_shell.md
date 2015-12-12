@@ -96,3 +96,26 @@ shell_function;
 Goods job.
 
 
+第一步：添加".gitignore"文件
+往项目根目录添加一个文件".gitignore"。这文件和".git"文件夹同级。
+但是在windows下无法创建".gitignore"文件名，必须把文件名改成这样".gitignore.",
+在文件名最后加一个英文句号就可以了。
+第二步：设置过滤条件
+
+    bin/ 过滤所有bin文件夹
+    obj/ 过滤所有obj文件夹
+    ValorNAV_deploy/ 过滤所有ValorNAV_deploy文件夹
+    *.dll 过滤所有dll文件，这个最好不要使用dll，因为项目中像lib文件夹我们会放一些dll包。
+
+1.如果新建一个空的Git仓库。直接拉取就可以了。
+git rm --cached <文件名> 删除文件的缓存
+git rm --cached -r <目录名> 删除目录下的所有文件的缓存
+通过上面的命令把缓存删除后，commit后再push到服务器。
+其它的团队成员可以直接pull，过滤功能就能正常使用了。
+
+主要是会发生这种情况,就是一个git里面套了一层子git项目.这时候,要么是忽略子项目,要么是
+添加ignore文件.也可以讲子项目的git删除,这样就好了.如果要中途修复这种情况,需要使用
+上面的命令.
+
+git remote add origin url  #这样可以讲自己的git目录添加到远端仓库.很方便.
+同一个项目可以添加多个远端仓库,可以一起使用.
