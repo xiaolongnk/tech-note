@@ -443,3 +443,348 @@ php 的线程之类的是怎么样的，有没有 sleep 之类的函数。python
 添加一些逻辑，当然，我必需学会这些逻辑是怎么完成的，我只需要在上层进行修改就可以了，基本上大多数程序都
 是可以复用的，就算这个程序我没办法实用，我也要能够自己写出一套来。这是对我的最基本的要求。
 
+
+2014-12-28 00:50
+
+周末应该好好规划，
+不过今天是休息了不少，今天的主要任务就是休息，明天去公司充点电。
+写点blog。任务基本就算完成了。
+要找时间好好休息一下。明天就是去，随便做点什么就可以。
+又好多视频，最好是学习点php的知识。
+我对知识的梳理做得太差劲了。现在感觉好散慢，我对自己掌握的知识
+从来都没有主动梳理，我的知识难以成体系，我应该找时间好好思考下这个
+问题。而不是一直都是现在这个样子。
+玩游戏不能占用你太多的时间，又时间还是要用杂学习上的。可以学习算法和
+操作系统，一定要注意总结，不然你很难又进步。要提醒自己思考。
+我现在的思考量却是少了很多，这个很不利于我的成长，应该重视起来。
+不止要学习新的东西，还要注意复习旧的知识，温故而知新。
+
+2014-12-28 18:02
+
+插入模式下的 vim ， ctrl + j 可以将文本内容下移一行。ctrl + m 我也不知道具体是什么，
+我只是通过实验尝试出来的。
+
+Yii 通过criteria来搜索内容，这个criteria还有很多用法。应该都具体掌握一下。
+$criteria->addSearchCondition('name', '分类');//搜索条件，其实代表了。。where name like '%分类%'
+
+firebug for chrome.
+https://chrome.google.com/webstore/detail/firebug-lite-for-google-c/bmagokdooijbeehmkpknfglimnifench
+
+这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
+git config core.fileMode false
+
+http://www.cnblogs.com/flyme/archive/2011/10/27/2226729.html
+
+2015-01-01 02:11
+今天解决的问题主要又这个。
+新年第一天。今年学到了好多东西，但是还远远不够。好多感觉自己需要的东西，其实不是真正需要的。其实是
+可以没有的。现阶段，我只会去获取我真正需要的东西。
+不知道今天该干嘛？想去公司看看东西，写点总结什么的，但是又觉着有点不妥。
+感觉自己的工资好少，我也不知道为啥。可能是因为感觉自己付出了不少吧。
+
+新的一年，最现实的愿望就是希望我的工资能够涨一倍。可以到30w。希望我的技术能涨到什么程度。
+
+昨天解决的问题。
+
+是一个日期控件。 就是时间显示不准的问题，我找到了一个新的控件，但是并没有投入使用，而是使用了那个原
+来的控件。只是我修改了其中的一点代码。其实解决问题的真正时间不多，大多数时间都消耗在想解决问题的方法
+上。我应该将这两个控件封装一下，应用到我们的项目中，这个日期控件应该是我以一篇博客的主题了。我的博客
+现在写得还是不太好，都没有什么粉丝。可能是荒废太久了的缘故，现在要恢复起来需要付出一些努力才行。
+
+另一个是我用了2个函数。
+一个是PHP 的 array_unshift() ; array_unique(); 这两个函数是很重要的。或者说是PHP 数组的操作。他们很
+优雅的解决了我的问题。
+另外是过滤字符串中的 html tags。可以用这个方法。 strip_tags() 。完全没有必要我自己去写正则进行匹配。
+当然搞清楚这个函数的实现也是很不错的。我应该查一下这个函数的实现。当然trim() 函数也是很重要的。
+
+PUSH 的程序貌似有点问题。应该找时间再排查一下。
+
+其实回过头发现，我也没有做太多工作，只是我不知道我的时间都去哪里了。
+
+2015-1-3
+
+本来想到公司去的，结果没去成，在家里打了一天dota。还他妈的输了一天，气得我把游戏删了。删了也好，本来就不应该玩的，
+应该多花点时间在工作上，应该多学习的。
+
+发现我的话重复了很多。我的句式我的词汇其实是很单调的。我可以尝试分析一下。我的小红帽被我修了一下，明显的好用多了，现在
+都可以不怎么使用鼠标了。白天没有吃饭，晚上吃了饺子，买了一袋薯片，快要撑死了的感觉。感觉嫂子好让我们失望，感觉是很自私的
+一个人。我一点都不喜欢，并且有些讨厌呢。虽然我还是光棍，但是我宁可光棍，也不能找一个她那样的。
+
+我看了一下java 的视频，学习了一些基本的 Eclipse 的功能，感觉还是又点用的吧。我看了一些java编程思想的示例代码，有些代码
+没有办法独立完成，不能成功运行，但是讲的原理我也不是很明白，我只是简单的看了看，我希望我能了解更多的知识。
+
+boot sequence(important)
+
+1 load bios(hardware information)
+2 read MBR's config to find out the OS
+3 load the kernel of ths OS
+4 init process starts....
+5 execute /etc/rc.d/sysinit
+6 start other modules (etc/modules.conf)
+7 execute the run level scripts
+8 execute /etc/rc.d/rc.local
+9 execute /bin/login
+10 shell started...
+
+rc.d run_command daemon.
+init  (run level /etc/inittab)  
+  0 系统停机
+  1 单用户工作状态
+  2 多用户状态没有NFS
+  3 多用户状态  有NFS
+  4 系统未使用，留给用户
+  5 图形界面
+  6 系统正常关闭并重新启动
+  
+你并不是没有时间，你只是没有规划好你的时间。我的好多时间都浪费掉了，我之前也研究过不少东西，
+但是都没有研究透彻，丢开了很长时间，现在基本都忘记了。所以这些时间算是浪费掉了。
+
+lex 和 yacc 还是要继续学习的。
+
+
+我要完成我的 c 编译器的作业。之前写的那个作业是不能算上合格的。应该重写一个，以现在的水平。
+
+词法分析，语法分析。
+
+2015-01-05 23:22
+
+My lex and Yacc are just start.I know little about to them. But I really want to build my own 
+compiler system. I want to conquer English. I need read more. Type more. Organize my thoughts
+In English.
+
+Now I do is pure c style, not like c++ style.
+
+
+2015-01-08 12:34
+应该做一个简单的总结。
+
+写python 一定要注意 类型，最好是都搞成字符串类型的，这样比较安全，很多时候查询失败都是由于
+类型不对造成的。
+这两天差了不少问题，但是都是
+
+shell 的函数，我了解的怎么样。
+函数的返回值貌似可以用 $? 变量拿到。
+但是 return 是不支持返回非数字类型的。这是不是一个新的约束条件。
+对于数值运算，可以实用 expr 这个工具，其实这是另一个简单的工具，可以用 man 手册来查看帮助文档。
+当然需要放在 `` 之间执行。
+
+shell 中有几个比较特殊的变量。
+$0 表示当前脚本的名字
+$1 $2 ... $i  第 i 个参数
+$# 参数的个数。
+$?
+
+晚上学习了一节PHP的课程。主要是将 PHP SQL 注入的。
+最好用标准的sql写法，并且做一个简单的过滤，屏蔽掉 SQL 关键字。比较的时候最好都加上单引号，即便
+要查询的数字是 int 类型的。也最好做一个转换。这样可以有效的降低风险。
+
+
+2015-01-12 06:49
+
+这几天感觉好累，应该注意休息，晚上要早一点睡觉。
+
+
+2015-01-26 20:45
+python 中的expr。貌似还是很有用的，有时间了应该认真准备下。
+eval() 好不好，不是expr的好不好。
+
+2015-01-29 22:42
+我又想找个新的工作了。我感觉外面的机会还是很多的。
+我应该试一试。
+不用担心，我感觉自己在遭受排挤，但是又什么关系呢，这里容不下我，外面舞台多的是，何必为这件事
+苦恼。在这件事上，没有对错，我们只是合作，虽然很残酷，但的确是这样，仅此而已。
+这个团队是不错，但这不是最厉害的团队，还又更厉害的团队，这不是最好的，可以做得更好。
+
+我应该给自己写个简介。
+
+系别，Linux，对Linux的一切感兴趣，Vimer（但不迷信VIM）。对技术充满热情，只学习Linux系的技术。
+熟悉Shell，Python，工作中，可以用脚本辅助开发（根据工作需求编写脚本，提高工作效率）。
+有PHP和Python的工作经验，熟悉Yii。DB方面，熟悉Mysql，Redis，Mongo，用缓存来优化整个系统。
+对Web前端有一定的了解(html,css,javascript,jquery,ajax)。
+对数据结构和算法又较深的理解。
+语言方面，还熟悉C/C++，Android.
+工程方面，重视代码重构。
+注重团队协作。
+
+2015-10-25 10:36
+ubuntu promotions. fonts muti desktops.
+
+sudo apt-get install ubuntu-restricted-extras
+
+use lnmp . php.ini php nginx redis extension.
+
+
+
+I know it is hardful, but I want this way. I need to know them well.
+This process is too long, but I have no choice.
+remember to do `sudo make clean`
+if you chaged your ./configure --with-mysql --with-gd, otherwise your compile
+process will fail, know about this.
+compile process is slow.
+
+For most problems, there are detailed information in official documentation.
+
+I know something, 
+compile php with  --with-mysql, it will generate mysql-module for you.
+with apache/apsx , it will load php in apache. and update the httpd.conf file
+for you, and there have a http.conf.bak file left for you. yes, that's all 
+happened for you.
+
+Ok, I need to build mongo and redis for me.
+
+build mongo.
+http://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
+I used this command: 
+%  sudo apt-get build-dep mongodb  %
+%  scrons all % this command will build all mongo tools.
+%  scrons install --prefix=/opt/server/mongodb/  % to install mongodb in your path.
+
+build redis.
+this is easy, just make and make install
+% 
+
+the problem is , after the compilination, where is the mongo conf files.
+this is not a problem, just create need path, if you want. db/, conf/, log/, that's all
+then copy  this mongodb.conf from here.
+
+and the same to redis.
+
+对 redis 和 mongodb，编译完成只会给安装 bin 目录，里面是对应的工具。但是我们还需要一些其他的
+目录还有对应的配置文件。这个目录和配置文件是可以自己创建的。所以只要变已完成，基本就算安装
+完成了，在启动的，加载。
+Just start your server, and load your config file, then your server should be work.
+compile all your server software is not an easy thing.
+
+Now, for my server, I need redis-php and mongo-php, with these two mod, I can build my own system.
+
+python
+sudo apt-get install pip
+sudo pip install redis  pymongo  mysql-python
+redis   pymongo  mysql-python
+
+for python docs, you need to consult the pydocs for more.
+https://pypi.python.org/pypi/redis/
+
+That's all for my server.
+
+git status
+
+I find some subfiles can not be hidden.Because the subdir is a git repo.
+just remove .git/ files, recommit it, and it will be ok.
+
+2015-02-06 16:01
+
+c/c++ solve this porblem.
+uint32_t, size_t,if your eclipse warning this, use this header file to solve this
+problem.
+
+when I want to build php, I find this problem.
+you have no configure. You need ./buildconf first.
+when I do this, I get this message, you have no autoconf, you need this first.
+sudo apt-get install autoconf
+
+after ./buildconf  now you can do ./configure
+
+ls -l
+for some file you can not change file owner of it, because it just belong root.
+for some you can, but why. where is the secret.
+
+read more shell, you can get improvement.
+
+2015-02-06 13:26
+now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a light distribution.
+light desktop.  I prefer linux, not mac.
+
+2015-03-01 19:41
+
+今天办网了，感觉方便了很多，比在公司好多了。
+学习了一下 bootstrap 和 node 的东西。
+这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
+很不错的。但是没有走到最后，谁都不敢保证。
+
+遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
+我从官网下载 tar.gz 之后，安装还是没有解决问题。
+貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
+sudo apt-get install flashplugin-downloader
+貌似真得好了。
+今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
+这中突然流行起来的东西不应该盲目追随。
+学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
+
+编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
+然后安装了npm，基本是ok的。
+但是不明白 bootstrap 和 node 是怎么结合起来实用的。
+
+或者用好node也是很不错的，再看一下node，究竟有什么用处。
+以上这些就是今天的所有作为。
+
+2015-02-09 20:01
+mysql show warnings;
+可以显示上一次查询的warnings。
+
+select * from t_pandora_statistics where mvalue = 161189566907393966;
+我知道了这个问题出现的根源了。因为 mvalue 是varchar(32)的类型，我在查询的时候，用的变量是一个longint的类型，这个时候就汇报这个 warning。
+
+Warning | 1292 | Truncated incorrect DOUBLE value: '12998e8c703749642' 
+报告的地方有很多，我只是选择了其中的一个。解决办法是将sql写成这样。
+select * from t_pandora_statistics where mvalue = '161189566907393966';
+这样就不会报这个错误了。
+
+刚才比较了一下两种写法的效率，我发现不设置返回类型的做法确实在效率上会低很多，所以在写程序
+的时候一定要注意一点，不要随便就select * 了，这样是很愚蠢的做法。应该需要什么拿什么，而不是
+不管有没有必要，就 select *.性能商的差别可以达到1倍。
+
+html also has a this keyword, which you should know it more. its usefull.
+
+window.location.reload() 和 直接的 redirect 是不一样的。刚才才发现这一点。好多都是没有必要的,比如我的 ajax格式。。
+
+原来有更可行的方案，以前那种方式实在是太落后了，只需要用好jquery就很不错了。
+
+2015-03-01 19:41
+学习了一下 bootstrap 和 node 的东西。
+这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
+很不错的。但是没有走到最后，谁都不敢保证。
+
+今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
+这中突然流行起来的东西不应该盲目追随。
+学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
+
+编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
+然后安装了npm，基本是ok的。
+但是不明白 bootstrap 和 node 是怎么结合起来实用的。
+
+或者用好node也是很不错的，再看一下node，究竟有什么用处。
+以上这些就是今天的所有作为。
+
+刚才看了一下less的用法。
+sudo npm install less -g
+简单的说，less是一个用于css 函数式的变成语言，lessc是一个这门语言的编译器。
+安装之后就可以在命令航中使用了。
+lessc style.less
+
+只了解了最基本的，希望能又更进一步的研究。
+
+有很多地方，其实我可以做的更好，但是我没有做好。需要我努力的地方还有很多，但是我有时候还是很闲。我可以更认真，更
+专注，但是我没有。
+
+2015-02-22 21:26
+export VISUAL=vim
+export EDITOR="$VISUAL"
+git config --global core.editor "vim"
+python 安装。
+首先安装python2.7. 下载python2.7 
+
+然后安装pip
+wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+tar -vxf setuptools-1.4.2.tar.gz
+cd setuptools-1.4.2
+python2.7 setup.py install
+easy_install-2.7 pip
+
+yum install zlib
+yum install zlib-devel
+
+安装之后需要重新编译 python2.7 
+http://blog.csdn.net/zhuying_linux/article/details/8167430
+
+问题在哪里，需要安装 pip2.7 .

@@ -3908,7 +3908,6 @@ install tomcat7 eclipse-plugin
 
 我又看了下如何创建工程的文档，发现有点繁琐，还需要创建一个 build.xml 有点小怕了。
 
-Tag: kde konsole
 2014-06-08 15:07
 
 原来这个和konsole 的字体大小都有关系，我需要将字体设置到10才可以正常显示，现在这样的效果是我
@@ -4007,32 +4006,6 @@ HelloWorld frenchGreeting = new HelloWorld() {
 
 http://www.blogjava.net/wash/archive/2005/12/26/25405.html
 
-
-import os
-import cherrypy
-
-class Root(object):
-
-    def index(self):
-        return "powered by cherrypy -->> ok!"
-    index.exposed = True
-
-cherrypy.root = Root()
-cherrypy.config.update(file=os.path.join(os.path.dirname(__file__),'test.cfg'))
-cherrypy.server.start()
-
-
-[global]
-server.socket_host:"0.0.0.0"
-server.socket_port:4422
-
-[/xxx]
-static_filter.on: True
-# static_filter.dir use absolute path, please don't use relative path here.
-static_filter.dir='/home/fox/Documents/www'
-
-If you want another one, do like this.
-
 2014-06-18 21:58
 最近感觉很累，可能是休息太少吧。好好休息。把事情安排好，处理事情应该又个限度才行。
 
@@ -4041,11 +4014,6 @@ If you want another one, do like this.
 对任何一方面都不能马虎。想想我的日常饮食中，除了淀粉，好像的确没什么有营养的东西，应该吃点
 蛋白质什么的，早晚都喝点牛奶吧。这或许是我唯一能做的了，还可以吃点豆奶。总之，在身体着一块，
 还是需要注意下。
-
-
-搜狗面板程序加载失败，请重启以使用输入法！
-现在fcitx-qimpanel变成了sogou-qimpanel,所以你要启动sogou-qimpanel,我就是把它放到自动启动项
-里，运行还是很完美的。
 
 今天基本上完成我了我的任务，老板还是比较满意的，我也觉着我的程序不错，但是还有很多要改进的
 地方。我的程序能里还需要好好磨练，这一切才刚刚开始。总之，我的目标是年薪20w，现在就是向这个
