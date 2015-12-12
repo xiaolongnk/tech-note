@@ -13,12 +13,6 @@
 我现在的思考量却是少了很多，这个很不利于我的成长，应该重视起来。
 不止要学习新的东西，还要注意复习旧的知识，温故而知新。
 
-
-
-
-
-
-
 2014-12-28 18:02
 
 插入模式下的 vim ， ctrl + j 可以将文本内容下移一行。ctrl + m 我也不知道具体是什么，
@@ -33,7 +27,6 @@ https://chrome.google.com/webstore/detail/firebug-lite-for-google-c/bmagokdooijb
 这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
 git config core.fileMode false
 
-
 http://www.cnblogs.com/flyme/archive/2011/10/27/2226729.html
 
 2015-01-01 02:11
@@ -44,7 +37,6 @@ http://www.cnblogs.com/flyme/archive/2011/10/27/2226729.html
 感觉自己的工资好少，我也不知道为啥。可能是因为感觉自己付出了不少吧。
 
 新的一年，最现实的愿望就是希望我的工资能够涨一倍。可以到30w。希望我的技术能涨到什么程度。
-
 
 昨天解决的问题。
 
@@ -87,7 +79,6 @@ boot sequence(important)
 8 execute /etc/rc.d/rc.local
 9 execute /bin/login
 10 shell started...
-
 
 rc.d run_command daemon.
 init  (run level /etc/inittab)  
@@ -178,6 +169,176 @@ use lnmp . php.ini php nginx redis extension.
 
 
 
+I know it is hardful, but I want this way. I need to know them well.
+This process is too long, but I have no choice.
+remember to do `sudo make clean`
+if you chaged your ./configure --with-mysql --with-gd, otherwise your compile
+process will fail, know about this.
+compile process is slow.
 
+For most problems, there are detailed information in official documentation.
 
+I know something, 
+compile php with  --with-mysql, it will generate mysql-module for you.
+with apache/apsx , it will load php in apache. and update the httpd.conf file
+for you, and there have a http.conf.bak file left for you. yes, that's all 
+happened for you.
 
+Ok, I need to build mongo and redis for me.
+
+build mongo.
+http://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
+I used this command: 
+%  sudo apt-get build-dep mongodb  %
+%  scrons all % this command will build all mongo tools.
+%  scrons install --prefix=/opt/server/mongodb/  % to install mongodb in your path.
+
+build redis.
+this is easy, just make and make install
+% 
+
+the problem is , after the compilination, where is the mongo conf files.
+this is not a problem, just create need path, if you want. db/, conf/, log/, that's all
+then copy  this mongodb.conf from here.
+
+and the same to redis.
+
+对 redis 和 mongodb，编译完成只会给安装 bin 目录，里面是对应的工具。但是我们还需要一些其他的
+目录还有对应的配置文件。这个目录和配置文件是可以自己创建的。所以只要变已完成，基本就算安装
+完成了，在启动的，加载。
+Just start your server, and load your config file, then your server should be work.
+compile all your server software is not an easy thing.
+
+Now, for my server, I need redis-php and mongo-php, with these two mod, I can build my own system.
+
+python
+sudo apt-get install pip
+sudo pip install redis  pymongo  mysql-python
+redis   pymongo  mysql-python
+
+for python docs, you need to consult the pydocs for more.
+https://pypi.python.org/pypi/redis/
+
+That's all for my server.
+
+git status
+
+I find some subfiles can not be hidden.Because the subdir is a git repo.
+just remove .git/ files, recommit it, and it will be ok.
+
+2015-02-06 16:01
+
+c/c++ solve this porblem.
+uint32_t, size_t,if your eclipse warning this, use this header file to solve this
+problem.
+
+when I want to build php, I find this problem.
+you have no configure. You need ./buildconf first.
+when I do this, I get this message, you have no autoconf, you need this first.
+sudo apt-get install autoconf
+
+after ./buildconf  now you can do ./configure
+
+ls -l
+for some file you can not change file owner of it, because it just belong root.
+for some you can, but why. where is the secret.
+
+read more shell, you can get improvement.
+
+2015-02-06 13:26
+now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a light distribution.
+light desktop.  I prefer linux, not mac.
+
+2015-03-01 19:41
+
+今天办网了，感觉方便了很多，比在公司好多了。
+学习了一下 bootstrap 和 node 的东西。
+这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
+很不错的。但是没有走到最后，谁都不敢保证。
+
+遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
+我从官网下载 tar.gz 之后，安装还是没有解决问题。
+貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
+sudo apt-get install flashplugin-downloader
+貌似真得好了。
+今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
+这中突然流行起来的东西不应该盲目追随。
+学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
+
+编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
+然后安装了npm，基本是ok的。
+但是不明白 bootstrap 和 node 是怎么结合起来实用的。
+
+或者用好node也是很不错的，再看一下node，究竟有什么用处。
+以上这些就是今天的所有作为。
+
+2015-02-09 20:01
+mysql show warnings;
+可以显示上一次查询的warnings。
+
+select * from t_pandora_statistics where mvalue = 161189566907393966;
+我知道了这个问题出现的根源了。因为 mvalue 是varchar(32)的类型，我在查询的时候，用的变量是一个longint的类型，这个时候就汇报这个 warning。
+
+Warning | 1292 | Truncated incorrect DOUBLE value: '12998e8c703749642' 
+报告的地方有很多，我只是选择了其中的一个。解决办法是将sql写成这样。
+select * from t_pandora_statistics where mvalue = '161189566907393966';
+这样就不会报这个错误了。
+
+刚才比较了一下两种写法的效率，我发现不设置返回类型的做法确实在效率上会低很多，所以在写程序
+的时候一定要注意一点，不要随便就select * 了，这样是很愚蠢的做法。应该需要什么拿什么，而不是
+不管有没有必要，就 select *.性能商的差别可以达到1倍。
+
+html also has a this keyword, which you should know it more. its usefull.
+
+window.location.reload() 和 直接的 redirect 是不一样的。刚才才发现这一点。好多都是没有必要的,比如我的 ajax格式。。
+
+原来有更可行的方案，以前那种方式实在是太落后了，只需要用好jquery就很不错了。
+
+2015-03-01 19:41
+学习了一下 bootstrap 和 node 的东西。
+这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
+很不错的。但是没有走到最后，谁都不敢保证。
+
+今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
+这中突然流行起来的东西不应该盲目追随。
+学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
+
+编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
+然后安装了npm，基本是ok的。
+但是不明白 bootstrap 和 node 是怎么结合起来实用的。
+
+或者用好node也是很不错的，再看一下node，究竟有什么用处。
+以上这些就是今天的所有作为。
+
+刚才看了一下less的用法。
+sudo npm install less -g
+简单的说，less是一个用于css 函数式的变成语言，lessc是一个这门语言的编译器。
+安装之后就可以在命令航中使用了。
+lessc style.less
+
+只了解了最基本的，希望能又更进一步的研究。
+
+有很多地方，其实我可以做的更好，但是我没有做好。需要我努力的地方还有很多，但是我有时候还是很闲。我可以更认真，更
+专注，但是我没有。
+
+2015-02-22 21:26
+export VISUAL=vim
+export EDITOR="$VISUAL"
+git config --global core.editor "vim"
+python 安装。
+首先安装python2.7. 下载python2.7 
+
+然后安装pip
+wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+tar -vxf setuptools-1.4.2.tar.gz
+cd setuptools-1.4.2
+python2.7 setup.py install
+easy_install-2.7 pip
+
+yum install zlib
+yum install zlib-devel
+
+安装之后需要重新编译 python2.7 
+http://blog.csdn.net/zhuying_linux/article/details/8167430
+
+问题在哪里，需要安装 pip2.7 .
