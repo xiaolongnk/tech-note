@@ -42,5 +42,5 @@ zend-studio install pydev.
 this site is too old.
 http://www.pydev.org/updates/
 use this instead
-https://dl.bintray.com/fabioz/pydev/latest/
+<https://dl.bintray.com/fabioz/pydev/latest/>
 

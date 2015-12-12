@@ -4,7 +4,6 @@
 ```shell
 sudo dd if=/home/your.iso of=/dev/sdb
 ```
-
 安装 fcitx 搜狗输入法。
 1. 确保你的语言包是全的。
 2. 安装这个语言包。<http://pinyin.sogou.com/linux/>
@@ -225,4 +224,13 @@ g/^\(.\+\)$\n\1/d
 
 tmux 中vim slow start 的原因,就是因为开了多个tmux,启动速度就变慢了.
 查看了slowlog,发现是因为xsmp消耗了大概1s的时间.只要保证一个tmux运行就可以了.
+
+学习了一下 sublime ,感觉还是很可以的. 下载,安装,然后破解.然后安装一些扩展.
+用起来还是很方便的,唯一的缺点是部支持sougoupinyin.感觉自己要跪了.
+<http://www.tuicool.com/articles/NJrQfub>
+
+还是用来写代码比较方便,写笔记什么的还是用我的vim比较好.
+
+虽然使用wunderlist,但是还是要记笔记,wunderlist只是一个辅助,更详细的信息还是要记录在这里.
+我的周末主要是用来写代码的,但是今天并没有怎么写代码的,我应该注意,今天一个下午全部用在玩上了.
 
