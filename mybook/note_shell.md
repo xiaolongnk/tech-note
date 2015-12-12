@@ -70,3 +70,14 @@ nohup command > out.txt 2>&1 & 这样是将所有的输出,包括错误都重定
 grep 输出匹配内容的上下两行内容,输出上下文,记得这个参数.
 grep -C 2 'linux'
 是用nohub命令,完了这个命令就没有办法停止了,就会一直运行,除非用kill命令讲这些命令kill调.
+
+### 2015-12-12 23:35
+git remote add.
+
+将一个远端的项目添加到新的分支上,然后可以合并。
+git remote add name git@gitlabserver.meiliworks.com:higo/api.git
+删除这个分支。
+git remote rm old_pandora
+git 将某个分支强制覆盖。比如我想用newpush  的代码完全覆盖 master 的代码。
+可以这样做。
+git push origin newpush:master -f
