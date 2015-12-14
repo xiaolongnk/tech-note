@@ -234,3 +234,20 @@ tmux 中vim slow start 的原因,就是因为开了多个tmux,启动速度就变
 虽然使用wunderlist,但是还是要记笔记,wunderlist只是一个辅助,更详细的信息还是要记录在这里.
 我的周末主要是用来写代码的,但是今天并没有怎么写代码的,我应该注意,今天一个下午全部用在玩上了.
 
+
+grub customer
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get install grub-customizer
+
+让你的ubuntu文件夹变成彩色的.
+可以添加下面的ppa,添加这个
+sudo add-apt-repository ppa:costales/folder-color
+然后安装下面这个 folder-color 就可以了.
+sudo apt-get install folder-color
+
+### 2015-12-14 16:23
+
+PHP在命令行模式下的 $_SERVER 变量中的变量可以在shell 中 export 来设置.shell 中的变量会出现在
+SERVER 变量中.
+在web环境中,要通过在服务器中设置才可以. nginx 在 fastcgi_params 中设置.
+
