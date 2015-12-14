@@ -251,3 +251,87 @@ PHP在命令行模式下的 $_SERVER 变量中的变量可以在shell 中 export
 SERVER 变量中.
 在web环境中,要通过在服务器中设置才可以. nginx 在 fastcgi_params 中设置.
 
+
+在linux中,我想升级gedit,比如说我的是 ubuntu14.04, 但是在 ubuntu15.10 里面,gedit 的版本是比
+我的新的.但是在14.04里面我确用不了最新的gedit .
+这个时候,我可以从官网下载最新的gedit ,安装,然而安装的时候会出现一些问题.这时候怎么办呢.可以这样.
+
+```
+sudo apt-get build-deb gedit
+sudo apt-get build-deb libreoffice5.0
+```
+然后执行安装命令就可以了.安装应该不会出错了.
+下面解释一下这个命令究竟是做什么的.
+
+ubuntu source code
+如何获取ubuntu的源码
+你可以获取任何一个你所使用的源码包.这就是开源的系统.
+只要你的系统的源里有dep-src 这个选项,那么就可以随便获得系统源码.
+就像下面这样.
+```
+deb-src http://archive.canonical.com/ubuntu trusty partner
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty universe
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-updates multiverse
+deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-updates universe
+deb-src http://extras.ubuntu.com/ubuntu trusty main
+deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted
+deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse
+deb-src http://security.ubuntu.com/ubuntu trusty-security universe
+```
+
+使用下面的命令.
+
+```
+sudo apt-cache showsrc gedit #showsrc 可以用来查询有没有你需要的源码包
+sudo apt-cache source gedit  #source 命令用来获取你需要的源码包
+```
+当然在这些工作之前,我们需要确保安装一些基本的工具.
+dpkg-dev 先安装这个.
+
+在编译源码包之前,需要安装具有依赖关系的软件包,可以使用这个命令,就是上面的那个.
+build-dep 命令.
+```
+sudo apt-get build-dep xxx
+```
+通过上面两个命令,就可以得到自己的源码包了.然后利用
+```
+cd yoursrc
+sudo dpkg-buildpackage 
+```
+这样就可以得到你的dep文件了.
+可以使用下面的命令来安装deb文件.
+```
+sudo dpkg -i *.deb
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
