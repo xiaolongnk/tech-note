@@ -307,6 +307,8 @@ sudo dpkg-buildpackage
 ```
 sudo dpkg -i *.deb
 ```
+有了上面的知识,你就可以利用自己的系统,学习各种工具的源码了,包括vim , emacs.
+哈哈,你有学习不完的代码了.加油吧.^_^
 
 
 
