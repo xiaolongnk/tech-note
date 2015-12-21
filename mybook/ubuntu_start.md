@@ -315,6 +315,21 @@ sudo dpkg -i *.deb
 看到你讨厌的那个东西不见了.
 
 
+下面是我的 ubuntu dash 中的eclipse的快捷方式.可以很明显的看到是我的路径出了问题. 我需要修改一下路径就可以了.
+```
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=C/C++ - Eclipse 
+Icon=eclipse.png
+Path=/home/faith/blackh/server_src/eclipse
+Exec=/usr/bin/java -Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=256m -Xms256m -Xmx1024m -jar /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar -os linux -ws gtk -arch x86_64 -showsplash /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.platform_4.5.1.v20150904-0015/splash.bmp -launcher /home/faith/blackh/server_src/eclipse/eclipse -name Eclipse --launcher.library /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.300.v20150602-1417/eclipse_1612.so -startup /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar --launcher.appendVmargs -exitdata a10802c -product org.eclipse.epp.package.cpp.product -vm /usr/bin/java -vmargs -Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=256m -Xms256m -Xmx1024m -jar /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar
+StartupNotify=false
+StartupWMClass=Eclipse
+OnlyShowIn=Unity;
+X-UnityGenerated=true
+```
 
 
 
