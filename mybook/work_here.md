@@ -324,4 +324,9 @@ fi
 
 ### 2015-12-20 20:43
 这个礼拜傻逼了,在ubuntu上打了一个礼拜的dota.还好有妹子,停下来了,看来有妹子是真好,我想要妹子.
+这里可以下载windows镜像. 
+<http://msdn.itellyou.cn/>
+<http://jingyan.baidu.com/article/5225f26b016f59e6fa0908e1.html>
+<http://ourjs.com/detail/53d76d072ee1090907000009>
+
 
