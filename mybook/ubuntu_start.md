@@ -331,7 +331,8 @@ OnlyShowIn=Unity;
 X-UnityGenerated=true
 ```
 
-
+sudo apt-get install mysql-workbench
+这个用起来还是很方便的.工作中又多了一个效率工具.要加入到我的worklist里面.
 
 
 
