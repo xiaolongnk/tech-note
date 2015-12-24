@@ -339,4 +339,28 @@ fi
 
 我需要认真的总结一下自己的工作.
 
+### 2015-12-24 10:56
+首先看一下这个网站,里面有好多基础知识,先了解一下.
+http://www.w3school.com.cn/
+http://qctlr.cai.swufe.edu.cn/w3c/html/index.html
+然后照着里面的例子先学着写.
+html 的话,写个 html文件,保存成html后缀.
+用浏览器打开这个文件,就能看到效果了.所以比较方便.
+先了解哈~ 下面就是一个最简单的html.
+
+<html>
+<title> html5 </title>
+<head> </head>
+<body>
+Hello world!;
+</body>
+</html>
+
+上面的基本都是dom元素,就是(html)标签,到后面还需要了解 javascript(页面交互) , css(决定这页面的美观程度),jquery(一个javascript库,提高javascript的编写程度.)
+学会这些,基本就没有问题了.
+总共需要学习的包括这些: html  javascript  css  jquery.
+
+再到后面,需要开发的话,最好学会使用 git (最强大的版本控制工具.)
+还最好能学会 markdown (格式化文档文本.写文档很方便)
+
 
