@@ -1,17 +1,3 @@
-214-12-01 10:41
-1: 数据统计。
-	1：按照店铺进行统计。
-	2：每天0点进行更新。
-	3：统计数据中增加IP字段。
-	4: ip2long() 函数。
-	5: 需要其他的表来辅助实现。这些吧表怎么构建。
-	6: 对这几张表的思考。这几个数据都是怎么阳使用的。如何应用这些数据。首先，店铺的数量不会太大，至少在一段时间内
-		不会增长太多，所以表的规模不用太担心。首先，表中的数据是和日期成正比的。每天都会有一份新的数据产生。考虑到
-		查询和,要考虑建索引。这样可以提高查询效率。
-	7: 在实际应用场景中，这几张表会怎样增长，数据会怎样变化。
-	8: 能否实现上面这些需求。扩展性如何。
-select mfrom,  count(*) as count from t_pandora_statistics where maction = 50000 and mfrom in (50001,50002,50003) group by mfrom;
-
 2014-12-03 11:38
 1: 修改商家端注册流程，商家必须上传头像,上传的头像。一个头像id.
 html 中table 中的 border属性的设置。如果设置不正确，可能没有边框。下面是正确的设置。
@@ -24,10 +10,8 @@ mongo 如果要查询的数据是分为几层的话，应该用这总方式查�
 sql 中将联表出现的 null 替换成 0， 可以用这个方法。
 if(tb2.shop_click is null, 0,tb2.shop_click)
 
-
 如果 group by 来去重要比 distinct 效率要高很多。
-子查询要控制
-group by 多个字段。
+子查询要控制 group by 多个字段。
 
 2014-12-09 15:08
 
@@ -37,10 +21,7 @@ set @start = curdate();
 可以再一个 set 中定义好几个变量，可以用逗号分开。
 另外，yii 中执行的sql 也可以包括好几个句子，但是他们的 读写必须是一直的，就是说，要么是执行 queryall ， 要么是执行 execute。
 当然query 是从库， execute 是主库，表示写数据。
-
 mysql 中和时间相关的函数用着还是很方便的。date_sub(); date_add(); interval 1 day;
-另外那些mysql 的工具也是很好用的，不用一直对着 cmd ，有时候还是没有必要的，毕竟不够方便。要结合起来才可以。
-
 
 另外，存储过程是不是也应该掌握一下。
 mysql 定义变量是不一样的。和其他语言的不太一样，这个需要注意一下。
@@ -60,13 +41,9 @@ $cmd->text = $sql;
 $cmd->queryAll();
 
 Yii 的 view 和 action 之间的配合。有时候为了重用一个view，我需要隐藏很多的 input。
-
 input type 可以是 textarea
 
-
-
 mysql 可以多表连接查询，也可以 left join 和 right join 。但是要注意表的规模。如果表的规模太大，那么联表的效率就iu不敢恭维了。
-
 所以说队数据的管理还是很重要的。要保证表不会太大。如果有其中一个表太大了，那么联表的结果都是非常可怕的。
 如果表中的数据太多的话，那么就要想办法处理这些数据，不要让数据太大。
 
@@ -91,7 +68,7 @@ condition['createAt']['$gt'] = '1418634210';
 不能直接这样子。
 condtion = {'seq':{'$gt':'123123'},'createAt'{'$gt':'21'}}
 
-队面向对象也有了新的认识，还是应该多谢点程序，就算是最简单的 dbo block，尽量写好一点，尽量可以分享出去，能
+对面向对象也有了新的认识，还是应该多写点程序，就算是最简单的 dbo block，尽量写好一点，尽量可以分享出去，能
 够给别人带来方便。
 
 所以写的时候要规范一点，虽然我对python了解也比较少，正式因为这个，在学习写得过程中才会有进步。
@@ -112,13 +89,11 @@ python 的public 和 private 是不一样的，要认真思考一下他们的区
 
 2014-12-16 12:31
 写伪代码还是很清楚的，有时间可以多写一点，我真是本末倒置。
-
 redis 的connectionPool() 是什么意思，这个是怎么使用的。
 有什么好处。
 
 2014-12-17 11:20
 alter table t_pandora_statistics add key uuid_index (uuid);
-
 ajax 我根本就不会，jquery 的ajax，还需要联系下。
 
 2015-01-04 14:08
@@ -154,24 +129,11 @@ array(
 ),
 http://stackoverflow.com/questions/8140613/yii-zii-widgets-grid-cgridview-with-type-html-render-failed
 
-关于 Yii 应该多了解一下。要学着自己定义。在框架的基础商进行自定义。
-
-2015-01-05 10:59
-
-mysql 数据查询。
+关于 Yii 应该多了解一下。要学着自己定义。在框架的基础上进行自定义。
 
 2015-01-05 15:06
 Yii app's application.log is in protected/runtime/application.log; not in main dir's runtime/
 
-给的数据大致是这样，根据里面的type ， 去 分发到不同的接口。
-```php
-mtype == 1
-	call  group_chat/get_detail  shop_id = mvalue;
-mtype == 2
-	call  event/get_event_items  event_id = mvalue;
-mtype == 3
-	call  goods/get_detail 		 goods_id = mvalue;
-```
 2015-01-06 14:30
 
 ```python
@@ -210,8 +172,6 @@ function addSelected(){
 	form2.submit();
 }
 ```
-
-还需要总结。
 
 form 表单相关的内容。 post 和 get 两种模式。
 table 里面的内容可以是 hidden 的。他可以不显示出来。
@@ -286,7 +246,6 @@ if __name__=='__main__':
 	work()
 ```
 感觉PHP中日期计算方法太复杂了，应该找个简单点的方法。或者再封装一个方法。
-
 
 2015-01-16 17:51
 MYsql
@@ -413,6 +372,10 @@ bash -x your.sh 就可以看你的shell的执行过程了。
 目前真得很需要钱。希望4月份我的薪水可以让自己满意。如果我不能满意，我真得可能要选择其他的地方。
 我也没有办法。现在情况对我来说不是很有利，现在处境比较艰难。我应该保持谨慎，以前那种大大咧咧的
 性格应该收敛一下，不能继续那样子下去，2014犯了太多错误，那些愚蠢的错误，给我带来了巨大的损失。
+    然而我并没有记录下自己犯了哪些错误,我并不知道怎么避免犯同样的错误.{metioned by}{2016-01-04 12:50}
+
+
+
 2015，我希望我不再重犯2014的那些错误，我希望我可以更快速的成长。我要用成长的速度弥补我犯的过错
 2015，我需要改变，我需要更加努力，更加谨慎。
 2015, 我应该加强英文的学习，阅读更多的文档，思考更多的问题。
@@ -612,11 +575,10 @@ PECL is very important.
 ord 函数是做什么的。应该研究一下。
 
 PHP mongo sort 规则。这个还是空白，应该抓紧补上，我才意识到，现在的问题原来是没有积累导致的。
-应该吧自己写过的程序记录下来，并且进厂回顾，这样才不会白费，这和以前是完全一样的。
+应该吧自己写过的程序记录下来，并且经常回顾，这样才不会白费，这和以前是完全一样的。
 
 我的日志也不应该断的，我应该每天都记录一下。
 
-Yii
 Yii cgridview 控件的样式也是很重要的，这个控件有一个参数可以调整，htmlOptions 可以设置标签。
 
 ```
@@ -643,11 +605,6 @@ $(document).ready(function(e){
 $('#mmm_event_start').datetimepicker({format: 'Y-m-d h:m'});
 $('#mmm_event_end').datetimepicker({format: 'Y-m-d h:m'});
 });
-```
-
-```php
-PHP截取数组，实现一个翻页的功能。
-PHP 的语法的一些问题，一些看似危险的写法并不会导致错误，对于你，这些应该熟知于心。
 ```
 
 Yii 里面有重复保存的现象。
@@ -730,8 +687,6 @@ echo $a;
 
 2015-06-09 14:28
 
-在小功能上，也可以不断优化，可以不断提高，不要放过细节。
-
 http://blog.sina.com.cn/s/blog_49c6c9b701014p9a.html
 php 报错的log，在听云商看到的错误。其实就是变量没有定义。
 
@@ -757,8 +712,6 @@ del list
 
 todo list:
 1. use redis hash to optmize cache system.  done.
-2. remove some useless code. done.
-3. merge xiaolongou to dev. done.
 [test login](http://v.online.killtime.cn/account/login?app=higirl&client_id=1&cver=2.4&mobile=18515615556&password=F200152W&qudaoid=10000&uuid=cdc4f9a8696d8e9bfab8077fab221871&ver=0.7&via=iphone)
 [test goods_discover](http://v.online.killtime.cn/goods/goods_discover?app=higo&backup=0&client_id=1&cver=3.1.1&p=1&qudaoid=10000&size=30&uuid=77c04e600d9d9558cd9ce5805c7cf8e4&ver=0.8&via=iphone)
 [goods_show](http://v.online.killtime.cn/goods/goods_show?app=higirl&client_id=1&type=3&cver=3.1&mobile=18515615556&password=F200152W&qudaoid=10000&uuid=cdc4f9a8696d8e9bfab8077fab221871&ver=0.7&via=iphone)
@@ -768,20 +721,6 @@ todo list:
 work list.
 1. 研究一下xinge_push 的sdk.研究批量推送的功能。写一个 demo 出来。done
 2. 尝试给列表的API 做程序级别的缓存。
-
-2015-06-30 11:40
-
-1. 研究下那个需求的实现，现在有好多都需要加push，真是感觉没必要。需要设计出这个功能。
-2. 研究一下促销的接口的实现。这个基本是一个促销一个接口，真不知道什么时候能停下来。
-3. 大促相关的接口的开发。共同商定开发细节。
-4. bugfix for category_goods/get_detail . wait to confirm. 似乎 bug 了很久。
-5. push 提醒功能的开发。(可以做在运营后台，用新的xinge api，用 cron 的形式来实现。redis mongo)
-
-多表关联的话，一定要想好要让那个表做主表，效果会大大不同。
-
-2015-07-01 11:16
-1. 下周的大促页面API。这部分配套的 运营后台怎么做。 done.
-2. review 一下代码。done
 
 
 2015-07-03 14:33
