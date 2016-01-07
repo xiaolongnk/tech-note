@@ -334,6 +334,12 @@ X-UnityGenerated=true
 sudo apt-get install mysql-workbench
 这个用起来还是很方便的.工作中又多了一个效率工具.要加入到我的worklist里面.
 
+之前我的 ubuntu 浏览器一些字体看起来不太对劲,那是因为系统的中文字体不够
+全,解决这个问题,只需要重新安装中文字体就可以了.
+
+
+sudo aptitude install ttf-wqy-microhei  
+sudo apt-get install ttf-wqy-zenhei  
 
 
 
