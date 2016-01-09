@@ -21,6 +21,12 @@ php <http://php.net/get/php-5.6.15.tar.gz/from/a/mirror>
 php 编译参数.
 
 ```shell
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libssl-dev
+sudo apt-get install libxml2-dev
+
+
+
 ./configure --prefix=/opt/server/php --with-config-file-path=/opt/server/php/etc --with-mysql=/usr/ --with-iconv-dir=/usr/ --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath  --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-zlib --enable-pdo --with-pdo-mysql --with-mysql=shared,mysqlnd 
 ```
 
