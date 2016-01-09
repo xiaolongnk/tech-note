@@ -341,11 +341,8 @@ sudo apt-get install mysql-workbench
 sudo aptitude install ttf-wqy-microhei  
 sudo apt-get install ttf-wqy-zenhei  
 
-
-
-
-
-
+ubuntu 修改自己的键盘映射,交换 capsloc 和 ese.
+<http://www.dutor.net/index.php/2010/05/vim-swap-capslock-esc/comment-page-1/> 
 
 
 
