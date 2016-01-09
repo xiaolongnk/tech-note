@@ -29,5 +29,31 @@ Mysql join 之后的索引使用情况是怎么样的.
 order by 的字段是否有必要增加一个索引,如果有必要,是不是所有需要排序的字段都需要增加
 上索引. 
 
+索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。
+按照存储方式分为：聚集与非聚集索引
 
 和B树B+树的关系还是差别挺密切的,所以需要认真理解一下B树和B+树.
+
+MySQL如何利用索引优化ORDER BY排序语句
+MySQL索引通常是被用于提高WHERE条件的数据行匹配或者执行联结操作时匹配其它表的数据行的搜索速度。
+MySQL也能利用索引来快速地执行ORDER BY和GROUP BY语句的排序和分组操作。
+
+mysql一次查询只能使用一个索引。如果要对多个字段使用索引，建立复合索引。
+
+```sql
+create table blog_pool
+(
+id bigint(20) not null auto_increment,
+account_id bigint(20) not null default 0 comment 'user id',
+blog_id bigint(20) not null default 0 comment 'blog_id',
+content varchar(1024) not null default 0 comment 'blog内容',
+status tinyint(2) not null default 1 comment '1: 正常 -1: 删除',
+primary key (id),
+index list_blog_index (account_id,status),
+index single_index (account_id)
+)engine = Innodb , charset=utf8 , auto_increment=1;
+
+insert into blog_pool (account_id, blog_id, content) values (923232323, );
+
+```
+
