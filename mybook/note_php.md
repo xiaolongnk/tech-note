@@ -821,4 +821,11 @@ curl -d {goods_id:123123} "http://sss.ss.xx"
 
 ### 2016-01-01 18:23
 
+下面这个函数里面包含两种用法，一种是array_walk(), 还有一种是 变量的引用。这个和c语言是很相似的。
+```php
+$test = [1,2,3,5];
+array_walk($test , function(&$i) { $i++; });
+var_dump($test);
+```
+
 
