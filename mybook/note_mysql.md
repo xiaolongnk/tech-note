@@ -57,3 +57,17 @@ insert into blog_pool (account_id, blog_id, content) values (923232323, );
 
 ```
 
+
+explain 显示mysql如何处理select语句以及连接表,可以帮助写出更好的查询语句和建立更好的索引.
+
+select type  
+simple 表示是简单的select , 
+primary 表示最外面的select .
+union 表示union语句的第二个.
+
+rows 表示mysql执行查询的行数,数值越大说明效果越不好,说明没有用好索引.
+
+using where  , 
+要想使查询尽可能的快, 应尽可能得找出 using filesort , using temporary 的extra的值.
+
+
