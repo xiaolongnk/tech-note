@@ -264,7 +264,7 @@
 
 
 2. 相关技能
-我的工作环境基本上是linux ，(桌面ubuntu）常用工具有tmux ,vim ,awk ,tail ,cat ,grep ,find , git.
+我的工作环境基本上是linux ，(桌面ubuntu,mate）常用工具有tmux ,vim ,awk ,tail ,cat ,grep ,find , git.
 
 3. 职责范围
 前期主要是参与开发，后面负责小组（5人），负责开发和管理.
@@ -287,5 +287,3 @@ HIGO
 优化核心接口的性能，提高qps，降低系统风险。参与系统服务化的项目。
 
 hello562xX
-
-
