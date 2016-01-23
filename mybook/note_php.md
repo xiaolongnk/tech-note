@@ -828,4 +828,41 @@ array_walk($test , function(&$i) { $i++; });
 var_dump($test);
 ```
 
+### 2016-01-23 15:29
+php 的namespace ,的原理,我需要搞清楚,认真研究一下.
+我需要跳出业务逻辑,讲一部分经理放在框架的级别,这是我下一个阶段的目标.学习新技术,研究技术实现,而不是简单的应用.
+自己的代码需要积累,抓紧组织,把能抽象的东西都抽象出来.
+
+
+
+##### PHP 的几个比较重要的方法:
+
+```
+__construct()   构造方法,生命类对象的时候就会调用.
+__desctruct()   析构方法,在类对象的生命周期结束之后. 这个和垃圾回收有什么关系吗.
+__call()        must be public method.
+__callStatic()  for static class method.
+get_called_class()  一般是在基类中用到.基础类库中用这个方法.
+get_class().  得到当前类的名称.
+__autoload().
+
+static::class   和上面的得到同样的结果.
+PHP_EOL. 提高代码的可移植性. 换行符. mac windows, linux 下是不一样的.
+user_call_func()    这个方法是写自定义函数,利用这个方法,调用的函数会变成一个变量,所以非常灵活.
+user_call_func_array()  和上面的额方法类似,区别在于这里的方法的参数是数组.
+
+这些东西被统称为魔术常亮.
+__METHOD__    return the name of the function alongwith the class name.
+__FUNCTION__  just return the name of the function.
+__CLASS__
+__FILE__      return filename of current file.
+__LINE__      return current line number.
+__DIR__       equal dirname(__FILE__).
+```
+
+PHP 中spl 开头的一些方法是做什么的,比如spl_autoload_register.
+类似的方法还有不少,都是用来做什么的额.刚才调查了一下,确实有好多东西,这些都是PHP的高级语法,应该认真研究下,用好了,可以写出高效的代码.对这门语言,我的了解还是不够,还需要认真研究.PHP SPL ==> standard PHP library.
+
+
+
 
