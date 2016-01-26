@@ -14,24 +14,24 @@ __call__ 这个方法,可以让对象的实例作为一个无名函数被使用.
 创建一个类的静态方法,  
 ```python
 def A(object):
-    @staticmethod
-    def hello():
-        return "hello world"
+@staticmethod
+def hello():
+    return "hello world"
 
-    def world(self):
-        return "class instance method"
+def world(self):
+    return "class instance method"
 
 ```
 
 静态方法  
 ```python
 class A(object):
-    @classmethod
-    def foo(cls):
-        print 'class name is',cls.__name__
+@classmethod
+def foo(cls):
+    print 'class name is',cls.__name__
 
 
-    def 
+def 
 
 ```
 类似的还有这些方法 `__getitem__, __setitem__, __delitem__`  
@@ -52,7 +52,7 @@ class A(object):
 regex= r"[\d]{4}(-)[\d]{1,2}\1[\d]{1,2}"
 ans = re.findall(regex , origin_str)
 str = ['nasdfasfd2015-12-31' , 'asdlasdff2015-12-11']
-    
+
 regex= r"[\d]{4}[-|\/|\.][\d]{1,2}[-|\/|\.][\d]{1,2}"
 ans = re.findall(regex , origin_str)
 
@@ -68,5 +68,25 @@ os.getcwd() 可以替代 os.path.dirname(__file__) ,   这种方式有时候不�
 python 变量不定义之前就使用是会报错的。
 
 Python 还需要进一步学习，现在掌握的还是不够的，需要进一步加强。
+
+我发现上面的说法并不一定正确,getcwd 这个东西要小心使用,应该认真阅读一下这个方法的文档.
+它可能并不适用你的场景.在本质上,我需要的事这个东西.
+
+```
+Python 获取当前脚本文件路径目录
+# -*- coding: cp936 -*-
+import sys,os
+#获取脚本文件的当前路径
+def cur_file_dir():
+#获取脚本路径
+    path = sys.path[0]
+    #判断为脚本文件还是py2exe编译后的文件，如果是脚本文件，则返回的是脚本的目录，如果是py2exe编译后的文件，则返回的是编译后的文件路径
+    if os.path.isdir(path):
+        return path
+    elif os.path.isfile(path):
+        return os.path.dirname(path)
+        #打印结果
+print cur_file_dir()
+```
 
 
