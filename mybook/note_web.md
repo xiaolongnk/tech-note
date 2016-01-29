@@ -182,3 +182,11 @@ http://www.cnblogs.com/lhb25/p/flexslider-responsive-content-slider.html  这里
 
 并不是所有的东西都需要自己来写，好多东西都已经写好了，你只要会拿来用就可以了。
 
+304 错误. 强制不从本地设备读取内容.
+```html
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+```
+
+
