@@ -297,7 +297,7 @@ php 回掉函数的使用。
 call_user_func_array('your function',array());
 array() is your params.
 
-php 时间函数。
+PHP 的date 函数.
 
 ```php
 <?php
@@ -326,6 +326,12 @@ for($i = 0; ; $i++){
 	//echo date_frormat($ans,'Y-m-d H:i:s')."\n";
 }
 ?>
+
+
+
+date("Y-m-d 10:00:00",strtotime("+1 day")); date 函数可以计算出明天的事件,昨天的事件.
+
+
 ```
 2015-01-28 17:38
 mysql 的联表查询的原理我还不是很清楚，只是知道了联表查询并不一定就等于O(n*m) 的复杂度。
@@ -861,7 +867,8 @@ __DIR__       equal dirname(__FILE__).
 ```
 
 PHP 中spl 开头的一些方法是做什么的,比如spl_autoload_register.
-类似的方法还有不少,都是用来做什么的额.刚才调查了一下,确实有好多东西,这些都是PHP的高级语法,应该认真研究下,用好了,可以写出高效的代码.对这门语言,我的了解还是不够,还需要认真研究.PHP SPL ==> standard PHP library.
+类似的方法还有不少,都是用来做什么的额.刚才调查了一下,确实有好多东西,这些都是PHP的高级语法,应该认真研究下,用好了,可以写出高效的代码.
+对这门语言,我的了解还是不够,还需要认真研究.PHP SPL ==> standard PHP library.
 
 
 

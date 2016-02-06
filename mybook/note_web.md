@@ -173,7 +173,7 @@ set_time_limit(0); 设置程序的执行时间,如果是0说明永久执行下�
 
 
 ### 2016-01-10 23:41
-学习两个前段页面会使用到的js。  
+学习两个前端页面会使用到的js。  
 
 https://www.woothemes.com/flexslider/  这个是用来做轮播图的js。
 http://fontawesome.dashgame.com/   这个是用来给页面中显示一些字体用的。还有一些常用的图标，用法也很简单，
