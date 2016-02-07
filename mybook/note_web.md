@@ -188,5 +188,3 @@ http://www.cnblogs.com/lhb25/p/flexslider-responsive-content-slider.html  这里
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 ```
-
-
