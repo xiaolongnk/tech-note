@@ -362,4 +362,15 @@ nmap -sP 192.168.0.*  #扫描一个网段下的所有活动的主机。
 追求太多的东西，其实都是次要的，在上面工作顺手才是最重要的。配置什么的，最没有影响了。感觉虽然gnome也有问题，但是感觉gnome
 还是稳定一点的。
 
+### 2016-02-12 16:52
+ubuntu launcher.  alacarte
 
+ubuntu 创建快捷方式．用这个软件．
+在mate桌面上安装创建自己的启动方式．要给我的zendstudio 创建．
+sudo apt-get install gnome-panel
+
+
+linux rm hidden files
+rm -rf * 是不会删除隐藏文件的.
+rm -rf .*
+这个命令会过滤调. .. ,这两个目录是无法删除的.
