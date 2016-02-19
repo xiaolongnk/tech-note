@@ -21,6 +21,8 @@ v.online.killtime.cn   10.8.6.28
 用新的环境重新部一套服务.
 10.20.3.30
 
+数据查询
+db.bizfe.meilishuo.com
 
 ### 服务情况.
 
@@ -34,10 +36,6 @@ LVS:
 DB:
 ssh work@10.8.6.17
 cat conf/mysql/higo.mysql.ini
-
-线上调试机器：
-ssh work@10.8.6.28
-v.online.killtime.cn
 
 Pandora:
 ssh work@10.20.0.82
@@ -100,3 +98,17 @@ TMS:
 BI：
 10.20.1.40 商家后台的hornbill调用的（b2c）
 旧的IP调用 grep -rP "\d+\.\d+\." /home/work/higo_b2c_api/config/bj
+
+
+### 2016-02-16 15:36
+
+164200812702070917  1011111111  25d55ad283aa400af464c76d713c07ad    01096961015 164200812715084903  2 
+mobile 1011111111
+passwd 12345678
+
+上海项目部署文档.
+http://redmine.meilishuo.com/projects/higo-pc/wiki
+
+ip r a 172.18.2.0/24 via 172.18.4.1
+
+
