@@ -190,4 +190,10 @@ http://www.cnblogs.com/lhb25/p/flexslider-responsive-content-slider.html  这里
 ```
 
 
-http://askubuntu.com/questions/126682/install-32bit-java-openjdk-on-64bit-ubuntu-12-04
+### docs juniper ubuntu linux.
+```
+sudo apt-get install libstdc++6:i386 lib32z1 lib32ncurses5 libxext6:i386 libxrender1:i386 libxtst6:i386 libxi6:i386
+sudo apt-get install openjdk-7-jre icedtea-7-plugin openjdk-7-jre:i386
+sudo apt-get install  icedtea-plugin
+sudo apt-get install libc6-i386 lib32nss-mdns
+```

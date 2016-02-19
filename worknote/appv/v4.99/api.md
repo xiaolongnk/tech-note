@@ -12,11 +12,19 @@
    lat  string
    lon  string
    access_token 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a4acfb87d37c06658ef0567e1bf03bde290db1a
 ```sql
 
 create table t_pandora_life (
     life_id bigint(20) not null primary key,
+<<<<<<< HEAD
     account_id bigint(20) not null default 0 comment '创建者的account_id',
+=======
+    shop_id  bigint(20) not null default 0 comment '创建者的account_id',
+>>>>>>> 3a4acfb87d37c06658ef0567e1bf03bde290db1a
     text varchar(320) not null default  '' comment '文本',
     images varchar(320) not null default '' comment '图片id,逗号分开',
     position varchar(256) not null default '' comment '地理位置',
@@ -48,4 +56,24 @@ create table t_pandora_life (
 
 5. 查看更多life
    
+<<<<<<< HEAD
 
+=======
+passw
+eu3G8cm9er
+
+content_service life 相关接口
+
+1. 创建
+http://content.service.inf.lehe.com/life/create?position=123123&lat=123.23&lon=22.333&text=helloworld&images=123123,1231234&account_id=123123
+
+2. 获取life详情
+http://content.service.inf.lehe.com/life/get_detail?id=21
+支持批量
+
+3. 获取店铺的Life列表.
+http://content.service.inf.lehe.com/life/shop_life_list?account_id=123123
+
+
+pandora 接口
+>>>>>>> 3a4acfb87d37c06658ef0567e1bf03bde290db1a
