@@ -59,25 +59,25 @@ http://v.inf.lehe.com/life/create?text=123123&images=187963526143160041&position
 获取店铺的life
 http://v.inf.lehe.com/life/shop_life_list?shop_id=188057690748420053
 
-
 ### 点赞的新接口。
 旧接口 favorite/create , favorite/delete 逻辑比较乱，整理了一套新的，逻辑比较清楚，
 我们这版本替换下，后面逐渐取消旧接口。
 
 favorite/create_favo
+
 参数 |  说明 | 是否必需  | 默认值 
---------------------------------
+----|----|----|----|----
 action_type | 点赞数据的类型，1 商品 2 足迹 3 life。 | 是 | 1  
 target_id | 点赞的值，随着action_type 变化,是字符串类型的值。值类型随着 action_type 和 from_board 变化。  | 是    |     
 access_token | token | 是 |   
 batch_flag  | 批量收藏的标记，是1，否0, 在值为1的时候，target_id 是json化的id数组,并且需要传递额外的参数name 和 shop_id |  否 |  0
-name | board 名称,  |  只有from_board = 1 的时候需要。 |  '' 
-shop_id |  board 的店铺id |   只有from_board = 1 的时候需要 | ''  
+name | board 名称,  |  只有batch_flag = 1 的时候需要。 |  '' 
+shop_id |  board 的店铺id |   只有batch_flag = 1 的时候需要 | ''  
 
 favorite/delete_favo
 
 参数 |  说明 | 是否必需  | 默认值 
---------------------------------
+----|----|----|----
 action_type | 取消赞数据的类型，1 商品 2 足迹 3 life。 | 是 | 1  
 target_id  |  传递的参数内容和action_type 相关，1 表示商品id ， 2 表示足迹id ， 3 表示life id |  是 | 
 
