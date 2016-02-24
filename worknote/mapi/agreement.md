@@ -1,6 +1,7 @@
 ### 强制商家同意协议。
 
 ```sql
+
 create table t_pandora_agreement
 (
     id bigint(20) not null auto_increment primary key comment '协议id',
