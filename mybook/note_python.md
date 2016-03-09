@@ -89,4 +89,29 @@ def cur_file_dir():
 print cur_file_dir()
 ```
 
+### python excel 操作.
+完成了一个python 导入到处数据的功能.用到了这两个module
+
+xlwt, xlrd .  这个仅支持 xls 类型的excel. xlsx部支持.
+首先是安装 pip . 
+pip install xlwt 
+pip install xlrd
+
+数据库操作记得 commit .
+插入数据和写入数据的时候注意 转义.
+
+python MySQLdb 也可以绑定变量,这样可以不用关心特殊字符. 类似PHP.
+
+全局变量的引用,应该使用global字段.
+
+python 从数据库中取出中文内容乱码.
+unicode  需要decode成utf8 的才可以,还需要其他的设置,完了需要一一验证.
+
+下面是示例代码:
+
+```python
+
+
+
+```
 
