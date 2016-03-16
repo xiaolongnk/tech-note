@@ -86,3 +86,7 @@ target_id  |  传递的参数内容和action_type 相关，1 表示商品id ， 
 code = 0 操作成功。
 code ！= 0 ， 表示发生异常。
 ```
+
+```sql
+ALTER TABLE t_pandora_life CONVERT TO CHARACTER SET utf8mb4;
+```
