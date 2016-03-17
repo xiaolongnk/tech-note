@@ -199,3 +199,10 @@ sudo apt-get install openjdk-7-jre icedtea-7-plugin openjdk-7-jre:i386
 sudo apt-get install  icedtea-plugin
 sudo apt-get install libc6-i386 lib32nss-mdns
 ```
+
+http://www.scc.kit.edu/scc/net/juniper-vpn/linux/
+
+还可以参考这个帖子。需要得到realm这个东西，这个东西，去你公司的vpn网站爬一下就可以了。搜索一下realm这个字，就可以看到
+这个内容的值。
+
+
