@@ -206,3 +206,17 @@ http://www.scc.kit.edu/scc/net/juniper-vpn/linux/
 这个内容的值。
 
 
+linux nodejs cnpm.
+
+http://npm.taobao.org/
+
+cnpm 比npm 速度块很多，用alias比较靠谱。 换一个淘宝镜像。
+
+nvm 可以选择安装 node 的版本，也很方便。
+
+这里下载。
+https://raw.githubusercontent.com/creationix/nvm/v0.4.0/install.sh
+
+
+cnpm install
+
