@@ -20,3 +20,14 @@ js 的闭包函数，这几天php中也用了不少，一个是array_walk, usort
 nginx 的log_format , log 需要几下post参数。记得上次查问题，我只能定位到url，并不能定位
 到参数，这导致有些问题没有办法追查。 所以这个问题要想办法避免下，要了解下nginx的log_format.
 
+
+js 正则.
+这些常用的方法，需要熟练使用.
+
+js localStorage.
+localStorage.getItem();
+localStorage.setItem();
+underscore.js 
+jquery
+$.each();
+_.findWhere();
