@@ -344,7 +344,7 @@ sudo apt-get install mysql-workbench
 全,解决这个问题,只需要重新安装中文字体就可以了.
 
 
-sudo aptitude install ttf-wqy-microhei  
+sudo apt-get install ttf-wqy-microhei  
 sudo apt-get install ttf-wqy-zenhei  
 
 ubuntu 修改自己的键盘映射,交换 capsloc 和 ese.
@@ -374,3 +374,5 @@ linux rm hidden files
 rm -rf * 是不会删除隐藏文件的.
 rm -rf .*
 这个命令会过滤调. .. ,这两个目录是无法删除的.
+ubuntu 关闭没用的 crash report。
+sudo vim /etc/default/apport

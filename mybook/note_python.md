@@ -94,6 +94,11 @@ print cur_file_dir()
 
 xlwt, xlrd .  这个仅支持 xls 类型的excel. xlsx部支持.
 首先是安装 pip . 
+
+sudo apt-get install python-dev
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install python-pip
+pip install mysql-python
 pip install xlwt 
 pip install xlrd
 
@@ -104,6 +109,17 @@ python MySQLdb 也可以绑定变量,这样可以不用关心特殊字符. 类�
 
 全局变量的引用,应该使用global字段.
 
+├── data_import
+│   ├── import.py
+│   ├── __init__.py
+│   ├── merge_files.py
+│   ├── Utils.py
+│   └── Utils.pyc
+├── files
+│   ├── final_brand.txt
+│   ├── final_brand.xls
+│   └── up1.xls
+└── README.md
 python 从数据库中取出中文内容乱码.
 unicode  需要decode成utf8 的才可以,还需要其他的设置,完了需要一一验证.
 

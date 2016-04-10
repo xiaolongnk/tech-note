@@ -70,4 +70,11 @@ hgadmin 10.20.1.27 10.20.1.28
 增加参数 可以看到数据。 当前的日期+3
 ?__cd__=/rb/14
 
+提报活动的数据流。
+
+febiz ==> bizbll ==> shop_service;
+
+shop/getReportEventDetail;
+
+
 
