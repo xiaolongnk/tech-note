@@ -6,6 +6,7 @@ push 的机器.
 
 bdp 的down file机器
 10.20.0.90
+http://down.bdp.inf.lehe.com/
 
 10.20.0.86  mysql pandora
 

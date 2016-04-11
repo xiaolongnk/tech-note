@@ -220,3 +220,9 @@ https://raw.githubusercontent.com/creationix/nvm/v0.4.0/install.sh
 
 cnpm install
 
+2016-04-11 15:45
+
+charles 破解。我的link。
+http://pan.baidu.com/s/1i4UUbOh
+linux可以使用。
+
