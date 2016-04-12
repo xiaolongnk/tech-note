@@ -50,8 +50,11 @@ class AddVirtual
     function cacu_virtual(&$goods_obj)
     {
         $now = time();
+        if($goods_obj->end < $now){
+            $now = $goods_obj->start +($goods_obj->goods_repertory + $goods_obj->sales) * $goods_obj->update_time_interval;
+        }
         $time_abs = $now - $goods_obj->last_update_time;
-        $times = $time_abs / $goods_obj->update_time_interval;
+        $times = intval($time_abs / $goods_obj->update_time_interval);
         if($times >= 1){
             $goods_obj->last_update_time = $now;
             if($goods_obj->last_update_diviation == 0) {
