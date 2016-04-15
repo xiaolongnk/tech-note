@@ -33,6 +33,8 @@ class AddVirtual
      */
     function add_virtual(&$goods_obj)
     {
+
+        // 只能计算一次在初始化的时候计算。
         $time_abs = intval(($goods_obj->end - $goods_obj->start) * 0.8); 
         $goods_obj->final_virtual = rand(70, 90)/100;
         $goods_obj->update_time_interval = intval($time_abs / $goods_obj->goods_repertory);
@@ -50,7 +52,8 @@ class AddVirtual
     function cacu_virtual(&$goods_obj)
     {
         $now = time();
-        if($goods_obj->end < $now){
+        $max_time = $goods_obj->start + ($goods_obj->goods_repertory + $goods_obj->sales) * $goods_obj->update_time_interval;
+        if($max_time < $now){
             $now = $goods_obj->start +($goods_obj->goods_repertory + $goods_obj->sales) * $goods_obj->update_time_interval;
         }
         $time_abs = $now - $goods_obj->last_update_time;
