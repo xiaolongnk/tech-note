@@ -78,4 +78,11 @@ febiz ==> bizbll ==> shop_service;
 shop/getReportEventDetail;
 
 
+查询店铺内的参加活动的商品。
+```sql
+
+select a.goods_id , b.event_id , a.report_event_id , b.starttime , b.endtime from t_pandora_report_event_shop_goods a left join t_pandora_promo_events_goods b on a.goods_id = b.goods_id where  a.status = 1 and b.status = 1 and a.shop_id = 160369471503079987;
+select * from t_pandora_promo_events where event_id = 2135;
+
+```
 
