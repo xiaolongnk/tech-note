@@ -86,3 +86,11 @@ select * from t_pandora_promo_events where event_id = 2135;
 
 ```
 
+
+works后台开发指南。
+
+http://backend.passport.lehe.com 
+用户名：admin@higohappy.com  密码：SgQsrAV4n6jBO4p6
+
+http://passport.lehe.com 
+用户名：higo   密码：0FcEFq1iOS8dhRWU

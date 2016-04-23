@@ -226,3 +226,11 @@ charles 破解。我的link。
 http://pan.baidu.com/s/1i4UUbOh
 linux可以使用。
 
+
+git
+
+```
+git stash specific files;
+use git stash save command.
+git stash save common/app.constants.js
+```
