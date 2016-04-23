@@ -376,3 +376,63 @@ rm -rf .*
 这个命令会过滤调. .. ,这两个目录是无法删除的.
 ubuntu 关闭没用的 crash report。
 sudo vim /etc/default/apport
+
+
+
+对硬件的了解是我的最大的弱点。
+电脑的什么显卡驱动啊，什么网卡驱动，我都没有搞清楚。今天驱动挂了，所以开不开gui了，没办法，逼着
+学了一把。了解了一些。
+
+I installed latest nvidia drivers by this method:
+
+sudo add-apt-repository ppa:ubuntu-x-swat/x-updates
+sudo apt-get update
+sudo apt-get install nvidia-current
+It is working fine with unity 3d. Thanks to all.
+
+幸好是可以上网，如果不能上网，我真是有点没招了。
+```
+glxinfo | head
+
+```
+
+然而，上面的命令并没有解决我的问题。看下面的这个。
+
+http://askubuntu.com/questions/319671/how-to-change-the-graphics-card-driver-via-terminal
+ubuntu-drivers devices
+to get a list of your devices and identify the one you want. My output looked like this:
+
+ubuntu-drivers devices
+== /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0 ==
+modalias : pci:v000010DEd00000391sv00001462sd00000630bc03sc00i00
+vendor : NVIDIA Corporation
+model : G73 [GeForce 7600 GT]
+driver : nvidia-304 - distro non-free recommended
+driver : nvidia-173 - distro non-free
+driver : xserver-xorg-video-nouveau - distro free builtin
+driver : nvidia-304-updates - distro non-free
+I wanted nvidia-304 so I typed:
+
+apt-get install nvidia-304
+Then I rebooted and confirmed using the desktop appliaction Additional Drivers that I was indeed using the driver I had chosen.
+
+我遇到的最本质的问题是，我不会在命令行下安装显卡驱动，切换显卡驱动。所以导致各种问题。
+上面的命令正好是教会这个。
+
+执行完上面的安装命令，然后startx sudo service start lightdm 就可以启动了图形界面了，回到原来的样子。
+
+还看了几个其他的命令，一个是
+```
+ag
+lspci 
+
+glxinfo | head  如果显卡驱动有问题，这个命令会不正常。
+正常的话，会列出来一些相关的东西。
+
+modinfo 
+系统默认安装的驱动是这个。
+xserver-xorg-video-intel
+modprobe -r nouveau  用这个命令来卸载这个模块，从内核中卸载这个模块。
+```
+
+
