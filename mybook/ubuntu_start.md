@@ -434,5 +434,13 @@ modinfo
 xserver-xorg-video-intel
 modprobe -r nouveau  用这个命令来卸载这个模块，从内核中卸载这个模块。
 ```
+2016-04-24 02:37
 
+firefox 的flash也是不错的。我观察了下kde，发现kubuntu的问题还是很多的，搞了好几次都失败了。
+最终还是放弃了，没什么意义。unity 和 kde都不太适合我的机械师。可能是显卡太高端了，不适合。
+在别的电脑上可能没有问题。毕竟，很少有像我这样的脑残，拿个游戏本来玩linux。
+
+
+sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update && sudo apt-get install freshplayerplugin
 
