@@ -138,6 +138,8 @@ CREATE TABLE `t_pandora_report_event_batch_goods` (
 
 alter table t_pandora_report_event_shop_goods add column `first_judge_status` tinyint(4) not null default 0 comment '运营审核状态 0 待审 1审核通过 2审核未通过 ';
 alter table t_pandora_report_event_shop_goods add column  `second_judge_status` tinyint(4) not null default 0 comment '营销组审核状态 0 待审 1审核通过 2审核未通过 3: 驳回(可以重新提报)';
+alter table t_pandora_report_event_shop_goods add column batch_id bigint(20) not null default 0 comment '批次ID';
+alter table t_pandora_report_event_shop_goods add batch_sort int(10) not null default 1 comment '批次内商品排序';
 
 
 ```
