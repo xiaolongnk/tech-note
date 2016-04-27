@@ -114,26 +114,12 @@ CREATE TABLE `t_pandora_report_event_batch` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '开始时间',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '结束时间',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `utime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  `mtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
   `batch_type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '1: 普通 2: 夜场',
   PRIMARY KEY (`batch_id`),
   KEY `batch_id` (`batch_id`,`batch_status`),
   KEY `event_id` (`event_id`,`batch_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='提报商品批次';
-
-
-CREATE TABLE `t_pandora_report_event_batch_goods` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增编号',
-  `batch_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '分组(批次)编号，预留',
-  `event_id` int(11) NOT NULL DEFAULT '0' COMMENT '活动编号',
-  `goods_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '关联的商品ID',
-  `goods_sort` tinyint(4) NOT NULL DEFAULT '99' COMMENT '商品排序[1-99]',
-  `goods_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态:1.正常；2.删除；',
-  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `mtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
-  PRIMARY KEY (`id`),
-  KEY `test_index` (`batch_id`,`goods_status`,`goods_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='提报商品批次商品表'
 
 
 alter table t_pandora_report_event_shop_goods add column `first_judge_status` tinyint(4) not null default 0 comment '运营审核状态 0 待审 1审核通过 2审核未通过 ';
