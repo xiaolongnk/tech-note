@@ -235,4 +235,39 @@ use git stash save command.
 git stash save common/app.constants.js
 ```
 
-那天发现我本地环境速度很慢的原因是
+那天发现我本地环境速度很慢的原因是 php-fpm.conf 中的maxchildren 数量太少了。
+我改成static 的，然后把最大数量变成128； 一下子就不用排队了。
+现象是
+我看network，显示网络请求在排队，但是我完了单独访问每一个排队排了很久的接口，速度
+都很快，所以很疑惑。
+我开了php的slowlog，但是并没有出现slowlog。貌似php的slowlog并不是我理解的那样。
+并且slowlog，我自己写了一个sleep都不会打印出slowlog。
+
+
+firefox访问google的问题。
+https://www.google.com/ncr
+
+或者在firefox上下载一个插件，就可以和chrome一样搜索了。
+
+
+2016-04-27 19:12
+这几天写了一点js。感觉有什么收获吗？
+在这种框架下写了一点新功能，发现开发确实挺慢的。
+postman 是一个不错的工具， 不用一直在那里拼凑接口了。写一次保存下来，就可以一直使用了。
+
+angular 中的浮层，请求模块。
+
+其实，一个页面中常用的请求也就那些，浮层，ajax网络请求,gridlist , gridlist search.
+把这些常用的东西封装一下，就可以比较方便的开发了.
+写一点js，是必须的。无论如何，jquery，underscore，都可以加速开发效率。
+
+对于一个系统来讲，基础service应该包含所有的逻辑，逻辑应该收敛在基础服务里面。
+基于这个原则去构建系统，应该不会太乱。
+
+
+
+感觉有点不爽，但是又不知道哪里有问题。如果你很清楚哪里有问题哪里你不满意，那么怎么做业就很清楚了。
+要搞清楚究竟是哪里出了问题。
+
+
+
