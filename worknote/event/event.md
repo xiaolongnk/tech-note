@@ -129,3 +129,30 @@ alter table t_pandora_report_event_shop_goods add batch_sort int(10) not null de
 
 
 ```
+
+接口改造。
+pandora 接口改造，计算价格接口抽象到promoservice。
+goodsservice 中调用t_pandora_promo_events 表。
+
+一. works 后台的相关功能。
+
+
+
+二.promoservice 中增加如下接口,为pandora 和 bizbll 提供服务。
+
+1. 价格及计算服务 pandora
+2. 提报库存增减服务。 pandora
+3. 商品提报接口。 pandora
+4. 商家可以提报的商品列表。 (shopservice)
+5. 商家参加活动的商品列表。 (shopservice)
+
+三. 提报功能提报相关功能的开发。
+febiz
+bizbll
+
+pandora  ()
+
+
+四. 提报相关功能的H5页面。
+
+
