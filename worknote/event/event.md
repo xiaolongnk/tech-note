@@ -155,4 +155,33 @@ pandora  ()
 
 四. 提报相关功能的H5页面。
 
+t_pandora_report_evnets 需要增加几个字段。 需要和运营确认。
+```
+alter table t_pandora_report_event add column delivery_free tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0 不包邮'
+alter table t_pandora_report_event add column `pay_timeout` int(11) NOT NULL DEFAULT '10' COMMENT '订单未支付超时关闭时间'
+alter table t_pandora_report_event add column `promo_type` int(10) NOT NULL DEFAULT '1' COMMENT '1.秒杀专用 2.其他'
+```
+
+确认下客户端现在用哪个价格。
+最完美的解决方案是讲价格逻辑放在 goodservice里面。将pandora的价格逻辑废弃。将pandora的计算逻辑逐渐弱化。相关功能前移到对应的
+基础服务里面。
+
+
+
+
+1. 写一个新的goods_getsku 方法。可以通过不同的条件获得sku的信息。这样可以解决价格计算和订单相关的问题。
+2. 购物车处对wrap_higo_sku 的影响。 通过研究，发现所有依赖wrap_higo_sku 的地方，都可以通过调用sku来影响。
+所以，只要将这部分逻辑放在获取sku的地方，就可以无缝替代。
+
+1 . 更具skuid查询。 根据条件查询。 
+2 . crossorder需要修改一下。
+
+3. 查询促销库存的逻辑取消。
+4. 删除了若干 查询sku的方法，统一为一个。
+5. move all logic related to report_event to promo service;
+6. 秒杀模块数据源切换。
+7. 秒杀接口的切换。
+
+8. 制造假数据，调试接口功能。 提报id 是 709
+
 
