@@ -444,3 +444,38 @@ firefox 的flash也是不错的。我观察了下kde，发现kubuntu的问题还
 sudo add-apt-repository ppa:nilarimogard/webupd8
 sudo apt-get update && sudo apt-get install freshplayerplugin
 
+2016-05-06 10:32
+
+The default effects of different desktop are differnet. Now I prefer gnome , but not ubuntu-mate since
+I found bad effects of eclipse in my high-definition-screen.;
+
+mate 的 jetbrains 的字体兼职不能忍受。gnome3 is better, and I have a little bit thought about opensuse. 
+try opensuse , may opensuse have a better performance for userinterface for developer in linux.
+
+I want to change gnome3 login gdm background , just install ubuntu tweak , and you can do this change for your sys.
+
+here is gdmsetup
+https://github.com/Nano77/gdm3setup
+
+#2016-05-10 20:07
+First change /etc/sudoers files allow sudoer execute any command;
+```
+# Allow members of group sudo to execute any command after they have
+# provided their password
+# (Note that later entries override this, so you might need to move
+# it further down)
+%sudo ALL=(ALL) ALL
+```
+then add the sudo group just like this;
+
+```
+groupadd sudo
+```
+then add you work user in sudo group
+
+```
+sudo usermod -aG sudo work
+```
+http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
+
+
