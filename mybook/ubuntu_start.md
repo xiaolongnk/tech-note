@@ -433,7 +433,8 @@ modinfo
 系统默认安装的驱动是这个。
 xserver-xorg-video-intel
 modprobe -r nouveau  用这个命令来卸载这个模块，从内核中卸载这个模块。
-```
+
+
 2016-04-24 02:37
 
 firefox 的flash也是不错的。我观察了下kde，发现kubuntu的问题还是很多的，搞了好几次都失败了。
@@ -479,3 +480,9 @@ sudo usermod -aG sudo work
 http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
 
 
+
+gnome icon theme.
+this icon for gnome is necessary , better then default.
+sudo add-apt-repository ppa:tiheum/equinox
+sudo apt-get update
+sudo apt-get install faenza-icon-theme

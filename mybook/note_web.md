@@ -198,6 +198,10 @@ sudo apt-get install libstdc++6:i386 lib32z1 lib32ncurses5 libxext6:i386 libxren
 sudo apt-get install openjdk-7-jre icedtea-7-plugin openjdk-7-jre:i386
 sudo apt-get install  icedtea-plugin
 sudo apt-get install libc6-i386 lib32nss-mdns
+sudo apt-get install libgtk2-perl libwww-perl
+wget -q -O /tmp/msjnc https://raw.github.com/madscientist/msjnc/master/msjnc
+chmod 755 /tmp/msjnc
+sudo cp /tmp/msjnc /usr/bin
 ```
 
 http://www.scc.kit.edu/scc/net/juniper-vpn/linux/
