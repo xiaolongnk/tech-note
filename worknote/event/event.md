@@ -155,12 +155,6 @@ pandora  ()
 
 四. 提报相关功能的H5页面。
 
-t_pandora_report_evnets 需要增加几个字段。 需要和运营确认。
-```
-alter table t_pandora_report_event add column delivery_free tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0 不包邮'
-alter table t_pandora_report_event add column `pay_timeout` int(11) NOT NULL DEFAULT '10' COMMENT '订单未支付超时关闭时间'
-alter table t_pandora_report_event add column `promo_type` int(10) NOT NULL DEFAULT '1' COMMENT '1.秒杀专用 2.其他'
-```
 
 确认下客户端现在用哪个价格。
 最完美的解决方案是讲价格逻辑放在 goodservice里面。将pandora的价格逻辑废弃。将pandora的计算逻辑逐渐弱化。相关功能前移到对应的
@@ -185,3 +179,91 @@ alter table t_pandora_report_event add column `promo_type` int(10) NOT NULL DEFA
 8. 制造假数据，调试接口功能。 提报id 是 709
 
 
+
+### 上线流程
+
+1. sql 改动
+
+higo_goods 库
+t_pandora_report_evnets 需要增加几个字段。 需要和运营确认。
+```
+alter table t_pandora_report_event add column `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1:正常，-1:删除';
+alter table t_pandora_report_event add column `create_user` varchar(11) DEFAULT '' COMMENT '创建者';
+alter table t_pandora_report_event add column `attach_info` text COMMENT '模板文件json';
+alter table t_pandora_report_event add column `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父活动ID，-1主活动，0普通活动， >0存在主活动';
+alter table t_pandora_report_event add column  delivery_free tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0 不包邮';
+alter table t_pandora_report_event add column `pay_timeout` int(11) NOT NULL DEFAULT '10' COMMENT '订单未支付超时关闭时间';
+alter table t_pandora_report_event add column `promo_type` int(10) NOT NULL DEFAULT '1' COMMENT '1.秒杀专用 2.其他';
+alter table t_pandora_report_event modify column `reporting_conditions` text NOT NULL COMMENT '提报条件';
+
+```
+
+t_pandora_report_event_shop_goods 中需要增加几个字段
+```
+alter table t_pandora_report_event_shop_goods add column batch_id bigint(20) not null default '0' comment '批次id';
+alter table t_pandora_report_event_shop_goods add column batch_sort int(4) not null default 1' comment '商品在批次内的排序';
+```
+
+t_pandora_reprot_event_batch  增加表
+```
+CREATE TABLE `t_pandora_report_event_batch` (
+`batch_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '分组编号',
+`batch_name` varchar(100) NOT NULL DEFAULT '' COMMENT '分组名称',
+`batch_desc` varchar(255) NOT NULL DEFAULT '' COMMENT '分组备注',
+`batch_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态:1.正常；2.删除；',
+`event_id` int(11) NOT NULL DEFAULT '0' COMMENT '活动编号',
+`start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '开始时间',
+`end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '结束时间',
+`ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`mtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+`batch_type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '1: 普通 2: 夜场',
+PRIMARY KEY (`batch_id`),
+KEY `batch_id` (`batch_id`,`batch_status`),
+KEY `event_id` (`event_id`,`batch_status`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='提报商品批次' 
+
+```
+增加提报商品表。
+```
+create table t_pandora_report_event_shop_goods_main (
+id bigint(20) not null auto_increment,
+report_event_id bigint(20) not null default 0 comment '提报活动id',
+shop_id bigint(20) not null default 0 comment '店铺id',
+goods_id bigint(20) not null default 0 comment  '提报商品id',
+event_goods_name bigint(20) not null default 0 comment '提报商品名称',
+event_goods_desc bigint(20) not null default 0 comment '提报商品描述',
+event_goods_image bigint(20) not null default 0 comment '提报商品图片',
+status int(4)  not null default 0 comment '-1:删除,0:待审,1:审核通过 -2:驳回可以再次提报 -3:拒绝无法再次提报',
+batch_id bigint(20) not null default 0 comment '批次id',
+batch_sort int(10) not null default 0 comment '批次内排序',
+goods_repertory int(10) not null default 0 comment '提报商品总库存',
+goods_sales int(10) not null default 0 comment '提报商品总销量',
+ctime timestamp not null default '0000-00-00 00:00:00' comment '创建时间',
+mtime timestamp not null default current_timestamp comment '修改时间',
+primary key (id),
+key batch_id_key (batch_id),
+key goods_id_key (goods_id)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='提报商品表';
+```
+
+### 数据库已经创建。  done
+
+### works后台增加功能入口 
+
+### promo service 上线。  done
+
+部署在 goods serivce 的机器上。  done
+增加域名解析。 promo.service.lehe.api  done
+增加globalconfig的配置。  done
+
+
+问题：
+
+1. 旧系统设置的数据，新系统不支持。如何让系统能正确兼容旧系统(hgadmin过来的数据。)
+
+分析：讲批次，和商品在新系统中重新处理一下，来过渡，一旦过渡成功，就废弃旧的运营后台。
+
+就系统中的 大促 和 秒杀类型的，和价格变化相关的活动。
+
+1. 确保系统可以正常下单。可以正常支付。
+2. 找出现在所有的变价的商品。
