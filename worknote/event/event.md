@@ -244,6 +244,14 @@ primary key (id),
 key batch_id_key (batch_id),
 key goods_id_key (goods_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='提报商品表';
+
+
+alter table t_pandora_report_event_shop_goods_main modify column event_goods_name  varchar(256) not null default '' comment '提报商品名称';
+alter table t_pandora_report_event_shop_goods_main modify column event_goods_desc  varchar(256) not null default '' comment '提报商品描述';
+alter table t_pandora_report_event_shop_goods_main modify column event_goods_image  varchar(256) not null default '' comment '提报商品图片';
+alter table t_pandora_report_event_shop_goods_main add column reject_reason varchar(256) not null default '' comment '审核拒绝原因';
+
+
 ```
 
 ### 数据库已经创建。  done
