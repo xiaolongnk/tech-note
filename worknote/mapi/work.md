@@ -97,3 +97,10 @@ http://passport.lehe.com 
 
 
 bizbll    10.20.1.54   10.20.1.55
+
+fe_works 上线指南
+
+登录work@10.20.3.30
+cd /home/work/content/git/fe_works && gulp publish
+登录jenkins操作上线
+

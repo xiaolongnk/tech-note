@@ -292,3 +292,110 @@ alter table t_pandora_report_event_shop_goods_main add column reject_reason varc
 
 
 
+迁移一些线上数据，用来测试。
+
+works后台上线，测试。
+
+hgadmin的数据迁移。 () 
+
+pandora 上线。   5-24
+
+老后台停用。     
+
+diy页面数据。
+
+老diy接口调整。
+
+
+手机提报(东杰) 2016-05-21
+提报接口数据结构修改(东杰)  2016-05-23 
+类目筛选。 (东杰)
+
+
+和glk打通。 支持批次ID。  (欧小龙)
+增加审核的备注,首页位置。(欧小龙)
+添加提报活动类型。(source_type)
+旧后台功能完善。  (欧小龙) (2016-05-19)
+
+增加提报页面逻辑,恢复为现有模式。 (给面向运营的会场灌商品) (欧小龙)  (2016-05-20)
+数据迁移的问题。 (欧小龙 2016-05-21）
+
+测试 (2016-05-23)
+
+2016-05-19 23:18
+
+works 后台前端，接口 
+1. report_event_type 的类型；1 大促  2 秒杀 3 4 5 6 7(待扩展)   10 秒杀会场
+2. 秒杀会场给所有 秒杀页面使用。 包括首页模块的数据，秒杀页面的数据。
+3. 
+
+
+```
+alter table t_pandora_report_event add column source_type tinyint(4) not null default 1 comment '1：面向商家 2:面向运营';
+alter table t_pandora_report_event_shop_goods_main add column remark varchar(128) not null default '' comment '备注';
+```
+
+2016-05-23 23:02
+需要和glk系统一起测试一下。唯一的一个遗漏。
+
+测试了秒杀页面，首页。 价格变化逻辑，均没有发现问题。
+购物车，下单支付，库存的变化。
+
+等待明天上线观察。
+
+抽查了三个最新的 diy页面，也没有发现异常。
+
+数据同步脚本功能ok ，已经使用了多次，明天可以直接使用。
+
+/home/service/php/bin/php /home/work/pandora/public/script/index.php test/Test
+
+works 后台的功能，使用较少，没有进行太多测试，感觉应该ok。
+works 后台问题，出问题立刻修改。
+
+明天的主要工作。
+继续测试works后台，以及所有相关的功能，尽量确保上线不出bug。
+写一个简单的wiki。
+
+
+明天晚上上线步骤。
+
+用数据同步脚本，先同步数据;
+bizbll ;
+febiz ; 
+商家后台pc biz ;
+提报的H5页.
+上线后再同步一次数据，确保所有的老数据都被同步到新表里面。面.
+
+问题：
+首页模块的数据源需要修复，其他秒杀张创建批次会导致首页数据乱套。
+
+
+2016-05-24 11:53
+1. 创建提报活动
+2. 审核商品， 备注
+3. 推送商品
+4. 管理商品分组
+5. 编辑商品信息（广告语，名称，排序，图片）
+6. 批次生效功能
+
+
+
+TODO:
+下午搞定。
+
+1. 批次商品增加排序功能  wo
+2. 提报审核中显示推送信息  wo 
+3. 批次管理中批次类型显示名称 wo 
+4. 增加批次生效，失效功能   wo
+
+
+5. 可提报商家数   dongjie
+6. 商家后台发送上线公告   dongjie
+7. 图片放大   dongjie
+8. 提报默认排序设置999 dongjie
+9. group 走 service   dongjie
+H5 提报上线。 
+
+
+alter table t_pandora_report_event_batch modify column batch_status tinyint(4) not null default 2 comment '状态 1:正常 2.失效 -1:删除';
+alter table t_pandora_report_event_shop_goods_main modify column batch_sort int(10) not null default 999 comment '批次内商品排序，默认999';
