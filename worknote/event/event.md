@@ -399,3 +399,10 @@ H5 提报上线。
 
 alter table t_pandora_report_event_batch modify column batch_status tinyint(4) not null default 2 comment '状态 1:正常 2.失效 -1:删除';
 alter table t_pandora_report_event_shop_goods_main modify column batch_sort int(10) not null default 999 comment '批次内商品排序，默认999';
+
+
+2016-05-24 21:02
+
+
+status 增加状态   status 2:进入排期 3：排期中， 4:排期结束
+
