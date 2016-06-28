@@ -104,3 +104,12 @@ fe_works 上线指南
 cd /home/work/content/git/fe_works && gulp publish
 登录jenkins操作上线
 
+
+2016-05-24 18:44
+
+增加两个字段，辅助显示推送的状态。
+```
+alter table t_pandora_report_event_shop_goods_main add column from_event_id bigint(20) not null default 0 comment '来自提报id';
+alter table t_pandora_report_event_shop_goods_main add column to_event_id bigint(20) not null default 0 comment '推送至提报id';
+```
+
