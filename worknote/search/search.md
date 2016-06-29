@@ -14,7 +14,7 @@
 create table t_pandora_search_condition(
 id bigint(20) not null default 0 comment '' primry key,
 title varchar(32) not null default '' comment '名称',
-conditions text not null default '' comment '条件的json序列'，
+condition text not null default '' comment '条件的json序列'，
 ctime timestamp not null default current_timestamp,
 mtime timestamp not null default '0000-00-00 00:00:00' ,
 status tinyint(4) not null default 1 comment '1:正常 -1 删除',
@@ -122,4 +122,18 @@ pandora  -> goodsservice -> user_search
 
 1. 静态商品集合 -> 替换之前的运营类目  (暂时不提供支持，还是利用就得运营类目，等后面有时间再进行优化。)
 2. 动态商品集合 -> 支持newin 和 新直播的需求。
+
+globalconfig 里面增加配置。增加searchservice的配置。
+
+promoservice 里面增加配置，增加 searchservice 的配置，和searchservice 结合使用。
+
+
+相关系统的改动
+
+1. feworks   前端功能，增加搜索条件部分，增删改查。改造提报系统的商品搜索。商品列表的商品搜索。
+2. worksbll 支持feworks的功能，负责业务逻辑的转发。
+3. pandora 支持外部业务。newin和直播的接口。
+4. goodsservice  增加商品搜索模块。调用搜索接口实现数据检索。给pandora实现基础接口。包含搜索条件相关的所有的业务逻辑。
+   worksbll 负责转发请求只goodsservice。将商品搜索条件部分业务逻辑放在goodsservice里面。
+
 
