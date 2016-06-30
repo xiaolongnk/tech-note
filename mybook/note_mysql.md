@@ -72,6 +72,8 @@ using where  ,
 我觉这在业务重没有必要禁止连表查询，在不会带来什么压力的情况下，并没有什么必要。
 如果两个表，都比较简单，连表也没什么不可以。什么事情都应该分开来看待，没有什么是绝对的。
 
-
-
+```
+select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5') 
+```
+谢谢,经测试order by substring_index和order by find_in_set都可以
 
