@@ -11,14 +11,15 @@
 设计表：
 
 ```sql
+
 create table t_pandora_search_condition(
-id bigint(20) not null default 0 comment '' primry key,
+id bigint(20) not null default 0 comment '' primary key,
 title varchar(32) not null default '' comment '名称',
-condition text not null default '' comment '条件的json序列'，
-ctime timestamp not null default current_timestamp,
-mtime timestamp not null default '0000-00-00 00:00:00' ,
+search_condition text not null comment '搜索条件的json序列',
+ctime timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
+mtime timestamp not null default '0000-00-00 00:00:00'  comment '修改时间',
 status tinyint(4) not null default 1 comment '1:正常 -1 删除',
-create_user varchar(32) not null default '' comment '创建人',
+create_user varchar(32) not null default '' comment '创建人'
 )engine = InnoDB , charset=utf8, comment '动态商品集';
 
 
