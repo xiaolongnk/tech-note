@@ -13,7 +13,7 @@
 ```sql
 
 create table t_pandora_search_condition(
-id bigint(20) not null default 0 comment '' primary key,
+id bigint(20) not null auto_increment comment '' primary key,
 title varchar(32) not null default '' comment '名称',
 search_condition text not null comment '搜索条件的json序列',
 ctime timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
