@@ -1,8 +1,7 @@
 ###产品规划
 
 创建静态商品集合和动态商品集合的概念，用来替换运营类目的概念。
-运营类目，用静态商品集合的概念来替换运营类目的概念。
-动态商品集合，用来实现定制动态商品集合的概念。例如new_in 和直播的需求。
+运营类目，用静态商品集合的概念来替换运营类目的概念。动态商品集合，用来实现定制动态商品集合的概念。例如new_in 和直播的需求。
 
 可以支持的搜索条件：
 
@@ -20,7 +19,7 @@ ctime timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
 mtime timestamp not null default '0000-00-00 00:00:00'  comment '修改时间',
 status tinyint(4) not null default 1 comment '1:正常 -1 删除',
 create_user varchar(32) not null default '' comment '创建人'
-)engine = InnoDB , charset=utf8, comment '动态商品集';
+)engine = InnoDB , charset=utf8, comment '商品搜索条件';
 
 
 ```
@@ -88,6 +87,7 @@ goodsId     商品ID      多个用‘,’隔开
 unGoodsId   过滤商品ID  多个用‘,’隔开
 goodsName   商品名称
 shopId      店铺ID
+unShopId    黑名单
 shopName    (暂时不能用)
 brandId     品牌ID
 categoryId  品类ID
