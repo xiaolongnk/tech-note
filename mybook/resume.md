@@ -46,8 +46,8 @@
 	主要开发语言为php，熟悉html、css、js、jquery，熟悉python、shell、markdown。熟悉linux、nginx、mysql，redis 。开发环境为mac，常用工具有，phpStorm, git ，vim ，tmux等。
 
 ###### 职责范围
-	参与需求设计与开发。
-	管理小团队，小组有5人左右，负责发版相关的开发工作。
+	参与需求分析、产品功能设计与开发。
+	管理小团队，小组有5人左右，负责相关的开发工作。
 
 
 ### 其他
