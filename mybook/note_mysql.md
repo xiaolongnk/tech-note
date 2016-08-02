@@ -77,3 +77,14 @@ select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5')
 ```
 谢谢,经测试order by substring_index和order by find_in_set都可以
 
+
+
+mysql 中创建用户。
+
+```
+CREATE USER 'username'@'host' IDENTIFIED BY 'password'
+GRANT privileges ON databasename.tablename TO 'username'@'host' 
+```
+more detailed info see this link.  http://www.jb51.net/article/31850.htm
+
+
