@@ -87,4 +87,58 @@ GRANT privileges ON databasename.tablename TO 'username'@'host'
 ```
 more detailed info see this link.  http://www.jb51.net/article/31850.htm
 
+mysql 基础。
+mysql 中的数据类型
 
+```
+tinyint   1 字节    -128 ~ 128
+smallint  2 字节   -32768 ~ 32767
+mediumint 3字节  
+int       4字节  int(11)
+bigint    8字节
+
+unsigned   int   0～4294967295   
+int   2147483648～2147483647 
+unsigned long 0～4294967295
+long   2147483648～2147483647
+long long的最大值：9223372036854775807
+long long的最小值：-9223372036854775808
+unsigned long long的最大值：18446744073709551615
+
+__int64的最大值：9223372036854775807
+__int64的最小值：-9223372036854775808
+unsigned __int64的最大值：18446744073709551615
+
+```
+
+1.首先，对于精度比较高的东西，比如money，我会用decimal类型，不会考虑float,double,因为他们容易产生误差，numeric和decimal同义，numeric将自动转成decimal。
+
+DECIMAL从MySQL 5.1引入，列的声明语法是DECIMAL(M,D)。在MySQL 5.1中，参量的取值范围如下：
+·M是数字的最大数（精度）。其范围为1～65（在较旧的MySQL版本中，允许的范围是1～254），M 的默认值是10。
+·D是小数点右侧数字的数目（标度）。其范围是0～30，但不得超过M。
+说明：float占4个字节，double占8个字节，decimail(M,D)占M+2个字节。
+这是一个不错的解释。
+```
+Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
+Suppose that your column is set to be DECIMAL(13,4). This means that the column will have a total size of 13 digits where 4 of these will be used for precision representation.
+So, in summary, for that column you would have a max value of: 999999999,9999
+```
+
+引申 为什么floa 和 double 会丢失精度。
+1 字节 = 8 bit。 int 一般认为是32位。最长是10位。
+float 为4byte。
+double 为8btye。
+IEEE 754 标准，数的存法。
+
+
+datetime 4字节  和  timestamp 8字节 的区别。
+
+ctime  datetime => now()
+mtime  timestamp ==> CURRENT_TIMESTAMP
+
+1970 ~ 2037
+
+复习mysql 索引。
+复合索引。
+前缀索引。
+order by 索引的使用情况。
