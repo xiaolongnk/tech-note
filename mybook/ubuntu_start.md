@@ -503,10 +503,6 @@ then add the sudo group just like this;
 
 ```
 groupadd sudo
-```
-then add you work user in sudo group
-
-```
 sudo usermod -aG sudo work
 ```
 http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
@@ -518,3 +514,15 @@ this icon for gnome is necessary , better then default.
 sudo add-apt-repository ppa:tiheum/equinox
 sudo apt-get update
 sudo apt-get install faenza-icon-theme
+
+
+2014-07-19 10:16
+
+Linux 更新时间.主要的就是这个命令.
+ntpdate cn.pool.ntp.org
+好像 windows 时间 和 Linux 时间一定会又一个出问题.现在有点没有办法.
+将时间写入到 cmos
+
+主要是系统时间写入 硬件时间 和 硬件时间写入系统的区别.
+sudo hwclock --systohc
+sudo hwclock --hctosys
