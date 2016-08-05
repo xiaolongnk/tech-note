@@ -24,6 +24,31 @@ just a simple example.
 sed -i 's/--/-/'
 
 
+sed 
+下面是一点关于 sed 的东西。刚才写的一个脚本，主要是用来处理字符串的。当然 for 循环也是值得学习的。
+还有判断一个目录是否存在。
+
+其中s是用来做替换用的。
+sed 's/xx/ds/' note
+
+[ ! -x result ] && mkdir result
+for i in `ls *.grb`
+do
+    out=`echo $i | sed 's/GLDAS_NOAH10_M.A//' | sed 's/\..*[[:graph:]]//'`
+    wgrib $i > result/$out".out"
+done
+
+d 表示是删除的意思。用新文件覆盖旧文件。
+sed '/vim/d' ~/.bashrc > ~/.bashrc
+刚才才发现原来 shell 的字符串判断相等是 = 左右两天加个空格就可以了。如果不加空格就是赋值。
+这种语法还是有点诡异的啊。
+并且现在很少写 if 这个东西了，自从我发现了 if 语句可以简写之后。
+字符串操作还是又必要掌握一下的。
+果然shell python 相比来说直截了当多了。正是因为 shell 在字符串处理上的缺陷，所以才有了sed这样
+的工具来补充吧。
+当然还有awk。
+
+
 grep
 
 find
@@ -69,7 +94,7 @@ nohup command > out.txt 2>&1 & 这样是将所有的输出,包括错误都重定
 
 grep 输出匹配内容的上下两行内容,输出上下文,记得这个参数.
 grep -C 2 'linux'
-是用nohub命令,完了这个命令就没有办法停止了,就会一直运行,除非用kill命令讲这些命令kill调.
+是用nohup命令,完了这个命令就没有办法停止了,就会一直运行,除非用kill命令讲这些命令kill调.
 
 ### 2015-12-12 23:35
 git remote add.
@@ -101,11 +126,6 @@ Goods job.
 但是在windows下无法创建".gitignore"文件名，必须把文件名改成这样".gitignore.",
 在文件名最后加一个英文句号就可以了。
 第二步：设置过滤条件
-
-    bin/ 过滤所有bin文件夹
-    obj/ 过滤所有obj文件夹
-    ValorNAV_deploy/ 过滤所有ValorNAV_deploy文件夹
-    *.dll 过滤所有dll文件，这个最好不要使用dll，因为项目中像lib文件夹我们会放一些dll包。
 
 1.如果新建一个空的Git仓库。直接拉取就可以了。
 git rm --cached <文件名> 删除文件的缓存
@@ -152,5 +172,4 @@ UUID=08488fed-d6f4-4fa2-b935-dd599851d98d none            swap    sw            
 2. 我进来之后,发现我的steam 用不了了,我拷贝了所有的文件,发现还是不行,再后来发现是我的home中的所有
 的二进制文件都没有办法执行,上网找,发现是我的挂在参数有问题,用了defaults,noatime 之后就好了.真是神奇.
 后面遇到这样的问题就不会慌了.解决问题才是王道.
-
 

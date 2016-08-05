@@ -142,3 +142,71 @@ mtime  timestamp ==> CURRENT_TIMESTAMP
 复合索引。
 前缀索引。
 order by 索引的使用情况。
+
+
+设计一个比较完善的表，实践一下各种情况下索引的使用情况，结合实践理解下这些东西。
+如果理解不够深入，何以服人。
+
+char 和 varchar 的差别是什么。
+
+```
+create table t_student (
+id bigint(20) not null comment '';
+name varchar(128) not null default '' comment '学生名';
+sex char() not null
+)engine = Innodb ,charset=utf8 , auto_increment=1;
+```
+
+
+
+
+2013-10-21 11:35:36
+mysql 学习
+foregin key
+当初学习的时候不想这些问题,现在才开始想,真是愚昧至极了.
+当出学习的时候,就没有好好理解,现在才发现自己什么都没有学会,难怪面试的时候
+会表现那么差.所以以后在学习的时候要注意这一点.要用相同的时间学好才算本事,多用
+时间只能说明你脑残.
+
+mysql 中是没有 top 关键字的，要想实现类似的功能，我们可以使用 limit 关键字。
+举例如下:
+	select * from basic group by id limit 1,3;
+这里的 1 表示从第 2 条开始，3表示找3条记录返回。
+
+我需要找到一个比较全面的联系题，然后好好练习一下。
+最基本的就不说了，主要是几个关键字的使用，如下：
+in
+not in
+exists 和 not exists 关键字。
+还有就是多表查询，
+综合使用这些个查询条件，可以实现更多的查询需求。
+
+可以用 alter table tablename add primary key(col); 这样可以给一个新建好的表添加一个主键。
+
+同样的，可以用 curdate() 和 curtime() 来找到当前的 日期 和 时间!
+
+mysql 复制旧表数据到新表的方法。详细的见下面的描述.
+create table newtable select * from oldtable;
+
+3.复制旧表的数据到新表(假设两个表结构一样)
+
+INSERT INTO 新表SELECT * FROM 旧表
+
+4.复制旧表的数据到新表(假设两个表结构不一样)
+
+INSERT INTO 新表(字段1,字段2,…….)
+SELECT 字段1,字段2,…… FROM 旧表
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+刚才想了一下 having 的用法,我自己不是很清楚,
+having 后面可以跟 聚合 函数.他们都具有过滤功能.
+
+
+可以用 show engines; 来查看 mysql 的数据库引擎. 好像默认的是 MyISAM,但是我的 现在是 InnoDB. 可以支持事务,外键
+
+mysql 的 null 值比较 需要用到 isnull 函数,而不能直接和 var=null ,这样写是错误的.
+mysql 基本操作
+
+delete from xlo where account=""  这样可以删除掉没用的行.
+当然还有 alter 语句,alter 语句可以修改很多东西.
