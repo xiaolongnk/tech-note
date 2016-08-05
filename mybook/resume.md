@@ -43,7 +43,7 @@
     * 对接产品需求（客户端改版,运营后台需求），进行项目估期，分配任务，跟进项目进度，协调各方面资源，保证按期发版。负责线上bug的安排处理。（自己处理,安排给组员处理）。支持产品和运营的临时需求(未排期需求)。
 
 ###### 相关技能
-	主要开发语言为php，熟悉html、css、js、jquery，熟悉python、shell、markdown。熟悉linux、nginx、mysql，redis 。开发环境为mac，常用工具有，phpStorm, git ，vim ，tmux等。
+	主要开发语言为php，熟悉html、css、js、jquery，熟悉python、shell。熟悉linux、nginx、mysql，redis 。开发环境为mac，常用工具有，phpStorm, git ，vim ，tmux等。
 
 ###### 职责范围
 	参与需求分析、产品功能设计与开发。
