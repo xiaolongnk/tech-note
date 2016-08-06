@@ -131,3 +131,5 @@ unicode  需要decode成utf8 的才可以,还需要其他的设置,完了需要�
 
 ```
 
+今天想到了python的爬虫框架。刚才查了一下，发现了scrappy这个东西。后面要找时间了解一下。
+http://www.jianshu.com/p/078ad2067419
