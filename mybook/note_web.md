@@ -284,3 +284,14 @@ angular 中的浮层，请求模块。
 
 
 grep -o -E "\"shop_id\":\"[0-9]*\"" out.txt
+
+
+
+2016-08-05 19:20
+在 lavarel 中使用静态图片。
+
+q1: 在页面中中使让一段字体在一个div中垂直居中？
+http://stackoverflow.com/questions/79461/vertical-alignment-of-elements-in-a-div
+
+
+

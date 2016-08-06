@@ -173,3 +173,11 @@ UUID=08488fed-d6f4-4fa2-b935-dd599851d98d none            swap    sw            
 的二进制文件都没有办法执行,上网找,发现是我的挂在参数有问题,用了defaults,noatime 之后就好了.真是神奇.
 后面遇到这样的问题就不会慌了.解决问题才是王道.
 
+
+2016-08-07 00:05
+utf8mb4 兼容 utf8 如果数据库报这个错误，应该尝试将字段改成utf8mb4.
+General error: 1366 Incorrect string value: '\xF0\x9F\x8F\xBC' for column 'nick_name' at row 1
+
+ssh-agent
+to start your ssh-agent, you need to eval this command.
+eval `ssh-agent -s`

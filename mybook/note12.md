@@ -1,4 +1,3 @@
-#this is my blog for mysql
 下面是我对mysql实用过程的一些总结.涵盖面基本上比较全，希望能有所帮助。
 
 ```sql
@@ -80,7 +79,6 @@ call p();       # 调用这个存储过程
 
 ```
 
-[如何让自己的博客被搜索到](http://blog.163.com/changying_qiu/blog/static/1229782832010213066873/)
 sudo ntpdate 202.120.2.101
 sudo ntpdate 210.72.145.44
 这是两个时间服务器，可以调整自己的时间。
@@ -145,38 +143,6 @@ default-character-set=utf8
 ?>
 ```
 
-```shell
-iplist="10.7.0.23 120.7.12.43 10.7.23.55 10.7.44.59"
-path="/home/work/higo/"
-for ip in $iplist;do
-    echo $ip
-    rsync -avz --exclude='*.log' $path $ip::higo/
-done
-echo "===done==="
-
-
-pid file = /var/run/rsyncd.pid
-port = 873
-address = 10.7.0.21
-uid = root
-gid = root
-use chroot = yes
-read only = yes
-hosts allow=10.7.0.0/24
-max connections = 5
-motd file = /etc/rsyncd/rsyncd.motd
-log file = /var/log/rsync.log
-transfer logging = yes
-timeout = 300
-
-[higo]
-path = /opt/upload/pic/higo
-auth users = root
-list=yes
-ignore errors
-secrets file = /etc/rsyncd/rsyncd.secrets
-comment = linuxsir home  data
-```
 2015-04-05 14:54
 
 PHP imagick 和 php gmagick 这两个扩展还没有怎么使用过，也没有怎么研究过。应该花些时间在这些
@@ -207,22 +173,6 @@ jquery 版本冲突的问题。这个应该相办发解决一下。
 
 
 
-2015-04-26 21:09
-最近有点不知道干什么了。
-最近似乎发生了很多事情，当然是和工作相关的。
-如果有问题，我应该把这件事情想明白，然后有条理的记录下来。
-其实本质的问题是我对我的工资的疑虑，我的态度会在这月的最后一天决定。
-如果我的工资达不到我的期望，我真得会很失望，我有可能会离开。
-我的期望也很明确，15k吧。这是最少的了，如果我能受到13k的工资，那么还可以，
-如果能受到15k那么更好。现在最关心的貌似就是我的工资了，其实没有什么大不了的，
-都是钱的问题。
-我之所以担心，是因为我们团队最近出了点问题，技术部门被拆掉了，然后boss貌似很
-不开心，感觉我的代码有问题，我感觉会砍掉我的调薪，这是我最担心的问题。如果这
-是真得，那么真得没法干下去了。我的选择会很被动，我在这里做了很多，突然让我走。
-
-但其实回过头来，在想想，这也没什么。我毕业一年不到，这些还可以忍受，只要我把技术
-积累好，我怎么都不会亏。你给我多，我给你多干活，我会更加负责，你给我少，那么我会
-把更多的精力放在自我投资上，我不欠你的，你也不欠我的。
 
 2015-04-27 23:15
 今天学习了一些新东西，感觉还是很不错的。用好一些效率工具也是极好的，把自己要做得
@@ -244,4 +194,3 @@ jquery 版本冲突的问题。这个应该相办发解决一下。
 `cat bookmarks_4_27_15.html | sed 's/ADD_DATE=\".*\"//g'`
 另一个是利用grep的版本，但是grep的并没有达到我想实现的目的。sed的这个基本上是我想要的样子了。
 `grep -i -Po "HREF=\".*?\"" bookmarks_4_27_15.html`
-
