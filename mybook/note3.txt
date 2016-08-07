@@ -44,16 +44,6 @@ of your Manifest.txt is:
 Main-class: yourMainPublicClass; in other words, the entry
 point of you program.
 
-2014--1--12 
-Shell Command: echo -e "\E[1;31m Hello ! \E[0m"
-
-Ok, I find a new problem. In Ubuntu, Your locale is in this
-file.  /etc/default/local what the items in this file means,
-	refer this site.  http://www.linuxfly.org/post/424/ If you
-	just want to midify your locale setting temporarily. You
-	can do like this.  echo $LC_MONETARY LC_MONETARy =
-	en_US.UTF-8
-
 
 Ok, here are some problems about lex and yacc.  I have
 interesting about these Good tools.  undefined reference to
@@ -63,49 +53,9 @@ interesting about these Good tools.  undefined reference to
 or link with -lfl to use the default yywrap() function in the
 library fl My example all in cacu path.
 
-For More about Lex and Yacc ,You can refer this site.
-http://dinosaur.compilertools.net/flex/index.html
+For More about Lex and Yacc ,You can refer this site.  http://dinosaur.compilertools.net/flex/index.html
 
-For More about AWK  You can refer this site.
-http://www.grymoire.com/unix/Awk.html#toc-uh-20
-
-2013-1-15
-setting up my own lamp system.
-apache2 php5 phpmyadmin and some other software.
-This site helped a lot.
-https://help.ubuntu.com/community/ApacheMySQLPHP
-
-For me , most important part is configure these softwares.
-Adjust the default webpage from '/var/www' to '/home/fox/php'
-This is in /etc/apache2/sites-available/default file, just
-modify this file.
-I also installed a tomcat7 for me, and I install all docs and
-examples for me, as well as a mamaner. It works well now.
-
-you configure should be like this.
-		<role rolename="tomcat"/>
-		<role rolename="manager-gui"/>
-		<role rolename="admin-gui"/>
-		<user username="fox" password="yourpasswd" roles="tomcat,manager-gui,admin-gui"/>
-save it and then restart your tomcat7. then you can access your manager and admin pages.
-But now I don't know how to build a tomcat web app. This is what I should do
-next.
-
-
-I should know more about the service command.
-How to add your script as a service.
-
-2014-1-1
-I find a very good tools, Tmux.
-Great tools.
-Code more, understand more. more problems, more codes.
-
-2014-1-21
-Here is tmux-powerline. Great.
-http://blog.xeonxu.info/blog/2012/11/04/shi-yong-tmuxgai-jin-zhong-duan-ti-yan/
-https://github.com/erikw/tmux-powerline
-Oh, it a hard work to make your tmux-powerline work for your demand.
-Learned some shell skills.Anyhow, Good work.
+For More about AWK  You can refer this site.  http://www.grymoire.com/unix/Awk.html#toc-uh-20
 
 
 2014-1-22

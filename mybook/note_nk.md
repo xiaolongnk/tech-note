@@ -15,20 +15,10 @@ http://blog.sina.com.cn/s/blog_704900700100vyky.html
 this blog is nice.
 http://www.cnblogs.com/visayafan/archive/2012/06/15/2550344.html#sec-21
 
-I miss some package for my latex. For example, clrscode. algorithm.
-Don't worry, you can get all from this site.
-http://zzg34b.w3.c361.com/download/packageA-D.htm
-
-Sheepdog -- related
-http://basiccoder.com/tag/sheepdog
 
 sysrq-trigger 调试内核相关的代码还是不能少了这些工具的帮忙。
 具体的文档在这里。
 http://kernel.org/doc/Documentation/sysrq.txt
-
-Sheepdog 块设备驱动
-This is a nice blog worth to read.
-http://yaronspace.cn/blog/archives/tag/corosync
 
 还是现在这里写东西吧。然后再整理出来，写成论文。平时多眨眼睛，保护眼睛。
 
