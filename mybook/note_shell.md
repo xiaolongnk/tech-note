@@ -181,3 +181,18 @@ General error: 1366 Incorrect string value: '\xF0\x9F\x8F\xBC' for column 'nick_
 ssh-agent
 to start your ssh-agent, you need to eval this command.
 eval `ssh-agent -s`
+
+
+又是一个贪婪匹配的故事。这次是 grep，本来想用sed搞定的，但是发现用grep就非常足够了。
+我还会继续优化这一结果。在这方面，我还可以做的更好。有时候真得不知道打游戏能有什么作用。
+
+我一共想出了2个shell，
+一个是利用sed的版本。
+`cat bookmarks_4_27_15.html | sed 's/ADD_DATE=\".*\"//g'`
+另一个是利用grep的版本，但是grep的并没有达到我想实现的目的。sed的这个基本上是我想要的样子了。
+`grep -i -Po "HREF=\".*?\"" bookmarks_4_27_15.html`
+
+
+sudo ntpdate 202.120.2.101
+sudo ntpdate 210.72.145.44
+这是两个时间服务器，可以调整自己的时间。
