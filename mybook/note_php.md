@@ -549,14 +549,6 @@ function openRej()
 
 // 点击某个时间出发这个函数 来对页面进行局部更
 function doReject(){
-	var obj = $(".box input:checked");
-	var rej_reason = '';
-	var other = $("#otherbox #other_reject_reason").val();
-	rej_reason +="`"+other;
-	if(rej_reason == "`"){
-		window.alert('亲，至少要填写一个原因哦！');
-		return ;
-	}
 	url = "/hgadmin/index.php?r=buyerRecruitment/Reject&id="+current_id+"&reject_reason="+rej_reason;
 	$.getJSON(url,function(data){
 		// data 是从请求获得的数据。
@@ -589,25 +581,6 @@ PHP mongo sort 规则。这个还是空白，应该抓紧补上，我才意识�
 我的日志也不应该断的，我应该每天都记录一下。
 
 Yii cgridview 控件的样式也是很重要的，这个控件有一个参数可以调整，htmlOptions 可以设置标签。
-
-```
-$this->widget('zii.widgets.grid.CGridView', array(
-    'id'=>'home-banner-grid',
-    'dataProvider'=>$model->search(),
-    'filter'=>$model,
-    'htmlOptions'=>array('style'=>'table-layout:fixed;word-break:break-all'),
-    'columns'=>array(
-        'banner_id',
-        'event_id',
-        'position',
-        array(
-            'name'=>'mtype',
-            'type'=>'raw',
-            'value'=>'getmtype($data->mtype)'
-        )
-))
-
-```
 datetime picker 这个控件的格式样式的设置，设置成默认的样式，和标准的时间格式一样。
 ```
 $(document).ready(function(e){
@@ -699,53 +672,6 @@ echo $a;
 http://blog.sina.com.cn/s/blog_49c6c9b701014p9a.html
 php 报错的log，在听云商看到的错误。其实就是变量没有定义。
 
-2015-06-25 15:02
-PHP redis hset 的使用。在做缓存的时候 ，有这样一些应用场景，需要对列表进行缓存，如果使用传统的key来保存，那么会
-使得维护成本比较高。比如一个列表的存储如下，list01,list02,list03 那么在需要清除缓存的时候就需要清除list为前缀的
-的所有list，这样清除比较困难。在redis中要尽量避免使用keys list* 这样的操作。在key 较多的情况下，这样性能很差，
-并且有可能拖垮redis。这时候可以使用redis 的hset。 可以如下设置。
-
-```
-hset list list01 list01_value
-hset list list02 list02_value
-hset list list03 list03_value
-hget list list03
-del list
-```
-
-这样在删除的时候会很方便。维护成本会降低很多，所以在对list做redis缓存的时候，最好使用redis的这个数据结构。
-需要注意的是redis 的 hash 的ttl，可以调用expire这个方法来设置 hash 的生存周期。并且一个hash就是一个整体，
-每一次设置都会设置这个生存周期。这个时候可能出现的问题是一个hash的缓存时间不可控，取决于最后一次更新的时间。
-
-2015-06-26 10:49
-
-todo list:
-1. use redis hash to optmize cache system.  done.
-[test login](http://v.online.killtime.cn/account/login?app=higirl&client_id=1&cver=2.4&mobile=18515615556&password=F200152W&qudaoid=10000&uuid=cdc4f9a8696d8e9bfab8077fab221871&ver=0.7&via=iphone)
-[test goods_discover](http://v.online.killtime.cn/goods/goods_discover?app=higo&backup=0&client_id=1&cver=3.1.1&p=1&qudaoid=10000&size=30&uuid=77c04e600d9d9558cd9ce5805c7cf8e4&ver=0.8&via=iphone)
-[goods_show](http://v.online.killtime.cn/goods/goods_show?app=higirl&client_id=1&type=3&cver=3.1&mobile=18515615556&password=F200152W&qudaoid=10000&uuid=cdc4f9a8696d8e9bfab8077fab221871&ver=0.7&via=iphone)
-
-
-2015-06-29 17:01
-work list.
-1. 研究一下xinge_push 的sdk.研究批量推送的功能。写一个 demo 出来。done
-2. 尝试给列表的API 做程序级别的缓存。
-
-
-2015-07-03 14:33
-1. 有几个问题需要注意下。
-   就是列表的不稳定排序，比如做分页的时候，很可能引起不同页的数据重复的现象。这个时候要想办法让这个列表
-   的排序变稳定，就可以了。done .
-2. 大促的单独库存。
-3. 检查一下秒杀商品的所有的价格，确保明天没有问题。 done.
-
-2015-07-06 14:09
-
-1. 活动期间的 库存 和 销量独立。
-2. 每一个提报商品如果有多个sku，需要选择价格最低的sku，如果这个sku库存为0的话，应该过滤掉。使用 presale_repertory 来过滤吗？
-3. 真正不太好做的是一个提报商品多个 sku 的情况。这个时候需要做分组。当一个售罄，需要显示下一个商品。他们的库存和销量都是分开的，这些该如何处理。
-4.
-
 2015-07-07 14:15
 git reflog 可以到任何一个版本。 git reset --hard version_nu.
 用了git，你的代码不可能丢失。
@@ -786,13 +712,10 @@ else
     exit -1
 fi
 echo "运行配置是"$pusher_env
-
+```
 is null  和 is not null 的用法。
 mysql null 是不能参与比较的，要注意这种情况。
 
-```sql
-select * from hellotest where xx is null;
-```
 
 php preg_replace example. learn this example.
 
@@ -836,14 +759,6 @@ $test = [1,2,3,5];
 array_walk($test , function(&$i) { $i++; });
 var_dump($test);
 ```
-
-### 2016-01-23 15:29
-php 的namespace ,的原理,我需要搞清楚,认真研究一下.
-我需要跳出业务逻辑,讲一部分经理放在框架的级别,这是我下一个阶段的目标.学习新技术,研究技术实现,而不是简单的应用.
-自己的代码需要积累,抓紧组织,把能抽象的东西都抽象出来.
-
-
-
 ##### PHP 的几个比较重要的方法:
 
 ```
@@ -1093,3 +1008,17 @@ http://pkg.phpcomposer.com/
    ImageDestroy($new_number);
 ?>
 ```
+
+
+PHP echo 和 print的区别。
+
+主要掌握echo的下面这两个特性。print更多的是一个函数。
+```
+echo "hello", "world";
+echo <<<EOT
+test
+EOT;
+```
+
+
+
