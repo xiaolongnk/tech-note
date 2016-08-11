@@ -30,11 +30,19 @@ class Solution(object):
         return maxLen
 
     def lengthOfLongestSubstringV1(self , s):
-        if s == '':
-            return 0
-        
-        return -1;
+        hashmap = [-1 for i in range(256)]
 
+        maxLen = 0
+        start = 0
+        for i in range(len(s)):
+            currentHashVal = hashmap[ord(s[i])]
+            if currentHashVal != -1:
+                while(start <= currentHashVal):
+                    hashmap[s[start++]] = -1
+            if i - start + 1 > maxLen:
+                maxLen = i - start + 1
+            hashmap[ord(s[i])] = i
+        return maxLen
 
 if __name__ == '__main__':
     s = Solution()
