@@ -31,14 +31,14 @@ class Solution(object):
 
     def lengthOfLongestSubstringV1(self , s):
         hashmap = [-1 for i in range(256)]
-
         maxLen = 0
         start = 0
         for i in range(len(s)):
             currentHashVal = hashmap[ord(s[i])]
             if currentHashVal != -1:
                 while(start <= currentHashVal):
-                    hashmap[s[start++]] = -1
+                    hashmap[ord(s[start])] = -1
+                    start += 1
             if i - start + 1 > maxLen:
                 maxLen = i - start + 1
             hashmap[ord(s[i])] = i
@@ -46,5 +46,5 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    test = "c"
-    print s.lengthOfLongestSubstring(test)
+    test = "casdkfalsdfjuiy"
+    print s.lengthOfLongestSubstringV1(test)
