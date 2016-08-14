@@ -525,3 +525,11 @@ ntpdate cn.pool.ntp.org
 主要是系统时间写入 硬件时间 和 硬件时间写入系统的区别.
 sudo hwclock --systohc
 sudo hwclock --hctosys
+
+
+遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
+我从官网下载 tar.gz 之后，安装还是没有解决问题。
+貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
+sudo apt-get install flashplugin-downloader
+貌似真得好了。
+

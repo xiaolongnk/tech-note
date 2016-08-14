@@ -95,11 +95,6 @@ dd if=xxx.iso of=/dev/sdb bs=1M
 的那个层级,知道自己的弱点,看看外面的天.
 从一个低等级到高等级,这种升级的感觉应该是我最喜欢的.我要升级.多问问自己想做什么.做好一件事.
 
-vim 启动速度变慢.在终端中可以这样启动 vim -X 这样是不需要和X挂上勾的,所以会变慢.修改了一下之后
-瞬间感觉电脑变快了.其实这个问题我并没有解决，解决这个问题主要是 插件的问题，就是我后面安装的那个
-vimairline那个插件。现在已经将那个插件删除掉了，所以速度快多了。
-现在我关心的问题是，ctrl + o 和  ctrl + i 是一对的，一个是回到上一次编辑的问题，相当与一个是往回走
-一个是往前走。现在这个问题基本解决了。
 
 
 2014-07-13 20:47
@@ -179,14 +174,6 @@ sed '/vim/d' ~/.bashrc > ~/.bashrc
 果然shell python 相比来说直截了当多了。正事因为 shell 在字符串处理上的缺陷，所以才有了sed这样
 的工具来补充吧。
 当然还有awk。
-
-2014-07-27 22:56
-python json 我了解还是不够多。
-主要是 dumps 和 load 方法。
-encode 和 decode 方法。dump 方法和 dumps 貌似是不一样的。其实又很多问题的。我应该多试试。
-我的vim最根本的问题是这个，就是我的那个插件太重了，就是vim airline。那个插件加载需要太长的时间，所以
-我能感觉到速度很慢，将那个插件关掉就没事了。这才是最根本的解决方案。同时也提醒我，不要为那些没有用
-的东西花费太多心思。没有什么必要。
 
 2014-07-29 05:57
 
@@ -461,9 +448,6 @@ php 的线程之类的是怎么样的，有没有 sleep 之类的函数。python
 
 2014-12-28 18:02
 
-插入模式下的 vim ， ctrl + j 可以将文本内容下移一行。ctrl + m 我也不知道具体是什么，
-我只是通过实验尝试出来的。
-
 Yii 通过criteria来搜索内容，这个criteria还有很多用法。应该都具体掌握一下。
 $criteria->addSearchCondition('name', '分类');//搜索条件，其实代表了。。where name like '%分类%'
 
@@ -481,7 +465,6 @@ http://www.cnblogs.com/flyme/archive/2011/10/27/2226729.html
 可以没有的。现阶段，我只会去获取我真正需要的东西。
 不知道今天该干嘛？想去公司看看东西，写点总结什么的，但是又觉着有点不妥。
 感觉自己的工资好少，我也不知道为啥。可能是因为感觉自己付出了不少吧。
-
 新的一年，最现实的愿望就是希望我的工资能够涨一倍。可以到30w。希望我的技术能涨到什么程度。
 
 昨天解决的问题。
@@ -498,17 +481,12 @@ http://www.cnblogs.com/flyme/archive/2011/10/27/2226729.html
 当然搞清楚这个函数的实现也是很不错的。我应该查一下这个函数的实现。当然trim() 函数也是很重要的。
 
 PUSH 的程序貌似有点问题。应该找时间再排查一下。
-
 其实回过头发现，我也没有做太多工作，只是我不知道我的时间都去哪里了。
 
 2015-1-3
 
 本来想到公司去的，结果没去成，在家里打了一天dota。还他妈的输了一天，气得我把游戏删了。删了也好，本来就不应该玩的，
 应该多花点时间在工作上，应该多学习的。
-
-发现我的话重复了很多。我的句式我的词汇其实是很单调的。我可以尝试分析一下。我的小红帽被我修了一下，明显的好用多了，现在
-都可以不怎么使用鼠标了。白天没有吃饭，晚上吃了饺子，买了一袋薯片，快要撑死了的感觉。感觉嫂子好让我们失望，感觉是很自私的
-一个人。我一点都不喜欢，并且有些讨厌呢。虽然我还是光棍，但是我宁可光棍，也不能找一个她那样的。
 
 我看了一下java 的视频，学习了一些基本的 Eclipse 的功能，感觉还是又点用的吧。我看了一些java编程思想的示例代码，有些代码
 没有办法独立完成，不能成功运行，但是讲的原理我也不是很明白，我只是简单的看了看，我希望我能了解更多的知识。
@@ -541,26 +519,13 @@ init  (run level /etc/inittab)
 
 lex 和 yacc 还是要继续学习的。
 
-
 我要完成我的 c 编译器的作业。之前写的那个作业是不能算上合格的。应该重写一个，以现在的水平。
-
-词法分析，语法分析。
-
-2015-01-05 23:22
-
-My lex and Yacc are just start.I know little about to them. But I really want to build my own 
-compiler system. I want to conquer English. I need read more. Type more. Organize my thoughts
-In English.
-
-Now I do is pure c style, not like c++ style.
-
 
 2015-01-08 12:34
 应该做一个简单的总结。
 
 写python 一定要注意 类型，最好是都搞成字符串类型的，这样比较安全，很多时候查询失败都是由于
 类型不对造成的。
-这两天差了不少问题，但是都是
 
 shell 的函数，我了解的怎么样。
 函数的返回值貌似可以用 $? 变量拿到。
@@ -580,7 +545,6 @@ $?
 
 
 2015-01-12 06:49
-
 这几天感觉好累，应该注意休息，晚上要早一点睡觉。
 
 
@@ -595,25 +559,11 @@ eval() 好不好，不是expr的好不好。
 苦恼。在这件事上，没有对错，我们只是合作，虽然很残酷，但的确是这样，仅此而已。
 这个团队是不错，但这不是最厉害的团队，还又更厉害的团队，这不是最好的，可以做得更好。
 
-我应该给自己写个简介。
-
-系别，Linux，对Linux的一切感兴趣，Vimer（但不迷信VIM）。对技术充满热情，只学习Linux系的技术。
-熟悉Shell，Python，工作中，可以用脚本辅助开发（根据工作需求编写脚本，提高工作效率）。
-有PHP和Python的工作经验，熟悉Yii。DB方面，熟悉Mysql，Redis，Mongo，用缓存来优化整个系统。
-对Web前端有一定的了解(html,css,javascript,jquery,ajax)。
-对数据结构和算法又较深的理解。
-语言方面，还熟悉C/C++，Android.
-工程方面，重视代码重构。
-注重团队协作。
 
 2015-10-25 10:36
 ubuntu promotions. fonts muti desktops.
-
 sudo apt-get install ubuntu-restricted-extras
-
 use lnmp . php.ini php nginx redis extension.
-
-
 
 I know it is hardful, but I want this way. I need to know them well.
 This process is too long, but I have no choice.
@@ -630,19 +580,6 @@ with apache/apsx , it will load php in apache. and update the httpd.conf file
 for you, and there have a http.conf.bak file left for you. yes, that's all 
 happened for you.
 
-Ok, I need to build mongo and redis for me.
-
-build mongo.
-http://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
-I used this command: 
-%  sudo apt-get build-dep mongodb  %
-%  scrons all % this command will build all mongo tools.
-%  scrons install --prefix=/opt/server/mongodb/  % to install mongodb in your path.
-
-build redis.
-this is easy, just make and make install
-% 
-
 the problem is , after the compilination, where is the mongo conf files.
 this is not a problem, just create need path, if you want. db/, conf/, log/, that's all
 then copy  this mongodb.conf from here.
@@ -655,41 +592,11 @@ and the same to redis.
 Just start your server, and load your config file, then your server should be work.
 compile all your server software is not an easy thing.
 
-Now, for my server, I need redis-php and mongo-php, with these two mod, I can build my own system.
-
-python
-sudo apt-get install pip
-sudo pip install redis  pymongo  mysql-python
-redis   pymongo  mysql-python
-
-for python docs, you need to consult the pydocs for more.
-https://pypi.python.org/pypi/redis/
-
-That's all for my server.
-
-git status
-
-I find some subfiles can not be hidden.Because the subdir is a git repo.
-just remove .git/ files, recommit it, and it will be ok.
-
 2015-02-06 16:01
-
-c/c++ solve this porblem.
-uint32_t, size_t,if your eclipse warning this, use this header file to solve this
-problem.
-
-when I want to build php, I find this problem.
-you have no configure. You need ./buildconf first.
-when I do this, I get this message, you have no autoconf, you need this first.
-sudo apt-get install autoconf
-
-after ./buildconf  now you can do ./configure
 
 ls -l
 for some file you can not change file owner of it, because it just belong root.
 for some you can, but why. where is the secret.
-
-read more shell, you can get improvement.
 
 2015-02-06 13:26
 now I would try lubuntu, I need a virtualbox. I need a linux for me. I want a light distribution.
@@ -702,13 +609,6 @@ light desktop.  I prefer linux, not mac.
 这些是我应该掌握的新的技能。但是感觉内容还是又很多的，应嘎多花点时间才能掌握好，感觉我们项目的前景是
 很不错的。但是没有走到最后，谁都不敢保证。
 
-遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
-我从官网下载 tar.gz 之后，安装还是没有解决问题。
-貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
-sudo apt-get install flashplugin-downloader
-貌似真得好了。
-今天刚看了 柴静的视频，感觉很有道理，但后面又发现了别人反面评论，也觉着有道理。
-这中突然流行起来的东西不应该盲目追随。
 学了一点 markdown 的东西。感觉确实是很方便的，虽然还没有用它来写blog，但是感觉很方便，很可能以后用它来写博客。
 
 编译了 node ，用命令行下载的不知为什么不能用，后面就自己下载了一个源码包，编译安装了一个。 
