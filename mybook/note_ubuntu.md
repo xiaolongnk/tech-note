@@ -373,6 +373,7 @@ sudo apt-get install mysql-workbench
 之前我的 ubuntu 浏览器一些字体看起来不太对劲,那是因为系统的中文字体不够
 全,解决这个问题,只需要重新安装中文字体就可以了.
 
+ubuntu 安装中文字体。
 
 sudo apt-get install ttf-wqy-microhei  
 sudo apt-get install ttf-wqy-zenhei  
