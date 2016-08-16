@@ -2,10 +2,10 @@
 title:  读书笔记
 
 categories:
--生活
+- 生活
 tags:
--阅读
--感悟
+- 阅读
+- 感悟
 ---
 
 read note

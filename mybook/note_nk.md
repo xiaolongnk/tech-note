@@ -1,3 +1,11 @@
+---
+title: 杂记
+categories:
+- 杂技
+tags:
+- 杂记
+---
+
 latex space
 1：http://www.cnblogs.com/ysjxw/archive/2009/10/28/1591098.html
 

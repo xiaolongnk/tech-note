@@ -3,9 +3,9 @@ title: shell 学习笔记
 categories:
 - shell
 tags:
--awk
--sed
--grep
+- awk
+- sed
+- grep
 ---
 
 awk
