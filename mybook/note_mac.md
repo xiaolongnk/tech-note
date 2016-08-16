@@ -6,7 +6,7 @@ tags:
 - 开发工具
 ---
 
-### MAC 使用心得 
+#### MAC 使用心得 
 安装vim
 
 默认情况下，mac terminal中是带了vim 的。但是vim --version 看一下，发现是7.3版本的。
@@ -34,4 +34,36 @@ set nocompatible
 set backspace=indent,eol,start
 ```
 
+
+#### MAC编译安装php nginx
+编译的过程中，很可能遇到这个问题。
+找不到openssl的header files。
+其实解决办法就是安装openssl。brew install openssl 。
+
+但是只是安装了也可能报这个错误。找到了下面这个帖子。来自 stackoverflow。
+核心的是这个 
+
+brew install openssl
+brew link openssl --force
+
+遇到其他的报错，卡主了 confiture ，基本上用brew 安装那个就可以过关了。
+configure 过了之后，就可以make && make install 了。
+
+```
+If you are on Mac OS X El Capitan, Apple doesn't include openssl any more because of security problems openssl had, I have similar problem installing Passenger. brew just installs openssl itself without development headers.
+
+If you are on an older version of Mac OS X than El Capitan, you can use: xcode-select --install which installs openssl development headers as well.
+
+EDIT:
+
+Updating brew and installing openssl and force linking openssl to brew version solved my problem:
+
+$ brew update 
+$ which openssl  
+/usr/bin/openssl 
+$ brew install openssl
+$ brew link openssl --force 
+$ which openssl 
+/usr/local/bin/openssl
+```
 
