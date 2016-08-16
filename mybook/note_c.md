@@ -1,5 +1,5 @@
 ---
-title:C/C++ 学习笔记
+title: C/C++ 学习笔记
 categories:
 - c++
 tags:
