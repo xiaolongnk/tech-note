@@ -1,5 +1,9 @@
 ---
 title: vim 学习笔记
+categories:
+- VIM
+tags:
+- VIM
 ---
 
 #### vim 
