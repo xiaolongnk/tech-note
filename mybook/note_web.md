@@ -2,17 +2,6 @@
 margin: 的4个参数。up ,right, down , left;
 如果只有一个参数，那么表示4个都是n px。可以是1--4个参数。
 
-my understanding for web server is gaining, but it's not enough,I need to know more to host my craeer.
-
-sudo service gdm restart|stop|start
-
-if you gdm freezen, you can use this command to avoid restart your computer from poweroff.
-First you should in character mode.
-
-After all these years, I find official documentation is most powerful, thanks for all.
-stackoverflow.
-account: myemail.  passwd: strongest.
-
 这里可以找到基本上所有的PHP扩展。<http://pecl.php.net>
 
 之后扩展都会被安装到项目的主目录下。`/home/service/php/lib/php/extensions/no--debug-zts-20131226/`
@@ -37,19 +26,11 @@ CFLAGS="--O3 -fPIC" ./configure --with-php-config=/home/service/php/bin/php-conf
 /home/service/php/bin/php --m | grep pdo
 ```
 
-2015--10-25 05:34
-
-this command can find which process take 80 port.
-netstat is usefull, but the args is the key point.
 netstat --tunlp |grep 90
 
-2015--10-27 17:12
-
-剩下的就是 nginx 配置自己代码的问题。现在环境都好了。昨晚和今早都跳了很多坑，应该找时间记录一下。
+nginx 配置自己代码的问题。现在环境都好了。昨晚和今早都跳了很多坑，应该找时间记录一下。
 nginx 中加环境变量.
 fastcgi\_params define_params hhh
-pandora API 需要重定向才能工作
-运营后台不需要，只要PHP是对的，就可以工作.
 
 
 ## 编译参数
@@ -145,27 +126,13 @@ https://raw.githubusercontent.com/creationix/nvm/v0.4.0/install.sh
 
 cnpm install
 
-2016-04-11 15:45
-
-charles 破解。我的link。
-http://pan.baidu.com/s/1i4UUbOh
-linux可以使用。
-
-
-git
-
-```
-git stash specific files;
-use git stash save command.
-git stash save common/app.constants.js
-```
+charles 破解。我的link。 http://pan.baidu.com/s/1i4UUbOh
 
 那天发现我本地环境速度很慢的原因是 php-fpm.conf 中的maxchildren 数量太少了。
 我改成static 的，然后把最大数量变成128； 一下子就不用排队了。
 当时的现象是这样的。我看network，显示网络请求在排队，但是我完了单独访问每一个排队排了很久的接口，速度都很快，所以很疑惑。
 我开了php的slowlog，但是并没有出现slowlog。貌似php的slowlog并不是我理解的那样。
 并且slowlog，我自己写了一个sleep都不会打印出slowlog。
-
 
 firefox访问google的问题。
 https://www.google.com/ncr
@@ -188,27 +155,10 @@ angular 中的浮层，请求模块。
 基于这个原则去构建系统，应该不会太乱。
 
 
-
-感觉有点不爽，但是又不知道哪里有问题。如果你很清楚哪里有问题哪里你不满意，那么怎么做业就很清楚了。
-要搞清楚究竟是哪里出了问题。
-
-
-2016-04-28 08:18
-最近在调整作息时间，一般是晚上12点之前睡觉，早上7点起床，然后10点准时到公司，试了两天，感觉还是不错的。
-我下班也回来也比较早了。回来有时间可以看看电脑什么的。有时候也会写点代码。mac还是很方便的，感觉我的那个电脑
-买的有点多余了。我的那个机械师。有点想出售呢。
-不过现在还是留着吧，暂时不用买新的mac，等我换公司了，我可以买一个自己的mac。然后再考虑把我的那个机械师送人。
-我自己需要一个mbp就足够了，以后也就是这样了，linux没有必要自己折腾一个，基本和mac一样。自己的电脑怎么折腾都行。
-一个13的就可以了，没有必要用15的，太沉了。
-
-
 grep -o -E "\"shop_id\":\"[0-9]*\"" out.txt
-
-
 
 2016-08-05 19:20
 在 lavarel 中使用静态图片。
 
 q1: 在页面中中使让一段字体在一个div中垂直居中？
 http://stackoverflow.com/questions/79461/vertical-alignment-of-elements-in-a-div
-
