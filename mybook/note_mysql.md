@@ -85,6 +85,9 @@ mysql 中创建用户。
 ```
 CREATE USER 'username'@'host' IDENTIFIED BY 'password'
 GRANT privileges ON databasename.tablename TO 'username'@'host' 
+GRANT ALL ON *.* TO 'pig'@'%'; 
+SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword');
+SET PASSWORD = PASSWORD("newpassword");  如果是当前登陆用户
 ```
 more detailed info see this link.  http://www.jb51.net/article/31850.htm
 
@@ -282,6 +285,5 @@ sql 中将联表出现的 null 替换成 0， 可以用这个方法。
 ```sql
 if(tb2.shop_click is null, 0,tb2.shop_click)
 ```
-
 用group by来去重要比 distinct 效率要高很多。
 
