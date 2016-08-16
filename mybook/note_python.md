@@ -1,4 +1,6 @@
-### note for python
+---
+title: Python 学习笔记
+---
 
 #### __call__  __getattr__  
 
@@ -125,11 +127,15 @@ unicode  需要decode成utf8 的才可以,还需要其他的设置,完了需要�
 
 下面是示例代码:
 
-```python
-
-
-
-```
-
 今天想到了python的爬虫框架。刚才查了一下，发现了scrappy这个东西。后面要找时间了解一下。
 http://www.jianshu.com/p/078ad2067419
+
+
+2015-01-06 14:30
+
+```python
+unicodedecodeerror: 'ascii' codec can't decode byte 0xef in position 0: ordinal not in range(128)
+import sys
+sys.reload()
+sys.setdefaultencoding("utf-8")
+```

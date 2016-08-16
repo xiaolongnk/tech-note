@@ -1,3 +1,7 @@
+---
+title: PHP 学习笔记
+---
+
 2014-12-03 11:38
 1: 修改商家端注册流程，商家必须上传头像,上传的头像。一个头像id.
 html 中table 中的 border属性的设置。如果设置不正确，可能没有边框。下面是正确的设置。
@@ -13,40 +17,18 @@ sql 中将联表出现的 null 替换成 0， 可以用这个方法。
 if(tb2.shop_click is null, 0,tb2.shop_click)
 ```
 
-如果 group by 来去重要比 distinct 效率要高很多。
-子查询要控制 group by 多个字段。
+用group by来去重要比 distinct 效率要高很多。
 
 2014-12-09 15:08
 
 对 sql 的学习更多了，可以写出更长的 sql 了。
-可以 set 变量。sql 中的变量是这样set 的。
-set @start = curdate();
 可以再一个 set 中定义好几个变量，可以用逗号分开。
-另外，yii 中执行的sql 也可以包括好几个句子，但是他们的 读写必须是一直的，就是说，要么是执行 queryall ， 要么是执行 execute。
-当然query 是从库， execute 是主库，表示写数据。
-mysql 中和时间相关的函数用着还是很方便的。date_sub(); date_add(); interval 1 day;
 
-另外，存储过程是不是也应该掌握一下。
-mysql 定义变量是不一样的。和其他语言的不太一样，这个需要注意一下。
-
-Yii
-的 那个 button 是可以优化的，可以加上 htmlOptions,可以规定宽度，这个标签很是有用。
-用法就和下面这个一样。
 <http://www.hankcs.com/appos/yii-kong-zhi-dan-yuan-ge-di-kuan-du.html>
 我希望能掌握一种记东西的比较好的工具，现在直接写html 比较费劲，可以考虑一下用markdown。
 或者直接写 blog 也是可以的。但是我不太喜欢上网页编辑的这个步骤。
 
-Yii::app()->createUrl();
-$this->render();
-$this->renderPartial();
-$cmd = Yii::app()->db->createCommand();
-$cmd->text = $sql;
-$cmd->queryAll();
-
-Yii 的 view 和 action 之间的配合。有时候为了重用一个view，我需要隐藏很多的 input。
-input type 可以是 textarea
-
-mysql 可以多表连接查询，也可以 left join 和 right join 。但是要注意表的规模。如果表的规模太大，那么联表的效率就iu不敢恭维了。
+mysql 可以多表连接查询，也可以 left join 和 right join 。但是要注意表的规模。如果表的规模太大，那么联表的方式就不可取了。
 所以说队数据的管理还是很重要的。要保证表不会太大。如果有其中一个表太大了，那么联表的结果都是非常可怕的。
 如果表中的数据太多的话，那么就要想办法处理这些数据，不要让数据太大。
 
@@ -60,139 +42,43 @@ perl 形式的正则。
 preg_match($mode,  $str, $matches);
 preg_replace();
 
-python mongo 构造查询条件的时候需要这样子。构造字典 需要这样。
-
-condition={}
-condition['seq'] = {}
-condition['seq']['$gt'] = 10
-condition['createAt'] = {}
-condition['createAt']['$gt'] = '1418634210';
-
-不能直接这样子。
-condtion = {'seq':{'$gt':'123123'},'createAt'{'$gt':'21'}}
-
-对面向对象也有了新的认识，还是应该多写点程序，就算是最简单的 dbo block，尽量写好一点，尽量可以分享出去，能
-够给别人带来方便。
-
-所以写的时候要规范一点，虽然我对python了解也比较少，正式因为这个，在学习写得过程中才会有进步。
-
-算是对 mongo 比较熟悉了，但是我不想把学习的过程详细的写出来。
-如果我回了，我就懒得去动手谢了，我遇到的问题队我来说已经不是问题了。所以我没有必要写了。
-但是这样队别人能带来什么帮助，不是说相和别人共享知识吗，这就是这种共享态度吗？
-
-ret = table.find();
-返回的结果是可以 count 的。ret.count() 可以查看条数。
-
 python mongo 学习了不少。
 可以用 eval 求值来解决 库和表的选择问题。
 但是里面的成员变量要写成 public 的。
 python 的public 和 private 是不一样的，要认真思考一下他们的区别。
-
-还没有搞完，明天继续。
 
 2014-12-16 12:31
 写伪代码还是很清楚的，有时间可以多写一点，我真是本末倒置。
 redis 的connectionPool() 是什么意思，这个是怎么使用的。
 有什么好处。
 
-2014-12-17 11:20
-alter table t_pandora_statistics add key uuid_index (uuid);
-ajax 我根本就不会，jquery 的ajax，还需要联系下。
-
 2015-01-04 14:08
 
-the error may be in a field that is not displayed?
-try this after $model->save()
+Yii 获得model执行过程序中的错误。
+
+```php
+$model->save()
 print_r($model->getErrors());
 $model->getErrors(); 可以看出上一个错误是什么。
-or
-in the config/main.php
-enable logs for error and trace
-and see the file runtime/application.log
-
-今天遇到的问题，通过的时候save 老是不能成功，我只看到了save 的return status is false。
-但是我并不知道是什么错误，后面找到了上面的解决方案。看到了原来一个字段是空的，而在model里面
-这个字段是 required 的。所以就保存失败了。
-
-不过正因为这个问题，我队 Yii 的了解也多了一些，还需要继续学习。
+```
 
 刚才遇到的问题是
 CGridView 的问题。想要实现 columns 里面的 指定列的自定义，就是不同类型给不同的颜色。但是也找了
-好久。
-想的是给一个 html 元素。但是刚开始是不会显示的，除非你加上这个选项。 'type'=>'raw';
-
+好久。 想的是给一个 html 元素。但是刚开始是不会显示的，除非你加上这个选项。 'type'=>'raw';
 这个方法并没有解决问题，但是也是有价值的。
-'htmlOptions'=>array('style'=>'Convert::shop_change_status_color($data->status)')
 
+```php
+
+'htmlOptions'=>array('style'=>'Convert::shop_change_status_color($data->status)')
 array(
 	'name'=>'status',
 	'value'=>'Convert::shop_change_status($data->status)',
 	'htmlOptions'=>array('style'=>'Convert::shop_change_status_color($data->status)')
 	//'value'=>'Convert::shop_change_status($data->status)'
 ),
-http://stackoverflow.com/questions/8140613/yii-zii-widgets-grid-cgridview-with-type-html-render-failed
-
-关于 Yii 应该多了解一下。要学着自己定义。在框架的基础上进行自定义。
-
-2015-01-05 15:06
-Yii app's application.log is in protected/runtime/application.log; not in main dir's runtime/
-
-2015-01-06 14:30
-
-```python
-unicodedecodeerror: 'ascii' codec can't decode byte 0xef in position 0: ordinal not in range(128)
-import sys
-sys.reload()
-sys.setdefaultencoding("utf-8")
 ```
+
 这个可以解决问题。
-
-
-2015-01-09 18:28
-div 也有 align 属性，center 就可以。 表示里面的内容在 div 的中间。
-"<div align='center'> <a href='index.php?r=homeBanner/admin'> <h3> 返回 </h3> </a></div>"
-
-2015-01-12 10:50
-jquery radio 选中事件。
-jquery onclick 事件， onchange 事件。我们根据radio 的 name 来选择选中的radio。
-jquery 代码如下
-
-```script
-<script>
-function addSelected(){
-	var a = <?php echo $id; ?>;
-	// id = 0 表示创建，跳转到 创建的 url
-	if(a==0){
-		$("#form2").attr("action","<?php echo Yii::app()->createUrl('homeBanner/Create');?>");
-	}else if(a>0) {
-		$("#form2").attr("action","<?php echo Yii::app()->createUrl("homeBanner/Update&id=".$id);?>");
-	}
-	id=$("input[name='mvalue']:checked").val();
-	mval = "#event_id"+id;
-	ans = $(mval).attr("value");
-	$("#event_type_unique").attr("value",ans);
-	// 如果不是 跳转到 update 的url
-	form2.submit();
-}
-```
-
-form 表单相关的内容。 post 和 get 两种模式。
-table 里面的内容可以是 hidden 的。他可以不显示出来。
-如果需要想页面传值，那么需要用 input 标签。 input 的 type 可以如下text  radio  checked='checked'
-checkbox value='1' checkbox 比较简单，如果选中的话，他的值就是对应的 value 的值。这个值是会被提交的。
-所有的 input 控件提交都是通过 name 来指定属性的。在 php 文件中，可以通过$_REQUEST['your_name'] 来获得
-对应的属性的值。
-<select> <option selected='selected'> </option> <option> </option> </select>
-jquery $("#"); # 表示通过 id 来选择。. 表示通过class 来选择。还有就是上面的选择方式，是通过伪标签来选择。
-input[]  [] 里面是这个控件的name属性。冒号后面是 checked 属性的值。.val() 是这个属性的值。这样可以获得值，
-当然，里面可以给这个元素设定属性值。
-
-$().attr(); 这个 attr 也是很好用的，和 val() 方法的用法类似，可以拿到属性的值，也可以设置属性的值。
-并且 attr 可以是自己定义的属性。 例如 <input type='text' id='only' ccc='hello' > </input> $("#only").attr('ccc');
-可以拿到 自定义属性 ccc 的值。
-$().text() 有时候这个属性也可以去到自己想要的值。
-
-&nbsp 代表一个空格。
 
 radio, checkbox , button, 他们都有对应的时间，可以在里面添加对应的 函数。可以带参数的。
 checkbox 也可以写成数组。
@@ -203,34 +89,7 @@ mysql
 update , select , 都可以联表操作。 当然，联表的时候都需要指定表的别名。
 可以 从一张表选择内容，然后将选择的结果插入指定的表中。
 insert into youtable select * from table1 where condition; 当然，表的结构应该要一样才可以。
-事物的支持。现在需要事务的支持。
 要防止 sql 注入，所以写 sql 的时候要注意，尽量按照规范的写法,实现功能的时候，就要考虑,进行防范。
-
-2015-01-13 10:07
-
-```script
-function genJsCode($classid)
-{
-	$ret = sprintf('<script>
-			var tag%sid = 1;
-			function xxx%s()
-			{
-				if(tag%sid&1) {
-					$(".xxx%s").attr("checked","checked");
-					$("#ssss%s").attr("value","反选");
-				}
-				else {
-					$(".xxx%s").attr("checked","");
-					$("#ssss%s").attr("value","全选");
-				}
-				tag%sid++;
-			}
-			</script>',$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid,$classid);
-	return $ret;
-}
-```
-
-在一个页面
 
 2015-01-13 17:01
 
@@ -248,7 +107,6 @@ def work():
 if __name__=='__main__':
 	work()
 ```
-感觉PHP中日期计算方法太复杂了，应该找个简单点的方法。或者再封装一个方法。
 
 2015-01-16 17:51
 MYsql
@@ -256,10 +114,10 @@ a 表 字段 c1 和 b 表 c2 , 都有一个字段，这两个字段的类型不�
 按照MYsql 的相等判断是不相等的。所以要谨慎，
 可以用 left join 和 right join 来校验这个错误。
 
-
 checked这个属性不是我理解的那样，好像只要有checked 这个属性就可以起作用了。我应该做一个精确的测试才行。
 而不是这样猜测。我的推送的代码还需要我进行测试，而不是像现在这样子。我应该为我的项目代码编写测试用例，
-而不是等待QA测试。我们的开发应该有一个统一的网站，而不是像现在这样子，以QQ为主的信息传递。
+而不是等待QA测试。
+我们的开发应该有一个统一的网站，而不是像现在这样子，以QQ为主的信息传递。
 
 我有点担心我的 推送程序发起的 redis 连接 和 mongo 的连接太多了。程序本省的性能，有没有内存泄露，能不能正常工作。
 要想办法测试自己的程序。而不是全部依赖QA。
@@ -279,74 +137,16 @@ checked这个属性不是我理解的那样，好像只要有checked 这个属�
 
 程序上线的时候，应该把和配置相关的文件删除掉，这样上线后不用重新配置。
 
-```python
-Traceback (most recent call last):                                                           
-  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 258, in _bootstrap
-    self.run()                                                                               
-  File "/usr/local/src/Python-2.7.2/Lib/multiprocessing/process.py", line 114, in run        
-    self._target(*self._args, **self._kwargs)                                                
-  File "hgDistributeStart.py", line 16, in worker                                            
-    tmp.run()                                                                                
-  File "/opt/web/lehe.com/hgpusher/hgDistribute.py", line 38, in run                         
-    ret = m_msg.pre_message(message)                                                         
-  File "/opt/web/lehe.com/hgpusher/distribute.py", line 72, in pre_message                   
-    self.for_chat(message)                                                                   
-  File "/opt/web/lehe.com/hgpusher/distribute.py", line 157, in for_chat                     
-    nick_name = m.getfromNickname(from_account_id)                                           
-AttributeError: Users instance has no attribute 'getfromNicknam
-```
 php 回掉函数的使用。
 这是最基本的回掉方法。
 call_user_func_array('your function',array());
 array() is your params.
 
-PHP 的date 函数.
-
-```php
-<?php
-//$start = date_create(date("Y-m-d"));
-//echo date_format($start,'Y-m-d H:i:s')."\n";
-//$interval_d = date_interval_create_from_date_string("1 days");
-//date_sub($start, $interval_d);
-//echo date_format($start,'Y-m-d H:i:s')."\n";
-error_reporting(7);
-ini_set('display_errors', 1);
-ini_set('date.timezone','Asia/Shanghai');
-
-$start_str = '2015-01-01 23:00:00';
-$end_str = '2015-01-30 23:00:00';
-
-for($i = 0; ; $i++){
-	$start = date_create($start_str);
-	$interval_d = date_interval_create_from_date_string("{$i} days");
-	$ans =date_add($start,$interval_d);
-	$s = date_format($ans,'Y-m-d H:i:s');
-	echo $s."\n";
-	if($s >= $end_str){
-		echo 'brk'."\n";
-		break;
-	}
-	//echo date_frormat($ans,'Y-m-d H:i:s')."\n";
-}
-?>
-
-
-
-date("Y-m-d 10:00:00",strtotime("+1 day")); date 函数可以计算出明天的事件,昨天的事件.
-
-
-```
 2015-01-28 17:38
 mysql 的联表查询的原理我还不是很清楚，只是知道了联表查询并不一定就等于O(n*m) 的复杂度。
 和联表的条件是密切相关的。所以，需要多理解，多实践下。
 
 ngix还是没有了解，应该也了解一下。
-emulator: ERROR: Unable to load VM from snapshot. The snapshot has been saved for a different hardware configuration.
-模拟器：错误：无法从虚拟机上加载快照，快照已被保存为一个不同的硬件配置。（存档错误无法读取)
-解决办法：
-Android Virtual Device Manager -> delete AVD -> new AVD
-重新创建个AVD，解决。
-
 我对shell 很感兴趣，总是找机会学习能接触到的shell。
 配置文件，configure 文件，中的每一行都要追究为什么。
 
@@ -378,17 +178,6 @@ bash -x your.sh 就可以看你的shell的执行过程了。
 刚才搜索了一下，没有找到合适的方法，应该是需要自己动手的功能。
 
 
-目前真得很需要钱。希望4月份我的薪水可以让自己满意。如果我不能满意，我真得可能要选择其他的地方。
-我也没有办法。现在情况对我来说不是很有利，现在处境比较艰难。我应该保持谨慎，以前那种大大咧咧的
-性格应该收敛一下，不能继续那样子下去，2014犯了太多错误，那些愚蠢的错误，给我带来了巨大的损失。
-    然而我并没有记录下自己犯了哪些错误,我并不知道怎么避免犯同样的错误.{metioned by}{2016-01-04 12:50}
-
-
-
-2015，我希望我不再重犯2014的那些错误，我希望我可以更快速的成长。我要用成长的速度弥补我犯的过错
-2015，我需要改变，我需要更加努力，更加谨慎。
-2015, 我应该加强英文的学习，阅读更多的文档，思考更多的问题。
-
 刚才在学习配置nginx 的时候遇到问题了，我是按照上面的文档来配置的，但是出问题了。我应该去error.log
 里面找问题，这一天提示很是重要，应该注意提高下自己这方面的能力。
 
@@ -411,16 +200,10 @@ crontab l 列出当前的任务。分 时 日 月 星期  执行命令,* 表示�
 在linux 下，你当前用户的crontab文件存放在 /var/spool/cron/ 目录下，这个文件以你的用户身份 命名。
 比如 root， fox 之类的。
 
-如果有很多个input的话，那么尽量让他们的长度保持一致，这样可以是页面表现的比较整齐。如果你是个前段白痴的话，
-这也是一个不错的选择。
-时间可以让页面变得交互性很好。刚才的错误是很奇怪的，只因为写错了位置。
-一个按钮是不是可以点击的，这些常用的时间应该很熟悉才行，要重视程序的交互功能。
-
 刚才在文档里发现了好多东西，原来还是要自己编译才是最好的。才能够了解更多的特性。
 ./configure --help
 其实已经包含了很多信息，只是你还不了解。
 要编译安装，这个是很重要的一步。
-
 
 php 中开启gd，
 在编译php的时候，./configure --prefix=/opt/server/php-version/ --enable-gd
@@ -450,12 +233,12 @@ In ubuntu, you can switch to root like this.
 sudo -i
 sudo su -
 
-
 Thus whatever is set in the /etc/environment for the path is overridden by sudo.
 http://askubuntu.com/questions/128413/setting-the-path-so-it-applies-to-all-users-including-root-sudo
 
 you can find more with this command.
 
+```bash
 man sudoers
 sudo visudo
 just edit this line, and your problem solved.
@@ -467,46 +250,7 @@ if test "$dev" = "0" -a "$devok" = "0" ; then
 	echo "your comment"
 exit 1
 fi
-
-I solved problem for c++
-
-for example your .h file is named head.h and content like this.
-#ifndef _HEAD_H_
-#define _HEAD_H_
-
-this is your class definition area.
-
-#endif
-
-
-in your project, there are source file import it.
-for example.
-
-#include <iostream>
-
-#include "head.h"
-#include "head.h"
-
-if you include "head.h" twice, you find you can compile your file as well.
-but if your head.h is writte without #ifndef, #define #endif, then you must
-will get an error to stop your working.
-
-also, here the use of,
-
-#ifdef
-
-#else
-
-#endif
-
-this condition definition can save your release code size :).
-
-2015-02-08 23:21
-FOR C++;
-what is different between static type and dynamic type.
-static type: know when program is in compile process.
-dynamic type: know only in the run process.  For pointer type.
-
+```
 
 2015-02-10 23:23
 关于html，前端的这些东西，今天学习到了好多，这要是jquery的this，和parent
@@ -979,7 +723,6 @@ http://pkg.phpcomposer.com/
 
 
 ```php
-<?php
    session_start();
    header("Content-type:image/png"); 
    $img_width=100;
@@ -1006,14 +749,12 @@ http://pkg.phpcomposer.com/
 
    ImagePng($new_number);
    ImageDestroy($new_number);
-?>
 ```
-
 
 PHP echo 和 print的区别。
-
 主要掌握echo的下面这两个特性。print更多的是一个函数。
-```
+
+```php
 echo "hello", "world";
 echo <<<EOT
 test

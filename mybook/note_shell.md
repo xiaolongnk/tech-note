@@ -1,3 +1,6 @@
+---
+title: shell 学习笔记
+---
 #this file is use to log shell skills .
 
 awk
