@@ -1,9 +1,13 @@
-[vim markdown 插件](https://github.com/plasticboy/vim-markdown)可以让vim支持markdown语法。
-vim marks 的用法，很不错的，应该收藏。vimimum 可以用 yy 将当前也的地址copy下来,这一点是和 firefox 一样的。
-[vim mark 功能](http://blog.163.com/lgh_2002/blog/static/44017526201081154512135/)
-[xmind -official site](http://www.xmind.net/share/)
+---
+title: 数据库设计案例
+categories:
+- 数据库设计
+tags:
+- 数据库设计
+---
 
-####sql for sweet_i
+#### sql for sweet_i
+
 ```sql
 
 create table t_sweet_account
@@ -73,13 +77,3 @@ create table t_sweet_user_read_info
 )engine = InnoDB charset = utf8 auto_increment=1 comment '用户阅读记录';
 
 ```
-**几个常用的 搜索引擎**
-
-|   搜索引擎| 地址   |
-|:----:|:---:|
-|    百度|   <http://zhanzhang.baidu.com/sitesubmit/index> |
-|    谷歌  |  <http://www.sogou.com/feedback/urlfeedback.php>          |
-| 谷歌  |    <http://www.google.com/intl/zh-CN/add_url.html>  |
-
-https://github.com/phpredis/phpredis
-https://github.com/mongodb/mongo-php-driver
