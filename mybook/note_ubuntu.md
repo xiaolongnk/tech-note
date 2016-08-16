@@ -253,12 +253,6 @@ sudo apt-get install mark-my-words
 
 <http://remarkableapp.github.io/linux/download.html>
 
-vim slowstart.
-vim --startuptime vim.log -c q
-
-vim delete duplicate lines.
-sort
-g/^\(.\+\)$\n\1/d
 
 ### 2015-12-12 15:11
 
@@ -290,7 +284,6 @@ sudo apt-get install folder-color
 PHP在命令行模式下的 $_SERVER 变量中的变量可以在shell 中 export 来设置.shell 中的变量会出现在
 SERVER 变量中.
 在web环境中,要通过在服务器中设置才可以. nginx 在 fastcgi_params 中设置.
-
 
 在linux中,我想升级gedit,比如说我的是 ubuntu14.04, 但是在 ubuntu15.10 里面,gedit 的版本是比
 我的新的.但是在14.04里面我确用不了最新的gedit .
@@ -356,19 +349,6 @@ sudo dpkg -i *.deb
 
 
 下面是我的 ubuntu dash 中的eclipse的快捷方式.可以很明显的看到是我的路径出了问题. 我需要修改一下路径就可以了.
-```
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Name=C/C++ - Eclipse 
-Icon=eclipse.png
-Path=/home/faith/blackh/server_src/eclipse
-Exec=/usr/bin/java -Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=256m -Xms256m -Xmx1024m -jar /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar -os linux -ws gtk -arch x86_64 -showsplash /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.platform_4.5.1.v20150904-0015/splash.bmp -launcher /home/faith/blackh/server_src/eclipse/eclipse -name Eclipse --launcher.library /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.300.v20150602-1417/eclipse_1612.so -startup /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar --launcher.appendVmargs -exitdata a10802c -product org.eclipse.epp.package.cpp.product -vm /usr/bin/java -vmargs -Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=256m -Xms256m -Xmx1024m -jar /home/faith/blackh/server_src/eclipse//plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar
-StartupNotify=false
-StartupWMClass=Eclipse
-OnlyShowIn=Unity;
-X-UnityGenerated=true
 ```
 
 sudo apt-get install mysql-workbench
@@ -457,7 +437,7 @@ Then I rebooted and confirmed using the desktop appliaction Additional Drivers t
 执行完上面的安装命令，然后startx sudo service start lightdm 就可以启动了图形界面了，回到原来的样子。
 
 还看了几个其他的命令，一个是
-```
+
 ag
 lspci 
 
@@ -475,10 +455,6 @@ modprobe -r nouveau  用这个命令来卸载这个模块，从内核中卸载�
 firefox 的flash也是不错的。我观察了下kde，发现kubuntu的问题还是很多的，搞了好几次都失败了。
 最终还是放弃了，没什么意义。unity 和 kde都不太适合我的机械师。可能是显卡太高端了，不适合。
 在别的电脑上可能没有问题。毕竟，很少有像我这样的脑残，拿个游戏本来玩linux。
-
-
-sudo add-apt-repository ppa:nilarimogard/webupd8
-sudo apt-get update && sudo apt-get install freshplayerplugin
 
 2016-05-06 10:32
 
@@ -509,14 +485,6 @@ groupadd sudo
 sudo usermod -aG sudo work
 ```
 http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
-
-
-
-gnome icon theme.
-this icon for gnome is necessary , better then default.
-sudo add-apt-repository ppa:tiheum/equinox
-sudo apt-get update
-sudo apt-get install faenza-icon-theme
 
 
 2014-07-19 10:16

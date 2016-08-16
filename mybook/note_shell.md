@@ -199,3 +199,52 @@ eval `ssh-agent -s`
 sudo ntpdate 202.120.2.101
 sudo ntpdate 210.72.145.44
 这是两个时间服务器，可以调整自己的时间。
+
+```shell
+shell 执行字符串命令。可以这样。
+eval $cmd
+试了一下，只有上面这种方法是ok的，其他的都不太行。
+类似的问，其他语言中也有很多。python中也有不少。
+sh exec $cmd
+`echo $cmd`
+
+date '+%Y-%m-%d'
+httpd -S
+
+shell 脚本中的 空变量。可能是你的程序报错，所以写判断的时候需要考虑变量为空的情况。
+如果出现这样的情况，报的错误可能是这个。
+"[: =: unary operator expected"
+
+if [ $pusher_env'X' = 'prodX' ]
+then
+    workdir='/home/work/hgpusher/'
+elif [ $pusher_env'X' = 'devX' ]
+then
+    workdir='/root/dir_higo/hgpusher/'
+elif [ $pusher_env'X' = 'localX' ]
+then
+    workdir='/code/hgpusher/'
+else
+    echo '请先设置系统环境变量 pusher_env '
+    exit -1
+fi
+echo "运行配置是"$pusher_env
+
+a=$(($i + 1))
+
+```
+
+
+```bash
+man sudoers
+sudo visudo
+just edit this line, and your problem solved.
+bash if grammer.
+
+it is just and.
+if test "$dev" = "0" -a "$devok" = "0" ; then
+	echo "your comment"
+	echo "your comment"
+exit 1
+fi
+```

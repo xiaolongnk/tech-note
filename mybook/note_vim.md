@@ -41,6 +41,9 @@ echo a
 我只是通过实验尝试出来的。
 
 
+vim slowstart.
+vim --startuptime vim.log -c q
+
 sudo vim 启动速度超级慢。
 
 vim 启动速度变慢.在终端中可以这样启动 vim -X 这样是不需要和X挂上勾的,所以会变慢.修改了一下之后
@@ -58,6 +61,9 @@ vim 记录上次编辑位置。
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 ```
 
+vim delete duplicate lines.
+sort
+g/^\(.\+\)$\n\1/d
 Tag:vim find vim-copy
 
 哈哈，现在可以很好的应用vim了，原来是我的了解还不够深啊，多看看就可以用得更好。

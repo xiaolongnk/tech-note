@@ -203,17 +203,8 @@ having 后面可以跟 聚合 函数.他们都具有过滤功能.
 可以用 show engines; 来查看 mysql 的数据库引擎. 好像默认的是 MyISAM,但是我的 现在是 InnoDB. 可以支持事务,外键
 
 mysql 的 null 值比较 需要用到 isnull 函数,而不能直接和 var=null ,这样写是错误的.
-mysql 基本操作
-
-delete from xlo where account=""  这样可以删除掉没用的行.
-当然还有 alter 语句,alter 语句可以修改很多东西.
-
-
-
-
 
 下面是我对mysql实用过程的一些总结.
-
 如果更新 key 冲突，那么按照指定的规则来更新数据，有时候这样可以方便不少
 
 ```mysql
@@ -221,10 +212,6 @@ insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key u
 //将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
 ```
-
-查看全表的信息,可以查到自己表的注释信息
-show full fields from your_table;
-mysql update
 
 这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
 update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
@@ -268,18 +255,14 @@ select date_format(now(),"%Y-%m-%d %H:%i:%s") now;
 select date_sub(now(), interval 10 day) as yesterday;       // 请不要吧 day 写成 days ，month , hour 同理。
 #group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
 select * from test_table where status = 1 order by col_a desc, col_b desc, col_c asc limit 100;
-```
-mysql 变量
+
 set @a = 100;
-set @a:=100;
+select @a:=300;  #可以通过 select 给变量赋值,这个变量只在这个链接周期中有效。
+```
 
-select @a:=300;  #可以通过 select 给变量赋值，对，你没有看错。
-这两种方式都可以给@a赋值。使用的时候记得用@啊，就像PHP里面的$一样。
-这个变量只在这个链接周期中有效。
+mysql 存储过程 下面是一个简单的存储过程的例子。
 
-mysql 存储过程
-
-下面是一个简单的存储过程的例子。
+```mysql
 delimiter $     # 因为 mysql 默认的 终止符是; 而这个正好是存储过程的语法，所以在编写存储过程之前，先将 delimiter 改成 $
 create procedure p()    # 创建存储过程
 begin
@@ -288,3 +271,13 @@ end;
 $
 delimiter ;     # 将 delimiter 改成默认的; 这样符合我们的习惯
 call p();       # 调用这个存储过程
+```
+
+sql 中将联表出现的 null 替换成 0， 可以用这个方法。
+
+```sql
+if(tb2.shop_click is null, 0,tb2.shop_click)
+```
+
+用group by来去重要比 distinct 效率要高很多。
+
