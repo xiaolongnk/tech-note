@@ -66,3 +66,11 @@ angular 中的浮层，请求模块。
 
 q1: 在页面中中使让一段字体在一个div中垂直居中？
 http://stackoverflow.com/questions/79461/vertical-alignment-of-elements-in-a-div
+
+**几个常用的 搜索引擎**
+
+|   搜索引擎| 地址   |
+|:----:|:---:|
+|    百度|   <http://zhanzhang.baidu.com/sitesubmit/index> |
+|    谷歌  |  <http://www.sogou.com/feedback/urlfeedback.php> |
+| 谷歌  |    <http://www.google.com/intl/zh-CN/add_url.html>  |
