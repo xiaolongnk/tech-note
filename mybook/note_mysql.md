@@ -1,5 +1,9 @@
 ---
 title: Mysql笔记
+categories:
+- 存储
+tags:
+- Mysql
 ---
 
 #### 2016-01-07 13:11
