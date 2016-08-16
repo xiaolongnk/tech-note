@@ -1,5 +1,9 @@
 ---
 title:C/C++ 学习笔记
+categories:
+- c++
+tags:
+- c/c++
 ---
 
 ### 这是我的C学习笔记
@@ -74,3 +78,10 @@ float InvSqrt(float x)
     x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
     return x;
 }
+
+#### C++ rand
+something about c++ rand
+what you should know is header name of this function;
+it's stdlib library;
+and another important sentence is;
+srand((usigned)time(NULL));

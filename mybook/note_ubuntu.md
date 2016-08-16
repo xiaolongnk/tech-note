@@ -79,11 +79,12 @@ sudo apt-get build-deb libreoffice5.0
 然后执行安装命令就可以了.安装应该不会出错了.
 下面解释一下这个命令究竟是做什么的.
 
-ubuntu source code
+#### ubuntu source code
 如何获取ubuntu的源码
 你可以获取任何一个你所使用的源码包.这就是开源的系统.
 只要你的系统的源里有dep-src 这个选项,那么就可以随便获得系统源码.
 就像下面这样.
+
 ```
 deb-src http://archive.canonical.com/ubuntu trusty partner
 deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted
@@ -97,11 +98,9 @@ deb-src http://extras.ubuntu.com/ubuntu trusty main
 deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted
 deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse
 deb-src http://security.ubuntu.com/ubuntu trusty-security universe
-```
 
 使用下面的命令.
 
-```
 sudo apt-cache showsrc gedit #showsrc 可以用来查询有没有你需要的源码包
 sudo apt-cache source gedit  #source 命令用来获取你需要的源码包
 ```
@@ -110,11 +109,10 @@ dpkg-dev 先安装这个.
 
 在编译源码包之前,需要安装具有依赖关系的软件包,可以使用这个命令,就是上面的那个.
 build-dep 命令.
+
 ```
 sudo apt-get build-dep xxx
-```
-通过上面两个命令,就可以得到自己的源码包了.然后利用
-```
+#通过上面两个命令,就可以得到自己的源码包了.然后利用
 cd yoursrc
 sudo dpkg-buildpackage 
 ```
@@ -129,11 +127,9 @@ sudo dpkg -i *.deb
 ### 关于ubuntu 的dash 残留应用的问题
 在你的本地文件里面. .local/share/applications/ 里面把对应的删除,重新登陆就可以
 看到你讨厌的那个东西不见了.
-
-
 下面是我的 ubuntu dash 中的eclipse的快捷方式.可以很明显的看到是我的路径出了问题. 我需要修改一下路径就可以了.
-```
 
+```
 sudo apt-get install mysql-workbench
 这个用起来还是很方便的.工作中又多了一个效率工具.要加入到我的worklist里面.
 
@@ -151,7 +147,6 @@ ubuntu 修改自己的键盘映射,交换 capsloc 和 ese.
 学习一点黑客工具什么的。
 nmap 具体的参数还需要进一步阅读手册。
 
-```shell
 nmap -PS 192.168.0.102  #扫描一个主机所有开启的端口。
 nmap -sP 192.168.0.*  #扫描一个网段下的所有活动的主机。
 ```
@@ -160,22 +155,22 @@ nmap -sP 192.168.0.*  #扫描一个网段下的所有活动的主机。
 追求太多的东西，其实都是次要的，在上面工作顺手才是最重要的。配置什么的，最没有影响了。感觉虽然gnome也有问题，但是感觉gnome
 还是稳定一点的。
 
-### 2016-02-12 16:52
+#### Ubuntu create launcher
 ubuntu launcher.  alacarte
-
 ubuntu 创建快捷方式．用这个软件．
 在mate桌面上安装创建自己的启动方式．要给我的zendstudio 创建．
 sudo apt-get install gnome-panel
-
 
 linux rm hidden files
 rm -rf * 是不会删除隐藏文件的.
 rm -rf .*
 这个命令会过滤调. .. ,这两个目录是无法删除的.
+
+#### Ubuntu 关闭 crash report
 ubuntu 关闭没用的 crash report。
 sudo vim /etc/default/apport
 
-
+#### Ubuntu N卡驱动
 
 对硬件的了解是我的最大的弱点。
 电脑的什么显卡驱动啊，什么网卡驱动，我都没有搞清楚。今天驱动挂了，所以开不开gui了，没办法，逼着
@@ -189,10 +184,7 @@ sudo apt-get install nvidia-current
 It is working fine with unity 3d. Thanks to all.
 
 幸好是可以上网，如果不能上网，我真是有点没招了。
-```
 glxinfo | head
-
-```
 
 然而，上面的命令并没有解决我的问题。看下面的这个。
 
@@ -221,7 +213,10 @@ Then I rebooted and confirmed using the desktop appliaction Additional Drivers t
 
 还看了几个其他的命令，一个是
 
-ag
+#### ag
+
+like ack but faster.
+
 lspci 
 
 glxinfo | head  如果显卡驱动有问题，这个命令会不正常。
@@ -270,8 +265,14 @@ sudo usermod -aG sudo work
 http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
 
 
-2014-07-19 10:16
+遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
+我从官网下载 tar.gz 之后，安装还是没有解决问题。
+貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
+sudo apt-get install flashplugin-downloader
+貌似真得好了。
 
+
+#### Linux 更新时间
 Linux 更新时间.主要的就是这个命令.
 ntpdate cn.pool.ntp.org
 好像 windows 时间 和 Linux 时间一定会又一个出问题.现在有点没有办法.
@@ -281,10 +282,13 @@ ntpdate cn.pool.ntp.org
 sudo hwclock --systohc
 sudo hwclock --hctosys
 
+#### 允许程序没有sudo权限执行
 
-遇到的问题是 firefox has prevented the outdated flashplugin from xxx website.
-我从官网下载 tar.gz 之后，安装还是没有解决问题。
-貌似要用 apt-cache 来搜索才行，现在貌似好了，问题就是这样解决的。
-sudo apt-get install flashplugin-downloader
-貌似真得好了。
+sudo chmod +s /usr/sbin/hddtemp
+这样就可以让 hddtemp 在没有 sudo 权限的情况下运行了。
 
+#### xargs
+ok, today I learned about xargs command. this solve the problem like this.
+rm -rf `ls`
+now you can do like this;
+ls | xargs rm -rf

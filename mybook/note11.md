@@ -73,25 +73,6 @@ create table t_sweet_user_read_info
 )engine = InnoDB charset = utf8 auto_increment=1 comment '用户阅读记录';
 
 ```
-
-
-2015-03-13 21:56
-
-要考虑一下系统的缓存问题。首页，和群圈首页都需要进行缓存，减小系统的访问压力,提供更好的用户体验。
-那些东西是真正有有价值的。
-抽奖系统，秒杀系统 的实现过程。这些我都没有参与，如果独立设计，怎么实现？
-
-目前，系统是零散的
-不能为
-
-目前需要从哪里提高。
-SQL 的总结什么时候出来。
-PHP 的总结什么时候出来。
-SPHINX 什么时候搞出来。
-
-BOOTSTRAP ？CI？
-YII 何时优化？
-我会把我的这部分工作做好。
 **几个常用的 搜索引擎**
 
 |   搜索引擎| 地址   |
@@ -100,40 +81,5 @@ YII 何时优化？
 |    谷歌  |  <http://www.sogou.com/feedback/urlfeedback.php>          |
 | 谷歌  |    <http://www.google.com/intl/zh-CN/add_url.html>  |
 
-
-
-2015-03-17 16:47
-
-Yii 用array 来作为 cgridview 的数据源。
-http://stackoverflow.com/questions/9538777/using-an-array-as-the-data-source-for-cgridview
-应该深入学习，学习自由定制显示。
-YII 中假如全选框，提供全选功能。
-
-CActiveDataProvider
-it must be used in the following way;
-
-$dataProvider=new CActiveDataProvider('Post', array(
-    'criteria'=>array(
-        'condition'=>'status=1',
-        'order'=>'create_time DESC',
-        'with'=>array('author'),
-    ),
-    'countCriteria'=>array(
-        'condition'=>'status=1',
-        // 'order' and 'with' clauses have no meaning for the count query
-    ),
-    'pagination'=>array(
-        'pageSize'=>20,
-    ),
-));
-// $dataProvider->getData() will return a list of Post objects
-
-
 https://github.com/phpredis/phpredis
 https://github.com/mongodb/mongo-php-driver
-/usr/lib64/php/modules/
-
-注意基础工具的开发。
-
-mongodb connection pool .要认真研究一下
-缓存可以很有用，应该好好研究一下， nginx可以做静态页面的缓存。可以从log分析访问流量。

@@ -271,3 +271,50 @@ set_time_limit(0); 设置程序的执行时间,如果是0说明永久执行下�
 
 每个进程都有一个父进程,子进程退出,父进程能得到子进程退出的状态.
 进程组, 每个进程都属于一个进程组,这个号码等于该进程组组长的pid.
+
+#### 配置VIM为编辑器
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+git config --global core.editor "vim"
+
+函数的返回值貌似可以用 $? 变量拿到。
+但是 return 是不支持返回非数字类型的。这是不是一个新的约束条件。
+对于数值运算，可以实用 expr 这个工具，其实这是另一个简单的工具，可以用 man 手册来查看帮助文档。
+shell 中有几个比较特殊的变量。
+$0 表示当前脚本的名字
+$1 $2 ... $i  第 i 个参数
+$# 参数的个数。
+$?
+
+#### git fileMode
+
+这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
+git config core.fileMode false
+
+
+
+sed 
+下面是一点关于 sed 的东西。刚才写的一个脚本，主要是用来处理字符串的。当然 for 循环也是值得学习的。
+还有判断一个目录是否存在。
+
+其中s是用来做替换用的。
+```shell
+sed 's/xx/ds/' note
+
+[ ! -x result ] && mkdir result
+for i in `ls *.grb`
+do
+    out=`echo $i | sed 's/GLDAS_NOAH10_M.A//' | sed 's/\..*[[:graph:]]//'`
+    wgrib $i > result/$out".out"
+done
+```
+d 表示是删除的意思。用新文件覆盖旧文件。
+sed '/vim/d' ~/.bashrc > ~/.bashrc
+刚才才发现原来 shell 的字符串判断相等是 = 左右两天加个空格就可以了。如果不加空格就是赋值。
+这种语法还是有点诡异的啊。
+并且现在很少写 if 这个东西了，自从我发现了 if 语句可以简写之后。
+字符串操作还是又必要掌握一下的。
+果然shell python 相比来说直截了当多了。正事因为 shell 在字符串处理上的缺陷，所以才有了sed这样
+的工具来补充吧。
+当然还有awk。
