@@ -1,3 +1,7 @@
+---
+title:C/C++ 学习笔记
+---
+
 ### 这是我的C 学习笔记
 
 编译一个c文件，产生一个可执行文件，这个过程分为四个步骤
@@ -19,8 +23,41 @@ typedef 和 宏不一样的地方。
 
 typedef 是有作用域的。在函数中，只能在函数中起作用。
 
+I solved problem for c++
+
+for example your .h file is named head.h and content like this.
+#ifndef _HEAD_H_
+#define _HEAD_H_
+
+this is your class definition area.
+
+#endif
 
 
+in your project, there are source file import it.
+for example.
 
+#include <iostream>
 
+#include "head.h"
+#include "head.h"
 
+if you include "head.h" twice, you find you can compile your file as well.
+but if your head.h is writte without #ifndef, #define #endif, then you must
+will get an error to stop your working.
+
+also, here the use of,
+
+#ifdef
+
+#else
+
+#endif
+
+this condition definition can save your release code size :).
+
+2015-02-08 23:21
+FOR C++;
+what is different between static type and dynamic type.
+static type: know when program is in compile process.
+dynamic type: know only in the run process.  For pointer type.

@@ -1,3 +1,7 @@
+---
+title: Mysql笔记
+---
+
 #### 2016-01-07 13:11
 
 mysql 性能测试工具.
@@ -27,9 +31,7 @@ order by 的字段是否有必要增加一个索引,如果有必要,是不是所
 上索引. 
 
 索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。
-按照存储方式分为：聚集与非聚集索引
-
-和B树B+树的关系还是差别挺密切的,所以需要认真理解一下B树和B+树.
+按照存储方式分为：聚集与非聚集索引 和B树B+树的关系还是差别挺密切的,要理解好这个，需要认真理解一下B树和B+树.
 
 MySQL如何利用索引优化ORDER BY排序语句
 MySQL索引通常是被用于提高WHERE条件的数据行匹配或者执行联结操作时匹配其它表的数据行的搜索速度。
@@ -72,9 +74,7 @@ using where  ,
 ```
 select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5') 
 ```
-谢谢,经测试order by substring_index和order by find_in_set都可以
-
-
+order by substring_index和order by find_in_set都可以
 
 mysql 中创建用户。
 
@@ -115,11 +115,11 @@ DECIMAL从MySQL 5.1引入，列的声明语法是DECIMAL(M,D)。在MySQL 5.1中�
 ·D是小数点右侧数字的数目（标度）。其范围是0～30，但不得超过M。
 说明：float占4个字节，double占8个字节，decimail(M,D)占M+2个字节。
 这是一个不错的解释。
-```
+
+>
 Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
 Suppose that your column is set to be DECIMAL(13,4). This means that the column will have a total size of 13 digits where 4 of these will be used for precision representation.
 So, in summary, for that column you would have a max value of: 999999999,9999
-```
 
 引申 为什么floa 和 double 会丢失精度。
 1 字节 = 8 bit。 int 一般认为是32位。最长是10位。
@@ -212,15 +212,15 @@ delete from xlo where account=""  这样可以删除掉没用的行.
 
 
 
-下面是我对mysql实用过程的一些总结.涵盖面基本上比较全，希望能有所帮助。
+下面是我对mysql实用过程的一些总结.
 
-```sql
 如果更新 key 冲突，那么按照指定的规则来更新数据，有时候这样可以方便不少
-insert into myblog (id,title,ctime) values(123,'hello',now())on duplicate key update title=values(title),ctime=values(ctime);
-问题是，只能在主键重复的时候做应该做得事情。
 
-将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
+```mysql
+insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key update title=values(title),ctime=values(ctime);
+//将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
+```
 
 查看全表的信息,可以查到自己表的注释信息
 show full fields from your_table;
@@ -245,31 +245,30 @@ show tables like '%talname%';
 清空表中的数据，包括 auto_increment 的字段都会被重置。
 truncate table_name;
 
-mysqldump 数据导出
+mysqldump 数据导出和数据恢复
 
+```bash
 mysqldump -h localhost -ppasswd  -uroot -d database > dump.sql ;            // 只导出数据库的结构
 mysqldump -h localhost -ppasswd  -uroot  database  > dump.sql ;             // 导出数据库的结构和所有的数据
 mysqldump -h localhost -ppasswd  -uroot -d database tablename > dump.sql ;  // 只导出表结构
 mysqldump -h localhost -ppasswd  -uroot  database tablename > dump.sql ;    // 导出表结构和表中的数据
-
-mysql 数据恢复
 mysql -u root -p yourpasswd -h localhost yourdb < dump.sql                  // 将dump.sql 导出入到你的数据库
+```
 
 mysql 中的test 表的使用方法。如果你在数据表中没有数据的到处权限，但是一般的数据库中，test库中的权限你都是
 有的，所有可以将需要的数据先导入到test中的临时表中，然后再从临时表中导出去。这样可以绕开权限控制，到处你
 需要的数据。sql 大概是这样的。
 create table xxx as select * from you_target_table where xxx=xxx;
 这样 一张 test 中的临时表就创建好了，你可以用mysqldump将这个表中的数据导出去。
-到处的命令都在上面，就不啰嗦了。
 
 mysql 几个简单的时间处理函数
 
+```mysql
 select date_format(now(),"%Y-%m-%d %H:%i:%s") now;
-select date_sub(now(), interval 10 day) as yesterday;                       // 请不要吧 day 写成 days ，month , hour 同理。
-
-group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
+select date_sub(now(), interval 10 day) as yesterday;       // 请不要吧 day 写成 days ，month , hour 同理。
+#group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
 select * from test_table where status = 1 order by col_a desc, col_b desc, col_c asc limit 100;
-
+```
 mysql 变量
 set @a = 100;
 set @a:=100;
@@ -288,7 +287,4 @@ select * from ttt;
 end;
 $
 delimiter ;     # 将 delimiter 改成默认的; 这样符合我们的习惯
-                # 请注意单词的拼写，写错了我不负责。
 call p();       # 调用这个存储过程
-
-```
