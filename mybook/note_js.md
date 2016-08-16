@@ -1,3 +1,7 @@
+---
+title: javascript 学习笔记
+---
+
 ### note for js
 
 $() () 里面是一个dom元素的话，这个东西就是一个jquery对象。
@@ -31,8 +35,6 @@ underscore.js
 jquery
 $.each();
 _.findWhere();
-
-
 
 记得有这样一个场景。
 一个页面里面会使用到弹层，弹层上面有一些按钮，需要给这些按钮绑定事件。
