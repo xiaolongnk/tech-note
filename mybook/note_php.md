@@ -1,7 +1,11 @@
 ---
 title: PHP 学习笔记
+categories:
+- programming
+tags:
+- php
+- web
 ---
-
 
 ```php
 $url = 'testurl';

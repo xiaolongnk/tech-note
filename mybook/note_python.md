@@ -1,5 +1,9 @@
 ---
 title: Python 学习笔记
+categories:
+- programming
+tags:
+- Python
 ---
 
 #### __call__  __getattr__  

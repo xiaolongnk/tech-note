@@ -1,5 +1,12 @@
 ---
 title: javascript 学习笔记
+categories:
+- javascript
+
+tags:
+- programming
+- javascript
+- web
 ---
 
 ### note for js

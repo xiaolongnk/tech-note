@@ -1,5 +1,9 @@
 ---
 title: MAC 使用心得
+categories: 
+- Mac
+tags:
+- 开发工具
 ---
 
 ### MAC 使用心得 
