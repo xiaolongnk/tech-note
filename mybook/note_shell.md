@@ -1,7 +1,12 @@
 ---
 title: shell 学习笔记
+categories:
+- shell
+tags:
+-awk
+-sed
+-grep
 ---
-#this file is use to log shell skills .
 
 awk
 
@@ -232,15 +237,6 @@ echo "运行配置是"$pusher_env
 
 a=$(($i + 1))
 
-```
-
-
-```bash
-man sudoers
-sudo visudo
-just edit this line, and your problem solved.
-bash if grammer.
-
 it is just and.
 if test "$dev" = "0" -a "$devok" = "0" ; then
 	echo "your comment"
@@ -248,3 +244,19 @@ if test "$dev" = "0" -a "$devok" = "0" ; then
 exit 1
 fi
 ```
+
+
+如何调试shell。
+bash -x your.sh 就可以看你的shell的执行过程了。
+或者在shell的开始部分增加一行，set -x。
+
+crontab 的一些常识。
+crontab l 列出当前的任务。分 时 日 月 星期  执行命令,* 表示任意的变量;
+```shell
+00 23 * * * run-your script  每天23:00 执行你的脚本。其实我需要做的就是一行命令。
+10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart  这个任务表示每周6和周日的1:10重启服务器。注意逗号，表示多个的意思。再看下面一个。
+* */1 * * * /usr/local/etc/rc.d/lighttpd restart  注意这个符号/ 表示每个一个小时重启一下服务器。
+```
+
+在linux 下，你当前用户的crontab文件存放在 /var/spool/cron/ 目录下，这个文件以你的用户身份 命名。
+比如 root， fox 之类的。

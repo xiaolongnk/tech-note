@@ -6,7 +6,7 @@ tags:
 - Linux
 ---
 
-### 制作 ubuntu 15.10 镜像。
+### 制作 ubuntu 镜像
 ```shell
 sudo dd if=/home/your.iso of=/dev/sdb
 ```
@@ -18,7 +18,6 @@ sudo dd if=/home/your.iso of=/dev/sdb
 
 安装firefox 插件
 json, vimperator, firebug.
-
 
 安装 nginx ， php ， mysql ， php-redis 扩展。
 nginx <http://nginx.org/en/download.html>
@@ -33,38 +32,6 @@ sudo apt-get install libssl-dev
 sudo apt-get install libxml2-dev
 
 ./configure --prefix=/home/faith/blackh/server/php --with-config-file-path=/home/faith/blackh/server/php/etc --with-mysql=/usr/ --with-iconv-dir=/usr/ --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath  --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-zlib --enable-pdo --with-pdo-mysql --with-mysql=shared,mysqlnd 
-```
-
-2016-07-21 16:39
-编译的过程中，很可能遇到这个问题。
-找不到openssl的header files。
-其实解决办法就是安装openssl。brew install openssl 。
-
-但是只是安装了也可能报这个错误。找到了下面这个帖子。来自 stackoverflow。
-核心的是这个 
-
-brew install openssl
-brew link openssl --force
-
-
-遇到其他的报错，卡主了 confiture ，基本上用brew 安装那个就可以过关了。
-configure 过了之后，就可以make && make install 了。
-```
-If you are on Mac OS X El Capitan, Apple doesn't include openssl any more because of security problems openssl had, I have similar problem installing Passenger. brew just installs openssl itself without development headers.
-
-If you are on an older version of Mac OS X than El Capitan, you can use: xcode-select --install which installs openssl development headers as well.
-
-EDIT:
-
-Updating brew and installing openssl and force linking openssl to brew version solved my problem:
-
-$ brew update 
-$ which openssl  
-/usr/bin/openssl 
-$ brew install openssl
-$ brew link openssl --force 
-$ which openssl 
-/usr/local/bin/openssl
 ```
 
 安装php-redis 扩展。<http://pecl.php.net/package/redis>

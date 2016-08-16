@@ -9,7 +9,6 @@ tags:
 #### __call__  __getattr__  
 
 这两个内置函数是非常有用的,首先这两个函数是可以给类定义的.只有在class中才能实现这两个函数.
-
 __call__ 这个方法,可以让对象的实例作为一个无名函数被使用.实际上是给class重定义了`()`运算符.
 
 每次通过实例访问属性,都要经过 `__getattributge__()` 如果属性没有定义,还需要访问 `__get_attr__()`
@@ -114,18 +113,6 @@ pip install xlrd
 python MySQLdb 也可以绑定变量,这样可以不用关心特殊字符. 类似PHP.
 
 全局变量的引用,应该使用global字段.
-
-├── data_import
-│   ├── import.py
-│   ├── __init__.py
-│   ├── merge_files.py
-│   ├── Utils.py
-│   └── Utils.pyc
-├── files
-│   ├── final_brand.txt
-│   ├── final_brand.xls
-│   └── up1.xls
-└── README.md
 python 从数据库中取出中文内容乱码.
 unicode  需要decode成utf8 的才可以,还需要其他的设置,完了需要一一验证.
 
