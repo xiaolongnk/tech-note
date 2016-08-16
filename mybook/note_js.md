@@ -28,6 +28,7 @@ nginx 的log_format , log 需要几下post参数。记得上次查问题，我�
 js 正则.
 这些常用的方法，需要熟练使用.
 
+```javascript
 js localStorage.
 localStorage.getItem();
 localStorage.setItem();
@@ -35,6 +36,7 @@ underscore.js
 jquery
 $.each();
 _.findWhere();
+```
 
 记得有这样一个场景。
 一个页面里面会使用到弹层，弹层上面有一些按钮，需要给这些按钮绑定事件。
