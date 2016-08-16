@@ -711,94 +711,9 @@ But you should know what you want to know first.
 now, think about the handler, once you receive a message, you need a handler
 to deal with the message, this is called a handler.
 
-
 data is in a 4M block, I need to send the block out. I was banned from the game
 because I disconnected from the game, but I was sutcked from the server, I did't 
 mean to do that. 
-
-2014-3-22
-
-Do something about your graduate paper.
-In file ops.c, there are these two functions:
-peer_read_obj()
-peer_write_obj()
-peer_remove_obj()
-
-vdi.c
-sd_init_req(&hdr,SD_OP_READ_PEER)
-also, in recovery.c also appeared in the same way:
-sd_init_req(&hdr, SD_OP_READ_PEER)
-
-but what is this func doing, what's the meaning of this call init.
-
-This data structure is also important. check please.
-
-
-now , it seems that I don't know what I want, I just want to read code os sheepdog
-but not construction a paper from it. this is not what suit me now. What I should do
-is find points from sheepdog and gen a paper for my graduation's end. I hate this 
-work, but I have no way to avoid this, I have to earn my deploma, so I have to finish
-my graduation paper.this is not negotiable.
-
-cluster.h
-
-## This file contain some sd_handlers in sheepdog.
-/* callbacks back into sheepdog from the cluster drivers */
-void sd_accept_handler(const struct sd_node *joined,
-               const struct rb_root *nroot, size_t nr_members,
-               const void *opaque);
-void sd_leave_handler(const struct sd_node *left, const struct rb_root *nroot,
-              size_t nr_members);
-void sd_notify_handler(const struct sd_node *sender, void *msg, size_t msg_len);
-bool sd_block_handler(const struct sd_node *sender);
-int sd_reconnect_handler(void);
-void sd_update_node_handler(struct sd_node *);
-bool sd_join_handler(const struct sd_node *joining,
-             const struct rb_root *nroot, size_t nr_nodes,
-             void *opaque);
-
-2014-3-23
-Every handler was called from other places. Just several related files.
-corosync.c
-local.c
-sherpherd.c
-group.c
-
-these two line are form log file.
-
-do_process_work(1394) a3,8d2ccd0000005f
-default_create_and_write(351) 8deccd0000005f
-
-In this func listen_handler, I met the accept part, this may be what I what most
-In a client server module, what server doing is listen a port, and response to
-request from client.
-
-I want to know , if I know a oid, then I want to know node that store this oid's
-replication, how can I know about this. How to caculate this node id.
-Also, I want to know, how to determine the node, that to store the replication
-of the object. and what is the meaning of the vnode in the system.
-
-I expriemented my guess, and my guess is right. If my cluster have only
-3 node, and I have a vdi, and the vdi is stored with 3 copies, then in three
-nodes, all the oids in obj path should be the same. I see the log, and them
-are true. And you have to make a dir that: /tmp/sheepdog/ if the path not exist,
-the the default path of sheep is /, then it will be troublesome to process with
-the exrpiement.
-
-When you write 500M data in sheepdog, then you use command
-dog vdi list;
-you will see, used space in your vdi is 524, why is 524 but not 500;
-because the 24M is used to store sd_inode data, it use space too.
-
-2014-3-28
-
-It seems that I finished my reading to the code.
-I should write with my paper. Just now, begin. Finished it quickly.
-
-here show a detailed information for sheepdog.
-http://www.blogjava.net/shenh062326/archive/2011/08/28/shenhong.html
-
-
 
 2014-05-13 21:02
 Tag: 文件管理系统
@@ -809,83 +724,14 @@ Tag: 文件管理系统
     的系统日志。
 
 
-2014-05-15 08:29
-Tag: grub background
-应该是修改这个文件。/etc/default/grub 在里面添加这个内容。
-第一行是对应的分辨率。第二行是图片的位置。注意，这个时候系统还没有挂home分区，
-所以这个图片必须放在boot分区。而不是随便一个什么位置都行。
-GRUB_GFXMODE=1366x768
-GRUB_BACKGROUND=/boot/grub/images/fotowall.jpg
-之后是更新 grub.cfg 文件
-sudo grub-mdconfig -o /boot/grub/grub.cfg
-在你重启的时候，应该就可以看到你设置的背景图片了。
-http://www.sheepdog-project.org/doc/more_concepts.html#
-
-2014-5-20
-https://www.ibm.com/developerworks/cn/java/j-gui/
-http://www.javabeginner.com/java-swing/java-swing-tutorial
-ok, my fcitx can not work with tilda, I can only use English. These are some useful
-demos, I should write my own.
-http://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html#TextFieldDemo
-
 2014-05-23
 只能在这里写一点东西了。昨天发现我的编程领域还是太窄，设计到界面的话，基本上是没有
 应对能力的，我需要掌握一门自己喜欢的界面语言，选择java，swing。我要认真学习一下。
 java 也是需要好好学习的。
 
-2014-05-27
-http://www.cnblogs.com/taoweiji/archive/2012/12/10/2812221.html
-
-
-
-Tag: grep
-其实也没什么。对于每个系统版本不一样的问题，可以多用用grep命令，按照内容查找。-n -r 参数
-来个通配查找基本就可以搞定了，如果出现了 某某文件没有找到的情况，请将这个文件暂时搬走，然
-后尝试，估计就差不多了。这样就可以比较容易的找到你需要的信息了。
-grep -nr note/*
-命令是和这个类似的。
-并且从这个角度出发，在你记笔记的时候加上Tag还是很有必要的。
-Tag: dpkg apt-get
-这个是包管理的，这方面我也马马虎虎的，不是很清楚，不知道是不是我的缺点。
-http://www.cnblogs.com/balaamwe/archive/2011/10/27/2225919.html
-
-dpkg -l | grep steam
-然后就可以用dpkg -r 对应的包将它删掉了。
-
-Tag: find
-find . -name dota2 这个命令是用来查找哦啊对应文件的，按照文件进行搜索。
-收拾下自己的心情，开始奋斗吧，生活还要继续，你也没有多少时间用来浪费，你只有努力才可以给
-自己增值，你的价值是自己给自己的，而不是别人。只有作出贡献，才可以赢得别人的尊敬。
-还是原理windows吧，学习一点有用的东西，我需要学习更多的东西。
-
 重新开了一个kde 的配置文件，这个应该会好一点，前一个的配置文件是旧系统的，似乎老是出问题，
 这个不知道能不能好一点。可能是配置文件的问题。其实桌面的配置是很简单的，除了壁纸之外，其他
 的都很简单的。
-
-
-Tag: kde
-KDE 设置.
-字体的抗拒齿。
-将壁纸保存。复制在对应的目录下。 .kde/share/wallpapers/
-快捷键设置。
-desktop-themes 目录中的内容。
-themes  .kde/share/apps/aurorae/themes/* 这个里面是和窗口主题相关的文件，可以留下来。
-注意保存.vim中的文件。为了方便管理，插件什么的还是放在这个目录下吧/home/user/.vim。
-.fonts 目录需要带走。
-日期显示的格式 在 local 中选择日期的格式。
-
-我发现我的kde老是出现bug和我的系统没有关系，只是和我的 .kde 有关系，用了这个新的kde之后，
-就没有那个bug了。所以，听吴说的Linux坏了只需要换一下配置文件就好了，没有必要重装。而windows
-烂了就只能重装了。所以说保存配置还是没有什么必要的。在新系统下去配置吧。
-
-其实玩Linux，在很大程度上是玩配置文件。
-
-konsole 的配置，你需要选择keyboard为 default，这样可以更顺利的使用 tmux。主要是里面的快捷键。
-这也是我探索出来的。
-
-如果你发现你喜欢的窗口主题无法很好的适配tmux和 vim，就是在最底下有一部分空的，那么你可以选择
-configure decoration 来调整，选择normal一般就可以了，如果不行，选其他的试试，应该可以解决这个
-问题。
 
 Tag: tomcat7
 
@@ -916,49 +762,14 @@ Tag: boot-repair
 sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt-get update
 sudo apt-get install -y boot-repair && (boot-repair &)
 
-
-Tag: for my backup tools;
-
-我需要告诉程序，我需要备份那些内容，或者我的程序知道我需要备份什么内容，这些内容是我可以通过
-某种方式来告诉备份程序的，我让程序备份，程序就执行备份程序。我让程序恢复，程序会将备份文件恢复
-到对应的地方。
-这就是我最初的构想。话说我的 Mysql 又没有了，我存入的数据又不见了，所以这样频繁的更换系统是很
-不好的。
-
-2014-06-10 01:12
-
 刚才解决了一个java swing 的问题，虽然只是一个小问题，但总算是做出了我想要的效果。写程序就是这样
 吧，我觉着做出自己想要的才是最好的。
 安装了 sougoupinyin，我觉着这个比 fcitx 的pinyin强了不少，现在还不错，总之，我对现在的系统非常满
 意。现在唯一的缺点是，缺少计划，缺少执行，似乎读书的能力已经没有了。
 好吧，时间也差不多了，可以休息了。
 
-2014-06-10 20:10
-我应该多写一点程序什么的，而不是在这里乱敲。
-sudo apt-get install libgtk2.0-0:i386
-winqq 安装好无法启动，应该是少东西了，装上上面的这个包就可以了。
-刚才看了看 IRC，貌似可以实用，但是我说话没人理我，还需要再研究下。
-
 我应该将我在 sheepdog 中看到的一些c的用法拿出来测试一下，这样才算是学习了，不然，我花的那些读代码
 的时间就算是白费了啊。
-
-刚才看到，这个，blkid 可以知道一个分区的具体的 UUID。这应该是又用的，我发现我的pm-hibernate命令
-没有作用，找到原因是因为我没有 swap 分区。安装一个 swap 分区就可以了。
-
-2014-06-11 23:09
-
-我应该继续学习sheepdog 的具体实现，学习代码是怎么实现的，这是我学习C语言的一个重要过程。
-关于 struct 这个关键子还是随时带上比较好。我可以学习一下数的实现。
-
-sudo pm-hibernate 
-swap
-sudo swapon /dev/sda3
-
-/dev/sda3 swap swap defaults 0 0
-
-ia32libs 这个东西已经deprecated 了，可以用这个来代替。lib32z1 这些东西放在我的脚本里就可以了。
-这次有点失败，主要是我的swap分区没有加上，估计加上后我就可以用 pm-hibernate 了。
-只有不断地练习，才能进步。
 
 2014-06-13 07:33
 java 匿名类。还是来一段代码比较直观。
@@ -979,24 +790,7 @@ HelloWorld frenchGreeting = new HelloWorld() {
 
 还看了一下 lambda 表达式，只是看了两个例子，真怎么用，我也不是太懂。
 
-2014-06-13 23:39
-今天将项目做出了一个比较完整的 demo，还算可以吧，我吧项目带回来了，我可以在这里看看。
-
-2014-06-14 08:34
-这是一个不错，关于 cherrypy 的配置，我之前学过，但是忘记了，现在需要重新找回来。
-我擦，终于搞定了，真是不容易啊。
-上次的笔记倒是找到了，不过就是用不了，可能是版本不对了，写法不一样了，由于google，被墙，现在看文档
-也变的困难了，主要是配置文件，一个最简单的demo足以。
-
-
 http://www.blogjava.net/wash/archive/2005/12/26/25405.html
-
-
-Tag: c sscanf
-2014-06-20 00:29
-看来c 还是要不断的学习才行啊。好多东西都是慢慢理解的。
-如果我是面试官，我就用这个来面试求职者，我觉着者肯定是个很好的饿问题。这完全看你是不是喜欢
-编程，如果你喜欢，我觉着知道这个也不是困难的事情，应该是很容易的。
 
 刚才重装了一下系统，还算比较顺利，就是又走了一些弯路，刚开始系统是没有安装文泉驿字体的，所以
 我的系统中文字体有些是显示方块的，而有些正常，就是部分正常显示，部分不正常显示的。我以为这是
@@ -1006,15 +800,6 @@ Tag: c sscanf
 其实我最需要的是那个功能，就是 hibernate 的功能，我只是增加了一个swap分区。另外现在变成pure
 的 kubuntu 了。哈哈，我的swap分区正常了，系统可以用 hibernate 功能了。这太好了。好了，我该睡
 觉了。
-
-2014-06-20 20:32
-哈哈，周五了，明天休息了。这个周末要好好安排一下，不要这么随便过去。要好好休息下。
-1 请人吃饭
-2 中行柜台留电话号码
-3 休息
-4 读书
-5 写一些基本算法。
-大概就是这几项了。
 
 刚才看了一下那些职位，感觉我还是有些差距啊，我觉着我就先当一个前段工程师吧，web这东西一定不会
 衰落下去的，我觉着做这个也不错的，并且我有后端处理的优势，再好好研究一下这些方面，应该是一条
@@ -1066,28 +851,7 @@ http://blog.sina.com.cn/s/blog_93294724010163p8.html
 现在又出现了LIS 这两个都是很基础的算法。都是属于DP的范围，应该好好理解一下，之前的理解都
 比较片面。现在应该专门再学习下。
 
-2014-06-24 00:48
-散伙饭。
-
-2014-06-25 20:29
-
-还好啦，事情还算顺利。时间也不是很多，我需要将这些东西寄回去让家里人帮我办理。
-
-2014-06-28 23:31
-好好学习啊。今天没有做出那道题，实在是很不爽啊。刷了一点基础题，还是开着我的 console 做
-的呢，都没有刷到450，看来我的基础的确是差啊。学长都去腾讯了，我的压力有点大啊，我要去阿里
-但我却看不到一点希望。工作好像并不能让我学到我想要的东西，是不是我要考虑辞职啊。
-哎，没有办法啊，我的基础很差啊。要学会积累啊，学过的不要忘记啊，记得做笔记啊，好记性不如
-烂笔头啊。
-
-学习了一点vimscript，其实那些 .vim 插件都是可以自己写的，可以用这个脚本语言自己扩展脚本。
-au InsertLeave *.cc write
-调用write 在 InertLeave的时候将内容保存。这样就不用自己保存了。
-
-
-2014-06-29 22:26
-
-Tags: C 堆栈
+#### C堆栈
 
 http://blog.sina.com.cn/s/blog_6fe0d70d0101c7d9.html
 具体地说，现代计算机(串行执行机制)，都直接在代码底层支持栈的数据结构。
@@ -1111,29 +875,12 @@ Linux 虚拟内存
 http://www.cnblogs.com/Thriving-Country/archive/2011/09/18/2180149.html
 pmap report memory map of a process.
 
-老师教过我们“牛顿迭代法快速寻找平方根”，或者这种方法可以帮助我们，具体步骤如下
-x= x+a/x;
-算法的原理其实不复杂，就是牛顿迭代法，用x-f(x)/f'(x)来不断的逼近f(x)=a的根。
-
-float InvSqrt(float x)
-{
-
-    float xhalf = 0.5f*x;
-    int i = *(int*)&x; // get bits for floating VALUE 
-    i = 0x5f375a86- (i>>1); // gives initial guess y0
-    x = *(float*)&i; // convert bits BACK to float
-    x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
-    return x;
-}
 
 2014-06-30 20:38
 
 最主要的问题是更新 的时候提示的错误。是还源的时候产生的。
 hash sum mismatch。 这个问题之前遇到过，用之前的方法没法解决。不过不要紧，不影响使用。
 
-
-学习一点 vimscript 的东西，找了半天，发现其实找到的都是从 docs 中来的，所以要学习阅读文档。
-马悦说的极是啊。
 今天拿到了奖金，只有500块钱，虽说和之前的0相比多了500块钱，但是感觉怎么就这么寒碜呢！！！
 
 这可是我的季度奖金啊。
@@ -1144,18 +891,9 @@ hash sum mismatch。 这个问题之前遇到过，用之前的方法没法解�
 我应该学会学习新东西，做出一点像样的产品。要大量阅读文档，锻炼自己的英文文档的学习能力。
 现在的程度太差了，对于Linux系统中的文档，我应该多学一点，尽量多看看。
 
-果然输了个精光。我觉着这个比赛就是被操控的，比赛我看了，前面没有一点要进球的迹象。
-加时赛2分钟就进球了，绝对都是演员。我还想回本，但是我要不要继续投资呢，要投资可能
-继续输下去。1000块钱，也不容易啊。并且还要配上好多担心，晚上觉都睡不好。
-
 2014-07-01 07:51
 我想买一个阿里云服务器，再买个域名，做点自己的东西。不然的话，我一直这样搞，也没什么劲。
 想想自己丢掉的那些钱，都够买两年的时间了。
-
-Tags: qt docs
-http://www.kuqin.com/qtdocument/
-
-LBS += -ltoxav -ltoxcore -lsodium
 
 我也买个服务器,在上面存放我的资料,然后自动同步之类的.我可以建立一个 git 库,然后每天都将自己的
 笔记push上去.这不是挺好的吗.所有的文档我都可以这样做啊.现在在本地就显得比较麻烦.如果丢了就没法
