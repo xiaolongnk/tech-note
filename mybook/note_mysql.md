@@ -136,9 +136,9 @@ IEEE 754 标准，数的存法。
 
 #### datetime 和 timestamp 的区别。
 
-	ctime  datetime => now()  4字节
-	mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
-	1970 ~ 2037
+ctime  datetime => now()  4字节
+mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
+1970 ~ 2037
 
 
 #### MYsql 几个常用关键字
