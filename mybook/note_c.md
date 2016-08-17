@@ -86,7 +86,7 @@ float InvSqrt(float x)
 
 #### C++ rand lib
 
-```c++
+```
 #include <stdlib>
 srand((usigned)time(NULL));
 ```
