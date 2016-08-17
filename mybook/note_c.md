@@ -6,7 +6,7 @@ tags:
 - c/c++
 ---
 
-### 这是我的C学习笔记
+#### C文件的编译过程
 
 编译一个c文件，产生一个可执行文件，这个过程分为四个步骤
 1. .c 文件到 .i 文件， --> .s 文件  --> .o 文件 --> 可执行文件
@@ -21,12 +21,15 @@ gcc -o helloworld.i helloworld.c -E
 3. 宏函数的优点。比一些函数要方便，
 4. 条件编译，对于程序的移植和调试，非常有用。
 
-typedef 和 宏不一样的地方。
+#### typedef 和 宏不一样的地方。
 
-给自己自定义的数据起一个别名。自定义的数据类型使用起来非常不方便。别名之后可以比较方便。
-typedef 是有作用域的。在函数中，只能在函数中起作用。
+给自己自定义的数据类型起一个别名。自定义的数据类型使用起来非常不方便。别名之后可以比较方便。
+typedef 是有作用域的。函数中的typedef，只能在函数中起作用。
+
+#### ifndef 用法
 
 for example your .h file is named head.h and content like this.
+
 ```c
 #ifndef _HEAD_H_
 #define _HEAD_H_
@@ -81,9 +84,9 @@ float InvSqrt(float x)
 }
 ```
 
-#### C++ rand
-something about c++ rand
-what you should know is header name of this function;
-it's stdlib library;
-and another important sentence is;
+#### C++ rand lib
+
+```c++
+#include <stdlib>
 srand((usigned)time(NULL));
+```
