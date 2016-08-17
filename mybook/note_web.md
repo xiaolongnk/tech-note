@@ -8,16 +8,19 @@ tags:
 ---
 
 #### margin
+
 margin: 的4个参数。up ,right, down , left;
 如果只有一个参数，那么表示4个都是n px。可以是1--4个参数。
 
 #### some input type
+
 radio, checkbox , button, 他们都有对应的时间，可以在里面添加对应的 函数。可以带参数的。
 checkbox 也可以写成数组。
 name='chk[]'  $_REQUEST ['chk'] 取值的方式是这样的。
 
 
 #### fontawesome
+
 学习两个前端页面会使用到的js.
 
 https://www.woothemes.com/flexslider/  这个是用来做轮播图的js。
@@ -34,7 +37,7 @@ http://fontawesome.dashgame.com/
 <meta http-equiv="expires" content="0">
 ```
 
-#### node基础
+#### Node基础
 
 http://npm.taobao.org/
 首先是npm， node package manager, 这个还相对好理解。可以用淘宝的镜像，速度会快一点。

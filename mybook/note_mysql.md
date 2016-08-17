@@ -39,7 +39,7 @@ MySQL也能利用索引来快速地执行ORDER BY和GROUP BY语句的排序和�
 
 mysql一次查询只能使用一个索引。如果要对多个字段使用索引，建立复合索引。
 
-```sql
+```
 create table blog_pool
 (
 id bigint(20) not null auto_increment,
@@ -122,11 +122,10 @@ M 的默认值是10。
 说明：float占4个字节，double占8个字节，decimail(M,D)占M+2个字节。
 
 关于decimal范围的判断，下面这是一个不错的解释。
->
+
 >Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
 >Suppose that your column is set to be DECIMAL(13,4). This means that the column will have a total size of 13 digits where 4 of these will be used for precision representation.
 >So, in summary, for that column you would have a max value of: 999999999,9999
->
 
 引申 为什么floa 和 double 会丢失精度。
 1 字节 = 8 bit。 int 一般认为是32位。最长是10位。
@@ -135,39 +134,35 @@ double 为8btye。
 IEEE 754 标准，数的存法。
 
 
-#### datetime 4字节  和  timestamp 8字节 的区别。
-ctime  datetime => now()
-mtime  timestamp ==> CURRENT_TIMESTAMP
-1970 ~ 2037
+#### datetime 和 timestamp 的区别。
+
+	ctime  datetime => now()  4字节
+	mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
+	1970 ~ 2037
 
 
 #### MYsql 几个常用关键字
-in
-not in
-exists 和 not exists 关键字。
-还有就是多表查询，
-综合使用这些个查询条件，可以实现更多的查询需求。
+in ，not in，exists 和 not exists 关键字。
 
 #### Mysql 表间元素复制
 
-```mysql
+```
 create table newtable select * from oldtable;
-INSERT INTO newTable SELECT * FROM oldTable
+INSERT INTO newTable SELECT * FROM oldTable;
 INSERT INTO newTable (col1,col2,…….) SELECT col1,col2,…… FROM old_table
-
-
 ```
 
 #### insert into on duplicate
 
-```mysql
+```
 insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key update title=values(title),ctime=values(ctime);
 //将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
 ```
-#### Mysql 链表update
-这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
-update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
+#### Mysql连表update
+
+	这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
+	update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
 
 
 #### Mysql 索引操作
@@ -184,7 +179,7 @@ truncate table_name;
 
 #### mysqldump 数据导出和数据恢复
 
-```shell
+```
 mysqldump -h localhost -ppasswd  -uroot -d database > dump.sql ;            // 只导出数据库的结构
 mysqldump -h localhost -ppasswd  -uroot  database  > dump.sql ;             // 导出数据库的结构和所有的数据
 mysqldump -h localhost -ppasswd  -uroot -d database tablename > dump.sql ;  // 只导出表结构
@@ -200,12 +195,11 @@ create table xxx as select * from you_target_table where xxx=xxx;
 
 #### mysql时间处理函数
 
-```mysql
+```
 select date_format(now(),"%Y-%m-%d %H:%i:%s") now;
 select date_sub(now(), interval 10 day) as yesterday;       // 请不要吧 day 写成 days ，month , hour 同理。
-#group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
+group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
 select * from test_table where status = 1 order by col_a desc, col_b desc, col_c asc limit 100;
-
 set @a = 100;
 select @a:=300;  #可以通过 select 给变量赋值,这个变量只在这个链接周期中有效。
 ```
@@ -213,7 +207,7 @@ select @a:=300;  #可以通过 select 给变量赋值,这个变量只在这个�
 #### mysql 存储过程
 下面是一个简单的存储过程的例子。
 
-```mysql
+```
 delimiter $     # 因为 mysql 默认的 终止符是; 而这个正好是存储过程的语法，所以在编写存储过程之前，先将 delimiter 改成 $
 create procedure p()    # 创建存储过程
 begin
@@ -226,7 +220,7 @@ call p();       # 调用这个存储过程
 
 #### mysql if
 
-```sql
+```
 if(tb2.shop_click is null, 0,tb2.shop_click)
 ```
 

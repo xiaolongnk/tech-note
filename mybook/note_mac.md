@@ -36,6 +36,7 @@ set backspace=indent,eol,start
 
 
 #### MAC编译安装php nginx
+
 编译的过程中，很可能遇到这个问题。
 找不到openssl的header files。
 其实解决办法就是安装openssl。brew install openssl 。

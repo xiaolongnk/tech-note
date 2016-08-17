@@ -7,6 +7,7 @@ tags:
 ---
 
 #### ubuntu14.04 安装vpn
+
 这个是最正确的教程，没有之一。
 http://mad-scientist.us/juniper.html
 下面是一个简单的总结
