@@ -6,25 +6,20 @@ tags:
 - VIM
 ---
 
-#### vim 
-用vim 很久了，也没写过和vim相关的总结。只有零散的记录。
-vim 几个常用的插件。
+#### vim的几个常用的插件。
+
 | 插件 | 说明 |
 |---|--- |
 |ctags | tags 的标签 |
 |vim-ariline | 彩色 的状态栏 |
 |nerdtree | 一个文件管理器 |
-| gittur | git集成插件 |
+|gittur | git集成插件,可以显示修改了的内容|
 |bundle  | 插件管理|
-|vim-markdown | as it's name |
+|vim-markdown | 支持markdown的语法 |
 
 
-还有一些语法检查的插件，都很赞的。
-
-
-今天看到了一些vim的配置，应该还是不错的，应该考虑学习一下。
-vim 的变量。vim设置，输出变量。获得当前文件名
-可以这样
+#### VIMSCRIPT
+下面是一些简单的vimscript内容。
 
 ```vimshell
 vim 中定义变量要用
@@ -45,41 +40,48 @@ echo a
 我只是通过实验尝试出来的。
 
 
-vim slowstart.
+#### VIM 启动速度慢 slowstart
+
 vim --startuptime vim.log -c q
-
 sudo vim 启动速度超级慢。
-
 vim 启动速度变慢.在终端中可以这样启动 vim -X 这样是不需要和X挂上勾的,所以会变慢.修改了一下之后
-瞬间感觉电脑变快了.其实这个问题我并没有解决，解决这个问题主要是 插件的问题，就是我后面安装的那个
-vimairline那个插件。现在已经将那个插件删除掉了，所以速度快多了。
-现在我关心的问题是，ctrl + o 和  ctrl + i 是一对的，一个是回到上一次编辑的问题，相当与一个是往回走
-一个是往前走。现在这个问题基本解决了。
+瞬间感觉电脑变快了.vimariline这个插件会明显增加启动时间，加之没什么用，后面就从我的vim插件里面去掉了。
 
-
-调查之后，发现是我把系统的hosts文件删除了，touch了一个空文件。后面，总是提示unresolve host 的提示。
+#### sudo vim 启动速度超级慢
+调查之后，发现是我把系统的hosts文件删除了，touch了一个空文件。
+后面，总是提示unresolve host 的提示。 
 在增加了我的hostname在host中之后，sudo vim 速度就快了。开来和这个也有关系。
 
-vim 记录上次编辑位置。
+####  vim 记录上次编辑位置。
 ```vim
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 ```
 
-vim delete duplicate lines.
+#### vim 删除重复行
+
+```vimscript
 sort
 g/^\(.\+\)$\n\1/d
-Tag:vim find vim-copy
+```
 
-哈哈，现在可以很好的应用vim了，原来是我的了解还不够深啊，多看看就可以用得更好。
-首先是插入时间，这个应该说是很方便的，但是我并不懂这个命令是怎么实现的。应该好好研究
-一下哈。今天刚学到的是 find 命令，这个是用来打开文件用的，可以智能补全。之需要
-设置一下路径就可以了。可以看我的配置文件啊。
-set path=/home/fox
-这样就不用到处找了。同时我加入了当前的路径.。还是用 konsole吧，之前遇到的问题是那个konsole
-模式选错了，应该选 default的，而我选了linux的。就出现问题了，现在好了，一切正常，还是很不错
-的。现在觉得这个命令真是很强大啊，对与打开文件方便了很多呢，再也不用挨个去找了啊，知道的
-多办事效率也会不一样啊。
 
+#### vim 插入当前时间
+
+插入时间，这个应该说是很方便的，但是我并不懂这个命令是怎么实现的。
+在vimrc中加入这个map，在normal模式下，输入,dt就可以在当前位置插入时间了。
+
+```vimscript
+map ,dt a<C-R>=strftime('%Y-%m-%d %H:%M')<CR>
+```
+
+#### vim find
+
+天刚学到的是 find 命令，这个是用来打开文件用的，可以智能补全。
+```vimscript
+set path=/home/yourpath
+```
+
+#### vim 导入其他文件内容
 将当前文件的部分内容导入到其他文件
 1,20 w>> /path/otherfile.txt
 1,20 w /path/otherfile.txt
@@ -88,15 +90,12 @@ set path=/home/fox
 同样的，也可以将其他文件的内容读入到当前文件来。命令是这个
 r: /path/file.txt
 
-Sat May 31 14:06:03 CST 2014
 同时，这个命令也可以将外部程序的输出读入到当前文件中。
 r !date
 这样也是可以插入时间的。将这个命令用map命令映射一下，就可以得到和那个实现的同样的功能
-了。只不过对map什么的，我不知道怎么用。
-还有之前了解过的 排版方面的功能，也都是很有用的，不过我不怎么用。用多了就好了。
+了。
 
-vim 内容复制我还不太清楚，需要认真学习下。不只是复制当前行，还应该学会自由复制。这个才
-能赶上实际需要。
+#### VIM和系统共享剪切板
 
 首先需要补充的一点是，+寄存器是只有vim-gtk 或者 vim-gnome 才会有的，不要只安装了
 vim，这是不够的啦，在安装的时候需要注意一下，不然是无法使用系统剪切板的啦。
