@@ -159,14 +159,18 @@ insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key u
 //将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
 ```
+
 #### Mysql连表update
 
-	这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
-	update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
+这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
+update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
 
 
 #### Mysql 索引操作
+
 给自己的表添加索引，可以给多个字段添加索引,有下面两种方式。
+
+```
 create index index_name on table_name (column_list);
 alter table table_name add index index_name (column_list);
 
@@ -176,7 +180,8 @@ alter table table_name drop index index_name;
 
 清空表中的数据，包括 auto_increment 的字段都会被重置。
 truncate table_name;
-
+```    
+    
 #### mysqldump 数据导出和数据恢复
 
 ```
