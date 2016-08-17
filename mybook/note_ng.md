@@ -6,11 +6,6 @@ tags:
 - nginx
 ---
 
-nginx
-检测配置文件的正确性，不要加载一个又明显错误的配置文件
-nginx -t -c /usr/nginx/conf/nginx.conf 或者向下面这样也可以 nginx -t
-启动  停止  或者重启 nginx 。
-nginx  -s reload
 
 
 #### nginx编译参数
@@ -47,5 +42,23 @@ nginx  -s reload
 #### nginx 中加环境变量.
 fastcgi\_params define_params hhh
 
+#### nginx 配置规则
 
+1. location 写法。
+
+2. log_format
+    nginx 的log_format , log 需要几下post参数。记得上次查问题，我只能定位到url，并不能定位
+    到参数，这导致有些问题没有办法追查。
+
+#### nginx 和php-fpm
+
+
+#### nginx 启动和重启
+检测配置文件的正确性，不要加载一个又明显错误的配置文件
+```shell
+nginx -t -c /usr/nginx/conf/nginx.conf
+#启动  停止  或者重启 nginx 。
+nginx  -s reload  nginx  #重新加载配置文件
+pkill nginx     #停止nginx
+```
 

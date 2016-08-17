@@ -64,10 +64,11 @@ dynamic type: know only in the run process.  For pointer type.
 
 #### 计算一个数的算术平方根
 
-老师教过我们“牛顿迭代法快速寻找平方根”，或者这种方法可以帮助我们，具体步骤如下
+老师教过我们"牛顿迭代法快速寻找平方根"，或者这种方法可以帮助我们，具体步骤如下
 x= x+a/x;
 算法的原理其实不复杂，就是牛顿迭代法，用x-f(x)/f'(x)来不断的逼近f(x)=a的根。
 
+```c
 float InvSqrt(float x)
 {
 
@@ -78,6 +79,7 @@ float InvSqrt(float x)
     x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
     return x;
 }
+```
 
 #### C++ rand
 something about c++ rand
