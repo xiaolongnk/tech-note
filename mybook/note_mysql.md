@@ -90,29 +90,26 @@ more detailed info see this link.  http://www.jb51.net/article/31850.htm
 
 #### mysql 中的数据类型
 
-```
-tinyint   1 字节    -128 ~ 128
-smallint  2 字节   -32768 ~ 32767
-mediumint 3字节  
-int       4字节  int(11)
-bigint    8字节
-
-unsigned   int   0～4294967295   
-int   2147483648～2147483647 
-unsigned long 0～4294967295
-long   2147483648～2147483647
-long long的最大值：9223372036854775807
-long long的最小值：-9223372036854775808
-unsigned long long的最大值：18446744073709551615
-
-__int64的最大值：9223372036854775807
-__int64的最小值：-9223372036854775808
-unsigned __int64的最大值：18446744073709551615
-
-```
-
+    tinyint   1 字节    -128 ~ 128
+    smallint  2 字节   -32768 ~ 32767
+    mediumint 3字节  
+    int       4字节  int(11)
+    bigint    8字节
+    
+    unsigned   int   0～4294967295   
+    int   2147483648～2147483647 
+    unsigned long 0～4294967295
+    long   2147483648～2147483647
+    long long的最大值：9223372036854775807
+    long long的最小值：-9223372036854775808
+    unsigned long long的最大值：18446744073709551615
+    
+    __int64的最大值：9223372036854775807
+    __int64的最小值：-9223372036854775808
+    unsigned __int64的最大值：18446744073709551615
 
 #### Mysql decimal
+
 对于精度比较高的东西，比如money，我会用decimal类型，不会考虑float,double,因为他们容易产生误
 差，numeric和decimal同义，numeric将自动转成decimal。
 DECIMAL从MySQL 5.1引入，列的声明语法是DECIMAL(M,D)。在MySQL 5.1中，参量的取值范围如下：
@@ -123,9 +120,10 @@ M 的默认值是10。
 
 关于decimal范围的判断，下面这是一个不错的解释。
 
->Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
->Suppose that your column is set to be DECIMAL(13,4). This means that the column will have a total size of 13 digits where 4 of these will be used for precision representation.
->So, in summary, for that column you would have a max value of: 999999999,9999
+    Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
+    Suppose that your column is set to be DECIMAL(13,4). This means that the column will have a total size of 13 
+    digits where 4 of these will be used for precision representation.
+    So, in summary, for that column you would have a max value of: 999999999,9999
 
 引申 为什么floa 和 double 会丢失精度。
 1 字节 = 8 bit。 int 一般认为是32位。最长是10位。
@@ -136,9 +134,9 @@ IEEE 754 标准，数的存法。
 
 #### datetime 和 timestamp 的区别。
 
-ctime  datetime => now()  4字节
-mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
-1970 ~ 2037
+    ctime  datetime => now()  4字节
+    mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
+    1970 ~ 2037
 
 
 #### MYsql 几个常用关键字
@@ -146,7 +144,7 @@ in ，not in，exists 和 not exists 关键字。
 
 #### Mysql 表间元素复制
 
-```
+```sql
 create table newtable select * from oldtable;
 INSERT INTO newTable SELECT * FROM oldTable;
 INSERT INTO newTable (col1,col2,…….) SELECT col1,col2,…… FROM old_table
@@ -154,7 +152,7 @@ INSERT INTO newTable (col1,col2,…….) SELECT col1,col2,…… FROM old_table
 
 #### insert into on duplicate
 
-```
+```sql
 insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key update title=values(title),ctime=values(ctime);
 //将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
 insert into myblog( blog,ctime) select * from blog_bak;
@@ -163,28 +161,29 @@ insert into myblog( blog,ctime) select * from blog_bak;
 #### Mysql连表update
 
 这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
-update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
 
+```sql
+update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
+```
 
 #### Mysql 索引操作
 
 给自己的表添加索引，可以给多个字段添加索引,有下面两种方式。
 
-```
+```sql
 create index index_name on table_name (column_list);
 alter table table_name add index index_name (column_list);
 
 对应的，删除索引。
 drop index index_name on table;
 alter table table_name drop index index_name;
-
 清空表中的数据，包括 auto_increment 的字段都会被重置。
 truncate table_name;
-```    
-    
+```  
+
 #### mysqldump 数据导出和数据恢复
 
-```
+```sql
 mysqldump -h localhost -ppasswd  -uroot -d database > dump.sql ;            // 只导出数据库的结构
 mysqldump -h localhost -ppasswd  -uroot  database  > dump.sql ;             // 导出数据库的结构和所有的数据
 mysqldump -h localhost -ppasswd  -uroot -d database tablename > dump.sql ;  // 只导出表结构
@@ -195,12 +194,12 @@ mysql -u root -p yourpasswd -h localhost yourdb < dump.sql                  // �
 mysql 中的test 表的使用方法。如果你在数据表中没有数据的到处权限，但是一般的数据库中，test库中的权限你都是
 有的，所有可以将需要的数据先导入到test中的临时表中，然后再从临时表中导出去。这样可以绕开权限控制，到处你
 需要的数据。sql 大概是这样的。
-create table xxx as select * from you_target_table where xxx=xxx;
+create table xxx as select * from `you_target_table` where xxx=xxx;
 这样 一张 test 中的临时表就创建好了，你可以用mysqldump将这个表中的数据导出去。
 
 #### mysql时间处理函数
 
-```
+```sql
 select date_format(now(),"%Y-%m-%d %H:%i:%s") now;
 select date_sub(now(), interval 10 day) as yesterday;       // 请不要吧 day 写成 days ，month , hour 同理。
 group by 多个字段 从 col_a -> col_b -> col_c 优先级依次降低。
@@ -212,7 +211,7 @@ select @a:=300;  #可以通过 select 给变量赋值,这个变量只在这个�
 #### mysql 存储过程
 下面是一个简单的存储过程的例子。
 
-```
+```sql
 delimiter $     # 因为 mysql 默认的 终止符是; 而这个正好是存储过程的语法，所以在编写存储过程之前，先将 delimiter 改成 $
 create procedure p()    # 创建存储过程
 begin
@@ -225,7 +224,7 @@ call p();       # 调用这个存储过程
 
 #### mysql if
 
-```
+```sql
 if(tb2.shop_click is null, 0,tb2.shop_click)
 ```
 
