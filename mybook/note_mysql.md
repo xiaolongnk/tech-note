@@ -166,9 +166,7 @@ insert into myblog( blog,ctime) select * from blog_bak;
 update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
 ```
 
-#### Mysql 索引操作
-
-给自己的表添加索引，可以给多个字段添加索引,有下面两种方式。
+#### Mysql 索引操作 mysqldump 数据导出和数据恢复
 
 ```sql
 create index index_name on table_name (column_list);
@@ -179,11 +177,8 @@ drop index index_name on table;
 alter table table_name drop index index_name;
 清空表中的数据，包括 auto_increment 的字段都会被重置。
 truncate table_name;
-```  
 
-#### mysqldump 数据导出和数据恢复
 
-```sql
 mysqldump -h localhost -ppasswd  -uroot -d database > dump.sql ;            // 只导出数据库的结构
 mysqldump -h localhost -ppasswd  -uroot  database  > dump.sql ;             // 导出数据库的结构和所有的数据
 mysqldump -h localhost -ppasswd  -uroot -d database tablename > dump.sql ;  // 只导出表结构
@@ -193,7 +188,7 @@ mysql -u root -p yourpasswd -h localhost yourdb < dump.sql                  // �
 
 mysql 中的test 表的使用方法。如果你在数据表中没有数据的到处权限，但是一般的数据库中，test库中的权限你都是
 有的，所有可以将需要的数据先导入到test中的临时表中，然后再从临时表中导出去。这样可以绕开权限控制，到处你
-需要的数据。sql 大概是这样的。
+需要的数据。sql如下
 create table xxx as select * from `you_target_table` where xxx=xxx;
 这样 一张 test 中的临时表就创建好了，你可以用mysqldump将这个表中的数据导出去。
 
