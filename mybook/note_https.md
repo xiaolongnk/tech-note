@@ -1,7 +1,7 @@
 ---
 title: HTTPS Your site
 date: 2016-08-19 16:54
-cateories:
+categories:
 - web
 tags:
 - https
