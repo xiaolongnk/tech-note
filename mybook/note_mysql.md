@@ -8,36 +8,71 @@ tags:
 
 #### mysql 性能测试工具.
 
-[Mysql 自带的性能测试工具.](http://www.ha97.com/5182.html)
+[Mysqlslap 自带的性能测试工具.](http://www.ha97.com/5182.html)
 
+
+#### Mysql 基本知识
+
+一些mysql基本的操作
+```sql
+show global variables like '%%datadir%' //看MySql数据库物理文件存放位置
+show variables like 'innodb_data%';
+set autocommit = 0
+lock table file_text write
+unlock tables
+
+create table newtable select * from oldtable;
+INSERT INTO newTable SELECT * FROM oldTable;
+INSERT INTO newTable (col1,col2,…….) SELECT col1,col2,…… FROM old_table
+
+
+insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key update title=values(title),ctime=values(ctime);
+//将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
+insert into myblog( blog,ctime) select * from blog_bak;
+
+if(tb2.shop_click is null, 0,tb2.shop_click) // mysql if
+update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id; 
+//这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
+```
+
+#### Mysql 锁
+
+MysIsma, Memory 支持表锁。Innodb 支持表锁和行锁,默认是行锁。 BerkelyDB 支持页锁,页锁的粒度和成本在表锁和行锁之间,不知道是什么鬼。
+
+##### 乐观锁
+乐观锁可以通过增加一个version来实现。在提交的时候，带着version作为条件去更新，如果发现version不一致了，那么就不更新，如果和当时读取到的version一直才更新数据。
+
+[悲观锁的介绍](http://chenzhou123520.iteye.com/blog/1860954)，用到了select for update。要实现悲观锁，必须将数据库的autocommit属性置成0
+`select status from t_goods where id=1 for update;`与普通查询不一样的是，我们使用了select…for update的方式，这样就通过数据库实现了悲观锁。此时在`t_goods`表中，id为1的那条数据就被我们锁定了，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。`select for update`，现在使用select for update来查询数据，以达到排他读的目的。但是发现，在有正常结果数据时造成的锁表对系统性能有明显地影响。select for update的条件不是主键所以id，所以造成锁表。尽可能让所有数据检索都通过索引来完成，从而避免InnoDB因为无法通过索引键加锁而升级为表级锁定。
+
+##### 读锁和写锁
+1. 共享锁(S锁)又称读锁,若事务T对数据对象A加上S锁,则事务T可以读A但不能修改A,其他事务只能再对A加S锁,而不能加X锁,直到T释放A上的S 锁.这保证了其他事务可以读A,但在T释放A上的S锁之前不能对A做任何修改.
+2. 排他锁(X锁)又称写锁.若事务T对数据对象A加上X锁,事务T可以读A也可以修改A,其他事务不能再对A加任何锁,直到T释放A上的锁.这保证了其他事务在T释放A上的锁之前不能再读取和修改A.
+
+
+##### 并发事务处理带来的问题
+相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。
+1. 更新丢失（Lost Update）：当两个或多个事务选择同一行，然后基于最初选定的值更新该行时，由于每个事务都不知道其他事务的存在，就会发生丢失更新问题－－最后的更新覆盖了由其他事务所做的更新。例如，两个编辑人员制作了同一文档的电子副本。每个编辑人员独立地更改其副本，然后保存更改后的副本，这样就覆盖了原始文档。最后保存其更改副本的编辑人员覆盖另一个编辑人员所做的更改。如果在一个编辑人员完成并提交事务之前，另一个编辑人员不能访问同一文件，则可避免此问题。
+2. 脏读（Dirty Reads）：一个事务正在对一条记录做修改，在这个事务完成并提交前，这条记录的数据就处于不一致状态；这时，另一个事务也来读取同一条记录，如果不加控制，第二个事务读取了这些“脏”数据，并据此做进一步的处理，就会产生未提交的数据依赖关系。这种现象被形象地叫做"脏读"。
+3. 不可重复读（Non-Repeatable Reads）：一个事务在读取某些数据后的某个时间，再次读取以前读过的数据，却发现其读出的数据已经发生了改变、或某些记录已经被删除了！这种现象就叫做“不可重复读”。
+4. 幻读（Phantom Reads）：一个事务按相同的查询条件重新读取以前检索过的数据，却发现其他事务插入了满足其查询条件的新数据，这种现象就称为“幻读”。
 
 #### Mysql 索引
 Mysql 索引
 
 Mysql 复合索引
+每次查询只能使用一个索引，所以如果在字段比较多的查询中，就算每个字段都创建了索引，也只能使用一个。但是如果创建了复合索引，这样能够走索引的内容就多了，效率会更高，所以复合索引的使用也很重要，是sql优化的一个很关键的点。
 
 http://tech.meituan.com/mysql-index.html
-现在只会创建单索引,但是很多情况下,复合索引更有效.
-一个表只能使用一个索引,如果单键索引和复合索引都会生效,那么mysql会选择哪个索引.
-mysql 索引的最左选择的原则.
+现在只会创建单索引,但是很多情况下,复合索引更有效. 一个表只能使用一个索引,如果单键索引和复合索引都会生效,那么mysql会选择哪个索引。mysql索引的最左选择的原则。
 
-有些情况下,优化的作用是很有限的,最好还是不要写太复杂的sql.
-但是有一个情景,就是需要更具字表的条件去筛选结果,做分页,这种情况如何处理. 
-可以内存排序.让排序在mysql中排序比较困难.那么这个分页逻辑如何处理. 
+*Mysql 优化器。*在有很多个索引的情况下，mysql优化器会选择一个比较好的索引。可以利用mysql索引的运算符。索引可用于`<`、`<=`、`=`、`>=`、`>` 和BETWEEN运算。在模式具有一个直接量前缀时，索引也用于 LIKE 运算。
 
-Mysql join 之后的索引使用情况是怎么样的.
+有些情况下,优化的作用是很有限的,最好还是不要写太复杂的sql.  但是有一个情景,就是需要更具字表的条件去筛选结果,做分页,这种情况如何处理，可以内存排序.让排序在mysql中排序比较困难.那么这个分页逻辑如何处理. 
 
-order by 的字段是否有必要增加一个索引,如果有必要,是不是所有需要排序的字段都需要增加
-上索引. 
+Mysql join之后的索引使用情况是怎么样的，索引可以减少join语句的总共需要扫描的行数，提高join查询的效率。join的时候有个原则就是小标join大表。如果 不会选择，可以不指定join，让mysql自己去选择。order by 的字段是否有必要增加一个索引,如果有必要,是不是所有需要排序的字段都需要增加上索引?这个明显是不可取的。每个query只能利用一个索引,如果where种的字段用到了索引，并且where中的query和order by的字段不是一个，那么只能选择其中的一个索引，所以在一个quer中创建多个单键索引是没有意义的。
 
-索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。
-按照存储方式分为：聚集与非聚集索引和B树B+树的关系还是差别挺密切的,需要认真理解一下B树和B+树.
-
-MySQL如何利用索引优化ORDER BY排序语句
-MySQL索引通常是被用于提高WHERE条件的数据行匹配或者执行联结操作时匹配其它表的数据行的搜索速度。
-MySQL也能利用索引来快速地执行ORDER BY和GROUP BY语句的排序和分组操作。
-
-mysql一次查询只能使用一个索引。如果要对多个字段使用索引，建立复合索引。
+索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。按照存储方式分为：聚集与非聚集索引和B树B+树的关系还是差别挺密切的,需要认真理解一下B树和B+树。
 
 ```
 create table blog_pool
@@ -51,31 +86,17 @@ primary key (id),
 index list_blog_index (account_id,status),
 index single_index (account_id)
 )engine = Innodb , charset=utf8 , auto_increment=1;
-
 insert into blog_pool (account_id, blog_id, content) values (923232323, );
-
 ```
 
-
-explain 显示mysql如何处理select语句以及连接表,可以帮助写出更好的查询语句和建立更好的索引.
-
-select type  
-simple 表示是简单的select , 
-primary 表示最外面的select .
-union 表示union语句的第二个.
-
-rows 表示mysql执行查询的行数,数值越大说明效果越不好,说明没有用好索引.
-
-using where  , 
-要想使查询尽可能的快, 应尽可能得找出 using filesort , using temporary 的extra的值.
-我觉这在业务重没有必要禁止连表查询，在不会带来什么压力的情况下，并没有什么必要。
-如果两个表，都比较简单，连表也没什么不可以。什么事情都应该分开来看待，没有什么是绝对的。
+explain 显示mysql如何处理select语句以及连接表,可以帮助写出更好的查询语句和建立更好的索引。
+rows 表示mysql执行查询的行数,数值越大说明效果越不好,说明没有用好索引.`using where` :要想使查询尽可能的快, 应尽可能得找出 using filesort , using temporary 的extra的值.我觉这在业务重没有必要禁止连表查询，在不会带来什么压力的情况下，并没有什么必要。如果两个表，都比较简单，连表也没什么不可以。什么事情都应该分开来看待，没有什么是绝对的。
 
 #### select 按指定顺序排
 ```
 select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5') 
-```
 order by substring_index和order by find_in_set都可以
+```
 
 #### mysql 中创建用户。
 
@@ -138,34 +159,6 @@ IEEE 754 标准，数的存法。
     mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
     1970 ~ 2037
 
-
-#### MYsql 几个常用关键字
-in ，not in，exists 和 not exists 关键字。
-
-#### Mysql 表间元素复制
-
-```sql
-create table newtable select * from oldtable;
-INSERT INTO newTable SELECT * FROM oldTable;
-INSERT INTO newTable (col1,col2,…….) SELECT col1,col2,…… FROM old_table
-```
-
-#### insert into on duplicate
-
-```sql
-insert into myblog (id,title,ctime) values(123,'hello',now()) on duplicate key update title=values(title),ctime=values(ctime);
-//将 blog_bak 表中的所有数据导入到myblog 中，表 blog 和 blog_bak 应该有同样的表结构
-insert into myblog( blog,ctime) select * from blog_bak;
-```
-
-#### Mysql连表update
-
-这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
-
-```sql
-update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id;
-```
-
 #### Mysql 索引操作 mysqldump 数据导出和数据恢复
 
 ```sql
@@ -216,10 +209,3 @@ $
 delimiter ;     # 将 delimiter 改成默认的; 这样符合我们的习惯
 call p();       # 调用这个存储过程
 ```
-
-#### mysql if
-
-```sql
-if(tb2.shop_click is null, 0,tb2.shop_click)
-```
-
