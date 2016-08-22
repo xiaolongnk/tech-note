@@ -8,22 +8,20 @@ tags:
 - grep
 ---
 
-awk
+#### awk
 
+```shell
 simple awk skill is necessary.
-
 the follow command can be used to restart php-fpm in server.
-
 ps aux | grep 'php-fpm' | awk '{print $1}' | xargs kill -USR2 
-
 -F option 是用来改变默认的分隔符的。
 awk -F ':' '{print $3}'
-
 awk 的 BEGIN 和 END 语句的功能。
 BEGIN 是最开始的部分执行的，然后AWK开始读取文件内容，进行处理。
 END 是最后面结束执行的.
+```
 
-sed 
+#### sed 
 
 ```
 sed 's/xx/ds/' note
@@ -34,6 +32,10 @@ do
     out=`echo $i | sed 's/GLDAS_NOAH10_M.A//' | sed 's/\..*[[:graph:]]//'`
     wgrib $i > result/$out".out"
 done
+
+sed -i "This command to use replace the input file"
+just a simple example.
+sed -i 's/--/-/'
 ```
 
 d 表示是删除的意思。用新文件覆盖旧文件。
@@ -46,16 +48,39 @@ sed '/vim/d' ~/.bashrc > ~/.bashrc
 的工具来补充吧。
 当然还有awk。
 
-sed
-sed 用得最多的就是替换了。很多时候，grep就足够了。
+#### grep
 
-sed -i "This command to use replace the input file"
-just a simple example.
-sed -i 's/--/-/'
+```shell
+grep -E   支持全量的正则 
+grep -o   值输出指定内容
+grep -F   相当于 fgrep
+grep -v   不匹配指定正则的指令
+```
 
-grep
+#### find
 
-find
+find 下面这个script结合了find 的regex的用法。find regex 和 那么的区别还是挺大的。regex搜索的输出是全名的，name知识一个短的名字。
+
+```shell
+#!/bin/bash
+# 要搜索的路径。
+path="$HOME"
+
+for i in `find $path -regex ".*/[0-9]\{6\}/*" -type d 2>/dev/null`
+do 
+    echo $i
+    for j in `ls $i`
+    do
+        echo $j
+        m=`echo "$j" | cut -d. -f2`
+        if [ $m != 'log' ]
+        then
+            echo "mv for $j"
+            mv $i"/"$j $i"/"$j".log"
+        fi
+    done
+done
+```
 
 #### shell重定向
 
@@ -213,7 +238,7 @@ bash -x your.sh 就可以看你的shell的执行过程了。
 crontab l 列出当前的任务。分 时 日 月 星期  执行命令,* 表示任意的变量;
 在linux 下，你当前用户的crontab文件存放在 /var/spool/cron/ 目录下，这个文件以你的用户身份命名。
 
-```
+```shell
 00 23 * * * run-your script  每天23:00 执行你的脚本。其实我需要做的就是一行命令。
 10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart  这个任务表示每周6和周日的1:10重启服务器。注意逗号，表示多个的意思。再看下面一个。
 * */1 * * * /usr/local/etc/rc.d/lighttpd restart  注意这个符号/ 表示每个一个小时重启一下服务器。
@@ -234,6 +259,8 @@ set_time_limit(0); 设置程序的执行时间,如果是0说明永久执行下�
 export VISUAL=vim
 export EDITOR="$VISUAL"
 git config --global core.editor "vim"
+这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
+git config core.fileMode false
 
 函数的返回值貌似可以用 $? 变量拿到。
 但是 return 是不支持返回非数字类型的。这是不是一个新的约束条件。
@@ -244,7 +271,3 @@ $1 $2 ... $i  第 i 个参数
 $# 参数的个数。
 $?
 
-#### git fileMode
-
-这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
-git config core.fileMode false
