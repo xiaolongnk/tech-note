@@ -81,9 +81,9 @@ __construct()   构造方法,生命类对象的时候就会调用.
 __desctruct()   析构方法,在类对象的生命周期结束之后. 这个和垃圾回收有什么关系吗.
 __call()        must be public method.
 __callStatic()  for static class method.
+__autoload().
 get_called_class()  一般是在基类中用到.基础类库中用这个方法.
 get_class().  得到当前类的名称.
-__autoload().
 
 static::class   和上面的得到同样的结果.
 PHP_EOL. 提高代码的可移植性. 换行符. mac windows, linux 下是不一样的.
@@ -97,6 +97,7 @@ __CLASS__
 __FILE__      return filename of current file.
 __LINE__      return current line number.
 __DIR__       equal dirname(__FILE__).
+
 ```
 #### PHP SPL 方法 STANDARD PHP LIBRARY
 PHP 中spl 开头的一些方法是做什么的,比如spl_autoload_register.
@@ -152,24 +153,55 @@ test
 EOT;
 ```
 
-#### PHP $_SERVER 变量
-PHP在命令行模式下的 $_SERVER 变量中的变量可以在shell 中 export 来设置.shell 中的变量会出现在
-SERVER 变量中.在web环境中,要通过在服务器中设置才可以. nginx 在 fastcgi_params 中设置.
-
-
 #### PHP session 和 cookie
-
+PHP配置中介绍了session和cookie相关的配置。注意`PHPSESSID`这个东西,这个是通过`session.name = PHPSESSID` 来设置的。但是如果同一个server上部署了2个应用，那么两个应用的`session.name`都是相同的。不知道会不会有影响。完了我会测试一下。这个貌似不会相互影响。cookie会存放在不同的域名下面的。
 
 
 
 #### PHP 配置
 
-那天发现我本地环境速度很慢的原因是 php-fpm.conf 中的maxchildren 数量太少了。
-我改成static 的，然后把最大数量变成128； 一下子就不用排队了。
-当时的现象是这样的。我看network，显示网络请求在排队，但是我完了单独访问每一个排队排
-了很久的接口，速度都很快，所以很疑惑。
+那天发现我本地环境速度很慢的原因是 php-fpm.conf 中的maxchildren 数量太少了。我改成static 的，然后把最大数量变成128； 一下子就不用排队了。当时的现象是这样的。我看network，显示网络请求在排队，但是我完了单独访问每一个排队排了很久的接口，速度都很快，所以很疑惑。
 
-#### PHP 显示slowlog
+PHP memcache 扩展和 memcached扩展
+memcache扩展比memcached扩展要早，但是功能上不如后者，memcache基本上只支持set和get。memcached可以支持更多方法。一般建议安装memcahced扩展。安装memcached扩展时需要安装libmemcached，memcache扩展则不需要。
 
-我开了php的slowlog，但是并没有出现slowlog。貌似php的slowlog并不是我理解的那样。
-并且slowlog，我自己写了一个sleep都不会打印出slowlog。
+PHP $_SERVER 变量
+PHP在命令行模式下的`$_SERVER`变量中的变量可以在shell中export来设置,shell中的变量会出现在SERVER变量中。在web环境中,要通过在服务器中设置才可以。nginx在`fastcgi_params`中设置。
+
+session的相关配置。
+
+```shell
+session.save_handler = files
+session.save_path = /tmp
+session.use_cookies = 1
+session.use_only_cookies = 1
+session.name = PHPSESSID
+session.auto_start = 0
+session.cookie_lifetime = 0
+session.cookie_path = /
+session.cookie_domain =
+session.cookie_httponly =
+session.serialize_handler = php
+session.gc_probability = 1
+session.gc_divisor = 1000
+session.gc_maxlifetime = 1440
+session.bug_compat_42 = Off
+session.bug_compat_warn = Off
+session.referer_check =
+session.entropy_length = 0
+session.cache_limiter = nocache
+session.cache_expire = 180
+
+#通过url传值，而不是cookie
+session.use_trans_sid = 0
+
+session.hash_function = 0
+session.hash_bits_per_character = 5
+```
+
+#### PHP 开启slowlog
+
+
+#### PHP 异常
+
+
