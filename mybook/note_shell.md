@@ -94,8 +94,12 @@ done
 具体的执行过程是这样的,一个完整的shell指令的执行是从右往左的.
 先执行 1>&3 , 然后执行 2>&1 , 3>&2
 
-
-
+nohup 的使用
+在mac中，在tmux中使用nohup会有问题，会抛出下面这样的错误。所以只能在开一个终端执行。
+    nohup: can't detach from console: Undefined error: 0
+```shell
+nohup redis-server & >/dev/null
+```
 #### git 跨源合并
 一个项目可以添加多个源,origin是默认的一个源.并且也可以跨源合并.这是比较高级的用法.
 如果要跨项目合并. git 跨项目合并.

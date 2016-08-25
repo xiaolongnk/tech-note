@@ -33,6 +33,10 @@ insert into myblog( blog,ctime) select * from blog_bak;
 if(tb2.shop_click is null, 0,tb2.shop_click) // mysql if
 update table_a a , table_b b set a.shop_status = b.group_status where a.shop_id = b.shop_id; 
 //这样可以将 table_b 的 状态同步到 table_a, 本质上和 多表查询是类似的。
+
+select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5') 
+order by substring_index和order by find_in_set都可以
+//select 按指定顺序排
 ```
 
 #### Mysql 锁
@@ -60,7 +64,6 @@ MysIsma, Memory 支持表锁。Innodb 支持表锁和行锁,默认是行锁。 B
 #### Mysql 索引
 Mysql 索引
 
-Mysql 复合索引
 每次查询只能使用一个索引，所以如果在字段比较多的查询中，就算每个字段都创建了索引，也只能使用一个。但是如果创建了复合索引，这样能够走索引的内容就多了，效率会更高，所以复合索引的使用也很重要，是sql优化的一个很关键的点。
 
 http://tech.meituan.com/mysql-index.html
@@ -72,31 +75,23 @@ http://tech.meituan.com/mysql-index.html
 
 Mysql join之后的索引使用情况是怎么样的，索引可以减少join语句的总共需要扫描的行数，提高join查询的效率。join的时候有个原则就是小标join大表。如果 不会选择，可以不指定join，让mysql自己去选择。order by 的字段是否有必要增加一个索引,如果有必要,是不是所有需要排序的字段都需要增加上索引?这个明显是不可取的。每个query只能利用一个索引,如果where种的字段用到了索引，并且where中的query和order by的字段不是一个，那么只能选择其中的一个索引，所以在一个quer中创建多个单键索引是没有意义的。
 
-索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。按照存储方式分为：聚集与非聚集索引和B树B+树的关系还是差别挺密切的,需要认真理解一下B树和B+树。
+索引是在数据库表或者视图上创建的对象，目的是为了加快对表或视图的查询的速度。按照存储方式分为：聚集与非聚集索引; explain 显示mysql如何处理select语句以及连接表,可以帮助写出更好的查询语句和建立更好的索引。rows 表示mysql执行查询的行数,数值越大说明效果越不好,说明没有用好索引.`using where` :要想使查询尽可能的快, 应尽可能得找出 using filesort , using temporary 的extra的值.我觉这在业务重没有必要禁止连表查询，在不会带来什么压力的情况下，并没有什么必要。如果两个表，都比较简单，连表也没什么不可以。什么事情都应该分开来看待，没有什么是绝对的。
 
-```
-create table blog_pool
-(
-id bigint(20) not null auto_increment,
-account_id bigint(20) not null default 0 comment 'user id',
-blog_id bigint(20) not null default 0 comment 'blog_id',
-content varchar(1024) not null default 0 comment 'blog内容',
-status tinyint(2) not null default 1 comment '1: 正常 -1: 删除',
-primary key (id),
-index list_blog_index (account_id,status),
-index single_index (account_id)
-)engine = Innodb , charset=utf8 , auto_increment=1;
-insert into blog_pool (account_id, blog_id, content) values (923232323, );
+Mysql 复合索引
+符合索引的表现效率和索引顺序是密切相关的。创建复合索引的时候要仔细考虑顺序。符合索引上是可以增加排序的，查询中的排序必须和索引中的排序一直或者相反才可以用到索引。符合索引引只有一棵树，如果是a,b,c的索引，那么先a，后b，再c，如果a相等，则按照b的顺序排，如果ab都相等，那么按照c的书序排。查找的时候，如果是a，b，c三个都能用到索引的情况，会先按照a确定出一个大概范围，然后在用b来进一步缩小范围，再用c来最后确定查找范围。但是符合索引的顺序怎么设置比较好呢，我觉着这个应该由具体的业务决定。
+
+阻止复合索引使用的情况
+1. 范围查找会中断符合索引。
+2. 使用计算函数无法使用索引。
+3. `<> !=`无法使用索引。
+
+```sql
+CREATE INDEX idx_example ON table1 (col1 ASC, col2 DESC, col3 ASC)
 ```
 
-explain 显示mysql如何处理select语句以及连接表,可以帮助写出更好的查询语句和建立更好的索引。
-rows 表示mysql执行查询的行数,数值越大说明效果越不好,说明没有用好索引.`using where` :要想使查询尽可能的快, 应尽可能得找出 using filesort , using temporary 的extra的值.我觉这在业务重没有必要禁止连表查询，在不会带来什么压力的情况下，并没有什么必要。如果两个表，都比较简单，连表也没什么不可以。什么事情都应该分开来看待，没有什么是绝对的。
+#### Mysql 翻页的方式
+不要以为翻页只有简单的limit。limit是最简单直接的方法，但是他的缺点也很明显，对于销量数据，千级别的，用这个来翻页取数据还勉强可以，但是如果数据量更大，那么久会很慢。这个时候只能采取其他的方式来设计。所以，对于limit的方式，最好做一个限制数量的翻页，不要做成无限制的翻页。具体参见这个[mysql翻页](http://www.admin10000.com/document/5796.html)
 
-#### select 按指定顺序排
-```
-select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5') 
-order by substring_index和order by find_in_set都可以
-```
 
 #### mysql 中创建用户。
 
@@ -158,6 +153,11 @@ IEEE 754 标准，数的存法。
     ctime  datetime => now()  4字节
     mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
     1970 ~ 2037
+    alter table user add column mtime timestamp  not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;
+    alter table user add column ctime timestamp  not null default CURRENT_TIMESTAMP;
+
+1970 1.1 00:00:00 标准时间，一般情况，mysql需要2个字段，一个是ctime，一个是mtime，mysql中这两个字段一般都是not null 的，timestamp如果是2个默认值都是CURRENT_TIMESTAMP的话，sql会报错，可以像上面那样写。
+
 
 #### Mysql 索引操作 mysqldump 数据导出和数据恢复
 
