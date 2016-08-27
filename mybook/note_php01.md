@@ -87,3 +87,15 @@ $a = array();
 正是因为ZE这样的处理方式，使PHP就实现了弱类型，而对于ZE的来说，它所面对的永远都是同一种类型zval。
 
 [原文链接](http://www.pythontab.com/html/2015/php_0513/950.html)
+
+
+3. PHP中的排序函数有好多
+
+asort
+usort
+ksort
+rsort
+arsort
+krsort
+uasort
+uksort
