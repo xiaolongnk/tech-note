@@ -20,3 +20,11 @@ do
         fi
     done
 done
+
+
+## 下面命令用来统计log文件中出现次数最多的url
+## 掌握下最基恩的用法。 awk 和 sort ，类似的用法还有uniq，也是用来文本处理的有力工具。
+## 下面这两种写法都是正确的。
+
+cat test.nofile.cc.log |awk '{a[$11]++} END {for (i in a) print i,a[i]}' | sort -k2 -n
+cat test.nofile.cc.log |awk '{a[$11]++} end {for (i in a) print i,a[i]|"sort -k2 -nr | head -n 10"}'
