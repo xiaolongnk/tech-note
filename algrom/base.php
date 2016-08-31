@@ -1,5 +1,10 @@
 <?php
 
+
+/**
+ * 包括一些基本的算法。
+ * 二叉树的非递归遍历。递归和非递归遍历。
+ */
 function base_test()
 {
     $a = ['k1'=>1,'k2'=>2,'k3'=>3];
@@ -52,7 +57,9 @@ function base_test1()
         $root->l = new Node(5);
         $root->r = new Node(19);
         $root->l->l = new Node(8);
+        $root->l->r = new Node(3);
         $root->r->r = new Node(13);
+        $root->r->l = new Node(29);
     }
 
 
@@ -77,14 +84,26 @@ function base_test1()
                 if($n == 0) echo "\n";
             }
         }
-        public static function inOrder($root)
+        //先左孩子，后中序，后右孩子
+        public static function inOrder($root , $n)
         {
+            if($root){
+                self::inOrder($root->l , $n+1);
+                echo "{$root->v} ";
+                self::inOrder($root->r , $n+1);
+                if($n == 0) echo "\n";
+            }
 
         }
-
-        public static function postOrder($root)
+        //先左孩子，后右孩子，再中间的节点
+        public static function postOrder($root , $n)
         {
-
+            if($root){
+                self::postOrder($root->l , $n+1);
+                self::postOrder($root->r , $n+1);
+                echo "{$root->v} ";
+                if($n == 0) echo "\n";
+            }
         }
     }
 
@@ -109,19 +128,52 @@ function base_test1()
 
         public static function inOrder($root)
         {
-
+            $lst = [];
+            while($root || count($lst)){
+                while($root){
+                    array_push($lst , $root);
+                    $root = $root->l;
+                }
+                if($root == null){
+                    $root = array_pop($lst);
+                    print "{$root->v} ";
+                    $root = $root->r;
+                }
+            }
+            print "\n";
         }
 
         public static function postOrder($root)
         {
-
+            $lst = [];
+            array_push($lst , $root);
+            $pre = null;
+            while(!empty($lst)){
+                $root = $lst[count($lst)-1];
+                if(($root->l == null && $root->r == null)
+                    || ($pre!=null && (
+                    $pre == $root->l || $pre == $root->r)))
+                {
+                    echo "{$root->v} ";
+                    $pre = $root;
+                    array_pop($lst);
+                }else {
+                    if($root->r !=null) array_push($lst,$root->r);
+                    if($root->l !=null) array_push($lst,$root->l);
+                }
+            }
+            echo "\n";
         }
     }
 
     buildTree($root);
     printTree($root , 0);
-    RecursiveOutput::preOrder($root , 0);
-    NonRecursiveOutput::preOrder($root);
+//    RecursiveOutput::preOrder ($root , 0);
+//    RecursiveOutput::inOrder  ($root , 0);
+    RecursiveOutput::postOrder($root , 0);
+//  NonRecursiveOutput::preOrder($root);
+//  NonRecursiveOutput::inOrder($root);
+    NonRecursiveOutput::postOrder($root);
 }
 
 
