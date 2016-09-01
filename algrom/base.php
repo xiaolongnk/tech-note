@@ -33,102 +33,113 @@ function base_test()
     $b = [1,2,3,4];
     array_walk($b , function(&$v){ 
         $v =$v * $v;
-    });
-    var_dump($b);
+	});
+	$format = '%d/%m/%Y %H:%M:%S';
+	$strf = strftime($format);
+	echo "$strf\n";
+	print_r(strptime($strf, $format));
+
+
+
+	$subject = "abcdef";
+	$pattern = '/^def/';
+	preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
+	print_r($matches);
+
 }
 
 function base_test1()
 {
-    class Node {
+	class Node {
 
-        function __construct($val = 0)
-        {
-            $this->v = $val;
-        }
-        public $l = NULL;
-        public $r = NULL;
-        public $v = 0;
-    }
+		function __construct($val = 0)
+		{
+			$this->v = $val;
+		}
+		public $l = NULL;
+		public $r = NULL;
+		public $v = 0;
+	}
 
-    $root = new Node(10);
+	$root = new Node(10);
 
-    function buildTree(&$root)
-    {
-        $root->l = new Node(5);
-        $root->r = new Node(19);
-        $root->l->l = new Node(8);
-        $root->l->r = new Node(3);
-        $root->r->r = new Node(13);
-        $root->r->l = new Node(29);
-    }
+	function buildTree(&$root)
+	{
+		$root->l = new Node(5);
+		$root->r = new Node(19);
+		$root->l->l = new Node(8);
+		$root->l->r = new Node(3);
+		$root->r->r = new Node(13);
+		$root->r->l = new Node(29);
+	}
 
 
-    function printTree($root , $depth)
-    {
-        if($root){
-            printTree($root->l , $depth + 2);
-            for($i = 0 ; $i < $depth ; $i++) print " ";
-            print $root->v."\n";
-            printTree($root->r , $depth + 2);
-        }
-    }
+	function printTree($root , $depth)
+	{
+		if($root){
+			printTree($root->l , $depth + 2);
+			for($i = 0 ; $i < $depth ; $i++) print " ";
+			print $root->v."\n";
+			printTree($root->r , $depth + 2);
+		}
+	}
 
-    trait RecursiveOutput
-    {
-        public static function preOrder($root , $n)
-        {
-            if($root){
-                echo "{$root->v} ";
-                self::preOrder($root->l , $n+1);
-                self::preOrder($root->r , $n+1);
-                if($n == 0) echo "\n";
-            }
-        }
-        //先左孩子，后中序，后右孩子
-        public static function inOrder($root , $n)
-        {
-            if($root){
-                self::inOrder($root->l , $n+1);
-                echo "{$root->v} ";
-                self::inOrder($root->r , $n+1);
-                if($n == 0) echo "\n";
-            }
+	trait RecursiveOutput
+	{
+		public static function preOrder($root , $n)
+		{
+			if($root){
+				echo "{$root->v} ";
+				self::preOrder($root->l , $n+1);
+				self::preOrder($root->r , $n+1);
+				if($n == 0) echo "\n";
+			}
+		}
+		//先左孩子，后中序，后右孩子
+		public static function inOrder($root , $n)
+		{
+			if($root){
+				self::inOrder($root->l , $n+1);
+				echo "{$root->v} ";
+				self::inOrder($root->r , $n+1);
+				if($n == 0) echo "\n";
+			}
 
-        }
-        //先左孩子，后右孩子，再中间的节点
-        public static function postOrder($root , $n)
-        {
-            if($root){
-                self::postOrder($root->l , $n+1);
-                self::postOrder($root->r , $n+1);
-                echo "{$root->v} ";
-                if($n == 0) echo "\n";
-            }
-        }
-    }
+		}
+		//先左孩子，后右孩子，再中间的节点
+		public static function postOrder($root , $n)
+		{
+			if($root){
+				self::postOrder($root->l , $n+1);
+				self::postOrder($root->r , $n+1);
+				echo "{$root->v} ";
+				if($n == 0) echo "\n";
+			}
+		}
+	}
 
-    trait NonRecursiveOutput
-    {
-        public static function preOrder($root)
-        {
-            $lst = [];
-            while($root || count($lst)){
-                while($root){
-                    print "{$root->v} ";
-                    array_push($lst, $root);
-                    $root = $root->l;
-                }
-                if(count($lst) ){
-                    $root = array_pop($lst);
-                    $root = $root->r;
-                }
-            }
-            echo "\n";
-        }
+	trait NonRecursiveOutput
+	{
+		public static function preOrder($root)
+		{
+			$lst = [];
+			while($root || count($lst)){
+				while($root){
+					print "{$root->v} ";
+					array_push($lst, $root);
+					$root = $root->l;
+				}
+				if(count($lst) ){
+					$root = array_pop($lst);
+					$root = $root->r;
+				}
+			}
+			echo "\n";
+		}
 
-        public static function inOrder($root)
-        {
-            $lst = [];
+		public static function inOrder($root)
+		{
+			$lst = [];
             while($root || count($lst)){
                 while($root){
                     array_push($lst , $root);
@@ -177,5 +188,5 @@ function base_test1()
 }
 
 
-base_test1();
+base_test();
 ?>
