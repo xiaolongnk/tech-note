@@ -50,16 +50,5 @@ https://raw.githubusercontent.com/creationix/nvm/v0.4.0/install.sh
 在一个node的项目里，可以通过` cnpm install `来安装项目依赖。
 这里推荐一个node的应用[hexo]<https://hexo.io/>.我的blog就是基于这个做的。
 
-
-#### 在lavarel中使用静态图片。
-
-q1: 在页面中中使让一段字体在一个div中垂直居中？
+在页面中中使让一段文字在一个div中垂直居中？
 http://stackoverflow.com/questions/79461/vertical-alignment-of-elements-in-a-div
-
-#### 几个常用的 搜索引擎
-
-|   搜索引擎| 地址   |
-|:----:|:---:|
-|    百度|   <http://zhanzhang.baidu.com/sitesubmit/index> |
-|    谷歌  |  <http://www.sogou.com/feedback/urlfeedback.php> |
-| 谷歌  |    <http://www.google.com/intl/zh-CN/add_url.html>  |
