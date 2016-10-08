@@ -10,8 +10,6 @@ tags:
 
 #### awk
 
-```shell
-simple awk skill is necessary.
 the follow command can be used to restart php-fpm in server.
 ps aux | grep 'php-fpm' | awk '{print $1}' | xargs kill -USR2 
 -F option 是用来改变默认的分隔符的。
@@ -19,9 +17,8 @@ awk -F ':' '{print $3}'
 awk 的 BEGIN 和 END 语句的功能。
 BEGIN 是最开始的部分执行的，然后AWK开始读取文件内容，进行处理。
 END 是最后面结束执行的.
-```
 
-#### sed 
+#### sed的简单例子
 
 ```
 sed 's/xx/ds/' note
@@ -50,16 +47,22 @@ sed '/vim/d' ~/.bashrc > ~/.bashrc
 
 #### grep
 
-```shell
-grep -E   支持全量的正则 
-grep -o   值输出指定内容
+grep -E   支持扩展的正则 
+grep -o   只输出指定内容, only-match 的含义
 grep -F   相当于 fgrep
 grep -v   不匹配指定正则的指令
+grep 输出匹配内容的上下两行内容,输出上下文,记得这个参数.
+grep -C 2 'linux'
+grep -i 进行大小写无关的搜索
+grep -P perl分格的正则
+
+```shell
+grep -i -Po "HREF=\".*?\"" bookmarks_4_27_15.html
 ```
 
-#### find
+#### find使用的例子
 
-find 下面这个script结合了find 的regex的用法。find regex 和 那么的区别还是挺大的。regex搜索的输出是全名的，name知识一个短的名字。
+下面这个script结合了find 的regex参数的用法。find regex 和 那么的区别还是挺大的。regex搜索的输出是全名的，name知识一个短的名字。
 
 ```shell
 #!/bin/bash
@@ -94,9 +97,9 @@ done
 具体的执行过程是这样的,一个完整的shell指令的执行是从右往左的.
 先执行 1>&3 , 然后执行 2>&1 , 3>&2
 
-nohup 的使用
+nohup的使用
 在mac中，在tmux中使用nohup会有问题，会抛出下面这样的错误。所以只能在开一个终端执行。
-    nohup: can't detach from console: Undefined error: 0
+nohup: can't detach from console: Undefined error: 0
 ```shell
 nohup redis-server & >/dev/null
 ```
@@ -120,15 +123,6 @@ linux 下 ifconfig | grep 'inet ' | awk '{split($2, ip_cntr, ":"); print ip_cntr
 tmux.conf
 想在tmux.conf中添加一些shell脚本,可以获取到我自己的IP地址.
 这样我在连接代理的时候,就不用是自己查了.我把自己的tmux的status line 搞成了1s刷新一次.用了这个命令.
-
-egrep grep -E
-fgrep grep -F 只支持简单的全部匹配,部支持正则匹配.
-
-nohup command > out.txt 2>&1 & 这样是将所有的输出,包括错误都重定向到out.txt中.
-
-grep 输出匹配内容的上下两行内容,输出上下文,记得这个参数.
-grep -C 2 'linux'
-是用nohup命令,完了这个命令就没有办法停止了,就会一直运行,除非用kill命令讲这些命令kill调.
 
 #### git push --force 
 git remote add.
@@ -171,7 +165,6 @@ fstab 的编写,其实还可以,就是将最前面的盘符换成具体的磁盘
 上去.大部分内容都是放在/home里面的,或者可以把自己常用的软件都安装在一个指定的目录
 下,这个目录可以
 
-
 ```
 UUID=684e471c-215b-4520-b3d6-09c6e5316ee2 /               ext4    errors=remount-ro 0       1
 # swap was on /dev/sda6 during installation
@@ -185,26 +178,9 @@ UUID=08488fed-d6f4-4fa2-b935-dd599851d98d none            swap    sw            
 2. 我进来之后,发现我的steam 用不了了,我拷贝了所有的文件,发现还是不行,再后来发现是我的home中的所有
 的二进制文件都没有办法执行,上网找,发现是我的挂在参数有问题,用了defaults,noatime 之后就好了.真是神奇.
 
-
-#### 数据库支持utf8mb4，支持emoj
-
-    utf8mb4 兼容 utf8 如果数据库报这个错误，应该尝试将字段改成utf8mb4.
-    General error: 1366 Incorrect string value: '\xF0\x9F\x8F\xBC' for column 'nick_name' at row 1
-
 ssh-agent
 to start your ssh-agent, you need to eval this command.
 eval `ssh-agent -s`
-
-
-又是一个贪婪匹配的故事。这次是 grep，本来想用sed搞定的，但是发现用grep就非常足够了。
-我还会继续优化这一结果。在这方面，我还可以做的更好。有时候真得不知道打游戏能有什么作用。
-
-我一共想出了2个shell，
-一个是利用sed的版本。
-`cat bookmarks_4_27_15.html | sed 's/ADD_DATE=\".*\"//g'`
-另一个是利用grep的版本，但是grep的并没有达到我想实现的目的。sed的这个基本上是我想要的样子了。
-`grep -i -Po "HREF=\".*?\"" bookmarks_4_27_15.html`
-
 
 sudo ntpdate 202.120.2.101
 sudo ntpdate 210.72.145.44
@@ -258,13 +234,16 @@ set_time_limit(0); 设置程序的执行时间,如果是0说明永久执行下�
 每个进程都有一个父进程,子进程退出,父进程能得到子进程退出的状态.
 进程组, 每个进程都属于一个进程组,这个号码等于该进程组组长的pid.
 
-#### 配置VIM为编辑器
+#### 设置VIM为shell的默认编辑器
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 git config --global core.editor "vim"
-这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
+
 git config core.fileMode false
+这样你的git就不会官 fileMode 的变化了，默认的模式是 true 的。
+
+#### shell中的一些基本变量
 
 函数的返回值貌似可以用 $? 变量拿到。
 但是 return 是不支持返回非数字类型的。这是不是一个新的约束条件。
@@ -274,4 +253,3 @@ $0 表示当前脚本的名字
 $1 $2 ... $i  第 i 个参数
 $# 参数的个数。
 $?
-
