@@ -1,9 +1,9 @@
 ---
 title: MAC 使用心得
-categories: 
-- Mac
+date: 2016-08-23 14:40
 tags:
 - 开发工具
+- mac
 ---
 
 #### MAC 使用心得 

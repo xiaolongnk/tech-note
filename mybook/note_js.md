@@ -1,8 +1,6 @@
 ---
 title: javascript 学习笔记
-categories:
-- javascript
-
+date:  2016-09-09 14:39
 tags:
 - programming
 - javascript

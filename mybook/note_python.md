@@ -1,9 +1,8 @@
 ---
 title: Python 学习笔记
-categories:
-- programming
+date: 2016-08-26 14:39
 tags:
-- Python
+- python
 ---
 
 #### Python 内置函数

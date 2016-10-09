@@ -1,9 +1,9 @@
 ---
-title: Mysql笔记
-categories:
-- 存储
+title: mysql笔记
+date: 2016-08-24 14:40
 tags:
-- Mysql
+- 存储
+- mysql
 ---
 
 #### mysql 性能测试工具.

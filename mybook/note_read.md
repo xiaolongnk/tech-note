@@ -1,8 +1,6 @@
 ---
 title:  读书笔记
-
-categories:
-- 生活
+date: 2016-10-09 14:38
 tags:
 - 阅读
 - 感悟

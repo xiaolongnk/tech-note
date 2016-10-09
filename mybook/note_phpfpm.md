@@ -1,8 +1,6 @@
 ---
 title: PHP 与 FPM 的区别
 date: 2016-08-25 23:47
-categories:
-- PHP
 tags:
 - php
 - php-fpm

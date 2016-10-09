@@ -1,9 +1,8 @@
 ---
 title: Linux VPN 配置
-categories:
-- VPN
+date: 2016-08-29 14:43
 tags:
-- VPN MSJNC
+- vpn msjnc
 ---
 
 #### ubuntu14.04 安装vpn
