@@ -1,8 +1,6 @@
 ---
 title: Laravel 学习笔记
 date: 2016-08-23 00:41
--categories:
-- laravel
 tags:
 - laravel
 ---

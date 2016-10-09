@@ -1,9 +1,8 @@
 ---
 title: PHP 源码学习
-categories:
-- PHP
+date:  2016-09-09 14:39
 tags:
-- PHP源码
+- php源码
 ---
 
 #### PHP弱类型的实现原理

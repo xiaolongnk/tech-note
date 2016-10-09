@@ -1,7 +1,6 @@
 ---
 title: PHP 学习笔记
-categories:
-- programming
+date: 2016-08-26 14:41
 tags:
 - php
 - web

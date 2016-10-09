@@ -1,7 +1,6 @@
 ---
 title: mac常用软件
-categories:
-- 开发工具
+date: 2016-09-09 14:42
 tags:
 - 开发工具
 - 工程效率

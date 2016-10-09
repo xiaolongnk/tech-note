@@ -1,8 +1,8 @@
 ---
 title: sphinx学习笔记
-categories:
-- sphinx
+date: 2016-09-09 14:42
 tags:
+- sphinx
 - 搜索
 ---
 

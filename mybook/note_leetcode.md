@@ -1,10 +1,8 @@
 ---
 title: leetcode 刷题笔记
-categories:
-- leetcode
+date: 2016-08-25 14:40 
 tags:
-- 算法
-- 数据结构
+- leetcode
 ---
 
 #### LEETCODE 学习笔记

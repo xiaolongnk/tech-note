@@ -1,8 +1,8 @@
 ---
 title: shell 学习笔记
-categories:
-- shell
+date: 2016-09-09 14:42
 tags:
+- shell
 - awk
 - sed
 - grep

@@ -1,8 +1,6 @@
 ---
 title: mysql enable emoj
 date: 2016-08-24 10:47
-categories:
-- mysql
 tags:
 - laravel
 - mysql

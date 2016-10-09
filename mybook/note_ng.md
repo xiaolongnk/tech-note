@@ -1,7 +1,6 @@
 ---
 title: nginx 学习笔记
-categories:
-- nginx
+date: 2016-08-26 14:41
 tags:
 - nginx
 ---

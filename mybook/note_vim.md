@@ -1,9 +1,8 @@
 ---
 title: vim 学习笔记
-categories:
-- VIM
+date: 2016-08-28 14:43
 tags:
-- VIM
+- vim
 ---
 
 #### vim的几个常用的插件。
