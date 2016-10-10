@@ -9,13 +9,53 @@ tags:
 
 | 插件 | 说明 |
 |---|--- |
-|ctags | tags 的标签 |
 |vim-ariline | 彩色 的状态栏 |
 |nerdtree | 一个文件管理器 |
 |gittur | git集成插件,可以显示修改了的内容|
 |bundle  | 插件管理|
 |vim-markdown | 支持markdown的语法 |
+|taglist | 和ctags配合使用的，会在右边出现一列，展示所有的变量和函数。 常用的快捷键是这3个 ctrl + ] , ctrl + t ,ctrl + o |
 
+1. `ctags` 安装比较简单`sudo apt-get install ctags` , 安装之后，进入代码目录，执行 `ctags -R .`
+2. `cscope`安装 `sudo apt-get install cscope` 下载就好 ，进入代码目录，执行 `cscope -Rbkq`执行这个命令后，会生成3个文件，cscope.in.out和cscope.po.out文件,cscope.out .然后配置vim ，将如下配置文件写入vimrc 。
+
+```shell
+set tags=tags; "conf for ctags
+
+if filereadable("cscope.out") 
+	cs add cscope.out 
+endif
+
+if has("cscope")
+	set cscopetag   " 使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳来跳去
+	" check cscope for definition of a symbol before checking ctags:
+	" set to 1 if you want the reverse search order.
+	set csto=1
+
+	" add any cscope database in current directory
+	if filereadable("cscope.out")
+		cs add cscope.out
+		" else add the database pointed to by environment variable
+	elseif $CSCOPE_DB !=""
+		cs add $CSCOPE_DB
+	endif
+
+	" show msg when any other cscope db added
+    set cscopeverbose
+
+    nmap <C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-G> :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-C> :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-T> :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-E> :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-F> :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-I> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-D> :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
+set autochdir
+```
+3. 使用，在if语句里面，我们队cscope进行了快捷键映射，这样会方便我们使用。快捷键是Ctrl 和 字母的组合，例如Ctrl + S ，可以触发:cs find s + `光标所在位置的单词`  这个命令。 其他的同理。在vim中忘记了我们设置的映射，可以用:map 来查看。关于vim 的key-binding，可以参考这篇文章，<http://yyq123.blogspot.com/2010/12/vim-map.html>。 `:h key-notation`可以查看键盘符号的详细说明。 
 
 #### VIMSCRIPT
 
