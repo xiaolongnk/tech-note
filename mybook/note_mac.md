@@ -6,7 +6,8 @@ tags:
 - mac
 ---
 
-#### MAC 使用心得 
+#### mac中让vim共享剪切板 
+
 安装vim
 
 默认情况下，mac terminal中是带了vim 的。但是vim --version 看一下，发现是7.3版本的。
@@ -35,7 +36,7 @@ set backspace=indent,eol,start
 ```
 
 
-#### MAC编译安装php nginx
+#### mac 中编译安装php nginx
 
 编译的过程中，很可能遇到这个问题。
 找不到openssl的header files。
@@ -67,4 +68,15 @@ $ brew link openssl --force
 $ which openssl 
 /usr/local/bin/openssl
 ```
+
+
+#### mac 上虚拟linux 
+
+一般来说，mac和linux已经非常像了，但是有些工作(比如，搭建服务器环境，编译nginx，php什么的，在linux下会方便很多，再比如要搞php源码，学学扩展开发什么的)，还是建议在linux下搞。所以在mac上，我们仍然需要一个linux。想到了virtualbox。
+
+virtualbox的使用。mac的retina屏幕，导致在上面安装ubuntu桌面之后，分辨率很是难用，所以想要和之前一样使用linux的话就比较困难了，在retina屏幕上看见超低分辨率还是难以接受的。
+但是考虑到我们的日常，基本都是在terminal里面度过，所以我们完全可以放弃linux桌面，用mac的terminal ssh 到我们的虚拟机就可以了。需要解决的问题就是网络问题。让主机和虚拟机在同一个网段，这样就可以互相ssh了。
+更改virtualbox的网络设置，把默认的NAT方式换成birdge方式，并且在高级选项里面选成allow all。重启虚拟机，看一下ip，发现和主机在同一个网段了，然后就可以ssh进去，愉快的玩耍了。
+
+有了这个方案之后，我们可以利用虚拟机做一些集群相关的实验，只需要多安装几个虚拟机就可以了，同样的方法。不过貌似virtualbox的网络adaptor最多只有4个，不过4个应该也足够了。
 
