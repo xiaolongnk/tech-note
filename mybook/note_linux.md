@@ -34,11 +34,12 @@ zsh 的插件，默认会装git，我这里装了autojump。
 1. vim，基本的编辑器，对我来说，只会用vim，nano都不怎么会，emacs更是不用提。vim的初始化，这里有一套比较成熟的配置文件，可以比较方便的搞定，一般情况，可以将一些个人习惯的配置脚本化，我就这样做了，基本软件的安装可以用脚本很方便的完成。需要配置常用的扩展，并配置正确的vimrc。可以参考我的那篇vim的文章。
 2. git 需要搞定~/.gitconfig
 3. openssh-server 默认情况下，需要安装这个，才可以远程ssh连接。
-
+4. ag 一个更强大的grep，类似的还有ack
 ```shell
 sudo apt-get install vim-gtk
 sudo apt-get install git tig
 sudo apt-get install openssh-server
+sudo apt-get install silversearcher-ag
 ```
 
 #### 标准的web环境
@@ -98,7 +99,6 @@ npm install hexo-cli -g
 ```
 
 npm 淘宝镜像<https://npm.taobao.org/>
-
 安装hexo <https://hexo.io>
 
 #### php 相关
