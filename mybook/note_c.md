@@ -1,7 +1,5 @@
 ---
 title: C/C++ 学习笔记
-categories:
-- c++
 tags:
 - c/c++
 ---
@@ -82,11 +80,4 @@ float InvSqrt(float x)
     x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
     return x;
 }
-```
-
-#### C++ rand lib
-
-```
-#include <stdlib>
-srand((usigned)time(NULL));
 ```
