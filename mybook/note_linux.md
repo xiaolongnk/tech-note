@@ -32,7 +32,7 @@ cd autojump
 plugins=(git autojump)
 [[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
 ```
-`./install.sh`安装完之后，会提示我们将`[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh`这一行加入到我们的.zshrc里面，因为我们用的是zsh，tree 一下.autojump这个目录，我们发现同级目录下有.zsh .sh .bash 三个，所以我们选择.zsh ，最终把这个加入到.zshrc里面，我们的zsh + autojump 就可以工作了，同时还需要将autojump这个plugin加入到pulgin里面，最终配置中会多出上面代码的最后两行，plugins哪一行是修改。修改完毕之后，我们可以将原来bashrc中我们自定义的东西搬过去，都是一样的，注意zsh下面的`.`不在适用，我们需要老老实实用`source`命令。 
+`./install.sh`安装完之后，会提示我们将`[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh`这一行加入到我们的.zshrc里面，写的位置需要注意一下，一定要放在.zshrc中`source $ZSH/oh-my-zsh.sh`这一行的前面。否则会出现需要执行2此source ~/.zshrc 才会生效的现象。
 
 zsh 的插件，默认会装git，我这里装了autojump。
 配置过程中，遇到了任何问题，请参考上面那个链接。
