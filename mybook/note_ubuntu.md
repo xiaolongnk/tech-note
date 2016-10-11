@@ -120,11 +120,10 @@ sudo apt-get install ttf-wqy-zenhei
 # (Note that later entries override this, so you might need to move
 # it further down)
 %sudo ALL=(ALL) ALL
-```
 
-```shell
 groupadd sudo
 sudo usermod -aG sudo work
+
 ```
 http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html
 
@@ -148,8 +147,9 @@ sudo hwclock --hctosys
 
 | 命令 | 说明 |
 |---|--- |
-|`ls | xargs rm -rf *`  | 删除文件，主要是xargs，可以将管道传过来的内容交给后面的命令，作为它的输入 |
+|`ls \| xargs rm -rf *`  | 删除文件，主要是xargs，可以将管道传过来的内容交给后面的命令，作为它的输入 |
 |`apt-cache search` | ubuntu 在source里查找某个软件包|
 |`apt-cache install` | 安装指定的软件包 |
 |`dpkg -i your.deb` | 安装一个deb文件 |
 |`sudo dd if=/home/your.iso of=/dev/sdb` |  用U盘烧镜像 |
+|`groups faith` | 查看faith的用户详情|
