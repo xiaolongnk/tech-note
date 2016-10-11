@@ -5,7 +5,7 @@ tags:
 - vim
 ---
 
-#### vim的几个常用的插件。
+#### vim的几个常用的插件
 
 | 插件 | 说明 |
 |---|--- |
@@ -57,7 +57,7 @@ set autochdir
 ```
 3. 使用，在if语句里面，我们队cscope进行了快捷键映射，这样会方便我们使用。快捷键是Ctrl 和 字母的组合，例如Ctrl + S ，可以触发:cs find s + `光标所在位置的单词`  这个命令。 其他的同理。在vim中忘记了我们设置的映射，可以用:map 来查看。关于vim 的key-binding，可以参考这篇文章，<http://yyq123.blogspot.com/2010/12/vim-map.html>。 `:h key-notation`可以查看键盘符号的详细说明。 
 
-#### VIMSCRIPT
+#### vimscript
 
 下面是一些简单的vimscript内容。
 
@@ -80,47 +80,24 @@ echo a
 我只是通过实验尝试出来的。
 
 
-#### VIM 启动速度慢 slowstart
+#### vim slowstart
 
 vim --startuptime vim.log -c q
 sudo vim 启动速度超级慢。
 vim 启动速度变慢.在终端中可以这样启动 vim -X 这样是不需要和X挂上勾的,所以会变慢.修改了一下之后
 瞬间感觉电脑变快了.vimariline这个插件会明显增加启动时间，加之没什么用，后面就从我的vim插件里面去掉了。
 
-#### sudo vim 启动速度超级慢
-
 调查之后，发现是我把系统的hosts文件删除了，touch了一个空文件。
 后面，总是提示unresolve host 的提示。 
 在增加了我的hostname在host中之后，sudo vim 速度就快了。开来和这个也有关系。
 
-####  vim 记录上次编辑位置。
-```
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
-```
 
-#### vim 删除重复行
+#### vim 常用操作
 
-```
-sort
-g/^\(.\+\)$\n\1/d
-```
-
-
-#### vim 插入当前时间
-
-插入时间，这个应该说是很方便的，但是我并不懂这个命令是怎么实现的。
-在vimrc中加入这个map，在normal模式下，输入,dt就可以在当前位置插入时间了。
-
-```vimscript
-map ,dt a<C-R>=strftime('%Y-%m-%d %H:%M')<CR>
-```
-
-#### vim find
-
-天刚学到的是 find 命令，这个是用来打开文件用的，可以智能补全。
-```vimscript
-set path=/home/yourpath
-```
+1. vim 记录上次编辑位置。加入这一行` au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif `到vimrc里面
+2. vim 删除重复行 `sort`然后`g/^\(.\+\)$\n\1/d`
+3. vim 插入当前时间,在vimrc中加入这个map，在normal模式下，输入,dt就可以在当前位置插入时间了`map ,dt a<C-R>=strftime('%Y-%m-%d %H:%M')<CR>`。
+4. vim find 在vimrc中加入如下配置`set path=/home/yourpath`,在vim命令行中查找文件，有了这个配置之后，就会在这个目录下进行搜索。
 
 #### vim 导入其他文件内容
 将当前文件的部分内容导入到其他文件

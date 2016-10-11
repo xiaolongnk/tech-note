@@ -1,5 +1,5 @@
 ---
-title: MAC 使用心得
+title: mac 开发环境搭建
 date: 2016-08-23 14:40
 tags:
 - 开发工具
