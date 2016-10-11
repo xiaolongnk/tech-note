@@ -78,9 +78,38 @@ sudo -H pip install Scrapy
 1. nvm (node version manager)
 2. npm (node package manager)
 
+安装完nvm需要重启一下shell。或者source 一下你的.zshrc 或者 .bashrc。
+
+```shell
+wget -qO- https://raw.github.com/creationix/nvm/v0.4.0/install.sh | sh
+nvm install 0.10
+sudo apt-get install npm
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+或者下面这个
+
+echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"' >> ~/.zshrc && source ~/.zshrc
+
+npm install hexo-cli -g
+```
+
+npm 淘宝镜像<https://npm.taobao.org/>
+
+安装hexo <https://hexo.io>
 
 #### php 相关
 
 1. composer (php package manager)
 2. laravel
+
+安装composer
+```shell
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
+更多参考，请看[这里](https://segmentfault.com/a/1190000000353129)
 
