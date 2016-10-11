@@ -35,19 +35,5 @@ http://fontawesome.dashgame.com/
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 ```
-
-#### Node基础
-
-http://npm.taobao.org/
-首先是npm， node package manager, 这个还相对好理解。可以用淘宝的镜像，速度会快一点。
-换一个淘宝镜像。
-例外是nvm，这个是node version manager。node 的版本太多了，所以也有了一个manager。
-nvm 可以选择安装 node 的版本，也很方便。
-nvm可以从这里下载。
-https://raw.githubusercontent.com/creationix/nvm/v0.4.0/install.sh
-
-在一个node的项目里，可以通过` cnpm install `来安装项目依赖。
-这里推荐一个node的应用[hexo]<https://hexo.io/>.我的blog就是基于这个做的。
-
 在页面中中使让一段文字在一个div中垂直居中？
 http://stackoverflow.com/questions/79461/vertical-alignment-of-elements-in-a-div
