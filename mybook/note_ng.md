@@ -39,16 +39,13 @@ openssl比较容易出问题，需要openssl的源码包。编译之前貌似会
 
 #### nginx 配置规则
 
+这部分有待深入研究，暂时先留着。
 1. location 写法。
-
 2. log_format
-    nginx 的log_format , log 需要几下post参数。记得上次查问题，我只能定位到url，并不能定位
-    到参数，这导致有些问题没有办法追查。
+3. 配置中添加自定义参数 `fastcgi_params define_params hhh`
 
-    fastcgi\_params define_params hhh
-
-    #### nginx 启动和重启
-检测配置文件的正确性，不要加载一个又明显错误的配置文件
+#### nginx 启动和重启
+操作之前先确认下配置文件的正确性。
 ```shell
 nginx -t -c /usr/nginx/conf/nginx.conf
 #启动  停止  或者重启 nginx 。
