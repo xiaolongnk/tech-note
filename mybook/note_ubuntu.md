@@ -6,11 +6,6 @@ tags:
 - ubuntu
 ---
 
-### 制作ubuntu镜像
-```shell
-```
-
-
 #### tmux vim slowstart
 
 tmux 中vim slow start 的原因,就是因为开了多个tmux,启动速度就变慢了.
@@ -157,3 +152,4 @@ sudo hwclock --hctosys
 |`apt-cache search` | ubuntu 在source里查找某个软件包|
 |`apt-cache install` | 安装指定的软件包 |
 |`dpkg -i your.deb` | 安装一个deb文件 |
+|`sudo dd if=/home/your.iso of=/dev/sdb` |  用U盘烧镜像 |
