@@ -111,7 +111,17 @@ sudo apt-get install mysql-workbench
 sudo apt-get install ttf-wqy-microhei  
 sudo apt-get install ttf-wqy-zenhei  
 ```
+ubuntu 16.04 默认启动命令行
+```shell
+关闭
+sudo systemctl set-default multi-user.target
 
+启动lightdm
+sudo systemctl start lightdm
+
+恢复
+systemctl set-default graphical.target
+```
 
 #### linux 权限管理
 
