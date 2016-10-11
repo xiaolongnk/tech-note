@@ -147,9 +147,9 @@ sudo hwclock --hctosys
 
 | 命令 | 说明 |
 |---|--- |
-|`ls \| xargs rm -rf *`  | 删除文件，主要是xargs，可以将管道传过来的内容交给后面的命令，作为它的输入 |
 |`apt-cache search` | ubuntu 在source里查找某个软件包|
 |`apt-cache install` | 安装指定的软件包 |
 |`dpkg -i your.deb` | 安装一个deb文件 |
 |`sudo dd if=/home/your.iso of=/dev/sdb` |  用U盘烧镜像 |
 |`groups faith` | 查看faith的用户详情|
+`ls | xargs rm -rf *`这个命令比较调皮，markdown的表格里写不进去，单独拿出来伺候。`删除文件，主要是xargs，可以将管道传过来的内容交给后面的命令，作为它的输入`
