@@ -20,8 +20,8 @@ tags:
 2. `cscope`安装 `sudo apt-get install cscope` 下载就好 ，进入代码目录，执行 `cscope -Rbkq`执行这个命令后，会生成3个文件，cscope.in.out和cscope.po.out文件,cscope.out .然后配置vim ，将如下配置文件写入vimrc 。
 
 ```shell
-set tags=tags; "conf for ctags
-
+set tags=tags;  "conf for ctags
+set csre        "use absolute path in cscope
 if filereadable("cscope.out") 
 	cs add cscope.out 
 endif
@@ -48,7 +48,7 @@ if has("cscope")
     nmap <C-C> :cs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <C-T> :cs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <C-E> :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-F> :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-Y> :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-I> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-D> :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
