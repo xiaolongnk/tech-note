@@ -96,6 +96,52 @@ int main()
 }
 ```
 
+#### C 中的extern关键字
+
+1. 让变量可以在其他文件中也可以使用。只能对全局变量起作用，不在全局作用域会导致编译报错。本质上是为了多个文件中共享变量，在工程中，可以让工程更好维护。
+2. 需要注意的是，c语言中的函数原型本身具有外部链接属性，所以对与函数而言，用不用extern都是一样的。所以呢，对于extern来说，用在变量上可能作用更大一些。在C语言中，extern变量的存在改变了变量的链接属性，用extern关键字修饰的变量其定义将在别处，编译器的变量解析将推迟到链接上。
+3. 一般来说，C工程的管理方式是将所有的外部函数定义在一个.h文件中。在需要用到这些函数的C文件中，包含这个.h文件就可以了。但是如果没有用.h 文件的话，这个时候就必须在主文件中用extern申明一下用到的函数了，但是这并不是必须的，没有这个extern也是可以的，所以extern对于函数来说，不是必须的，完全可以忽略，对于函数，作用不大。
+4. 函数可以申明多次，编译并不会报错，但是只能定义一次。
+
+下面是一个具体的例子:里面函数申明前面的extern关键字都可以没有，函数默认有了这个属性。
+
+```c
+/*** main.c ***/
+
+#include <stdio.h>
+#include "b.h"
+
+extern void print_hello(char *);
+const int TSM = 10000;
+int main()
+{
+    print_hello("hello world");
+    return 0;
+}
+
+
+/*** b.h ***/
+
+#ifndef B_H
+#define B_H
+
+extern int print_hello(char *);
+
+#endif
+
+/*** b.c ***/
+
+#include <stdio.h>
+
+extern int TSM;
+void print_hello(char *s)
+{
+    printf("\t\t%s\n",s);
+    printf("%d\n",TSM);
+}
+
+```
+
 #### 一些语言细节
 
 1. malloc 和 calloc的区别。  malloc 可以分配内存，但是不做初始化。calloc也是分配内存，但是给你做初始化，新能比malloc差一点。但是在需要初始化的时候，用calloc可以省去memset的函数调用时间，看需求来定。注意malloc和calloc的参数的不同,malloc 只需要一个参数。`realloc`的使用,比如你给int *a分配了10个空间，现在发现10个不够了，那么你需要realloc以下。realloc的指针必须是没有free的。
