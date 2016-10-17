@@ -21,11 +21,11 @@ tags:
 1. `ctags` 安装比较简单`sudo apt-get install ctags` , 安装之后，进入代码目录，执行 `ctags -R .`
 2. `cscope`安装 `sudo apt-get install cscope` 下载就好 ，进入代码目录，执行 `cscope -Rbkq`执行这个命令后，会生成3个文件，cscope.in.out和cscope.po.out文件,cscope.out .然后配置vim ，将如下配置文件写入vimrc 。
 *vim cscope file not found*
-3. 用cscope的话，需要给vim中增加一个配置。`set nocsre` ,具体的可以:help csre 看一下。增加这个设置，可以让vim中的cscope真正能用起来。如果没有的话，在你找到了东西想跳转的时候，会提示没有这个文件的错误，这个在下面的配置中已经增加了。
+3. 用cscope的话，需要给vim中增加一个配置。`set csre` ,具体的可以:help csre 看一下。增加这个设置，可以让vim中的cscope真正能用起来。如果没有的话，在你找到了东西想跳转的时候，会提示没有这个文件的错误，这个在下面的配置中已经增加了。
 
 ```shell
-set tags=tags; "conf for ctags
-set nocsre     "setting for cscope
+set tags=tags;  "conf for ctags
+set csre        "use absolute path in cscope
 if filereadable("cscope.out") 
 	cs add cscope.out 
 endif
@@ -52,7 +52,7 @@ if has("cscope")
     nmap <C-C> :cs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <C-T> :cs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <C-E> :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-F> :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-Y> :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-I> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-D> :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
