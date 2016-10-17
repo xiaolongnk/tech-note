@@ -16,39 +16,7 @@ sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install libssl-dev
 sudo apt-get install libxml2-dev
 
-./configure \
-    --prefix=/home/faith/blackh/server/php
-    --with-config-file-path=/home/faith/blackh/server/php/etc
-    --with-mysql=/usr/ 
-    --with-iconv-dir=/usr/ 
-    --with-freetype-dir 
-    --with-jpeg-dir 
-    --with-png-dir 
-    --with-zlib 
-    --with-libxml-dir=/usr
-    --with-curl
-    --with-mcrypt
-    --with-gd 
-    --with-openssl
-    --with-mhash
-    --with-xmlrpc
-    --with-zlib
-    --with-pdo-mysql
-    --with-mysql=shared,mysqlnd 
-    --enable-xml 
-    --enable-bcmath
-    --enable-shmop 
-    --enable-sysvsem
-    --enable-inline-optimization
-    --enable-mbregex
-    --enable-fpm
-    --enable-mbstring
-    --enable-gd-native-ttf
-    --enable-pcntl 
-    --enable-sockets
-    --enable-zip
-    --enable-pdo
-    --disable-rpath
+./configure --prefix=/yourpath/php --with-config-file-path=/yourpath/php/etc --with-mysql=/usr/ --with-iconv-dir=/usr/ --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --with-curl --with-mcrypt --with-gd --with-openssl --with-mhash --with-xmlrpc --with-zlib --with-pdo-mysql --with-mysql=shared,mysqlnd --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-mbregex --enable-fpm --enable-mbstring --enable-gd-native-ttf --enable-pcntl --enable-sockets --enable-zip --enable-pdo --disable-rpath
 ```
 配置中我们开启了好多功能，有好多我们都不知道是干什么的，没关系，好奇的同学们可以先`./configure --help`来了解下，这个问题先留着，后面有空了我们开专题专门堂研究下这个问题。
 
