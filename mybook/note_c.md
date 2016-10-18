@@ -146,3 +146,4 @@ void print_hello(char *s)
 
 1. malloc 和 calloc的区别。  malloc 可以分配内存，但是不做初始化。calloc也是分配内存，但是给你做初始化，新能比malloc差一点。但是在需要初始化的时候，用calloc可以省去memset的函数调用时间，看需求来定。注意malloc和calloc的参数的不同,malloc 只需要一个参数。`realloc`的使用,比如你给int *a分配了10个空间，现在发现10个不够了，那么你需要realloc以下。realloc的指针必须是没有free的。
 2. 使用math.h的时候，在编译的时候需要加上`-lm` 参数。
+3. c语言的struct关键字，在定义节点的时候都需要带上，这一点和c++不同，需要注意。可以用typedef来简化这一点。typedef可以出现在结构体定义之前。
