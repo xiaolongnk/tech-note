@@ -26,9 +26,17 @@ int tt(int a, int b)
     mmx(a,b);
 }
 
+typedef struct node * leafnode;
+
+struct node {
+    int data;
+    leafnode l;
+    leafnode r;
+};
+
 int main()
 {
-    char **s;
+    char *s;
     s = malloc(sizeof(char)*8);
     strncpy(s ,"hello worldasdf",8);
     printf("%s\n",s);
