@@ -1,5 +1,5 @@
 ---
-title: linux 下编译安装php及常用扩展
+title: PHP编译安装
 date: 2016-10-11 10:18
 tags: 
 - php
