@@ -6,14 +6,11 @@ tags:
 - mysql
 ---
 
-#### mysql 性能测试工具.
-
-[Mysqlslap 自带的性能测试工具.](http://www.ha97.com/5182.html)
-
-
 #### Mysql 基本知识
 
-一些mysql基本的操作
+1. [Mysqlslap 自带的性能测试工具.](http://www.ha97.com/5182.html)
+2. 一些mysql基本的操作
+
 ```sql
 show global variables like '%%datadir%' //看MySql数据库物理文件存放位置
 show variables like 'innodb_data%';
@@ -38,20 +35,21 @@ select * from xxx where id in (3,1,5) order by find_in_set(id,'3,1,5')
 order by substring_index和order by find_in_set都可以
 //select 按指定顺序排
 ```
+3. mysql 单机启动多个实例
+4. mysql_safe 和 mysql 的区别
 
 #### Mysql 锁
 
-MysIsma, Memory 支持表锁。Innodb 支持表锁和行锁,默认是行锁。 BerkelyDB 支持页锁,页锁的粒度和成本在表锁和行锁之间,不知道是什么鬼。
+1. MysIsma, Memory 支持表锁。Innodb 支持表锁和行锁,默认是行锁。 BerkelyDB 支持页锁,页锁的粒度和成本在表锁和行锁之间,不知道是什么鬼。
 
-##### 乐观锁
-乐观锁可以通过增加一个version来实现。在提交的时候，带着version作为条件去更新，如果发现version不一致了，那么就不更新，如果和当时读取到的version一直才更新数据。
+2. 乐观锁可以通过增加一个version来实现。在提交的时候，带着version作为条件去更新，如果发现version不一致了，那么就不更新，如果和当时读取到的version一直才更新数据。
 
 [悲观锁的介绍](http://chenzhou123520.iteye.com/blog/1860954)，用到了select for update。要实现悲观锁，必须将数据库的autocommit属性置成0
 `select status from t_goods where id=1 for update;`与普通查询不一样的是，我们使用了select…for update的方式，这样就通过数据库实现了悲观锁。此时在`t_goods`表中，id为1的那条数据就被我们锁定了，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。`select for update`，现在使用select for update来查询数据，以达到排他读的目的。但是发现，在有正常结果数据时造成的锁表对系统性能有明显地影响。select for update的条件不是主键所以id，所以造成锁表。尽可能让所有数据检索都通过索引来完成，从而避免InnoDB因为无法通过索引键加锁而升级为表级锁定。
 
-##### 读锁和写锁
-1. 共享锁(S锁)又称读锁,若事务T对数据对象A加上S锁,则事务T可以读A但不能修改A,其他事务只能再对A加S锁,而不能加X锁,直到T释放A上的S 锁.这保证了其他事务可以读A,但在T释放A上的S锁之前不能对A做任何修改.
-2. 排他锁(X锁)又称写锁.若事务T对数据对象A加上X锁,事务T可以读A也可以修改A,其他事务不能再对A加任何锁,直到T释放A上的锁.这保证了其他事务在T释放A上的锁之前不能再读取和修改A.
+3. 读锁和写锁
+    1. 共享锁(S锁)又称读锁,若事务T对数据对象A加上S锁,则事务T可以读A但不能修改A,其他事务只能再对A加S锁,而不能加X锁,直到T释放A上的S 锁.这保证了其他事务可以读A,但在T释放A上的S锁之前不能对A做任何修改.
+    2. 排他锁(X锁)又称写锁.若事务T对数据对象A加上X锁,事务T可以读A也可以修改A,其他事务不能再对A加任何锁,直到T释放A上的锁.这保证了其他事务在T释放A上的锁之前不能再读取和修改A.
 
 
 ##### 并发事务处理带来的问题
@@ -106,34 +104,27 @@ more detailed info see this link.  http://www.jb51.net/article/31850.htm
 
 #### mysql 中的数据类型
 
-    tinyint   1 字节    -128 ~ 128
-    smallint  2 字节   -32768 ~ 32767
-    mediumint 3字节  
-    int       4字节  int(11)
-    bigint    8字节
+1. 基础数据类型
     
-    unsigned   int   0～4294967295   
-    int   2147483648～2147483647 
-    unsigned long 0～4294967295
-    long   2147483648～2147483647
-    long long的最大值：9223372036854775807
-    long long的最小值：-9223372036854775808
-    unsigned long long的最大值：18446744073709551615
+        tinyint   1 字节    -128 ~ 128
+        smallint  2 字节   -32768 ~ 32767
+        mediumint 3字节  
+        int       4字节  int(11)
+        bigint    8字节
     
-    __int64的最大值：9223372036854775807
-    __int64的最小值：-9223372036854775808
-    unsigned __int64的最大值：18446744073709551615
+        unsigned   int   0～4294967295   
+        int   2147483648～2147483647 
+        unsigned long 0～4294967295
+        long   2147483648～2147483647
+        long long的最大值：9223372036854775807
+        long long的最小值：-9223372036854775808
+        unsigned long long的最大值：18446744073709551615
+    
+        __int64的最大值：9223372036854775807
+        __int64的最小值：-9223372036854775808
+        unsigned __int64的最大值：18446744073709551615
 
-#### Mysql decimal
-
-对于精度比较高的东西，比如money，我会用decimal类型，不会考虑float,double,因为他们容易产生误
-差，numeric和decimal同义，numeric将自动转成decimal。
-DECIMAL从MySQL 5.1引入，列的声明语法是DECIMAL(M,D)。在MySQL 5.1中，参量的取值范围如下：
-·M是数字的最大数（精度）。其范围为1～65（在较旧的MySQL版本中，允许的范围是1～254），
-M 的默认值是10。
-·D是小数点右侧数字的数目（标度）。其范围是0～30，但不得超过M。
-说明：float占4个字节，double占8个字节，decimail(M,D)占M+2个字节。
-
+2. mysql decimal 对于精度比较高的东西，比如money，我会用decimal类型，不会考虑float,double,因为他们容易产生误差，numeric和decimal同义，numeric将自动转成decimal。DECIMAL从MySQL 5.1引入，列的声明语法是DECIMAL(M,D)。在MySQL 5.1中，参量的取值范围如下：·M是数字的最大数（精度）。其范围为1～65（在较旧的MySQL版本中，允许的范围是1～254），M 的默认值是10。·D是小数点右侧数字的数目（标度）。其范围是0～30，但不得超过M。说明：float占4个字节，double占8个字节，decimail(M,D)占M+2个字节。
 关于decimal范围的判断，下面这是一个不错的解释。
 
     Although the answers above seems correct, just a simple explanation to give you an idea of how it works.
@@ -141,22 +132,17 @@ M 的默认值是10。
     digits where 4 of these will be used for precision representation.
     So, in summary, for that column you would have a max value of: 999999999,9999
 
-引申 为什么floa 和 double 会丢失精度。
-1 字节 = 8 bit。 int 一般认为是32位。最长是10位。
-float 为4byte。
-double 为8btye。
-IEEE 754 标准，数的存法。
+引申 为什么floa 和 double 会丢失精度。1 字节 = 8 bit。 int 一般认为是32位。最长是10位。float 为4byte。double 为8btye。IEEE 754 标准，数的存法。
 
 
-#### datetime 和 timestamp 的区别。
+3. datetime 和 timestamp 的区别。
 
-    ctime  datetime => now()  4字节
-    mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
-    1970 ~ 2037
-    alter table user add column mtime timestamp  not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;
-    alter table user add column ctime timestamp  not null default CURRENT_TIMESTAMP;
-
-1970 1.1 00:00:00 标准时间，一般情况，mysql需要2个字段，一个是ctime，一个是mtime，mysql中这两个字段一般都是not null 的，timestamp如果是2个默认值都是CURRENT_TIMESTAMP的话，sql会报错，可以像上面那样写。
+        ctime  datetime => now()  4字节
+        mtime  timestamp ==> CURRENT_TIMESTAMP  8字节
+        1970 ~ 2037
+        alter table user add column mtime timestamp  not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;
+        alter table user add column ctime timestamp  not null default CURRENT_TIMESTAMP;
+        1970 1.1 00:00:00 标准时间，一般情况，mysql需要2个字段，一个是ctime，一个是mtime，mysql中这两个字段一般都是not null 的，timestamp如果是2个默认值都是CURRENT_TIMESTAMP的话，sql会报错，可以像上面那样写。
 
 
 #### Mysql 索引操作 mysqldump 数据导出和数据恢复
