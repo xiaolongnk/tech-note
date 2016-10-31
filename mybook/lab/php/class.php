@@ -18,5 +18,6 @@ class S extends Base{
 }
 
 $ac = new S();
-$ac->shows();
+$method = "shows";
+$ac->$method();
 ?>
