@@ -1,14 +1,25 @@
-## My note and my sys_conf scripts.
+##技术笔记
 
-本人很懒,但偶尔也会记录一些东西.希望日后回顾,能有所启发.
 
-包含以下3部分内容.
+希望在这里记录一些有价值的东西，这里的东西都是经过自己验证.
+里面有代码，那些代码都是为了学习对应的点做的练习。
 
-> ```
-> sys_conf   系统配置文件,系统核心配置备份脚本,系统核心配置还原脚本.
-> mybook     各种学习笔记,php,python,shell,web,linux,perl,lua...  后面会继续扩展,我立志要把linux系学个遍. 
-> selfd      个人相关的一些东西，里面有我的简历什么的。
-> algrom     一些常用算法的联系代码。价值不大。
-> ```
+主要方向是web后端，前端也有一点：
+`php , nginx , mysql , redis , memcached , linux , shell , python , c , c++ `
 
-最核心的内容在mybook里面，会记录下所有自己认为有价值的内容。
+
+topic | description
+---|----
+c/c++  | 包括 php 和 nginx 源码分析 , autoconf , gdb ；多线程，多进程，使用第三方库构建项目
+php | 包括一个简单的框架,学习PHP源码，了解PHP设计原理；了解laravel，学习快速构建项目
+计算机网络 | 了解网络4层协议中的每个部分，重点分析 tcp/ip , http
+mysql  |  深入了解mysql, 包括索引，分区，分表,集群
+linux  | shell , 系统管理 ,linux 常用工具(git , sed , awk , grep , find , ack)
+web 前端 |  vuejs , angular , html , css , js 
+算法学习 | 在 leetcode 上做算法题
+
+
+
+#### 参考资料
+1. [leetcode](https://leetcode.com)
+
