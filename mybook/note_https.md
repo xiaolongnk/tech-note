@@ -21,7 +21,7 @@ chmod a+x certbot-auto
 ./certbot-auto
 ./path/to/certbot-auto certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
 ```
-执行完之后系统中会生成这些文件。![系统中生成的文件](http://img.nofile.cc/cert.jpg)
+执行完之后系统中会生成这些文件。![系统中生成的文件](https://img.nofile.cc/cert.jpg)
 
 	This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.
 
