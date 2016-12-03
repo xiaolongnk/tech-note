@@ -2,15 +2,18 @@
 title: shell while loop break
 date: 2016-12-03 16:47
 tags:
-- shell linux
+- shell
+- linux
 ---
 
-####
+####  shell while and break
+
 shell 中的while 循环，也可以和break关键字配合使用，和其他程序语言类似。大体是一个`do...done`的格式。
 本文是一个简单的shell while的程序，可以用来检查你的程序是不是还活着。 包括一些简单的算术运算，在实际变成中比较常用。
 
 
-####代码
+#### 代码
+
 ```shell
 #!/bin/bash
 
