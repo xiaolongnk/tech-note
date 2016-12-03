@@ -6,7 +6,7 @@ tags:
 ---
 
 ####
-shell 中的while 循环，也可以和break关键字配合使用，和其他程序语言类似。大体是一个do...done的格式。
+shell 中的while 循环，也可以和break关键字配合使用，和其他程序语言类似。大体是一个`do...done`的格式。
 本文是一个简单的shell while的程序，可以用来检查你的程序是不是还活着。 包括一些简单的算术运算，在实际变成中比较常用。
 
 
@@ -34,5 +34,7 @@ do
     sleep 5
 done
 ```
-![hello](https://img.nofile.cc/images/2016/12/03/14807576040945.png =100x20)
+运行结果如下
+
+<img src='https://img.nofile.cc/images/2016/12/03/14807576040945.png' style="width:500px"></img>
 
