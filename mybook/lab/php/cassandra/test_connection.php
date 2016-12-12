@@ -99,21 +99,23 @@ function test_connection_code()
         echo "query got nothing.\n";
     }
 }
+/**
+ * create keyspace and table.
+ */
+function initialize_keyspace()
+{
+    $p = CassandraFactory::getInstance();
+    $new_key_space = 'test_01';
+    $create_keyspace_cql = "CREATE KEYSPACE $new_key_space
+        WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
+    $ret = $p->createKeySpace($create_keyspace_cql);
+    echo "create keyspace finished with ret [ $ret ]\n";
+}
 
 function test_op_code()
 {
-    $keyspace = "test";
+    $keyspace = "test_01";
     $p = CassandraFactory::getInstance($keyspace);
-
-    $new_key_space = 'test_01';
-
-    $create_keyspace_cql = "CREATE KEYSPACE $new_key_space
-        WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
-
-    $ret = $p->createKeySpace($create_keyspace_cql);
-    echo "create keyspace finished with ret [ $ret ]\n";
-
-    $ret = $p->changeKeySpace($new_key_space);
 
     $create_table_cql = "create table media_source_table (aid varchar primary key, 
         media_source varchar , ext varchar)";
