@@ -10,19 +10,16 @@ class CassandraFactory
         $port = 9042;
         $cluster= Cassandra::cluster()->withContactPoints($host)->withPort($port)->build();
         $this->session = $cluster->connect();
-        if(empty($keyspace)) {
-            echo "keyspace should not empty!";
+        if(!empty($keyspace)) {
+            $this->keyspace = $keyspace;
+            $usekeyspace = "USE $keyspace";
+            $this->session->execute(
+                new Cassandra\SimpleStatement($usekeyspace)
+            );
         }
-        $this->keyspace = $keyspace;
-        $usekeyspace = "USE $keyspace";
-        $this->session->execute(
-            new Cassandra\SimpleStatement($usekeyspace)
-        );
-
-
     }
 
-    public static function getInstance($keyspace)
+    public static function getInstance($keyspace = '')
     {
         static $instance = null;
         if(empty($instance)){
@@ -88,45 +85,60 @@ class CassandraFactory
     }
 }
 
-$keyspace = "test";
-$p = CassandraFactory::getInstance($keyspace);
-
-$create_keyspace_cql = "CREATE KEYSPACE test_01 
-    WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
-
-$ret = $p->createKeySpace($create_keyspace_cql);
-echo "create keyspace finished with ret [ $ret ]\n";
-
-$create_table_cql = "create table media_source_table (aid varchar primary key, 
-    media_source varchar , ext varchar)";
-$ret = $p->createTable($create_table_cql);
-
-echo "create table finished with ret [ $ret] \n";
-
-$test_insert_cql = "insert into media_source_table (aid , media_source , ext ) values (? , ? , ' ')" ;
-$test_insert_cql_bind_data =[
-    ['111114' , 'facebook'],
-    ['111115' , 'google'],
-    ['111116' , 'twitter'],
-    ['111117' , 'facebook'],
-    ['111118' , 'google']
-];
-
-foreach($test_insert_cql_bind_data as $v){
-    $ret = $p->insert($test_insert_cql , $v);
-    $ret = serialize($ret);
-    echo "insert finished with ret [ {$ret} ]\n";
+function test_connection_code()
+{
+    $p = CassandraFactory::getInstance();
+    $query_cql = "SELECT keyspace_name, columnfamily_name FROM system.schema_columnfamilies";
+    echo "query cassandra info\n";
+    $ret = $p->query($query_cql , []);
+    if($ret){
+        foreach($ret as $row){
+            echo "\tkeyspace [{$row['keyspace_name']}]  column [{$row['columnfamily_name']}] \n";
+        }
+    }else {
+        echo "query got nothing.\n";
+    }
 }
 
+function test_op_code()
+{
+    $keyspace = "test";
+    $p = CassandraFactory::getInstance($keyspace);
 
-//$test_insert_cql_bind_data = ['111112' , 'google'];
-//$test_insert_cql_bind_data = ['111113' , 'facebook'];
-//$test_insert_cql_bind_data = ['111114' , 'twitter'];
+    $new_key_space = 'test_01';
 
-//$test_update_cql = "";
-//$test_update_cql_bind_data = [];
+    $create_keyspace_cql = "CREATE KEYSPACE $new_key_space
+        WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
 
+    $ret = $p->createKeySpace($create_keyspace_cql);
+    echo "create keyspace finished with ret [ $ret ]\n";
 
-$test_query_cql = "select media_source from media_source_table where aid = ?";
-$test_query_cql_bind_data = ['111111'];
-$ret_q = $p->query($test_query_cql , $test_query_cql_bind_data);
+    $ret = $p->changeKeySpace($new_key_space);
+
+    $create_table_cql = "create table media_source_table (aid varchar primary key, 
+        media_source varchar , ext varchar)";
+    $ret = $p->createTable($create_table_cql);
+
+    echo "create table finished with ret [ $ret] \n";
+
+    $test_insert_cql = "insert into media_source_table (aid , media_source , ext ) values (? , ? , ' ')" ;
+    $test_insert_cql_bind_data =[
+        ['111114' , 'facebook'],
+        ['111115' , 'google'],
+        ['111116' , 'twitter'],
+        ['111117' , 'facebook'],
+        ['111118' , 'google']
+    ];
+
+    foreach($test_insert_cql_bind_data as $v){
+        $ret = $p->insert($test_insert_cql , $v);
+        $ret = serialize($ret);
+        echo "insert finished with ret [ {$ret} ]\n";
+    }
+    
+    $test_query_cql = "select media_source from media_source_table where aid = ?";
+    $test_query_cql_bind_data = ['111111'];
+    $ret_q = $p->query($test_query_cql , $test_query_cql_bind_data);
+}
+
+test_connection_code();
