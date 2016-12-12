@@ -33,7 +33,7 @@ class CassandraFactory
     {
         $this->keyspace = $keyspace;
         $usekeyspace = "use $keyspace";
-        $ret = $this->session->execute($usekeyspace);
+        $ret = $this->execute($usekeyspace);
         return $ret;
     }
 
@@ -110,19 +110,17 @@ function initialize_keyspace()
         WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
     $ret = $p->createKeySpace($create_keyspace_cql);
     echo "create keyspace finished with ret [ $ret ]\n";
+    $p->changeKeySpace($new_key_space);
+    $create_table_cql = "create table media_source_table (aid varchar primary key, 
+        media_source varchar , ext varchar)";
+    $ret = $p->createTable($create_table_cql);
+    echo "create table finished with ret [ $ret] \n";
 }
 
 function test_op_code()
 {
-    $keyspace = "test_01";
-    $p = CassandraFactory::getInstance($keyspace);
-
-    $create_table_cql = "create table media_source_table (aid varchar primary key, 
-        media_source varchar , ext varchar)";
-    $ret = $p->createTable($create_table_cql);
-
-    echo "create table finished with ret [ $ret] \n";
-
+    $new_key_space = 'test_01';
+    $p = CassandraFactory::getInstance($new_key_space);
     $test_insert_cql = "insert into media_source_table (aid , media_source , ext ) values (? , ? , ' ')" ;
     $test_insert_cql_bind_data =[
         ['111114' , 'facebook'],
@@ -142,5 +140,4 @@ function test_op_code()
     $test_query_cql_bind_data = ['111111'];
     $ret_q = $p->query($test_query_cql , $test_query_cql_bind_data);
 }
-
-test_connection_code();
+initialize_keyspace();
