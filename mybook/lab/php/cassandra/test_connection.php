@@ -9,7 +9,6 @@ class CassandraFactory
         $host = "127.0.0.1";
         $port = 9042;
         $cluster= Cassandra::cluster()->withContactPoints($host)->withPort($port)->build();
-        var_dump($cluster);
         $this->session = $cluster->connect();
         if(empty($keyspace)) {
             echo "keyspace should not empty!";
@@ -41,7 +40,7 @@ class CassandraFactory
         return $ret;
     }
 
-    private function execute($cql , $bind_data)
+    private function execute($cql , $bind_data = [])
     {
         try {
             $ret_insert_cql = $this->session->execute(
@@ -50,9 +49,7 @@ class CassandraFactory
             );
             return $ret_insert_cql;
         }catch(\Exception $e){
-            var_dump($e->getMessage());
-            var_dump($e->getCode());
-            echo "exception in insert";
+            echo "exception occured with mmsg [{$e->getMessage()}] code [ {$e->getCode()} ]\n";
             return -1;
         }
     }
@@ -71,16 +68,40 @@ class CassandraFactory
     {
         return $this->execute($cql , $bind_data);
     }
+
+    public function createKeySpace($cql)
+    {
+        // here to create your keyspaces
+        return $this->execute($cql);
+    }
+
+    public function createTable($cql)
+    {
+        // here to create your table.
+        return $this->execute($cql );
+    }
+
     public function __destruct()
     {
         $this->session->close();
-        echo "destoryed";
+        echo "destoryed\n";
     }
 }
 
 $keyspace = "test";
 $p = CassandraFactory::getInstance($keyspace);
 
+$create_keyspace_cql = "CREATE KEYSPACE test_01 
+    WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
+
+$ret = $p->createKeySpace($create_keyspace_cql);
+echo "create keyspace finished with ret [ $ret ]\n";
+
+$create_table_cql = "create table media_source_table (aid varchar primary key, 
+    media_source varchar , ext varchar)";
+$ret = $p->createTable($create_table_cql);
+
+echo "create table finished with ret [ $ret] \n";
 
 $test_insert_cql = "insert into media_source_table (aid , media_source , ext ) values (? , ? , ' ')" ;
 $test_insert_cql_bind_data =[
@@ -93,7 +114,8 @@ $test_insert_cql_bind_data =[
 
 foreach($test_insert_cql_bind_data as $v){
     $ret = $p->insert($test_insert_cql , $v);
-    var_dump("ret for insert" ,$ret);
+    $ret = serialize($ret);
+    echo "insert finished with ret [ {$ret} ]\n";
 }
 
 
