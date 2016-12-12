@@ -109,11 +109,13 @@ function initialize_keyspace()
     $create_keyspace_cql = "CREATE KEYSPACE $new_key_space
         WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
     $ret = $p->createKeySpace($create_keyspace_cql);
+    $ret = serialize($ret);
     echo "create keyspace finished with ret [ $ret ]\n";
     $p->changeKeySpace($new_key_space);
     $create_table_cql = "create table media_source_table (aid varchar primary key, 
         media_source varchar , ext varchar)";
-    $ret = $p->createTable($create_table_cql);
+$ret = $p->createTable($create_table_cql);
+$ret = serialize($ret);
     echo "create table finished with ret [ $ret] \n";
 }
 
