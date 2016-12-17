@@ -49,12 +49,12 @@ n.replace(/http:/g , 'https');
 ```
 刷新页面，发现页面上的所有数据都变成了https 的了，锁变绿了，开心。
 
-[https站点](https://blog.nofile.cc/posts/2016/08/19/note-https.htm://blog.nofile.cc/posts/2016/08/19/note-https.html) 
+[https站点](https://blog.nofile.cc/posts/2016/08/19/note-https.html) 
 的方法，可以参考我之前的blog.
 
 ### Github repo
 
-最终修改后的结果在我的[xiaolongnk](https://github.com/xiaolongnk/duoshuo-js-http-patch/blob/master/embed-https.js)上.
+最终修改后的结果在我的[xiaolongnk](https://github.com/xiaolongnk/duoshuo-js-http-patch)上.
 喜欢的可以star一下我。
 
 ### 参考资料：

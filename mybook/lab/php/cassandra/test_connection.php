@@ -1,4 +1,6 @@
 <?php
+define('__NEWLINE' , "\n");
+define('__TAB' , "\t");
 class CassandraFactory
 {
     private $session = null;
@@ -7,7 +9,7 @@ class CassandraFactory
     private function __construct($keyspace)
     {
         $host = "127.0.0.1";
-        $port = 9042;
+        $port = 6666;
         $cluster= Cassandra::cluster()->withContactPoints($host)->withPort($port)->build();
         $this->session = $cluster->connect();
         if(!empty($keyspace)) {
@@ -19,6 +21,11 @@ class CassandraFactory
         }
     }
 
+	public function getSession()
+    {
+        return $this->session;
+    }
+
     public static function getInstance($keyspace = '')
     {
         static $instance = null;
@@ -26,6 +33,26 @@ class CassandraFactory
             $instance = new self($keyspace);
         }
         return $instance;
+    }
+
+    public static function check()
+    {
+        // check if the extension is on.
+        echo "cassandra check:".__NEWLINE;
+        if (!extension_loaded( 'cassandra' )){
+            echo "extension not found: cassandra".__NEWLINE;
+            $check_result = "cassandra check failed".__NEWLINE;
+            goto exitline;
+        }
+        $cassanfactory = new self('');
+        $session = $cassanfactory->getSession();
+        $schema = $session->schema();
+        foreach($schema->keyspaces() as $sc){
+            echo __TAB.__TAB."{$sc->name()}".__NEWLINE;
+        }
+        $check_result = "cassandra check ok".__NEWLINE;
+        exitline:
+        echo $check_result;
     }
 
 
@@ -81,7 +108,6 @@ class CassandraFactory
     public function __destruct()
     {
         $this->session->close();
-        echo "destoryed\n";
     }
 }
 
@@ -142,4 +168,6 @@ function test_op_code()
     $test_query_cql_bind_data = ['111111'];
     $ret_q = $p->query($test_query_cql , $test_query_cql_bind_data);
 }
-initialize_keyspace();
+
+//initialize_keyspace();
+CassandraFactory::check();
