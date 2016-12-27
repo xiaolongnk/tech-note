@@ -1,4 +1,6 @@
 <?php
+define('__NEWLINE' , "\n");
+define('__TAB' , "\t");
 class CassandraFactory
 {
     private $session = null;
@@ -7,7 +9,7 @@ class CassandraFactory
     private function __construct($keyspace)
     {
         $host = "127.0.0.1";
-        $port = 9042;
+        $port = 6666;
         $cluster= Cassandra::cluster()->withContactPoints($host)->withPort($port)->build();
         $this->session = $cluster->connect();
         if(!empty($keyspace)) {
@@ -19,6 +21,11 @@ class CassandraFactory
         }
     }
 
+	public function getSession()
+    {
+        return $this->session;
+    }
+
     public static function getInstance($keyspace = '')
     {
         static $instance = null;
@@ -28,12 +35,32 @@ class CassandraFactory
         return $instance;
     }
 
+    public static function check()
+    {
+        // check if the extension is on.
+        echo "cassandra check:".__NEWLINE;
+        if (!extension_loaded( 'cassandra' )){
+            echo "extension not found: cassandra".__NEWLINE;
+            $check_result = "cassandra check failed".__NEWLINE;
+            goto exitline;
+        }
+        $cassanfactory = new self('');
+        $session = $cassanfactory->getSession();
+        $schema = $session->schema();
+        foreach($schema->keyspaces() as $sc){
+            echo __TAB.__TAB."{$sc->name()}".__NEWLINE;
+        }
+        $check_result = "cassandra check ok".__NEWLINE;
+        exitline:
+        echo $check_result;
+    }
+
 
     public function changeKeySpace($keyspace)
     {
         $this->keyspace = $keyspace;
         $usekeyspace = "use $keyspace";
-        $ret = $this->session->execute($usekeyspace);
+        $ret = $this->execute($usekeyspace);
         return $ret;
     }
 
@@ -81,7 +108,6 @@ class CassandraFactory
     public function __destruct()
     {
         $this->session->close();
-        echo "destoryed\n";
     }
 }
 
@@ -109,20 +135,20 @@ function initialize_keyspace()
     $create_keyspace_cql = "CREATE KEYSPACE $new_key_space
         WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }";
     $ret = $p->createKeySpace($create_keyspace_cql);
+    $ret = serialize($ret);
     echo "create keyspace finished with ret [ $ret ]\n";
+    $p->changeKeySpace($new_key_space);
+    $create_table_cql = "create table media_source_table (aid varchar primary key, 
+        media_source varchar , ext varchar)";
+$ret = $p->createTable($create_table_cql);
+$ret = serialize($ret);
+    echo "create table finished with ret [ $ret] \n";
 }
 
 function test_op_code()
 {
-    $keyspace = "test_01";
-    $p = CassandraFactory::getInstance($keyspace);
-
-    $create_table_cql = "create table media_source_table (aid varchar primary key, 
-        media_source varchar , ext varchar)";
-    $ret = $p->createTable($create_table_cql);
-
-    echo "create table finished with ret [ $ret] \n";
-
+    $new_key_space = 'test_01';
+    $p = CassandraFactory::getInstance($new_key_space);
     $test_insert_cql = "insert into media_source_table (aid , media_source , ext ) values (? , ? , ' ')" ;
     $test_insert_cql_bind_data =[
         ['111114' , 'facebook'],
@@ -143,4 +169,5 @@ function test_op_code()
     $ret_q = $p->query($test_query_cql , $test_query_cql_bind_data);
 }
 
-test_connection_code();
+//initialize_keyspace();
+CassandraFactory::check();
