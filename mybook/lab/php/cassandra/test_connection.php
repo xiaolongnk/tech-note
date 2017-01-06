@@ -9,7 +9,7 @@ class CassandraFactory
     private function __construct($keyspace)
     {
         $host = "127.0.0.1";
-        $port = 6666;
+        $port = 9042;
         $cluster= Cassandra::cluster()->withContactPoints($host)->withPort($port)->build();
         $this->session = $cluster->connect();
         if(!empty($keyspace)) {
@@ -170,4 +170,4 @@ function test_op_code()
 }
 
 //initialize_keyspace();
-CassandraFactory::check();
+test_connection_code();

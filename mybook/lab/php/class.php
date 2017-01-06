@@ -1,23 +1,29 @@
 <?php
 class Base
 {
-    protected $a = "hello".PHP_EOL;
+    protected $_display = 1;
     protected function show()
     {
-        print $this->a;
+        print $this->_display;
+    }
+
+    public function setDisplay($v)
+    {
+        $this->_display = $v;
     }
 }
 
 class S extends Base{
-    
+
     public function shows()
     {
-        $this->show();
-        print "here is shows".$this->a;
+        echo $this->_display.PHP_EOL;
     }
 }
 
 $ac = new S();
+$ac->setDisplay(20);
+
 $method = "shows";
 $ac->$method();
 ?>
