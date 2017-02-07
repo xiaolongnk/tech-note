@@ -1,3 +1,10 @@
+/**
+ * this program is aimed for c++11 feature test.
+ * make this program with 
+ * -std=c++11
+ *
+ */
+
 #include <iostream>
 #include <array>
 #include <vector>
