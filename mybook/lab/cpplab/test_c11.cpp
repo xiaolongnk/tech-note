@@ -18,6 +18,16 @@
 #include <cmath>
 #include <typeinfo>
 
+using std::cout;
+using std::endl;
+
+struct hello
+{
+    int i = 10;
+};
+
+void refer(hello &x);
+
 void test_vector()
 {
 //    std::vector<int> v = { 7 , 5, 16 , 8};
@@ -133,8 +143,25 @@ void test_auto()
 }
 
 
+
+void test_refer()
+{
+    hello x;
+    x.i = 100;
+    cout<<x.i<<endl;
+    hello *c = &x;
+    cout<<c->i<<endl;
+    refer(x);
+    cout<<x.i<<endl;
+}
+
+void refer(hello & x)
+{
+    x.i = 200;
+}
+
 int main()
 {
-    test_auto();
+    test_refer();
     return 0;
 }
