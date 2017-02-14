@@ -42,6 +42,12 @@ class Student
             cout<<"Age      is:"<<this->age<<endl;
             cout<<"birthday is:"<<this->birthday<<endl;
         }
+        void hello(int a) {
+            cout<<a<<endl;
+        }
+        void hello(float b) {
+            cout<<b<<endl;
+        }
 
         static Student& getInstance()
         {
@@ -64,5 +70,9 @@ int main()
     p.setName("ouxiaolong");
     p.setBirthday("1989-10-18");
     p.printInfo();
+    int a = 100;
+    float b=12.33;
+    p.hello(a);
+    p.hello(b);
     return 0;
 }
