@@ -48,6 +48,12 @@ int main()
 
 
     vector<int> v1 = {11,22,33,44,55,66};
+    for(auto it = v1.begin() ; it!=v1.end(); ++it) {
+        cout<<*it<<" ";
+    }
+    cout<<endl;
+
+
     vector<int> v3;
     v3.swap(v1);
     //reverse_copy;(a2.begin() , a2.end() , stream_iterator<int>(cout, " "));
