@@ -23,10 +23,9 @@ double c(int c){
 
 }
 
-
+#ifndef
 #define HELLOWORLD(cccc)
-
-
+#endif
 
 int main()
 {
