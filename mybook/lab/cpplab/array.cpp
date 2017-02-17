@@ -36,6 +36,16 @@ void test()
     print_range(v.rbegin() , v.rend() , "<-");
 }
 
+void test_shrink()
+{
+    vector<int> a(100);
+    cout<<"size of my vector is: "<<a.capacity()<<endl;
+    a.resize(10);
+    cout<<"size of my vector is: "<<a.capacity()<<endl;
+    a.shrink_to_fit();
+    cout<<"size of my vector is: "<<a.capacity()<<endl;
+}
+
 int main()
 {
     array<int , 3> a1{{1,2,3}};
@@ -66,5 +76,7 @@ int main()
     cout<<"+++++++++++++++++++"<<endl;
     test();
     cout<<endl;
+
+    test_shrink();
     return 0;
 }

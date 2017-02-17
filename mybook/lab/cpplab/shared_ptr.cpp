@@ -30,15 +30,31 @@ int main()
     struct MyStruct {
         MyStruct(int ii) : i(ii)  {
             cout<<"MyStruct () i = " << i <<endl;
-        } 
+        }
+
         ~MyStruct() {
             cout<<"MyStruct deleted"<<endl;
+        }
+
+        void printSelf()
+        {
+            cout<<"this is in MyStruct"<<endl;
+        }
+        void setData(int val) {
+            this->i = val;
+        }
+        int getData() const
+        {
+            return this->i;
         }
         int i;
     };
 
     {
         shared_ptr < MyStruct> spMyStruct(new MyStruct(10));
+        spMyStruct->printSelf();
+        spMyStruct->setData(100);
+        cout<<"current data is "<<spMyStruct->getData()<<endl;
         // shared_ptr has deplicit convert to bool , check if the pointer have bind a resource
         if(spMyStruct) {
             cout<<"1 spMyStruct use count ="<<spMyStruct.use_count()<<endl;
@@ -56,6 +72,5 @@ int main()
 
     shared_ptr<int> spInt = make_shared<int>(540);
     cout<<*spInt<<endl;
-    cout<<spInt<<endl;
     return 0;
 }
