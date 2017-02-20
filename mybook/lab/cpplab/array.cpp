@@ -5,7 +5,13 @@
 #include <array>
 #include <vector>
 #include <set>
+#include <map>
+#include <unordered_map>
+#include <memory>
 
+using std::shared_ptr;
+using std::unordered_map;
+using std::map;
 using std::array;
 using std::cout;
 using std::string;
@@ -46,6 +52,23 @@ void test_shrink()
     cout<<"size of my vector is: "<<a.capacity()<<endl;
 }
 
+
+void test_unordered_map()
+{
+    unordered_map < string , string>  address;
+    address["ouxiaolong"] = "甘肃";
+    address["zhangxin"]   = "山东";
+    for(const auto & x : address) {
+        cout<<x.first<<"   "<<x.second<<endl;
+    }
+    cout<<endl;
+}
+void test_operator_priority()
+{
+    shared_ptr < int > a  (new int);
+    *a = 3;
+    cout<<*a - 1 <<endl;
+}
 int main()
 {
     array<int , 3> a1{{1,2,3}};
@@ -74,9 +97,9 @@ int main()
     for(const auto& s: a3)
         cout<< s <<' ';
     cout<<"+++++++++++++++++++"<<endl;
-    test();
-    cout<<endl;
 
-    test_shrink();
+    test_unordered_map();
+
+    test_operator_priority();
     return 0;
 }
