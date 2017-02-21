@@ -1,11 +1,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdio.h>
 
 using std::string;
 using std::vector;
 using std::cout;
 using std::endl;
+
+
+#define LOG(format, ...) \
+            printf("[%d] [%x] "format "\n",11, 22, ##__VA_ARGS__)
 
 
 class Student
@@ -74,5 +79,7 @@ int main()
     float b=12.33;
     p.hello(a);
     p.hello(b);
+
+    LOG(" %s hello %d" , "what is your name" , 333);
     return 0;
 }

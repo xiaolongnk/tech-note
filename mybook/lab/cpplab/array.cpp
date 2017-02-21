@@ -80,15 +80,14 @@ int main()
     int a11[6];
 
 
-    vector<int> v1 = {11,22,33,44,55,66};
-    for(auto it = v1.begin() ; it!=v1.end(); ++it) {
-        cout<<*it<<" ";
+    const vector<int> v1 = {11,22,33,44,55,66};
+    const vector<int>* v111 = &v1;
+    for(const auto & it : *v111) {
+        cout<<it<<endl;
     }
     cout<<endl;
 
-
-    vector<int> v3;
-    v3.swap(v1);
+    vector<int> v3(v1);
     //reverse_copy;(a2.begin() , a2.end() , stream_iterator<int>(cout, " "));
     //v3.assign(v1.begin() , v1.end());
     reverse(v3.begin(), v3.end());
