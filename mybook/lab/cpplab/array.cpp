@@ -9,6 +9,9 @@
 #include <unordered_map>
 #include <memory>
 
+using namespace std;
+
+
 using std::shared_ptr;
 using std::unordered_map;
 using std::map;
@@ -69,6 +72,16 @@ void test_operator_priority()
     *a = 3;
     cout<<*a - 1 <<endl;
 }
+
+
+
+void test_hex()
+{
+    int a = 0x000c0101;
+    int lastbit = a & 0x0000ffff;
+    cout<<hex<<lastbit<<endl;
+}
+
 int main()
 {
     array<int , 3> a1{{1,2,3}};
@@ -100,5 +113,7 @@ int main()
     test_unordered_map();
 
     test_operator_priority();
+
+    test_hex();
     return 0;
 }

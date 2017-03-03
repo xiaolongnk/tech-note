@@ -3,9 +3,10 @@
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 #include <vector>
-
+#include <ctime>
 
 using namespace std;
+
 int main()
 {
 	curl_global_init( CURL_GLOBAL_ALL );
@@ -18,5 +19,8 @@ int main()
     cout<<result<<endl;
 	curl_easy_cleanup( myHandle ); 
 	printf("LibCurl rules!\n");
+    
+    std::time_t t = std::time(0);  // t is an integer type
+    std::cout << t << " seconds since 01-Jan-1970\n";
 	return 0;
 }
