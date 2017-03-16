@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 #include <sstream>
 
 using namespace std;
@@ -16,24 +17,28 @@ using namespace std;
  ***/
 string get_taboola_source(const string & source)
 {
-    const string full_taboola = "Powered By Taboola";
-    // len is 17 , powerd by can be skipped whose length is 10.
-    const string only_taboola = "Taboola"; // len is 8
-    const string min_space    = "        ";
-    string taboola_source     = "";
-    int cursor = 9 - source.length();
-    int delta = 5;
-    if( cursor > 0 ) {
-        string blank_space = "";
-        for(int j = 0 ; j < (cursor + 4 + delta) ; ++j ) blank_space += " ";
-        taboola_source = source + min_space + blank_space + full_taboola;
-    } else if ( cursor > -11 ) {
-        string blank_space = "";
-        for(int j = 0 ; j < (15 + cursor + delta)   ; ++j ) blank_space += " ";
-        taboola_source = source + min_space + blank_space + only_taboola;
-    } else {
-        return source;
+    const string string_full_taboola = "      Powered By Taboola";
+    string taboola_source = "";
+    ushort source_length = source.length();
+    if( source_length > 10) {
+        //width is bigger than 10 , splice and add ...
+        taboola_source = source.substr(0 , 10);
+        taboola_source += "... ";
+    }else {
+        // no add ...
+        ushort delta = 19 - source_length;
+        taboola_source = source;
+        for (ushort i = 0; i < delta; ++i) {
+            taboola_source += " ";
+        }
     }
+    int delta = 0;
+    for(ushort i = 0 ; i <= 10 && i < source.length(); ++i){
+        if(source[i] == ' ') {
+            taboola_source += " ";
+        }
+    }
+    taboola_source += string_full_taboola;
     return taboola_source;
 }
 
@@ -61,16 +66,116 @@ void test_stringstream()
     cout<<ch.c_str()<<endl;
 }
 
+void test_string()
+{
+    string h1 = "7.2.0.0";
+    string h2 = "7.2.1";
+    if(h1 >= h2) {
+        cout<<"Yes"<<endl;
+    }
+}
+
+void test_taboola()
+{
+    vector< string > ss;
+    for(ushort i = 0 ; i< 20 ; ++i){
+        string  s = "";
+        for(ushort j = 0 ; j < i ; ++j) {
+            s += "a";
+        }
+        ss.emplace_back(s);
+    }
+
+    for(const auto & x : ss){
+        cout<<get_taboola_source(x)<<endl;
+    }
+}
+
+
+/**
+ * return  1 if v1 > v2
+ * return  0 if v1 == v2
+ * return -1 if v1 < v2
+ * 2017-03-16 15:36
+ */
+int version_larger_simple (const string & v1 , const string &v2)
+{
+    if( v1 == v2 ) return 0;
+    else if( v1 > v2 ) return 1;
+    else return -1;
+}
+
+/**
+ * return  1 if v1 > v2
+ * return  0 if v1 == v2
+ * return -1 if v1 < v2
+  *2017-03-16 15:36
+ */
+int version_larger_strong (const string &v1 , const string &v2) 
+{
+    istringstream is1(v1) , is2(v2);
+    string token;
+    stack<string> mst1;
+    long f_value = 0 , s_value = 0;
+    const int base = 100;
+
+    while(getline(is1 , token , '.')) {
+        mst1.push(token);
+    }
+
+    ushort cnt = 0;
+    int power = 1;
+    unsigned short tmp = 0;
+    while(!mst1.empty()) {
+        tmp = atoi(mst1.top().c_str());
+        for(ushort i = 0; i <  cnt; ++i) {
+            power *= base;
+        }
+        f_value += power * tmp;
+        mst1.pop();
+        ++cnt;
+    }
+
+    while(getline(is2 , token , '.')) {
+        mst1.push(token);
+    }
+
+    cnt = 0;
+    power = 1 ;
+    tmp = 0;
+    while( !mst1.empty()) {
+        tmp = atoi(mst1.top().c_str());
+        for(ushort i = 0; i < cnt ; ++i) {
+            power *= base;
+        }
+        s_value +=  power * tmp;
+        mst1.pop();
+        ++cnt;
+    }
+    if(f_value == s_value) return 0;
+    else if(f_value > s_value) return 1;
+    else return -1;
+}
+
+
+
+void test_compare()
+{
+    string s1 , s2;
+    bool flag1 = false;
+    bool flag2 = false;
+    while(cin>>s1>>s2) {
+        cout<<s1<<"\t\t"<<s2;
+        flag1 = version_larger_simple(s1 , s2);
+        cout<<"\t\t"<<flag1;
+        flag2 = version_larger_strong(s1 , s2);
+        cout<<"\t\t"<<flag2<<endl;
+    }
+
+}
+
 int main()
 {
-    vector<string> test;
-    for(short i = 0 ; i < 40 ; ++i){
-        string s = "";
-        for(short j = 0; j < i ; ++j){
-            s += "x";
-        }
-        test.emplace_back(s);
-    }
-    test_stringstream();
+    test_compare();
     return 0;
 }
