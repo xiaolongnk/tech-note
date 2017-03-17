@@ -3,6 +3,7 @@
 #include <vector>
 #include <stack>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -109,15 +110,29 @@ int version_larger_simple (const string & v1 , const string &v2)
  * return  1 if v1 > v2
  * return  0 if v1 == v2
  * return -1 if v1 < v2
+ * return -2 if v1 or v2 illegal
   *2017-03-16 15:36
  */
 int version_larger_strong (const string &v1 , const string &v2) 
 {
+    // version illegal check.
+    
+    for(ushort i = 0 ; i < v1.length() ; ++i) {
+        if(!((v1[i] == '.') || v1[i] >= '0' && v1[i] <='9')) {
+            return -2;
+        }
+    }
+    for(ushort i = 0 ; i < v2.length() ; ++i) {
+        if(!((v2[i] == '.') ||v2[i] >= '0' && v2[i] <='9')) {
+            return -2;
+        }
+    }
+
     istringstream is1(v1) , is2(v2);
     string token;
     stack<string> mst1;
     long f_value = 0 , s_value = 0;
-    const int base = 100;
+    const int base = 10000;
 
     while(getline(is1 , token , '.')) {
         mst1.push(token);
@@ -162,16 +177,12 @@ int version_larger_strong (const string &v1 , const string &v2)
 void test_compare()
 {
     string s1 , s2;
-    bool flag1 = false;
-    bool flag2 = false;
+    short flag1 =0 ,flag2 = 0;
     while(cin>>s1>>s2) {
-        cout<<s1<<"\t\t"<<s2;
         flag1 = version_larger_simple(s1 , s2);
-        cout<<"\t\t"<<flag1;
         flag2 = version_larger_strong(s1 , s2);
-        cout<<"\t\t"<<flag2<<endl;
+        cout<<left<<setw(15)<<s1<<left<<setw(10)<<s2<<right<<setw(5)<<flag1<<right<<setw(5)<<flag2<<endl;
     }
-
 }
 
 int main()
