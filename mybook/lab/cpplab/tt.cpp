@@ -106,6 +106,15 @@ int version_larger_simple (const string & v1 , const string &v2)
     else return -1;
 }
 
+void mstring_split(vector<string> &target , const string &v ,const char delem)
+{
+    istringstream iss(v);
+    string token;
+    while(getline(iss , token , delem)) {
+        target.push_back(token);
+    }
+}
+
 /**
  * return  1 if v1 > v2
  * return  0 if v1 == v2
@@ -116,7 +125,6 @@ int version_larger_simple (const string & v1 , const string &v2)
 int version_larger_strong (const string &v1 , const string &v2) 
 {
     // version illegal check.
-    
     for(ushort i = 0 ; i < v1.length() ; ++i) {
         if(!((v1[i] == '.') || v1[i] >= '0' && v1[i] <='9')) {
             return -2;
@@ -127,44 +135,43 @@ int version_larger_strong (const string &v1 , const string &v2)
             return -2;
         }
     }
-
     istringstream is1(v1) , is2(v2);
     string token;
-    stack<string> mst1;
+    stack<string> mst;
     long f_value = 0 , s_value = 0;
-    const int base = 10000;
+    const int base = 1000;
 
     while(getline(is1 , token , '.')) {
-        mst1.push(token);
+        mst.push(token);
     }
 
     ushort cnt = 0;
-    int power = 1;
+    long power = 1;
     unsigned short tmp = 0;
-    while(!mst1.empty()) {
-        tmp = atoi(mst1.top().c_str());
+    while(!mst.empty()) {
+        tmp = atoi(mst.top().c_str());
         for(ushort i = 0; i <  cnt; ++i) {
             power *= base;
         }
         f_value += power * tmp;
-        mst1.pop();
+        mst.pop();
         ++cnt;
     }
 
     while(getline(is2 , token , '.')) {
-        mst1.push(token);
+        mst.push(token);
     }
 
     cnt = 0;
     power = 1 ;
     tmp = 0;
-    while( !mst1.empty()) {
-        tmp = atoi(mst1.top().c_str());
+    while( !mst.empty()) {
+        tmp = atoi(mst.top().c_str());
         for(ushort i = 0; i < cnt ; ++i) {
             power *= base;
         }
         s_value +=  power * tmp;
-        mst1.pop();
+        mst.pop();
         ++cnt;
     }
     if(f_value == s_value) return 0;
@@ -172,16 +179,49 @@ int version_larger_strong (const string &v1 , const string &v2)
     else return -1;
 }
 
+int new_version_compare(const string &v1 , const string &v2)
+{
+    vector<string> lhd_arr;
+    vector<string> rhd_arr;
+
+    mstring_split( lhd_arr , v1 , '.');
+    mstring_split( rhd_arr , v2 , '.');
+	unsigned int lhd_len = lhd_arr.size();
+	unsigned int rhd_len = rhd_arr.size(); 
+    unsigned int i = 0;
+	for (;i<lhd_len && i<rhd_len;++i) {
+		int lval = atoi(lhd_arr[i].c_str());
+		int rval = atoi(rhd_arr[i].c_str());
+	    if (lval == rval){continue;}
+	    else {return lval > rval?1:-1;}
+    }
+    
+	for (;i<lhd_len;++i) {
+		int val = atoi(lhd_arr[i].c_str());
+        if (val == 0) {continue;}
+		else {return val>0?1:-1;}
+	}
+    
+	for (;i<rhd_len;++i) {
+		int val = atoi(rhd_arr[i].c_str());
+        if (val == 0) {continue;}
+		else {return val>0?-1:1;}
+	}
+    return 0;
+}
 
 
 void test_compare()
 {
     string s1 , s2;
-    short flag1 =0 ,flag2 = 0;
+    short flag1 =0 ,flag2 = 0 , flag3 = 0;
     while(cin>>s1>>s2) {
         flag1 = version_larger_simple(s1 , s2);
         flag2 = version_larger_strong(s1 , s2);
-        cout<<left<<setw(15)<<s1<<left<<setw(10)<<s2<<right<<setw(5)<<flag1<<right<<setw(5)<<flag2<<endl;
+        flag3 = new_version_compare(  s1 , s2);
+        cout<<left<<setw(15)<<s1<<left<<setw(10)<<s2<<right<<setw(5)<<flag1
+            <<right<<setw(5)<<flag2
+            <<right<<setw(5)<<flag3<<endl;
     }
 }
 
