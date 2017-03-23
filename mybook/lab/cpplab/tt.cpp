@@ -4,6 +4,7 @@
 #include <stack>
 #include <sstream>
 #include <iomanip>
+#include <set>
 
 using namespace std;
 
@@ -227,6 +228,10 @@ void test_compare()
 
 int main()
 {
-    test_compare();
+
+    set<string> hello = {"123","22","33"};
+    if(hello.count("22")) {
+        cout<<"yes"<<endl;
+    }
     return 0;
 }
