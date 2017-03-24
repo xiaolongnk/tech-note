@@ -47,6 +47,11 @@ void read_from_file()
     fclose(fp);
 }
 
+/***
+ * usually , fwrite is used to write binary data to a binary file.
+ * The same , fread is used to read a binary data.
+ * So , you may need to choose these function seriously by your need.
+ */
 void write_data_file()
 {
     // fwrite can only write binary data to file. so not the text mode.
@@ -59,11 +64,27 @@ void write_data_file()
     fwrite(buf ,sizeof(char), sizeof(buf) ,fp1);
     fclose(fp1);
 }
+/***
+ * for string read and write , you may need these two functions.
+ * fgets  and fputs
+ */
+void str_puts()
+{
+    const char * tmp_file = "tmp.txt";
+    FILE *tmp = fopen(tmp_file , "a");
+    char words[256];
+    // simple fgets use.
+    fgets(words , 256 , stdin);
+    fputs(words , tmp);
+    fclose(tmp);
+}
 
 int main()
 {
     write_data_file();
     read_from_file();
+    printf("Last is the printf for fputs\n");
+    str_puts();
 //    op_with_file();
     //getinput();
     //from_stdin();
