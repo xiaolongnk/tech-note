@@ -79,12 +79,25 @@ void str_puts()
     fclose(tmp);
 }
 
+void test_for_rename()
+{
+    const char * p1 = "hello.txt";
+    const char * p2 = "world.txt";
+    int result = 0;
+    result = rename(p1 , p2 );
+    if(result) {
+        perror("error occured when renaming file hello.txt");
+    }else {
+        puts("successfully\n");
+    }
+}
 int main()
 {
-    write_data_file();
-    read_from_file();
-    printf("Last is the printf for fputs\n");
-    str_puts();
+    test_for_rename();
+//    write_data_file();
+//    read_from_file();
+//    printf("Last is the printf for fputs\n");
+//    str_puts();
 //    op_with_file();
     //getinput();
     //from_stdin();
