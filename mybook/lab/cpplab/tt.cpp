@@ -228,10 +228,12 @@ void test_compare()
 
 int main()
 {
+    auto _check = [](int number) -> int {
+        return number&1;
+    };
 
-    set<string> hello = {"123","22","33"};
-    if(hello.count("22")) {
-        cout<<"yes"<<endl;
+    for(int i = 0 ; i < 10; i++) {
+        cout<<_check(i)<<endl;
     }
     return 0;
 }
