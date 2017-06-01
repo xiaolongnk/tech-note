@@ -110,19 +110,24 @@
 //h.setName("Bvoid")
 //h.sayHello()
 
-var http = require("http")
-var url = require("url")
+process.on("exit" , function(code) {
+    setTimeout(function() {
+        console.log("this code will not execute")
+    } , 0)
+    console.log("exit code:" , code)
+})
+// super global variables in nodejs.
+console.log("program exit")
 
-function start() {
-    function onRequest(request , response) {
-        var pathname = url.parse(request.url).pathname;
-        console.log("Request for " + pathname + "received")
-        response.writeHead(200 ,{"Content-Type" + "text/plain"})
-        response.write("Hello World")
-        response.end()
-    }
-    http.creaetServer(onRequest).listen(8888);
-    console.log("Server started")
-}
+process.stdout.write("Hello world!\n")
 
-exports.start = start
+process.argv.forEach(function(val , index , array){
+    console.log(index + ": " + val)
+})
+
+console.log(process.execPath)
+console.log(process.platform)
+console.log("current dir:" + process.cwd())
+
+console.log("current node version: " + process.version)
+console.log(process.memoryUsage())
