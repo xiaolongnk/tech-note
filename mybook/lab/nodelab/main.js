@@ -110,24 +110,120 @@
 //h.setName("Bvoid")
 //h.sayHello()
 
-process.on("exit" , function(code) {
-    setTimeout(function() {
-        console.log("this code will not execute")
-    } , 0)
-    console.log("exit code:" , code)
-})
-// super global variables in nodejs.
-console.log("program exit")
+//process.on("exit" , function(code) {
+//    setTimeout(function() {
+//        console.log("this code will not execute")
+//    } , 0)
+//    console.log("exit code:" , code)
+//})
+//// super global variables in nodejs.
+//console.log("program exit")
+//
+//process.stdout.write("Hello world!\n")
+//
+//process.argv.forEach(function(val , index , array){
+//    console.log(index + ": " + val)
+//})
+//
+//console.log(process.execPath)
+//console.log(process.platform)
+//console.log("current dir:" + process.cwd())
+//
+//console.log("current node version: " + process.version)
+//console.log(process.memoryUsage())
+//
 
-process.stdout.write("Hello world!\n")
+function test_util() {
+    function test1() {
+        var utils = require("util")
 
-process.argv.forEach(function(val , index , array){
-    console.log(index + ": " + val)
-})
+        function Base() {
+            this.name = "base"
+            this.base = 1991
+            this.sayHello =  function() {
+                console.log("Hello " + this.name)
+            }
+        }
 
-console.log(process.execPath)
-console.log(process.platform)
-console.log("current dir:" + process.cwd())
+        Base.prototype.showName = function() {
+            console.log(this.name)
+        }
 
-console.log("current node version: " + process.version)
-console.log(process.memoryUsage())
+        function Sub() {
+            this.name = 'sub'
+        }
+
+        utils.inherits(Sub , Base)
+
+        var objBase = new Base()
+        objBase.showName()
+        objBase.sayHello()
+        console.log(objBase)
+        var objSub = new Sub()
+
+        objSub.showName()
+        console.log(objSub)
+    }
+
+    function test2 () {
+        var util = require("util") 
+        function Person() {
+            this.name = 'byvoid'
+            this.toString = function() {
+                return this.name
+            }
+        }
+
+        var obj = new Person()
+        console.log(util.inspect(obj))
+        console.log(util.inspect(obj , true))
+    }
+
+    function test3() {
+        var util = require('util')
+        util.isArray([])
+        util.isArray({})
+    }
+    var util = require('util')
+    util.isRegExp(/some regex/)
+    util.isRegExp(new RegExp('another regexp'))
+    util.isRegExp({})
+}
+
+function test_fs() {
+    function open_test() {
+        var fs = require("fs")
+        console.log("before open the file")
+        fs.stat("input.txt" , function(err ,stats) {
+            if(err) {
+                return console.error(err)
+            }
+            console.log(stats)
+        })
+    }
+
+    function write_test() {
+        var fs = require("fs")
+        console.log("before write something")
+        write_content = "this is content I want to wirte to this file"
+        file_name = "input.txt"
+        fs.writeFile(file_name , write_content , function(err){
+            if(err) {
+                return console.error(err)
+            }
+
+            console.log("data write success")
+            console.log("--------------------")
+            console.log("read data that your wrote to file")
+            
+            fs.readFile(file_name , function(err , data) {
+                if(err) {
+                    return console.error(err)
+                }
+                console.log("read from file: " + data.toString())
+            })
+        })
+    } 
+    write_test()
+}
+
