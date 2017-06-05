@@ -224,6 +224,30 @@ function test_fs() {
             })
         })
     } 
-    write_test()
-}
 
+    function ulink_file() {
+        var fs = require("fs")
+        fs.unlink("input.txt" , function(err){
+            if (err) {
+                return console.error(err)
+            }
+            console.log("file delete success")
+        })
+    }
+
+    function read_dir() {
+        var fs = require("fs")
+        console.log("see your current dir")
+
+        fs.readdir("../" , function(err , files){
+            if(err) {
+                return console.error(err)
+            }
+            files.forEach(function(file){
+                console.log(file)
+            })
+        })
+    }
+    read_dir()
+}
+test_fs()
