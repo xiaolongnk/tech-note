@@ -1,37 +1,26 @@
----
-title: linux 标准开发环境
-date: 2016-10-11 10:18
-tags:
-- linux
-- web
-- zsh
-- spider
----
 
 在我们拿到一个刚被初始化的server之后，我们需要做一些配置工作，才能让这台server变成适合我们的工作机，一般来说，我通常会做下面这些准备工作。
 
-#### 配置zsh
-大部分学习linux的刚接触的基本都是bash，我之前也是，最近了解了zsh之后，发现zsh确实很强大，好多地方都很人性化，所以这里也推荐大家尝试一下，不喜欢的话可以再滚回bash。
+### 配置zsh
+大部同学刚学习linux的时候基本都是从bash开始的，我之前也是，最近了解了zsh之后，发现zsh确实很强大，好多地方都很人性化，所以这里也推荐大家尝试一下，不喜欢的话可以再滚回bash。
 简单介绍一下zsh的优点：
-1. 强大的补全功能
-2. git命令的完美支持
-3. autojump 可以迅速切换目录，支持模糊匹配，比我之前了解的前缀匹配强多了
-上面这三点以前用bash的时候我都是自己在配置问价里面，集成了一些插件搞出来的，现在zsh里面都是现成的了。
+* 强大的补全功能
+* git命令的完美支持
+* autojump 可以迅速切换目录，支持模糊匹配，比我之前了解的前缀匹配强多了
+上面这几个特性在bash中也可以实现，但是实现起来也相对复杂。在oh-my-zsh中，这些功能配置起来相对容易很多。oh-my-zsh 相关文章已经很多了，我也是参考其他文章开始的。
+https://zhuanlan.zhihu.com/p/19556676 
 
-zsh 和 oh-my-zsh 相关文章已经很多了，我也是参考了他们的文章开始的。 https://zhuanlan.zhihu.com/p/19556676 
+>sudo apt-get install zsh
+>wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+>chsh $USER -s $(which zsh)  #将系统的bash换成zsh
+>wget https://github.com/downloads/joelthelion/autojump/autojump_v21.1.2.tar.gz
+>tar -zxvf autojump_v21.1.2.tar.gz
+>cd autojump
+>./install.sh
+>
+>plugins=(git autojump)
+>[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
 
-```shell
-sudo apt-get install zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-chsh $USER -s $(which zsh)  #将系统的bash换成zsh
-wget https://github.com/downloads/joelthelion/autojump/autojump_v21.1.2.tar.gz
-tar -zxvf autojump_v21.1.2.tar.gz
-cd autojump
-./install.sh
-
-plugins=(git autojump)
-[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
-```
 `./install.sh`安装完之后，会提示我们将`[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh`这一行加入到我们的.zshrc里面，写的位置需要注意一下，一定要放在.zshrc中`source $ZSH/oh-my-zsh.sh`这一行的前面。否则会出现需要执行2此source ~/.zshrc 才会生效的现象。
 
 zsh 的插件，默认会装git，我这里装了autojump。
