@@ -21,7 +21,7 @@
 > `brew install mongodb`
 
 ## brew 安装 nginx 
-这里，在`MAC`上的`web php`开发所需要的软件基本都安装完成了，我们可以通过下面的方式来启动服务。启动服务和关闭服务也比较麻烦，我们可以实现一个脚本将他们集成起来，以方便我们快速的启动脚本，这里提供一个我自己的**[nginx php 服务脚本](https://blog.nofile.cc)**，大家可以参考。
+这里，在`MAC`上的`web php`开发所需要的软件基本都安装完成了，我们可以通过下面的方式来启动服务。启动服务和关闭服务也比较麻烦，我们可以实现一个脚本将他们集成起来，以方便我们快速的启动脚本，这里提供一个我自己的**[nginx php 服务脚本](https://coding.net/u/xiaolongnk/p/mscript/git/raw/master/shell/m_start)**，大家可以参考,通过命令`m_start start|stop|restart`来使用。
 > `brew install nginx`
 > `sudo nginx`
 > `sudo /usr/local/sbin/php-fpm`
