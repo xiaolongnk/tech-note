@@ -12,7 +12,11 @@
 
 ## brew 安装 mysql 和 php
 `brew` 安装`mysql-server`:`brew install mysql`
-`brew` 安装`php71`:在mac的brew仓库中，php有好多个版本，可以用`brew search php`来查看仓库中的所有的php包。`brew search php`查看之后，我们选择安装php71 ，这个相对稳定。如果需要其他版本的，也可以自己选择。`brew install php71` 安装完成之后，b`brew`会将安装信息给列出来，还会提供一些其他的信息，比如说对`php-fpm`还会告诉你，将`php-fpm`加入开机启动中的方法，所以安装玩一个软件包之后，最好可以认真读一下`brew`给我们的提示信息。
+在用`brew`安装之前，需要先执行以下这几个命令,` brew tap homebrew/homebrew-php`,` brew tap homebrew/versions`,来更新一下`brew`的`php`仓库。`brew` 安装`php71`:在mac的brew仓库中，php有好多个版本，可以用`brew search php`来查看仓库中的所有的php包。`brew search php`查看之后，我们选择安装php71 ，这个相对稳定。如果需要其他版本的，也可以自己选择。`brew install php71` 安装完成之后，b`brew`会将安装信息给列出来，还会提供一些其他的信息，比如说对`php-fpm`还会告诉你，将`php-fpm`加入开机启动中的方法，所以安装玩一个软件包之后，最好可以认真读一下`brew`给我们的提示信息。
+> `brew tap homebrew/versions`
+> `brew tap homebrew/homebrew-php`
+> `brew search php`
+> `brew install php71`
 
 ## 安装php的redis扩展
 所有`php`扩展的安装方式都类似，下面是几个例子，只需要知道需要什么报名就可以，如果只知道个大概，可以用`brew search`搜索来帮助确定，确定之后安装就可以了。安装完成后，请用`php -i | grep redis` 来验证`php-redis`扩展存在，同理可以验证其他扩展，这里省略。
