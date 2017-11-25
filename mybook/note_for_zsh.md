@@ -1,5 +1,6 @@
 ### 配置zsh
 
+![linux zsh mac autojump](https://omssgfgqf.qnssl.com/images/2017/11/25/15116096354756.png)
 大部同学刚学习linux的时候基本都是从bash开始的，我之前也是，最近了解了zsh之后，发现zsh确实很强大，好多地方都很人性化，所以这里也推荐大家尝试一下，不喜欢的话可以再滚回bash。
 简单介绍一下zsh的优点：
     * 强大的补全功能

@@ -1,3 +1,5 @@
+![git linux](https://omssgfgqf.qnssl.com/images/2017/11/25/15116072519020.jpeg)
+
 这里整理了一些学习Git过程中遇到的一些问题，大部分的解决方案都来自Stackoverflow。这些问题比较散乱，相互间联系很弱，但是都是一些很容易遇到的问题，有较高的使用价值，所以整理一下，作为日后参考。
 1.【git error object file is empty】[git error object file is empty](http://stackoverflow.com/questions/11706215/how-to-fix-git-error-object-file-is-empty)
 2.【Git 删除远端已经合并的分支】在开发过程中，尤其当团队比较大的时候，项目成员比较多，git的分支可能会会多。好多已经开发完成并合并到主干的分支，都一直保存着，当你执行一个统计，分支少则几十个，多则几百个，虽说远端分支不太影响，但没用的东西，尽量还是清理掉，保持简单，高效。如题，在工作中，我遇到了这个问题，我的第一想法是google这个问题，找到了stackoverflow上的一个回答。[删除远端的已经合并的分支](http://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged)，删除这些分支是没有任何影响的，因为这些分支所有代码都在master中了，所以请尽管删除
