@@ -35,10 +35,9 @@ do
         bootstrapPath="$codePath/bootstrap"
         cat $NGINX_TEMPLATE_FILE \
             | sed "s|CONF_INSTANCE|$confInstance|g" \
-            | sed "s|CODE_PATH|$codePath|g" > $outputNginxConfName
-
-        grep -q "$i" /etc/hosts
-        if [ ! $? ]
+            | sed "s|CODE_REAL_PATH|$codePath|g" > $outputNginxConfName
+        ret=`grep -c "$i" /etc/hosts`
+        if [ $ret -eq '0' ]
         then
             echo "127.0.0.1 $i" >> /etc/hosts
         fi
